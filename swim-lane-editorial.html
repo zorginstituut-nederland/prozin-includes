@@ -1,0 +1,30 @@
+<section class="swim-lane" id="swim-lane-editorial">
+    <div class="container">
+        <h2 class="assistive">
+            {{ site.data.ui.label_topics[site.lang] }}
+        </h2>
+        <ul class="editorial-list col-4 pat-equaliser">  
+            {% assign count = 1 %}
+            {% for item in site.posts %}
+                {% if item.layout == 'article' %}
+                    {% unless item.parent == 'service' or item.parent == 'over' item.parent == 'Service' or item.parent == 'Over deze site' %}
+                        <li >
+                            <a href="{{ item.url }}" class="pat-inject" data-pat-inject="history: record">
+                                <h3 class="item-title">
+                                    {{ item.title }}
+                                </h3>
+                                <p>
+                                    {% if item.summary %}
+                                        {{ item.summary | truncate: 100 }}
+                                    {% else %}
+                                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
+                                    {% endif %}
+                                </p>
+                            </a>
+                        </li>   
+                    {% endunless %}  
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</section>

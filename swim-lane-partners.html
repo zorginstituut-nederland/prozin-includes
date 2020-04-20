@@ -1,0 +1,14 @@
+<section class="swim-lane" id="partners">
+    <div class="container">
+        <h2 class="lane-title">
+            Partners
+        </h2>
+        <ul class="logo-cloud">
+            {% for logo in page.logos %}
+                <li class="logo" title="{{ logo.name }}">
+                    <img src="/media/partner-logos/{{ logo.file }}" alt="{{ logo.name }}" />
+                </li>
+            {% endfor %}
+        </ul> 
+    </div>
+</section>

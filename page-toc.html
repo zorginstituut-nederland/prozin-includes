@@ -1,0 +1,9 @@
+{% if page.sections or page.banner %}
+    <ul class="link-list toc">
+        {% for section in page.sections %}   
+            <li>
+                <a class="pat-scroll" data-pat-scroll="selector: #{{ section.name | slugify }}" href="#{{ section.name | slugify }}">{{ section.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

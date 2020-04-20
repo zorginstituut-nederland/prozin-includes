@@ -1,0 +1,54 @@
+<div id="page-head" class="pat-rich">
+	<h1 {% if include.icon %}class="icon-{{ include.icon }}"{% endif %}>
+		{{ page.title }}
+	</h1>	
+	{% if include.byline %}
+		<p class="byline">
+			{% if include.byline contains 'document-type' %}
+				{% if page.type == 'qs' %}
+					<span class="byline-item">Kwaliteitsstandaard</span>
+				{% elsif page.type == 'is' %}
+					<span class="byline-item">Informatiestandaard</span>
+				{% elsif page.type == 'mi' %}
+					<span class="byline-item">Meetinstrument</span>
+				{% elsif page.layout == 'news-item' %}
+					<span class="byline-item">Nieuwsbericht</span>
+				{% endif %}			
+			{% endif %}
+			{% if include.byline contains 'medical-field' %}
+				{% if page.medical_field %}
+					<span class="byline-item">{{ page.medical_field }}</span>
+				{% endif %}
+			{% endif %}
+			{% if include.byline contains 'pub-date' %}
+				<span class="byline-item"><time datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time></span>
+			{% endif %}
+			{% if include.byline contains 'author' %}
+				{% if page.author %}
+					<span class="byline-item">{{ page.author }}</span>
+				{% endif %}
+			{% endif %}
+			{% if include.byline contains 'tags' %}
+				<span class="byline-item">
+					{% for tag in page.tags %}
+						<a href="/tags/{{ tag | downcase | replace: ' ', '-' }}" class="icon-tag">{{ tag }}</a>
+					{% endfor %}
+				</span>
+			{% endif %}
+		</p>		
+	{% endif %}
+	{% if page.image %}
+		<section class="hero">
+			<figure>
+				<img src="{{ page.hero }}" alt="" />
+			</figure>
+		</section>
+	{% endif %} 
+	{% if page.summary %}
+		<section class="introduction" id="page-intro">
+	        <p>
+	            {{ page.summary }}
+	        </p>
+	    </section>
+	{% endif %}	
+</div>

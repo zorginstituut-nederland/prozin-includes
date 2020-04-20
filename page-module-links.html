@@ -1,0 +1,36 @@
+{% if page.links or page.tags.size >= 1 %}
+    <section class="page-module type-links">
+        {% if include.title %}
+            <h2 class="page-module-title">
+                {{ include.title }}
+            </h2>
+        {% endif %}
+        {% for item in page.links %}
+            {% if item.group %}
+                <h3>
+                    {{ item.group }}
+                </h3>
+            {% endif %}
+            <ul class="link-list">
+                {% for item in item.items %}
+                    <li>
+                        <a href="{{ item.url }}" class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" {% unless item.type == 'link-external' %}data-pat-inject="history: record"{% endunless %} {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
+                    </li>  
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        {% if page.tags.size >= 1 %}
+            <h3>
+                Tags
+            </h3>
+            <ul class="link-list">
+                {% for tag in page.tags %}
+                    <li>
+                        <a href="/tags/{{ tag | slugify }}" class="type-tag pat-inject" data-pat-inject="history: record">{{ tag }}</a>
+                    </li>  
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+{% endif %}
+

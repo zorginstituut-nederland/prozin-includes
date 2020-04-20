@@ -1,0 +1,62 @@
+<section class="page-module">
+    <dl class="pat-grid-list">
+
+        <dt>Status</dt>
+        <dd>
+            {% if page.status_register == true and page.status_mja == true %}
+                Opgenomen in het Register en geplaatst op de Meerjarenagenda
+            {% elsif page.status_register == true and page.status_mja == false %}
+                Opgenomen in het Register
+            {% elsif page.status_register == false and page.status_mja == true %}
+                Geplaatst op de Meerjarenagenda
+            {% elsif page.status_register == false and page.status_mja == false %}
+                <strong class="warning">Niet in het Register</strong>
+            {% endif %}
+        </dd>
+
+        <dt>Opgenomen in het Register</dt>
+        <dd>
+            <time datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time>
+        </dd>
+
+        {% if page.revision_date %}
+            <dt>Herzieningsdatum</dt>
+            <dd>
+                <time datetime="{{ page.revision_date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.revision_date | date: "%-d %B %Y" }}</time>
+            </dd>
+        {% endif %}
+
+        {% if page.expected_publication %}
+            <dt>Uiterste datum oplevering (Meerjarenagenda)</dt>
+            <dd>
+                <time datetime="{{ page.expected_publication | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.expected_publication | date: "%-d %B %Y" }}</time>
+            </dd>
+        {% endif %}
+
+        {% if page.contact_person %}
+            <dt>Contactpersoon</dt>
+            <dd>
+                {{ page.contact_person }}
+            </dd>
+        {% endif %}
+
+        {% if page.related %}
+            <dt>Gerelateerd</dt>
+            <dd>
+                <ul class="link-list">
+                    {% for link in page.related %}
+                        <li>
+                            <a href="/{{ link.url }}" class="pat-inject">{{ link.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        {% endif %}
+    </dl>
+
+    {% if page.status_development == true %}
+        <p class="pat-message notice">
+            {{ site.data.ui.message_quality_instrument_in_development[site.lang] }}
+        </p>
+    {% endif %}
+</section>
