@@ -7,7 +7,7 @@
             {% assign count = 1 %}
             {% for item in site.posts %}
                 {% unless item.type == 'warning' %}
-                    {% if item.layout == 'news-item' and count <= 3 %}
+                    {% if item.layout == 'prozin/news-item' and count <= 3 %}
                         <article class="item {{ item.type }}">
                             <a class="follow pat-inject" href="{{ item.url }}" data-pat-inject="history: record">
                                 {% if item.img %}
