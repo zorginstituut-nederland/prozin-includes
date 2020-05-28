@@ -1,5 +1,12 @@
 <section class="swim-lane" id="home-hero">
     <div class="container">
+        {% if page.push %}
+            <div class="top-task-push">
+                <article class="pat-rich">
+                    {{ page.push | markdownify }}
+                </article>
+            </div>
+        {% endif %}
         <div class="top-task-navigation">
             <h2>
                 {% if include.callout == "top-tasks" %}
