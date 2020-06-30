@@ -1,0 +1,16 @@
+<section class="page-module type-logos">
+    <h2 class="page-module-title assistive">
+        Logos
+    </h2>
+    <nav class="logo-cloud">
+        {% if page.banners %}
+            <section class="banners">
+                {% for banner in page.banners %}
+                    <a href="#">
+                        <img src="{{ banner.source }}">
+                    </a>
+                {% endfor %}
+            </section>
+        {% endif %}
+    </nav>
+</section>

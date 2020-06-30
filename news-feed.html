@@ -1,0 +1,29 @@
+<div class="news-feed {% if include.mode == 'images' %}has-images{% elsif include.mode == 'flow' %}image-flow{% else %}no-images{% endif %} {% if include.images == 'flow' %}image-flow{% endif %}" id="found-messages">
+	{% assign count = 1 %}
+	{% assign this_max = include.max %}
+
+    {% for item in site.posts %}
+        {% unless item.type == include.exclude %}
+            {% if item.layout == 'prozin/news-item' and item.pinned == true and count <= this_max %}
+                {% include prozin/news-feed-item.html
+                           mode=include.mode %}
+                {% assign count = count | plus: 1 %}
+            {% endif %}
+        {% endunless %}
+    {% endfor %}
+    {% for item in site.posts %}
+        {% unless item.type == include.exclude or item.pinned == true %}
+            {% if item.layout == 'prozin/news-item' and count <= this_max %}
+                {% include prozin/news-feed-item.html 
+                           mode=include.mode %}
+                {% assign count = count | plus: 1 %}
+            {% endif %}
+        {% endunless %}
+    {% endfor %}
+
+	{% unless this_max <= 99 %}
+		<p id="pagination">
+	        <a href="/nieuws" class=" next pat-inject" data-pat-inject="trigger: autoload-visible; source: #found-messages; target: #pagination::element">Meer nieuws laden…</a>
+	    </p>
+	{% endunless %}
+</div>

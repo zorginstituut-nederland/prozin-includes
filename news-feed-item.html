@@ -1,0 +1,23 @@
+<article class="item {{ item.type }} {% if item.pinned == true %}pinned{% endif %}">
+    <a class="follow pat-inject" href="{{ item.url }}" data-pat-inject="history: record">
+        {% unless include.mode == 'plain' %}
+            <figure class="illustration">
+                <img alt="" src="/assets/style/placeholder-16x9.png" style="background-image: url({{ item.image }})">
+            </figure>
+        {% endunless %}
+        <h3 class="item-title">
+            {{ item.title }}
+        </h3>
+        <p class="byline">
+            <time datetime="">{{ item.date | date_to_string }}</time>
+        </p>
+        <p class="description">
+            {{ item.summary | truncatewords: 40 }}
+        </p>
+        {% if item.source %}
+            <p class="source">
+                <span class="source">{{ item.source }}</span>.
+            </p>
+        {% endif %}
+    </a> 
+</article>
