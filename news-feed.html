@@ -23,7 +23,9 @@
 
 	{% unless this_max <= 99 %}
 		<p id="pagination">
-	        <a href="/nieuws" class=" next pat-inject" data-pat-inject="trigger: autoload-visible; source: #found-messages; target: #pagination::element">Meer nieuws laden…</a>
+	        <a href="/nieuws-meer" 
+               class=" next pat-inject" 
+               data-pat-inject="trigger: autoload-visible; source: #found-messages; target: #pagination::element">Meer nieuws laden…</a>
 	    </p>
 	{% endunless %}
 </div>

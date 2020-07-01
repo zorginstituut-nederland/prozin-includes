@@ -1,4 +1,4 @@
-<article class="item {{ item.type }} {% if item.pinned == true %}pinned{% endif %}">
+<article class="item {{ item.type }} {% unless page.pinning == false %}{% if item.pinned == true %}pinned{% endif %}{% endunless %}">
     <a class="follow pat-inject" href="{{ item.url }}" data-pat-inject="history: record">
         {% unless include.mode == 'plain' %}
             <figure class="illustration">
