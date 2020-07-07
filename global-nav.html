@@ -1,0 +1,120 @@
+<div id="global-nav" class="variation-{{ layout.page_type }} pat-sticky" role="menubar">
+    <div class="container">
+        {% if page.layout == 'homepage' %}
+            <h1 class="assistive">
+                {{ site.data.ui.label_site_description[site.lang] }}
+            </h1>
+        {% endif %}
+        <nav id="breadcrumbs">
+            <p class="assistive">
+                {{ site.data.prozin.ui.message_you_are_here[site.lang] }}
+            </p>
+            {% if page.layout contains 'homepage' %}
+                <a class="homepage">
+            {% else %}
+                <a class="homepage pat-inject" data-pat-inject="history: record" href="/">
+            {% endif %}
+                    {{ site.data.ui.label_site_name[site.lang] }}
+                </a>
+            {% if page.title == 'Nieuws' %}
+                <a>{{ page.title }}</a>
+            {% endif %}
+
+            {% if layout.page_type == 'news-item' %}
+                <a class="pat-inject" data-pat-inject="history: record" href="/nieuws">Nieuws</a>
+            {% endif %}
+
+            {% if layout.page_type == 'news' %}
+                <a class="pat-inject" data-pat-inject="history: record" href="/bladeren-hoofdstuk">Nieuws</a>
+            {% endif %}
+            
+            {% if page.url contains 'zoekresultaten' %}
+                <a>Zoeken</a>
+            {% endif %}
+            {% if page.url == '/geneesmiddelen' %}
+                <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+            {% endif %}
+            {% if page.url == '/geneesmiddelen-9-januari-2018' %}
+                <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+            {% endif %}
+            {% if page.url == '/geneesmiddelen-alt' %}
+                <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.parent == 'Help' %}
+                <a href="/help" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.parent == 'Beheer' or layout.parent == 'Beheer' %}
+                <a href="/beheer" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+            {% endif %}
+            {% if page.title == 'Beheer' %}
+                <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
+                <a href="/fabrikanten" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+            {% endif %}
+            {% if page.title == 'Fabrikanten' %}
+                <a>{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.title == 'Concepten' %}
+                <a href="/beheer" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_drafts[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.title == 'Volgen' %}
+                <a href="/beheer" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_follow[site.lang] }}</a>
+            {% endif %}
+
+            {% if page.parent == 'over' %}
+                <a href="/over" class="pat-inject" data-pat-inject="history: record">Over Horizonscan Geneesmiddelen</a>
+            {% endif %}
+            {% if page.title == 'Over Horizonscan Geneesmiddelen' %}
+                <a>Over Horizonscan Geneesmiddelen</a>
+            {% endif %}
+            {% if page.layout == 'medicine-listing' or page.layout == 'medicine-edit' or page.layout == 'medicine-create' %}
+                <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+            {% endif %}
+            {% if page.layout == 'medicine' %}
+                {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}
+                    <a href="/beheer" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">Beheer</a>
+                    <a href="/concepten" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">Concepten</a>
+                {% else %}
+                    {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.lang] | slugify }}{% endcapture %}
+                    <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+                    <a href="/{{ this_group }}" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui[page.domain][site.lang] }}</a>
+                {% endif %}
+            {% endif %}
+            {% if page.url == '/domeinen' %}
+                <!-- <a>Werkgroepen</a> -->
+            {% endif %}
+        </nav>
+        <form accept-charset="UTF-8" action="/zoekresultaten" id="quick-search-form" method="get" name="quick-search-form" class="pat-form pat-inject" data-pat-inject="history: record">
+            <label for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
+            <input name="zoekterm" 
+                   id="global-search-lemma" 
+                   title="{{ site.search_box_placeholder[site.lang] }}" 
+                   placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
+                   type="text" 
+                   value="" />
+            <button type="submit">Zoek</button>
+        </form>
+    </div>
+</div>
