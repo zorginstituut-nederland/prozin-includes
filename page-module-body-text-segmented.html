@@ -1,0 +1,12 @@
+{% for section in page.sections %}
+	<section class="page-module type-body-text-segment pat-rich"
+			 id="section-{{ site.data.prozin.ui[section.name][site.lang] | slugify }}">	
+		<h2 class="page-module-title">
+			{{ site.data.prozin.ui[section.name][site.lang] }}
+		</h2>
+		<p class="section-introduction">
+			{{ site.data.prozin.ui[section.description][site.lang] }}
+		</p>
+	    {{ section.content | markdownify }}
+	</section>
+{% endfor %}
