@@ -1,0 +1,30 @@
+<form action="/" class="pat-form">
+	{% if include.error %}
+		<div class="pat-message error">
+			<p>
+				{{ site.data.prozin.ui[include.error][site.lang] }}
+			</p>
+		</div>
+	{% endif %}
+	<p class="meta req">
+		<strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.lang] }}
+	</p>
+	<fieldset class="form-panel">
+		<fieldset class="horizontal">
+			<label>
+				{{ site.data.prozin.ui.label_name[site.lang] }} <input autofocus 
+				  											           type="text" 
+				  											           name="name" />
+			</label>
+			<label>
+				{{ site.data.prozin.ui.label_password[site.lang] }} <input 
+				  											           type="password" 
+				  											           name="password" />
+			</label>
+		</fieldset>
+		<fieldset class="button-bar">
+			<button class="pat-button" 
+					type="submit">{{ site.data.prozin.ui.label_log_in[site.lang] }}</button>
+		</fieldset>
+	</fieldset>
+</form>
