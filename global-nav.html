@@ -88,7 +88,7 @@
             {% if page.layout == 'medicine-listing' or page.layout == 'medicine-edit' or page.layout == 'medicine-create' %}
                 <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
-            {% if page.layout == 'medicine' %}
+            {% if page.layout == 'medicine' or page.layout == 'medicine-compare-versions' %}
                 {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}
                     <a href="/beheer" 
                        class="pat-inject" 
