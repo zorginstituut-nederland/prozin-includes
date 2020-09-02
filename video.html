@@ -7,19 +7,31 @@
 	<div class="video-player-extras pat-well collapsibles">
 		<div class="pat-collapsible closed extra">
 			<strong class="video-player-extra-title">Download deze video</strong>
-			<a class="file-download" 
+			<a class="file-download icon-file-video" 
 			   href="{{ include.video }}">
                 <h4 class="title">
                     MP4-video
                 </h4>
                 <p class="meta">
                     <span class="meta-item">Video</span>
-                    <span class="meta-item">{{ page.date }}</span>
+                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" }}</span>
                     <span class="meta-item">mp4</span>
                 </p>
             </a>
+			<a class="file-download icon-file-audio" 
+			   href="{{ include.audio }}">
+                <h4 class="title">
+                    MP3-audio
+                </h4>
+                <p class="meta">
+                    <span class="meta-item">Audio</span>
+                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" }}</span>
+                    <span class="meta-item">mp3</span>
+                </p>
+            </a>
 		</div>
-		<div class="pat-collapsible closed video-player-extra">
+		<div class="pat-collapsible closed video-player-extra"
+			 data-pat-collapsible="load-content: {{ include.transcript }}#transcript;">
 			<strong class="video-player-title">Uitgeschreven tekst</strong>
 		</div>
 	</div>
