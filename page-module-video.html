@@ -1,0 +1,12 @@
+<section class="page-module type-downloads">
+    {% if include.title %}
+        <h2 class="page-module-title">
+            {{ include.title }}
+        </h2>
+    {% endif %}
+    {% include prozin/video.html
+               video=page.video
+               poster=page.poster
+               audio=page.audio
+               transcript=page.transcript %}
+</section>
