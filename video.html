@@ -4,4 +4,23 @@
 	       poster="{{ include.poster }}">
 	    <source src="{{ include.video }}"/>
 	</video>
+	<div class="video-player-extras pat-well collapsibles">
+		<div class="pat-collapsible closed extra">
+			<strong class="video-player-extra-title">Download deze video</strong>
+			<a class="file-download" 
+			   href="{{ include.video }}">
+                <h4 class="title">
+                    MP4-video
+                </h4>
+                <p class="meta">
+                    <span class="meta-item">Video</span>
+                    <span class="meta-item">{{ page.date }}</span>
+                    <span class="meta-item">mp4</span>
+                </p>
+            </a>
+		</div>
+		<div class="pat-collapsible closed video-player-extra">
+			<strong class="video-player-title">Uitgeschreven tekst</strong>
+		</div>
+	</div>
 </figure>
