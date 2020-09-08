@@ -41,26 +41,28 @@
                 <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
 
-            {% if page.parent == 'Help' %}
-                <a href="/help" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
+            {% if page.parent %}
+                {% if page.parent == 'Help' %}
+                    <a href="/help" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
+                {% elsif page.parent == 'Beheer' or layout.parent == 'Beheer' %}
+                    <a href="/beheer" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                {% elsif page.title == 'Beheer' %}
+                    <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
+                    <a href="/fabrikanten" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+                {% else %}
+                     <a href="{{ page.parent | slugify }}" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">{{ page.parent }}</a>
+                {% endif %}
             {% endif %}
 
-            {% if page.parent == 'Beheer' or layout.parent == 'Beheer' %}
-                <a href="/beheer" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
-            {% endif %}
-            {% if page.title == 'Beheer' %}
-                <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
-            {% endif %}
-
-            {% if page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
-                <a href="/fabrikanten" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
-            {% endif %}
             {% if page.title == 'Fabrikanten' %}
                 <a>{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
             {% endif %}
