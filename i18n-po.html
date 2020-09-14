@@ -1,0 +1,5 @@
+{% for item in site.data.prozin.ui %}
+	#| msgid {{ item[0] }}
+	msgid "{{ item[1].en }}"
+	msgstr "{{ item[1].[include.lang] }}"
+{% endfor %}

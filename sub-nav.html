@@ -1,0 +1,13 @@
+{% if page.sub_nav %}
+    <div id="sub-nav">
+        <div class="container">
+            <ul class="link-list">
+                {% for item in page.sub_nav %}
+                    <li>
+                        <a title="{{ item.description }}" href="{{ item.name | replace: ' ','-' | downcase }}" {% if item.icon %}class="icon-{{ item.icon }}"{% endif %}>{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

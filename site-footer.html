@@ -1,0 +1,61 @@
+<div class="do-not-print" id="footer">
+    <div class="container">
+        <blockquote class="seven columns payoff">
+            {{ site.data.ui.label_site_ankeiler[site.lang] }}
+        </blockquote>
+        <div class="column">
+            <h2>
+                {{ site.data.prozin.ui.label_service[site.lang] }}
+            </h2>
+            <ul class="links">
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                {% for item in site.posts %}
+                    {% if item.parent == 'service' or item.parent == 'Service' %}
+                        <li>
+                            <a href="{{ item.url }}"
+                               class="pat-inject"
+                               data-pat-inject="history: record">{{ item.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% for item in site.help %}
+                    {% if item.parent == 'service' or item.parent == 'Service' %}
+                        <li>
+                            <a href="{{ item.url }}"
+                               class="pat-inject"
+                               data-pat-inject="history: record">{{ item.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                <li>
+                    <a href="/demo"
+                       class="pat-inject"
+                       data-pat-inject="history: record">Demo</a>
+                </li>
+                <li>
+                    <a href="/beheer"
+                       class="pat-inject"
+                       data-pat-inject="history: record">Beheer</a>
+                </li>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>
+                {{ site.data.prozin.ui.label_about_this_site[site.lang] }}
+            </h2>
+            <ul class="links">
+                <li>
+                    <a href="/proclaimer">Proclaimer</a>
+                </li>
+                <li>
+                    <a href="copyright">Copyright</a>
+                </li>
+                <li>
+                    <a href="cookies">Cookies</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

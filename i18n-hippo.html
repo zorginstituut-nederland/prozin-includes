@@ -1,0 +1,9 @@
+# Generic
+
+{% for item in site.data.prozin.ui %}{{ item[0] }}={{ item[1].[include.lang] }}
+{% endfor %}
+
+# Site specific
+
+{% for item in site.data.ui %}{{ item[0] }}={{ item[1].[include.lang] }}
+{% endfor %}

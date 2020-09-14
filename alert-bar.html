@@ -1,0 +1,79 @@
+{% assign ui_data_path = site.ui_data_path %}
+
+<fieldset id="document-alert-bar" {% if page.state == 'locked' %}class="warning"{% endif %}>
+    <section class="container">
+        <p class="alert-message">
+            {% if page.locked %}
+                {% for item in site.data.messages %}
+                    {% if item.id == 'locked'%}               
+                        {{ site.data[ui_data_path].ui[item.message_id][site.lang] }}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for item in site.data.messages %}
+                    {% if item.id == page.state %}               
+                        {{ site.data[ui_data_path].ui[item.message_id][site.lang] }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </p>
+
+        {% if layout.alert_buttons %}
+            <div class="alert-buttons">
+                {% if page.locked %}
+                    <a class="pat-button pat-modal icon-pencil warning" href="/feedback/lock-steal-confirm.html#document-content">{{ site.data.prozin.ui.label_steal_lock[site.lang] }}</a>
+                {% else %}
+                    <div class="pat-collapsible context-menu more-menu closed align-right" data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu-trigger" id="filters-menu">
+                        <strong class="label menu-trigger">…</strong>
+                        <p class="close-menu close-menu-trigger">{{ site.data.prozin.ui.label_close[site.lang] }}</p>
+                        <ul class="menu">
+                            <li>
+                                <a class="icon-docs pat-modal close-menu-trigger" href="/feedback/save-as#document-content">{{ site.data.prozin.ui.label_save_as[site.lang] }}</a>
+                            </li>
+                            <li>
+                                <a class="icon-trash">{{ site.data.prozin.ui.label_delete[site.lang] }}</a>
+                            </li>
+                            <li>
+                                <a class="icon-pencil pat-modal close-menu-trigger" href="/feedback/paste-from#document-content">Vul in met gegevens uit ander document</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {% for button in layout.alert_buttons %}
+                        {% if button.href %}
+                            <a class="pat-button {{ button.class }} {% if button.icon %}icon-{{ button.icon }}{% endif %}" href="{{ button.href }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
+                        {% else %}
+                            <button type="submit" formaction="{{ button.formaction }}" class="pat-button {% if button.icon %}icon-{{ button.icon }}{% endif %} {% if button.class %}{{ button.class }}{% endif %}">{{ site.data.prozin.ui[button.label][site.lang] }}</button>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="pat-collapsible context-menu save-button closed align-right" 
+                         data-pat-collapsible="close-trigger: #save-document,.close-menu-trigger" 
+                         id="filters-menu">
+                        <a href="#save-message" 
+                           data-pat-forward="selector: #save-message" 
+                           class="label menu-trigger pat-forward">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
+                        <p class="close-menu close-menu-trigger">Sluit</p>
+                        <fieldset class="vertical">
+                            <label>
+                                <textarea id="save-message" 
+                                          rows="4" 
+                                          autofocus 
+                                          placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.lang] }}"></textarea>
+                            </label>
+                        </fieldset>
+                        <p class="buttons">
+                            <button class="pat-button" 
+                                    type="submit" 
+                                    formaction="{{ page.url }}"
+                                    id="save-document">{{ site.data.prozin.ui.label_save[site.lang] }}</button>
+                            <button class="pat-button" 
+                                    type="submit" 
+                                    formaction="{{ page.save_and_quit }}">{{ site.data.prozin.ui.label_save_and_close[site.lang] }}</button>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </section>
+</fieldset>
