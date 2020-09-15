@@ -1,8 +1,9 @@
 <div class="news-feed {% if include.mode == 'images' %}has-images{% elsif include.mode == 'flow' %}image-flow{% else %}no-images{% endif %} {% if include.images == 'flow' %}image-flow{% endif %}" id="found-messages">
+    {% assign news = (site.news | sort: 'date') | reverse %}
 	{% assign count = 1 %}
 	{% assign this_max = include.max %}
 
-    {% for item in site.news %}
+    {% for item in news %}
         {% unless item.type == include.exclude %}
             {% if item.layout == 'prozin/news-item' and item.pinned == true and count <= this_max %}
                 {% include prozin/news-feed-item.html
@@ -11,6 +12,7 @@
             {% endif %}
         {% endunless %}
     {% endfor %}
+
     {% for item in site.news %}
         {% unless item.type == include.exclude or item.pinned == true %}
             {% if item.layout == 'prozin/news-item' and count <= this_max %}
