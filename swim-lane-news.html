@@ -1,4 +1,5 @@
-<section class="swim-lane" id="news">
+<section class="swim-lane" 
+         id="news">
     <div class="container">
         <h2 class="lane-title">
             {{ site.data.prozin.ui.label_news[site.lang] }}
@@ -10,7 +11,9 @@
                 {% unless news-item.type == 'warning' %}
                     {% if news-item.layout == 'prozin/news-item' and count <= 3 %}
                         <article class="item {{ item.type }}">
-                            <a class="follow pat-inject" href="{{ item.url }}" data-pat-inject="history: record">
+                            <a class="follow pat-inject" 
+                               href="{{ news-item.url }}" 
+                               data-pat-inject="history: record">
                                 {% if item.mode == 'images' %}
                                     <figure class="illustration">
                                         <img alt="" 
