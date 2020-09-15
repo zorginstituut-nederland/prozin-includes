@@ -1,9 +1,10 @@
-<section class="swim-lane" id="home-hero">
+<section class="swim-lane {% if item.push %}has-top-task-push{% endif %}" 
+         id="home-hero">
     <div class="container">
-        {% if page.push %}
+        {% if item.push %}
             <div class="top-task-push">
                 <article class="pat-rich">
-                    {{ page.push | markdownify }}
+                    {{ item.push | markdownify }}
                 </article>
             </div>
         {% endif %}
@@ -46,13 +47,15 @@
                         </li>
                     {% endfor %}
                 {% else %}
-                    {% for item in site.posts %}
-                        {% if item.layout == 'news-item' and count <= 3 and item.type == 'warning' %}
-                            <li class="{{ item.type }}">
-                                <a href="{{ item.url }}" class="pat-inject">
-                                    {{ item.title }}
+                    {% for this_item in site.news %}
+                        {% if count <= 3 and this_item.type == 'warning' %}
+                            <li class="{{ this_item.type }}">
+                                <a href="{{ this_item.url }}" 
+                                   class="pat-inject">
+                                    {{ this_item.title }}
                                 </a>
                             </li>    
+                            {% assign count = count | plus: 1 %}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
