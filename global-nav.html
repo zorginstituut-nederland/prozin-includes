@@ -12,7 +12,8 @@
             {% if page.layout contains 'homepage' %}
                 <a class="homepage">
             {% else %}
-                <a class="homepage pat-inject" data-pat-inject="history: record" href="/">
+                <a class="homepage pat-inject" 
+                   data-pat-inject="history: record" href="/">
             {% endif %}
                     {{ site.data.ui.label_site_name[site.lang] }}
                 </a>
@@ -21,11 +22,15 @@
             {% endif %}
 
             {% if layout.page_type == 'news-item' %}
-                <a class="pat-inject" data-pat-inject="history: record" href="/nieuws">Nieuws</a>
+                <a class="pat-inject" 
+                   data-pat-inject="history: record" 
+                   href="/news/">{{ site.data.prozin.ui.label_news[site.lang] }}</a>
             {% endif %}
 
             {% if layout.page_type == 'news' %}
-                <a class="pat-inject" data-pat-inject="history: record" href="/bladeren-hoofdstuk">Nieuws</a>
+                <a class="pat-inject" 
+                   data-pat-inject="history: record" 
+                   href="/bladeren-hoofdstuk">{{ site.data.prozin.ui.label_news[site.lang] }}</a>
             {% endif %}
             
             {% if page.url contains 'zoekresultaten' %}
