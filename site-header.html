@@ -6,11 +6,11 @@
         Bijgewerkt tot 1 april 2016 
     </p> -->
 
-    {% if site.data.personae[site.persona]role == 'manufacturer' %}
+    {% if site.data.prozin.personae[site.persona]role == 'manufacturer' %}
         {% assign dashboard_url = '/manage/' %}
-    {% elsif site.data.personae[site.persona]role == 'bystander' %}
+    {% elsif site.data.prozin.personae[site.persona]role == 'bystander' %}
         {% assign dashboard_url = '/beheer-lezer' %}
-    {% elsif site.data.personae[site.persona]role == 'workgroup-member' %}
+    {% elsif site.data.prozin.personae[site.persona]role == 'workgroup-member' %}
         {% assign dashboard_url = '/beheer-werkgroeplid' %}
     {% else %}
         {% assign dashboard_url = '/beheer' %}
@@ -35,7 +35,7 @@
             <a href="#login-menu" 
                data-pat-tooltip="position-list: tr; source: ajax" 
                class="pat-tooltip" 
-               id="login">{{ site.data.prozin.ui.label_logged_in_as[site.lang] }} {{ site.data.personae[site.persona]first_name }} {{ site.data.personae[site.persona]last_name }}</a>
+               id="login">{{ site.data.prozin.ui.label_logged_in_as[site.lang] }} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
         {% endif %}
     </div>
     <div id="login-menu" hidden>
