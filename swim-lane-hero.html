@@ -9,9 +9,9 @@
         {% endif %}
         <div class="top-task-navigation">
             <h2>
-                {% if include.callout == "top-tasks" %}
+                {% if item.callout == "top-tasks" %}
                     {{ site.data.prozin.ui.label_directly_to[site.lang] }}
-                {% elsif include.callout == "recent" %}
+                {% elsif item.callout == "recent" %}
                     {{ site.data.prozin.ui.label_recent[site.lang] }}
                 {% else %}
                     {{ site.data.prozin.ui.label_warnings[site.lang] }}
@@ -19,7 +19,7 @@
             </h2>
             <ul class="link-list">
                 {% assign count = 1 %}
-                {% if include.callout == "top-tasks" %}
+                {% if item.callout == "top-tasks" %}
                     <li>
                         <a href="#" title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
                     </li>
@@ -35,7 +35,7 @@
                     <li>
                         <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
                     </li>
-                {% elsif include.callout == "recent" %}
+                {% elsif item.callout == "recent" %}
                     {% for item in site.posts limit:3 %}
                         <li >
                             <a 
