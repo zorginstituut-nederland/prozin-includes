@@ -62,7 +62,7 @@
                        class="pat-inject" 
                        data-pat-inject="history: record">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
                 {% else %}
-                     <a href="{{ page.parent | slugify }}" 
+                     <a href="/{{ page.parent | slugify }}" 
                        class="pat-inject" 
                        data-pat-inject="history: record">{{ page.parent }}</a>
                 {% endif %}
