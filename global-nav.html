@@ -106,7 +106,11 @@
                 {% else %}
                     {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.lang] | slugify }}{% endcapture %}
                     <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
-                    <a href="/{{ this_group }}" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui[page.domain][site.lang] }}</a>
+                    {% if page.domain %}
+                      <a href="/{{ this_group }}" 
+                         class="pat-inject" 
+                         data-pat-inject="history: record">{{ site.data.prozin.ui[page.domain][site.lang] }}</a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             {% if page.url == '/domeinen' %}
