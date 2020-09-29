@@ -117,15 +117,19 @@
                 <!-- <a>Werkgroepen</a> -->
             {% endif %}
         </nav>
-        <form accept-charset="UTF-8" action="/zoekresultaten" id="quick-search-form" method="get" name="quick-search-form" class="pat-form pat-inject" data-pat-inject="history: record">
-            <label for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
-            <input name="zoekterm" 
-                   id="global-search-lemma" 
-                   title="{{ site.search_box_placeholder[site.lang] }}" 
-                   placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
-                   type="text" 
-                   value="" />
-            <button type="submit">Zoek</button>
-        </form>
+        {% if layout.search_type == 'sheet' %}
+          {% include global-search-fk.html %}
+        {% else %}
+          <form accept-charset="UTF-8" action="/zoekresultaten" id="quick-search-form" method="get" name="quick-search-form" class="pat-form pat-inject" data-pat-inject="history: record">
+              <label for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
+              <input name="zoekterm" 
+                     id="global-search-lemma" 
+                     title="{{ site.search_box_placeholder[site.lang] }}" 
+                     placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
+                     type="text" 
+                     value="" />
+              <button type="submit">Zoek</button>
+          </form>
+        {% endif %}
     </div>
 </div>
