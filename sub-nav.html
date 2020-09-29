@@ -4,7 +4,9 @@
             <ul class="link-list">
                 {% for item in page.sub_nav %}
                     <li>
-                        <a title="{{ item.description }}" href="{{ item.name | replace: ' ','-' | downcase }}" {% if item.icon %}class="icon-{{ item.icon }}"{% endif %}>{{ item.name }}</a>
+                        <a title="{{ item.description }}" 
+                           class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record" 
+                           href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
                     </li>
                 {% endfor %}
             </ul>
