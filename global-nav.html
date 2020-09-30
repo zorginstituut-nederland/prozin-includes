@@ -117,7 +117,7 @@
                 <!-- <a>Werkgroepen</a> -->
             {% endif %}
         </nav>
-        {% if layout.search_type == 'sheet' %}
+        {% if site.search_type == 'sheet' %}
           {% include global-search-fk.html %}
         {% else %}
           <form accept-charset="UTF-8" action="/zoekresultaten" id="quick-search-form" method="get" name="quick-search-form" class="pat-form pat-inject" data-pat-inject="history: record">
