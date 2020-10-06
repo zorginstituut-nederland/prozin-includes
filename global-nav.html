@@ -46,6 +46,21 @@
                 <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
 
+            {% if page.collection %}
+              {% if page.collection == 'editorial' %}
+              {% elsif page.collection == '' %}
+                <a href="/{{ page.collection }}/" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record"></a>
+              }
+              {% else %}
+                <a href="/{{ page.collection }}/" 
+                   class="pat-inject" 
+                   data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+              {% endif %}
+              
+            {% endif %}
+
             {% if page.parent %}
                 {% if page.parent == 'Help' %}
                     <a href="/help" 
