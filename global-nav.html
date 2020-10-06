@@ -46,7 +46,7 @@
             {% endif %}
 
             {% if page.collection %}
-              {% unless page.layout == 'prozin/landing-toc' %}
+              {% unless page.scope %}
                 {% if page.collection == 'editorial' %}
                 {% elsif page.collection == '' %}
                   <a href="/{{ page.collection }}/" 
