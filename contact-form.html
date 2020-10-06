@@ -1,0 +1,49 @@
+<form action="/contact-dank#main-content" accept-charset="UTF-8" class="pat-validation pat-form pat-inject" data-pat-validation="message-required: Dit is een verplicht veld.; message-email: Dit is geen valide e-mailadres.">
+    <div class="e-form-text">
+        <h2 class="req">
+            {{ site.data.prozin.ui.label_your_response[site.lang] }}
+        </h2>
+        <p class="meta req">
+            <strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.lang] }}
+        </p>
+    </div>
+    <fieldset class="horizontal form-panel section">
+        <label>
+            {{ site.data.prozin.ui.label_name[site.lang] }}<sup class="required">*</sup>
+            <input required="required" autofocus type="text" name="naam" />
+        </label>
+
+        <label class="pat-depends" data-pat-depends="condition: role=professional">
+            {{ site.data.prozin.ui.label_employee_position[site.lang] }}
+            <input type="text" name="functie" />
+        </label>
+
+        <fieldset class="group pat-checklist radio">
+            <label>
+                <input required="required" type="radio" value="professional" name="role" /> {{ site.data.prozin.ui.label_professional[site.lang] }}
+            </label>
+            <label>
+                <input required="required" type="radio" value="private" name="role" /> {{ site.data.prozin.ui.label_private[site.lang] }}
+            </label>
+        </fieldset>
+
+        <label>
+            {{ site.data.prozin.ui.label_email[site.lang] }}<sup class="required">*</sup>
+            <input required="required" type="email" name="email" />
+        </label>
+
+        <label>
+            {{ site.data.prozin.ui.label_subject[site.lang] }}<sup class="required">*</sup>
+            <input required="required" type="text" name="onderwerp" />
+        </label>
+
+        <label>
+            {{ site.data.prozin.ui.label_your_response[site.lang] }}<sup class="required">*</sup>
+            <textarea required="required" type="text" rows="7" cols="37" name="reactie"></textarea>
+        </label>
+
+        <p class="button-bar">
+            <button type="submit" class="pat-button">{{ site.data.prozin.ui.label_send[site.lang] }}</button>
+        </p>
+    </fieldset>
+</form>

@@ -46,18 +46,19 @@
             {% endif %}
 
             {% if page.collection %}
-              {% if page.collection == 'editorial' %}
-              {% elsif page.collection == '' %}
-                <a href="/{{ page.collection }}/" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record"></a>
-              }
-              {% else %}
-                <a href="/{{ page.collection }}/" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
-              {% endif %}
-              
+              {% unless page.layout == 'prozin/landing-toc' %}
+                {% if page.collection == 'editorial' %}
+                {% elsif page.collection == '' %}
+                  <a href="/{{ page.collection }}/" 
+                     class="pat-inject" 
+                     data-pat-inject="history: record"></a>
+                }
+                {% else %}
+                  <a href="/{{ page.collection }}/" 
+                     class="pat-inject" 
+                     data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                {% endif %}
+              {% endunless %}
             {% endif %}
 
             {% if page.parent %}
