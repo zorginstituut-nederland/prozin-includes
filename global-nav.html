@@ -35,9 +35,7 @@
             {% if page.url contains 'zoekresultaten' %}
                 <a>Zoeken</a>
             {% endif %}
-            {% if page.url == '/geneesmiddelen' %}
-                <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
-            {% endif %}
+
             {% if page.url == '/geneesmiddelen-9-januari-2018' %}
                 <a href="/geneesmiddelen" class="pat-inject" data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
