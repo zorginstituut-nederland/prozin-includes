@@ -46,6 +46,7 @@
             {% if page.collection %}
               {% unless page.scope %}
                 {% if page.collection == 'editorial' %}
+                {% elsif page.collection == 'drafts' %}
                 {% elsif page.collection == '' %}
                   <a href="/{{ page.collection }}/" 
                      class="pat-inject" 
