@@ -1,5 +1,5 @@
 {% for section in page.sections %}
-	<section class="page-module type-body-text-segment pat-rich"
+	<div class="page-module type-body-text-segment pat-rich"
 			 id="section-{{ site.data.prozin.ui[section.name][site.lang] | slugify }}">	
 		<h2 class="page-module-title">
 			{{ site.data.prozin.ui[section.name][site.lang] }}
@@ -8,5 +8,5 @@
 			{{ site.data.prozin.ui[section.description][site.lang] }}
 		</p>
 	    {{ section.content | markdownify }}
-	</section>
+	</div>
 {% endfor %}
