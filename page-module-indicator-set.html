@@ -1,0 +1,22 @@
+{% if page.type == 'mi' %}
+    {% for set in site.posts %}
+        {% if set.title == page.title and set.layout == 'indicator-set' %}
+            <section class="page-module type-transparantiekalender">
+                <h2 class="page-module-title">
+                    Indicatoren
+                </h2>
+                <ul class="link-list">
+                    <li>
+                        <a href="" class="pat-inject" data-pat-inject="history: record">Indicatorenset, verslagjaar 2019.</a>
+                    </li>
+                    <li>
+                        <a href="" class="pat-inject" data-pat-inject="history: record">Indicatorenset, verslagjaar 2018.</a>
+                    </li>
+                    <li>
+                        <a href="" class="pat-inject" data-pat-inject="history: record">Indicatorenset, verslagjaar 2017.</a>
+                    </li>
+                </ul>
+            </section>
+        {% endif %}
+    {% endfor %}
+{% endif %}
