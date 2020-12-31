@@ -1,5 +1,5 @@
 {% if page.links or page.tags.size >= 1 %}
-    <section class="page-module type-links">
+    <div class="page-module type-links">
         {% if include.title %}
             <h2 class="page-module-title">
                 {{ include.title }}
@@ -31,6 +31,6 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    </section>
+    </div>
 {% endif %}
 
