@@ -15,6 +15,14 @@
 					<span class="byline-item">Nieuwsbericht</span>
 				{% endif %}			
 			{% endif %}
+			{% for group in page.medicine_groups %}
+				<span class="byline-item medicine-groups">
+		            <a href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %},{% endif %}
+	            </span>
+	        {% endfor %}
+	        {% if page.atc %}
+	        	<span class="byline-item atc">{{ page.atc }}</span>
+	        {% endif %}
 			{% if include.byline contains 'medical-field' %}
 				{% if page.medical_field %}
 					<span class="byline-item">{{ page.medical_field }}</span>
