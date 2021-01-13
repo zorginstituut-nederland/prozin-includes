@@ -15,22 +15,7 @@
                 <a class="homepage pat-inject" 
                    data-pat-inject="history: record" href="/">
             {% endif %}
-                    {{ site.data.ui.label_site_name[site.lang] }}</a>
-            {% if page.title == 'Nieuws' %}
-                <a>{{ site.data.prozin.ui.label_news[site.lang] }}</a>
-            {% endif %}
-
-            {% if layout.page_type == 'news-item' %}
-                <a class="pat-inject" 
-                   data-pat-inject="history: record" 
-                   href="/news/">{{ site.data.prozin.ui.label_news[site.lang] }}</a>
-            {% endif %}
-
-            {% if layout.page_type == 'news' %}
-                <a class="pat-inject" 
-                   data-pat-inject="history: record" 
-                   href="/bladeren-hoofdstuk">{{ site.data.prozin.ui.label_news[site.lang] }}</a>
-            {% endif %}
+                {{ site.data.ui.label_site_name[site.lang] }}</a>
             
             {% if page.url contains 'zoekresultaten' %}
                 <a>Zoeken</a>
