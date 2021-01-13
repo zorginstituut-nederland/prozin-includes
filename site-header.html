@@ -1,10 +1,13 @@
 <div id="site-header">
     <a class="homepage" href="/" title="Terug naar homepage"><span class="ro-serif dept">{{ site.data.prozin.ui.label_organisation_name[site.lang] }}</span></a>
 
-    <!-- Date of latest publication -->
-    <!-- <p class="date-modified">
-        Bijgewerkt tot 1 april 2016 
-    </p> -->
+    {% if site.last_modified %}
+      <!-- Date of latest publication -->
+      <p 
+          class="date-modified">
+          Bijgewerkt tot <time>{{ site.last_modified }}</time>
+      </p>
+    {% endif %}
 
     {% if site.data.prozin.personae[site.persona]role == 'manufacturer' %}
         {% assign dashboard_url = '/manage/' %}
