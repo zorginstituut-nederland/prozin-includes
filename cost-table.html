@@ -1,0 +1,160 @@
+<form class="pat-form">
+    <table class="cost-table">
+        <caption>
+            {% if measure.measure == '30 DAGEN' or measure.measure == 'DAG' %}
+                <label class="pat-select bare">
+                    <select id="days">
+                        <option value="1" selected="selected">Per dag</option>
+                        <option value="7">Per week</option>
+                        <option value="30">Per 30 dagen</option>
+                        <option value="182">Per 6 maanden</option>
+                    </select>
+                </label>
+                <!-- <button type="submit"
+                        hidden
+                        class="small pat-button refresh-button">Refresh</button> -->
+            {% else %}
+                {{ measure.measure }}
+            {% endif %}
+        </caption>
+    <!--     <tfoot>
+            <tr>
+                <td colspan="4">
+                    <p class="discrete">
+                        Het kostenoverizcht is opgebouwd uit data van Z-index. Voor toelichting zie <a href="#">de verantwoording van het kostenoverzicht</a>.
+                    </p>
+                </td>
+            </tr>
+        </tfoot> -->
+        <tbody>
+            {% assign this_calc_base = "temp"  %}
+
+            {% for medicine in measure.medicines %}
+                {% capture row %}{% increment row_number %}{% endcapture %}
+                {% if page.layout == 'cost-overview' or page.layout == 'group-cost' %}
+                    {% unless this_medicine ==  medicine.STOFNAAM %}
+                        <tr class="header-row">     
+                            <th colspan="4" class="header-cell">
+                                <h4 class="table-body-title"><a href="#">{{ medicine.STOFNAAM }}</a></h4>
+                            </th>
+                        </tr>
+                        {% assign this_calc_base = "temp"  %}
+                    {% endunless %}            
+                {% endif %}
+                {% capture this_medicine %}{{ medicine.STOFNAAM }}{% endcapture %}
+                
+                {% unless medicine.REKENBASIS_HV == this_calc_base %}
+                    <tr class="separation-row" data-rekenbasishv="{{medicine.REKENBASIS_HV}}" data-calcbase="{{ this_calc_base }}">
+                        <th>
+                            
+                        </th>
+                        {% if measure.measure == 'DAG' or measure.measure == 'WEEK' or measure.measure == '30 DAGEN' or measure.measure == '6 MAANDEN' or measure.measure == 'AANVAL' or measure.measure == 'KUUR' %}
+                            <th class="ddd separation-cell" title="Defined daily dose">
+                                DDD
+                            </th>
+                        {% endif %}
+                        <th colspan="2" class="price separation-cell">
+
+                            {% if measure.measure == '30 DAGEN' or measure.measure == 'DAG' or measure.measure == '6 MAANDEN' %}Gemiddelde prijs per 
+                                <span class="pat-depends" data-pat-depends="days=30">maand</span>
+                                <span class="pat-depends" data-pat-depends="days=7">week</span>
+                                <span class="pat-depends" data-pat-depends="days=1">dag</span>
+                                <span class="pat-depends" data-pat-depends="days=182">half jaar</span>
+                            {% else %}
+
+                                Gemiddelde prijs per
+
+                                <span class="unit amount">{{ medicine.REKENBASIS_HV }}</span>
+                                {% if medicine.REKENBASIS_EH == 'GRAM' %}
+                                    <abbr class="entity gram">g</abbr>
+                                {% elsif medicine.REKENBASIS_EH == 'MILLIGRAM' %}
+                                    <abbr class="entity milligram">mg</abbr>
+                                {% elsif medicine.REKENBASIS_EH == 'MILLILITER' %}
+                                    <abbr class="entity milliliter">ml</abbr>
+                                {% elsif medicine.REKENBASIS_EH == 'STUK' %}
+                                    <abbr class="entity pieces">stuks</abbr>
+                                {% else %}
+                                    <abbr class="unit entity">{{ medicine.REKENBASIS_EH }}</abbr>
+                                {% endif %}
+
+                            {% endif %}
+                        </th>
+                    </tr>
+                 {% endunless %} 
+
+                {% assign this_calc_base = medicine.REKENBASIS_HV  %}
+
+                <tr>
+                    <td class="brand-name">
+                        <strong>{{ medicine.MERKNAAM }}</strong>,  
+                        
+                        {% if medicine.VERPAKKING_HV %}
+                            <span class="unit amount">{{ medicine.VERPAKKING_HV }}</span>
+                            {% if medicine.VERPAKKING_HV_EH == 'GRAM' %}
+                                <abbr class="entity gram">g</abbr>
+                            {% elsif medicine.VERPAKKING_HV_EH == 'MILLIGRAM' %}
+                                <abbr class="entity milligram">mg</abbr>
+                            {% elsif medicine.VERPAKKING_HV_EH == 'DO' %}
+                                <abbr class="entity dose">doses</abbr>
+                            {% elsif medicine.VERPAKKING_HV_EH == 'MILLILITER' %}
+                                <abbr class="entity milliliter">ml</abbr>
+                            {% elsif medicine.VERPAKKING_HV_EH == 'STUK' %}
+                                <abbr class="entity pieces">stuks</abbr>
+                            {% else %}
+                                <abbr class="unit entity">{{ medicine.REKENBASIS_EH }}</abbr>
+                            {% endif %}
+                        {% endif %}
+                        
+                        {{ medicine.TOEDIENINGSVORM }}
+
+                        {% if medicine.STERKTE %}
+                            <em class="strength">{{ medicine.STERKTE }}</em>
+                        {% endif %}
+                        
+                    </td>
+                    {% if measure.measure == 'DAG' or measure.measure == 'WEEK' or measure.measure == '30 DAGEN' or measure.measure == '6 MAANDEN' or measure.measure == 'AANVAL' or measure.measure == 'KUUR' %}
+                        <td class="ddd" title="Defined daily dose">
+                            {{ medicine.DDD_AT | remove: '.00' }}
+                            {% if medicine.DDD_EH == 'GRAM' %}
+                                <abbr class="entity gram">g</abbr>
+                            {% elsif medicine.DDD_EH == 'MILLIGRAM' %}
+                                <abbr class="entity milligram">mg</abbr>
+                            {% elsif medicine.DDD_EH == 'STUK' %}
+                                <abbr class="entity pieces">stuks</abbr>
+                            {% else %}
+                                {{ medicine.DDD }}
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                    <td class="price">
+                        <abbr class="currency">€</abbr> 
+                        
+                        {% if measure.measure == '30 DAGEN' or measure.measure == 'DAG' or measure.measure == '6 MAANDEN' %}
+                            <span class="pat-depends" data-pat-depends="days=30">{{ medicine.GEM_PRIJS | replace:'.',',' }}</span>
+                            <span class="pat-depends" data-pat-depends="days=7">{{ medicine.GEM_PRIJS | divided_by: 4 | round: 2 | replace:'.',',' }}</span>
+                            <span class="pat-depends" data-pat-depends="days=1">{{ medicine.GEM_PRIJS | divided_by: 30 | round: 2 | replace:'.',',' }}</span>
+                            <span class="pat-depends" data-pat-depends="days=182">{{ medicine.GEM_PRIJS | times: 6 | round: 2 | replace:'.',',' }}</span>
+                        {% else %}
+                            {{ medicine.GEM_PRIJS | replace:'.',',' }}
+                        {% endif %}
+                    </td>
+                    <td class="graph">
+                        <div class="graph-cluster">
+                            <p class="bar-graph">
+                                <span class="segment reimbursed" style="width: {% cycle '60','20','30','80','10','15','25' %}%">€ {{ medicine.GEM_VERGOED<abbr class="currency">€</abbr> }} vergoed</span>
+                                {% unless medicine.GEM_BIJBETALING == '0.00' %}
+                                    <span class="segment contribution" style="width: {% cycle '5','6','20','8','2','50','22' %}% ">€ {{ medicine.GEM_BIJBETALING<abbr class="currency">€</abbr> }} bijbetalen</span>
+                                {% endunless %}
+                            </p>
+                        </div>
+                        {% unless medicine.GEM_BIJBETALING == '0.00' %}
+                            <p class="contribution">
+                                Gemiddeld <strong class="contribute">€ {{ medicine.GEM_BIJBETALING | replace:'.',',' }}</strong> bijbetalen
+                            </p>
+                        {% endunless %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
