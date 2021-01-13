@@ -5,7 +5,7 @@
       <!-- Date of latest publication -->
       <p 
           class="date-modified">
-          Bijgewerkt tot <time>{{ site.last_modified }}</time>
+          Bijgewerkt tot <time>{{ site.last_modified | date: "%-d %B %Y" }}</time>
       </p>
     {% endif %}
 
