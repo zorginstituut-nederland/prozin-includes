@@ -2,12 +2,17 @@
     <table class="cost-table">
         <caption>
             {% if measure.measure == '30 DAGEN' or measure.measure == 'DAG' %}
-                <label class="pat-select bare">
-                    <select id="days">
-                        <option value="1" selected="selected">Per dag</option>
-                        <option value="7">Per week</option>
-                        <option value="30">Per 30 dagen</option>
-                        <option value="182">Per 6 maanden</option>
+                <label 
+                    class="pat-select bare">
+                    <select 
+                        id="days">
+                        <option value="1" selected="selected">Gemiddelde prijs per dag</option>
+                        <option value="7">Gemiddelde prijs per week</option>
+                        <option value="30">Gemiddelde prijs per 30 dagen</option>
+                        <option value="90">Gemiddelde prijs per 90 dagen</option>
+                        <option value="piece">Gemiddelde prijs per stuk</option>
+                        <option value="package">Gemiddelde prijs per verpakking</option>
+                        <!-- <option value="182">Gemiddelde prijs per half jaar</option> -->
                     </select>
                 </label>
                 <!-- <button type="submit"
