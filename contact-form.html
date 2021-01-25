@@ -7,40 +7,86 @@
             <strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.lang] }}
         </p>
     </div>
-    <fieldset class="horizontal form-panel section">
+    <fieldset 
+        class="horizontal form-panel section">
         <label>
             {{ site.data.prozin.ui.label_name[site.lang] }}<sup class="required">*</sup>
-            <input required="required" autofocus type="text" name="naam" />
+            <input 
+                required="required" 
+                autofocus 
+                type="text" 
+                name="naam" />
         </label>
 
-        <label class="pat-depends" data-pat-depends="condition: role=professional">
+        <label 
+            class="pat-depends" 
+            data-pat-depends="condition: role=professional">
             {{ site.data.prozin.ui.label_employee_position[site.lang] }}
-            <input type="text" name="functie" />
+            <input 
+                autofocus
+                type="text" 
+                name="functie" />
         </label>
 
         <fieldset class="group pat-checklist radio">
             <label>
-                <input required="required" type="radio" value="professional" name="role" /> {{ site.data.prozin.ui.label_professional[site.lang] }}
+                <input 
+                    required="required" 
+                    type="radio" 
+                    value="professional" 
+                    name="role" /> {{ site.data.prozin.ui.label_professional[site.lang] }}
             </label>
             <label>
-                <input required="required" type="radio" value="private" name="role" /> {{ site.data.prozin.ui.label_private[site.lang] }}
+                <input 
+                    required="required" 
+                    type="radio" 
+                    value="private" 
+                    name="role" /> {{ site.data.prozin.ui.label_private[site.lang] }}
             </label>
         </fieldset>
 
         <label>
             {{ site.data.prozin.ui.label_email[site.lang] }}<sup class="required">*</sup>
-            <input required="required" type="email" name="email" />
+            <input 
+                required="required" 
+                type="email" 
+                name="email" />
         </label>
 
         <label>
             {{ site.data.prozin.ui.label_subject[site.lang] }}<sup class="required">*</sup>
-            <input required="required" type="text" name="onderwerp" />
+            <input 
+                required="required" 
+                type="text" 
+                name="onderwerp" />
         </label>
 
         <label>
             {{ site.data.prozin.ui.label_your_response[site.lang] }}<sup class="required">*</sup>
-            <textarea required="required" type="text" rows="7" cols="37" name="reactie"></textarea>
+            <textarea 
+                required="required" 
+                type="text" 
+                rows="7" 
+                cols="37" 
+                name="reactie"></textarea>
         </label>
+
+        <fieldset 
+            class="group pat-checklist">
+            <legend>Akkoordverklaring</legend>
+            <label>
+                Ik geef Zorginstituut Nederland toestemming om mijn contactgegevens te gebruiken voor een tevredenheidsonderzoek.
+                <input 
+                    type="checkbox" 
+                    name="survey" />
+            </label>
+            <label>
+                Ik heb gelezen en begrepen wat er met mijn persoonsgegevens wordt gedaan.   
+                <input 
+                    type="checkbox" 
+                    name="survey" />
+            </label>
+        </fieldset>
 
         <p class="button-bar">
             <button type="submit" class="pat-button">{{ site.data.prozin.ui.label_send[site.lang] }}</button>
