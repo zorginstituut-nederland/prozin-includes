@@ -1,8 +1,12 @@
 {% assign ui_data_path = site.ui_data_path %}
 
-<fieldset id="document-alert-bar" {% if page.state == 'locked' %}class="warning"{% endif %}>
-    <section class="container">
-        <p class="alert-message">
+<div 
+    id="document-alert-bar" 
+    {% if page.state == 'locked' %}class="warning"{% endif %}>
+    <section 
+        class="container">
+        <p 
+            class="alert-message">
             {% if page.locked %}
                 {% for item in site.data.messages %}
                     {% if item.id == 'locked'%}               
@@ -19,22 +23,35 @@
         </p>
 
         {% if layout.alert_buttons %}
-            <div class="alert-buttons">
+            <div 
+                class="alert-buttons">
                 {% if page.locked %}
-                    <a class="pat-button pat-modal icon-pencil warning" href="/feedback/lock-steal-confirm.html#document-content">{{ site.data.prozin.ui.label_steal_lock[site.lang] }}</a>
+                    <a 
+                        class="pat-button pat-modal icon-pencil warning" 
+                        href="/feedback/lock-steal-confirm.html#document-content">{{ site.data.prozin.ui.label_steal_lock[site.lang] }}</a>
                 {% else %}
-                    <div class="pat-collapsible context-menu more-menu closed align-right" data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu-trigger" id="filters-menu">
-                        <strong class="label menu-trigger">…</strong>
-                        <p class="close-menu close-menu-trigger">{{ site.data.prozin.ui.label_close[site.lang] }}</p>
-                        <ul class="menu">
+                    <div 
+                        class="pat-collapsible context-menu more-menu closed align-right" 
+                        data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu-trigger" id="filters-menu">
+                        <strong 
+                            class="label menu-trigger">…</strong>
+                        <p 
+                            class="close-menu close-menu-trigger">{{ site.data.prozin.ui.label_close[site.lang] }}</p>
+                        <ul 
+                            class="menu">
                             <li>
-                                <a class="icon-docs pat-modal close-menu-trigger" href="/feedback/save-as#document-content">{{ site.data.prozin.ui.label_save_as[site.lang] }}</a>
+                                <a 
+                                    class="icon-docs pat-modal close-menu-trigger" 
+                                    href="/feedback/save-as#document-content">{{ site.data.prozin.ui.label_save_as[site.lang] }}</a>
                             </li>
                             <li>
-                                <a class="icon-trash">{{ site.data.prozin.ui.label_delete[site.lang] }}</a>
+                                <a 
+                                    class="icon-trash">{{ site.data.prozin.ui.label_delete[site.lang] }}</a>
                             </li>
                             <li>
-                                <a class="icon-pencil pat-modal close-menu-trigger" href="/feedback/paste-from#document-content">Vul in met gegevens uit ander document</a>
+                                <a 
+                                    class="icon-pencil pat-modal close-menu-trigger" 
+                                    href="/feedback/paste-from#document-content">Vul in met gegevens uit ander document</a>
                             </li>
                         </ul>
                     </div>
@@ -47,22 +64,26 @@
                         {% endif %}
                     {% endfor %}
 
-                    <div class="pat-collapsible context-menu save-button closed align-right" 
-                         data-pat-collapsible="close-trigger: #save-document,.close-menu-trigger" 
-                         id="filters-menu">
-                        <a href="#save-message" 
-                           data-pat-forward="selector: #save-message" 
-                           class="label menu-trigger pat-forward">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
+                    <div 
+                        class="pat-collapsible context-menu save-button closed align-right" 
+                        data-pat-collapsible="close-trigger: #save-document,.close-menu-trigger" 
+                        id="filters-menu">
+                        <a 
+                            href="#save-message" 
+                            data-pat-forward="selector: #save-message" 
+                            class="label menu-trigger pat-forward">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
                         <p class="close-menu close-menu-trigger">Sluit</p>
                         <fieldset class="vertical">
                             <label>
-                                <textarea id="save-message" 
-                                          rows="4" 
-                                          autofocus 
-                                          placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.lang] }}"></textarea>
+                                <textarea 
+                                    id="save-message" 
+                                    rows="4" 
+                                    autofocus 
+                                    placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.lang] }}"></textarea>
                             </label>
                         </fieldset>
-                        <p class="buttons">
+                        <p 
+                            class="buttons">
                             <button 
                                 class="pat-button" 
                                 type="submit" 
@@ -82,4 +103,4 @@
             </div>
         {% endif %}
     </section>
-</fieldset>
+</div>
