@@ -30,17 +30,21 @@
 
             {% if page.collection %}
               {% unless page.scope %}
-                {% if page.collection == 'editorial' %}
+                {% if page.collection == 'prozin/editorial' %}
+                {% elsif page.layout == 'prozin/landing-topics' %}
+                  <a>{{ page.collection | capitalize }}</a>
                 {% elsif page.collection == 'drafts' %}
                 {% elsif page.collection == '' %}
-                  <a href="/{{ page.collection }}/" 
-                     class="pat-inject" 
-                     data-pat-inject="history: record"></a>
+                  <a 
+                    href="/{{ page.collection }}/" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record"></a>
                 }
                 {% else %}
-                  <a href="/{{ page.collection }}/" 
-                     class="pat-inject" 
-                     data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                  <a 
+                    href="/{{ page.collection }}/" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
                 {% endif %}
               {% endunless %}
             {% endif %}
