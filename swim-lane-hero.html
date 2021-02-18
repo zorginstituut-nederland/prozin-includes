@@ -8,60 +8,64 @@
                 </article>
             </div>
         {% endif %}
-        <div class="top-task-navigation">
-            <h2>
-                {% if item.callout == "top-tasks" %}
-                    {{ site.data.prozin.ui.label_directly_to[site.lang] }}
-                {% elsif item.callout == "recent" %}
-                    {{ site.data.prozin.ui.label_recent[site.lang] }}
-                {% elsif item.callout == "popular" %}
-                    {{ site.data.prozin.ui.label_viewed_often[site.lang] }}
-                {% else %}
-                    {{ site.data.prozin.ui.label_warnings[site.lang] }}
-                {% endif %} 
-            </h2>
-            <ul class="link-list">
-                {% assign count = 1 %}
-                {% if item.callout == "top-tasks" %}
-                    <li>
-                        <a href="#" title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
-                    </li>
-                    <!-- <li>
-                        <a href="#" title="Gedeelde voorbeelden van goede zorg dragen bij aan kwaliteitsverbetering.">Zoek een <i>good Practice</i></a>
-                    </li> -->
-                    <li>
-                        <a href="#" title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
-                    </li>
-                {% elsif item.callout == "recent" or item.callout == "popular" %}
-                    {% for item in site.posts limit:3 %}
-                        <li >
-                            <a 
-                                class="{% if item.layout == 'medicine' %}medicine{% endif %}"
-                                href="{{ item.url }}">
-                                {{ item.title }}
-                            </a>
+        {% if page.toptask %}
+            <div 
+                class="top-task-navigation">
+                <h2>
+                    {% if item.callout == "top-tasks" %}
+                        {{ site.data.prozin.ui.label_directly_to[site.lang] }}
+                    {% elsif item.callout == "recent" %}
+                        {{ site.data.prozin.ui.label_recent[site.lang] }}
+                    {% elsif item.callout == "popular" %}
+                        {{ site.data.prozin.ui.label_viewed_often[site.lang] }}
+                    {% else %}
+                        {{ site.data.prozin.ui.label_warnings[site.lang] }}
+                    {% endif %} 
+                </h2>
+                <ul 
+                    class="link-list">
+                    {% assign count = 1 %}
+                    {% if item.callout == "top-tasks" %}
+                        <li>
+                            <a href="#" title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
                         </li>
-                    {% endfor %}
-                {% else %}
-                    {% for this_item in site.news %}
-                        {% if count <= 3 and this_item.type == 'warning' %}
-                            <li class="{{ this_item.type }}">
-                                <a href="{{ this_item.url }}" 
-                                   class="pat-inject">
-                                    {{ this_item.title }}
+                        <li>
+                            <a href="#" title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#" title="Gedeelde voorbeelden van goede zorg dragen bij aan kwaliteitsverbetering.">Zoek een <i>good Practice</i></a>
+                        </li> -->
+                        <li>
+                            <a href="#" title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
+                        </li>
+                    {% elsif item.callout == "recent" or item.callout == "popular" %}
+                        {% for item in site.posts limit:3 %}
+                            <li >
+                                <a 
+                                    class="{% if item.layout == 'medicine' %}medicine{% endif %}"
+                                    href="{{ item.url }}">
+                                    {{ item.title }}
                                 </a>
-                            </li>    
-                            {% assign count = count | plus: 1 %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for this_item in site.news %}
+                            {% if count <= 3 and this_item.type == 'warning' %}
+                                <li class="{{ this_item.type }}">
+                                    <a href="{{ this_item.url }}" 
+                                       class="pat-inject">
+                                        {{ this_item.title }}
+                                    </a>
+                                </li>    
+                                {% assign count = count | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
     </div>
 </section>
