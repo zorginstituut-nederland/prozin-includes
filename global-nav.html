@@ -1,11 +1,15 @@
-<div id="global-nav" class="variation-{{ layout.page_type }} pat-sticky" role="menubar">
+<div 
+    id="global-nav" 
+    class="variation-{{ layout.page_type }} pat-sticky" 
+    role="menubar">
     <div class="container">
         {% if page.layout == 'homepage' %}
             <h1 class="assistive">
                 {{ site.data.ui.label_site_description[site.lang] }}
             </h1>
         {% endif %}
-        <nav id="breadcrumbs">
+        <nav 
+            id="breadcrumbs">
             <p class="assistive">
                 {{ site.data.prozin.ui.message_you_are_here[site.lang] }}
             </p>
