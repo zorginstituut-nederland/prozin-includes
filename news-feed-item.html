@@ -22,7 +22,12 @@
         <p 
             class="byline">
             <time 
-            datetime="">{{ item.date | date_to_string }}</time>
+                class="byline-item publication-date" 
+                datetime="">{{ item.date | date: "%d-%m-%Y" }}</time>
+            {% if page.sections %}
+                <span
+                    class="byline-item category">{{ item.section }}</span>
+            {% endif %}
         </p>
         <p 
             class="description">
