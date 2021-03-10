@@ -1,7 +1,7 @@
 <article 
-    class="item {{ item.type }} {% unless page.pinning == false %}{% if item.pinned == true %}pinned{% endif %}{% endunless %} {% if page.sections %}pat-depends category-{{ item.section | slugify }}{% endif %}"
-    {% if page.sections %}
-        data-pat-depends="condition: category={{ item.section | slugify }} or category=all"
+    class="item {{ item.type }} {% unless page.pinning == false %}{% if item.pinned == true %}pinned{% endif %}{% endunless %} {% if site.news_tags %}pat-depends category-{{ item.section | slugify }}{% endif %}"
+    {% if site.news_tags %}
+        data-pat-depends="condition: {% for tag in item.tags %}category={{ tag | slugify }} or {% endfor %} category=all"
     {% endif %}>
     <a 
         class="follow pat-inject" 
@@ -24,9 +24,9 @@
             <time 
                 class="byline-item publication-date" 
                 datetime="">{{ item.date | date: "%d-%m-%Y" }}</time>
-            {% if page.sections %}
+            {% if item.tags %}
                 <span
-                    class="byline-item category">{{ item.section }}</span>
+                    class="byline-item tags">{% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</span>
             {% endif %}
         </p>
         <p 
