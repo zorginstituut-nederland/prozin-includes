@@ -1,5 +1,5 @@
 <article 
-    class="item {{ item.type }} {% unless page.pinning == false %}{% if item.pinned == true %}pinned{% endif %}{% endunless %} {% if site.news_tags %}pat-depends category-{{ item.section | slugify }}{% endif %}"
+    class="item {{ item.type }} {% unless page.pinning == false %}{% if item.pinned == true %}pinned{% endif %}{% endunless %} {% if site.news_tags %}pat-depends {% for tag in item.tags %} tag-{{ tag | slugify }}{% endif %}"
     {% if site.news_tags %}
         data-pat-depends="condition: {% for tag in item.tags %}category={{ tag | slugify }} or {% endfor %} category=all"
     {% endif %}>
