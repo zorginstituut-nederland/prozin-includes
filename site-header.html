@@ -20,30 +20,39 @@
     {% endif %}
 
     {% unless site.global_functions == false %}
-      <div id="global-functions">
+      <div 
+        id="global-functions">
           {% if site.user == 'anonymous' %}
-              <a href="/login" 
-                 id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
+              <a 
+                  href="/login" 
+                  id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
           {% elsif page.url == '/login' %}
 <!--               <a href="{{ dashboard_url }}"
                  class="icon-dashboard pat-inject"
                  data-pat-inject="history: record">Dashboard</a>
- -->              <a href="/login" id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
+ -->              <a 
+                      href="/login" 
+                      id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
 <!--               <a href="{{ dashboard_url }}"
                  class="icon-dashboard pat-inject"
                  data-pat-inject="history: record">Dashboard</a>
  -->          {% else %}
-              <a href="{{ dashboard_url }}"
-                 class="icon-dashboard pat-inject"
-                 data-pat-inject="history: record">Dashboard</a>
-              <a href="#login-menu" 
-                 data-pat-tooltip="position-list: tr; source: ajax" 
-                 class="pat-tooltip" 
-                 id="login">{{ site.data.prozin.ui.label_logged_in_as[site.lang] }} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
+              <a 
+                  href="{{ dashboard_url }}"
+                  class="icon-dashboard pat-inject"
+                  data-pat-inject="history: record">Dashboard</a>
+              <a  
+                  href="#login-menu" 
+                  data-pat-tooltip="position-list: tr; source: ajax" 
+                  class="pat-tooltip" 
+                  id="login">{{ site.data.prozin.ui.label_logged_in_as[site.lang] }} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
           {% endif %}
       </div>
-      <div id="login-menu" hidden>
-      	<ul class="menu">
+      <div 
+          id="login-menu" 
+          hidden>
+      	<ul 
+            class="menu">
               {% unless site.user == 'anonymous' %}
                   <li>
                       <a href="/profiel" 
