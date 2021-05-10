@@ -55,7 +55,7 @@
             class="menu">
               {% unless site.user == 'anonymous' %}
                   <li>
-                      <a href="/profiel" 
+                      <a href="/users/{{ site.data.prozin.personae[site.persona]first_name | slugify }}-{{ site.data.prozin.personae[site.persona]last_name | slugify }}" 
                          class="pat-inject icon-user" 
                          data-pat-inject="history: record">{{ site.data.prozin.ui.label_my_profile[site.lang] }}</a>
                   </li>
