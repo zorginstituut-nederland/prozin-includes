@@ -1,0 +1,23 @@
+<form action="/feedback/avatar-upload-cornelis.html#avatar-upload" 
+      class="pat-autosubmit pat-inject">
+    <label id="avatar-upload" 
+           class="image-uploader" 
+           title="Laad een foto van uzelf op">
+      {% if include.editable == true %}
+        <img src="/media/users/{{ site.data.personae[site.persona].first_name | slugify }}-{{ site.data.personae[site.persona].last_name | slugify }}.jpg"
+             class="user-image">
+        <span class="pat-button upload-button">{{ site.data.prozin.ui.label_replace_photo[site.lang] }}</span>
+        <input type="file" 
+               name="hero"
+               accept="image" /> 
+        <button type="submit" 
+                class="icon-trash image-upload-remove-button" 
+                name="image-uploader-remove" 
+                formaction="/feedback/avatar-upload.html#avatar-upload"
+                title="Verwijder deze afbeelding">{{ site.data.prozin.ui.label_remove[site.lang] }}</button>  
+      {% else %}
+        <img src="/media/users/{{ site.data.personae[page.persona].first_name | slugify }}-{{ site.data.personae[page.persona].last_name | slugify }}.jpg"
+             class="user-image">
+      {% endif %}
+    </label>
+</form>
