@@ -1,10 +1,21 @@
-<article class="pat-rich common">
+<article 
+	class="pat-rich common">
     <p>
         {{ site.data.prozin.ui.message_login_screen_problems[site.lang] }}
     </p>
-    <ul class="link-list">
-        <li><a href="#">{{ site.data.prozin.ui.label_forgot_password[site.lang] }}</a></li>
-        <li><a href="#">{{ site.data.prozin.ui.label_request_account[site.lang] }}</a></li>
-        <li><a href="/contact">{{ site.data.prozin.ui.label_contact_administrator[site.lang] }}</a></li>
+    <ul 
+    	class="link-list">
+        <li>
+        	<a 
+        		href="/wachtwoord-vergeten">{{ site.data.prozin.ui.label_forgot_password[site.lang] }}</a>
+        </li>
+        <li>
+        	<a 
+        		href="#">{{ site.data.prozin.ui.label_request_account[site.lang] }}</a>
+        </li>
+        <li>
+        	<a 
+        		href="/contact">{{ site.data.prozin.ui.label_contact_administrator[site.lang] }}</a>
+        </li>
     </ul>
 </article>
