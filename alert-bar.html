@@ -41,7 +41,7 @@
                             class="menu">
                             <li>
                                 <a 
-                                    class="icon-docs pat-modal close-menu-trigger" 
+                                    class="icon-docs default pat-modal close-menu-trigger" 
                                     href="/feedback/save-as#document-content">{{ site.data.prozin.ui.label_save_as[site.lang] }}</a>
                             </li>
                             <li>
@@ -71,7 +71,7 @@
                         <a 
                             href="#save-message" 
                             data-pat-forward="selector: #save-message" 
-                            class="label menu-trigger pat-forward">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
+                            class="save label menu-trigger pat-forward">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
                         <p class="close-menu close-menu-trigger">Sluit</p>
                         <fieldset class="vertical">
                             <label>
@@ -85,7 +85,7 @@
                         <p 
                             class="buttons">
                             <button 
-                                class="pat-button" 
+                                class="pat-button default" 
                                 type="submit" 
                                 name="save_button"
                                 value="save_all"
