@@ -1,18 +1,25 @@
-<div id="page-head" class="pat-rich">
+<div 
+	id="page-head" 
+	class="pat-rich">
 	<h1 {% if include.icon %}class="icon-{{ include.icon }}"{% endif %}>
 		{{ page.title }}
 	</h1>	
 	{% if include.byline %}
-		<p class="byline">
+		<p 
+			class="byline">
 			{% if include.byline contains 'document-type' %}
 				{% if page.type == 'qs' %}
-					<span class="byline-item">Kwaliteitsstandaard</span>
+					<span 
+						class="byline-item">Kwaliteitsstandaard</span>
 				{% elsif page.type == 'is' %}
-					<span class="byline-item">Informatiestandaard</span>
+					<span 
+						class="byline-item">Informatiestandaard</span>
 				{% elsif page.type == 'mi' %}
-					<span class="byline-item">Meetinstrument</span>
+					<span 
+						class="byline-item">Meetinstrument</span>
 				{% elsif page.layout == 'news-item' %}
-					<span class="byline-item">Nieuwsbericht</span>
+					<span 
+						class="byline-item">Nieuwsbericht</span>
 				{% endif %}			
 			{% endif %}
 			{% for group in page.medicine_groups %}
