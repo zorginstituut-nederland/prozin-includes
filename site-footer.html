@@ -11,7 +11,8 @@
                 <li>
                     <a href="/contact">Contact</a>
                 </li>
-                {% for item in site.posts %}
+                {% capture this_scope %}{{ page.service }}{% endcapture %}
+                {% for item in site[this_scope] %}
                     {% if item.parent == 'service' or item.parent == 'Service' %}
                         <li>
                             <a href="{{ item.url }}"
