@@ -54,6 +54,13 @@
         </label>
 
         <label>
+            {{ site.data.prozin.ui.label_telephone_number[site.lang] }}
+            <input 
+                type="text" 
+                name="phone" />
+        </label>
+
+        <label>
             {{ site.data.prozin.ui.label_subject[site.lang] }}<sup class="required">*</sup>
             <input 
                 required="required" 
@@ -69,6 +76,13 @@
                 rows="7" 
                 cols="37" 
                 name="reactie"></textarea>
+        </label>
+
+        <label>
+            {{ site.data.prozin.ui.label_attachment[site.lang] }}
+            <input 
+                type="file" 
+                name="attachment">
         </label>
 
         <fieldset 
