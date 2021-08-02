@@ -1,7 +1,11 @@
-<div class="page-module type-body-text pat-rich">	
+<div 
+	class="page-module type-body-text pat-rich">	
 	{% if page.image %}
-		<figure class="main-illustration">
-			<a href="{{ page.image }}" class="pat-gallery"><img src="{{ page.image }}"></a>
+		<figure 
+			class="main-illustration">
+			<a 
+				href="{{ page.image }}" 
+				class="pat-gallery"><img src="{{ page.image }}"></a>
 		</figure>
 	{% endif %}
     {{ content | markdownify }}

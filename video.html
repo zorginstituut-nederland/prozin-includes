@@ -1,14 +1,18 @@
 <figure class="video-player">
-	<video preload="none" 
-	       controls="controls" 
-	       poster="{{ include.poster }}">
+	<video 
+		preload="none" 
+	    controls="controls" 
+	    poster="{{ include.poster }}">
 	    <source src="{{ include.video }}"/>
 	</video>
 	<div class="video-player-extras pat-well collapsibles">
-		<div class="pat-collapsible closed extra">
-			<strong class="video-player-extra-title">Download deze video</strong>
-			<a class="file-download icon-file-video" 
-			   href="{{ include.video }}">
+		<div 
+			class="pat-collapsible closed extra">
+			<strong 
+				class="video-player-extra-title">Download deze video</strong>
+			<a 
+				class="file-download icon-file-video" 
+			    href="{{ include.video }}">
                 <h4 class="title">
                     MP4-video
                 </h4>
@@ -30,10 +34,13 @@
                 </p>
             </a>
 		</div>
-		<div class="pat-collapsible closed video-player-extra"
-			 data-pat-collapsible="load-content: {{ include.transcript }}#transcript;">
-			<strong class="video-player-extra-title">Uitgeschreven tekst</strong>
-			<p class="transcript-link">
+		<div 
+			class="pat-collapsible closed video-player-extra"
+			data-pat-collapsible="load-content: {{ include.transcript }}#transcript;">
+			<strong 
+				class="video-player-extra-title">Uitgeschreven tekst</strong>
+			<p 
+				class="transcript-link">
 				Lees het <a href="{{ include.transcript }}#transcript">transcript</a>.
 			</p>
 		</div>

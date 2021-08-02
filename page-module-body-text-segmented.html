@@ -6,10 +6,12 @@
 			class="page-module-title">
 			{{ section.name }}
 		</h2>
-		<p 
-			class="section-introduction">
-			{{ site.data.prozin.ui[section.description][site.lang] }}
-		</p>
+		{% if section.description %}
+			<p 
+				class="section-introduction">
+				{{ site.data.prozin.ui[section.description][site.lang] }}
+			</p>
+		{% endif %}
 	    {{ section.content | markdownify }}
 	</div>
 {% endfor %}

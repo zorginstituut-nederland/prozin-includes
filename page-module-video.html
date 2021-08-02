@@ -1,12 +1,14 @@
-<div class="page-module type-video">
+<div 
+    class="page-module type-video">
     {% if page.video_title %}
-        <h2 class="page-module-title">
+        <h2 
+            class="page-module-title">
             {{ page.video_title }}
         </h2>
     {% endif %}
     {% include prozin/video.html
-               video=page.video
-               poster=page.poster
-               audio=page.audio
-               transcript=page.transcript %}
+        video=page.video
+        poster=page.poster
+        audio=page.audio
+        transcript=page.transcript %}
 </div>

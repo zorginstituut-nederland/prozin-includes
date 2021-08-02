@@ -1,0 +1,29 @@
+<div 
+    class="page-module type-object">
+    {% if include.title %}
+        <h2 
+            class="page-module-title">
+            {{ include.title }}
+        </h2>
+    {% endif %}
+    <figure 
+        class="pat-screenshot">
+        <a
+            href="/feedback/presentatie#document-content" 
+            data-pat-modal="class: large object panel"
+            title="Bekijk de presentatie fullscreen"
+            class="pat-modal enlarge-button">Bekijk de presentatie fullscreen</a>
+        <div
+            class="pat-auto-scale passe-partout">
+            <object 
+                data="{{ include.source }}">
+            </object>
+        </div>
+        <figcaption>
+            <a
+                href="/feedback/presentatie#document-content" 
+                data-pat-modal="class: large object panel"
+                class="pat-modal enlarge-link icon-right-dir">Bekijk de presentatie fullscreen</a>
+        </figcaption>
+    </figure>
+</div>
