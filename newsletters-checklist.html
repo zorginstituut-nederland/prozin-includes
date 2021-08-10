@@ -1,0 +1,16 @@
+<fieldset 
+    class="pat-checklist">
+    <legend>Nieuwsbrief</legend>
+    {% for item in site.data.newsletters %}
+        <label>
+            <input \
+                type="checkbox" 
+                {{ item.default }}
+                name="periodical">
+            <span 
+                class="label-fragment-title">{{ item.title }}</span>
+            <span 
+                class="label-fragment-description">{{ item.description }}</span>
+        </label>
+    {% endfor %}
+</fieldset>

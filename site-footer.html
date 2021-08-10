@@ -21,6 +21,13 @@
                         </li>
                     {% endif %}
                 {% endfor %}
+                {% for item in site.data.footer_service %}
+                    <li>
+                        <a href="{{ item.url }}"
+                           class="pat-inject"
+                           data-pat-inject="history: record">{{ item.title }}</a>
+                    </li>
+                {% endfor %}
                 {% for item in site.help %}
                     {% if item.parent == 'service' or item.parent == 'Service' %}
                         <li>
