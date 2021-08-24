@@ -18,16 +18,6 @@
                 name="naam" />
         </label>
 
-        <label 
-            class="pat-depends" 
-            data-pat-depends="condition: role=professional">
-            {{ site.data.prozin.ui.label_employee_position[site.lang] }}
-            <input 
-                autofocus
-                type="text" 
-                name="functie" />
-        </label>
-
         <fieldset class="group pat-checklist radio">
             <label>
                 <input 
@@ -44,6 +34,16 @@
                     name="role" /> {{ site.data.prozin.ui.label_private[site.lang] }}
             </label>
         </fieldset>
+
+        <label 
+            class="pat-depends" 
+            data-pat-depends="condition: role=professional">
+            {{ site.data.prozin.ui.label_employee_position[site.lang] }}
+            <input 
+                autofocus
+                type="text" 
+                name="functie" />
+        </label>
 
         <label>
             {{ site.data.prozin.ui.label_email[site.lang] }}<sup class="required">*</sup>
