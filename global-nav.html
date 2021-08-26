@@ -128,6 +128,10 @@
             {% if page.url == '/domeinen' %}
                 <!-- <a>Werkgroepen</a> -->
             {% endif %}
+
+            {% if page.title_in_breadcrumbs == true or layout.title_in_breadcrumbs == true %}
+                <a>{{ page.title }}</a>
+            {% endif %}
         </nav>
         {% if site.search_type == 'sheet' %}
           {% include global-search-fk.html %}
