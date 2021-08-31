@@ -1,0 +1,48 @@
+<!-- <article 
+    class="pat-rich">
+    <h1>
+        {{ page.organisation }}
+    </h1>
+</article> -->
+<fieldset 
+    class="form-panel horizontal">
+    <label>
+        Name
+        <input 
+            value="{{ page.organisation }}" 
+            type="text" 
+            class="pat-autofocus" 
+            name="name">
+    </label>
+    <label>
+        Type
+        <select>
+            <option>Zorginstelling</option>
+            <option>Gegevensmakelaar</option>
+            <option>Beheerorganisatie</option>
+        </select>
+    </label>
+    <label>
+        Administrator
+        <select>
+            <option>
+                {{ site.data.prozin.ui.label_administrator_not_selected[site.lang] }}
+            </option>
+            {% for item in site.data.personae %}
+                {% assign this_persona = item[1] %}
+                <option>
+                    {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
+        Users
+        <input 
+            class="pat-autosuggest users"
+            data-pat-autosuggest="words: {% for item in site.data.personae %}{% assign this_persona = item[1] %}{{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;{% if forloop.last %}{% else %},{% endif %}{% endfor %}; allow-new-words: false"
+            type="text" 
+            placeholder="Selecteer gebruikers" 
+            name="users">
+    </label>
+</fieldset>

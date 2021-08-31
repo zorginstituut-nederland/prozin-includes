@@ -1,0 +1,26 @@
+<fieldset 
+    class="form-panel horizontal">
+    <label>
+        Voornaam
+        <input 
+            class="pat-autofocus" 
+            type="text" 
+            name="name">
+    </label>
+    <label>
+        Achternaam
+        <input 
+            type="text" 
+            name="name">
+    </label>
+    <label>
+        Organisatie
+        <select>
+            {% for item in site.data.organisations %}
+                <option>
+                    {{ item.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+</fieldset>
