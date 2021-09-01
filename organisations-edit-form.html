@@ -23,6 +23,20 @@
         </select>
     </label>
     <label>
+        Contactpersoon
+        <select>
+            <option>
+                {{ site.data.prozin.ui.label_contact_person_not_selected[site.lang] }}
+            </option>
+            {% for item in site.data.personae %}
+                {% assign this_persona = item[1] %}
+                <option>
+                    {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
         Administrator
         <select>
             <option>
@@ -37,7 +51,7 @@
         </select>
     </label>
     <label>
-        Users
+        Active users
         <input 
             class="pat-autosuggest users"
             data-pat-autosuggest="words: {% for item in site.data.personae %}{% assign this_persona = item[1] %}{{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;{% if forloop.last %}{% else %},{% endif %}{% endfor %}; allow-new-words: false"

@@ -3,24 +3,38 @@
     <label>
         Voornaam
         <input 
+            required 
             class="pat-autofocus" 
             type="text" 
-            name="name">
+            name="first_name">
     </label>
     <label>
         Achternaam
         <input 
+            required 
             type="text" 
-            name="name">
+            name="family_name">
     </label>
     <label>
-        Organisatie
-        <select>
-            {% for item in site.data.organisations %}
-                <option>
-                    {{ item.name }}
-                </option>
-            {% endfor %}
-        </select>
+        E-mail
+        <input 
+            required 
+            type="email" 
+            name="email">
     </label>
+    {% if include.role == 'Owner' %}
+        <label>
+            Organisatie
+            <select>
+                <option>
+                    Geen organisatie geselecteerd
+                </option>
+                {% for item in site.data.organisations %}
+                    <option>
+                        {{ item.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+    {% endif %}
 </fieldset>
