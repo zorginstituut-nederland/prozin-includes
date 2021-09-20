@@ -10,14 +10,17 @@
         {% endif %}
         <nav 
             id="breadcrumbs">
-            <p class="assistive">
+            <p 
+                class="assistive">
                 {{ site.data.prozin.ui.message_you_are_here[site.lang] }}
             </p>
             {% if page.layout contains 'homepage' %}
-                <a class="homepage">
+                <a 
+                    class="homepage">
             {% else %}
-                <a class="homepage pat-inject" 
-                   data-pat-inject="history: record" href="/">
+                <a 
+                    class="homepage pat-inject" 
+                    data-pat-inject="history: record" href="/">
             {% endif %}
                 {{ site.data.ui.label_site_name[site.lang] }}</a>
             
@@ -30,27 +33,6 @@
             {% endif %}
             {% if page.url == '/geneesmiddelen-alt' %}
                 <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
-            {% endif %}
-
-            {% if page.collection %}
-              {% unless page.scope %}
-                {% if page.collection == 'prozin/editorial' %}
-                {% elsif page.layout == 'prozin/landing-topics' %}
-                  <a>{{ page.collection | capitalize }}</a>
-                {% elsif page.collection == 'drafts' %}
-                {% elsif page.collection == '' %}
-                  <a 
-                    href="/{{ page.collection }}/" 
-                    class="pat-inject" 
-                    data-pat-inject="history: record"></a>
-                }
-                {% else %}
-                  <a 
-                    href="/{{ page.collection }}/" 
-                    class="pat-inject" 
-                    data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
-                {% endif %}
-              {% endunless %}
             {% endif %}
 
             {% if page.parent %}
@@ -72,6 +54,27 @@
                      <a href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
                        class="pat-inject" 
                        data-pat-inject="history: record">{{ page.parent }}</a>
+                {% endif %}
+            {% else %}
+                {% if page.collection %}
+                  {% unless page.scope %}
+                    {% if page.collection == 'prozin/editorial' %}
+                    {% elsif page.layout == 'prozin/landing-topics' %}
+                      <a>{{ page.collection | capitalize }}</a>
+                    {% elsif page.collection == 'drafts' %}
+                    {% elsif page.collection == '' %}
+                      <a 
+                        href="/{{ page.collection }}/" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record"></a>
+                    }
+                    {% else %}
+                      <a 
+                        href="/{{ page.collection }}/" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                    {% endif %}
+                  {% endunless %}
                 {% endif %}
             {% endif %}
 
