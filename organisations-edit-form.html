@@ -11,7 +11,10 @@
     </label>
     <label>
         Type
-        <select>
+        <select
+            {% unless page.organisation_type == 'Beheerorganisatie' %}
+            disabled
+            {% endunless %}>
             <option>Zorginstelling</option>
             <option>Gegevensmakelaar</option>
             <option>Beheerorganisatie</option>
