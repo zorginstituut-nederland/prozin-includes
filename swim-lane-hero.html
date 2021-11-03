@@ -1,13 +1,8 @@
-<section class="swim-lane {% if item.push %}has-top-task-push{% endif %}" 
-         id="home-hero">
-    <div class="container">
-        {% if item.push %}
-            <div class="top-task-push">
-                <article class="pat-rich">
-                    {{ item.push | markdownify }}
-                </article>
-            </div>
-        {% endif %}
+<section 
+    class="swim-lane {% if item.push %}has-top-task-push{% endif %} {% if page.promo %}has-promo{% endif %}" 
+    id="home-hero">
+    <div 
+        class="container">
         {% if page.toptask or page.popular or page.top_task %}
             <div 
                 class="top-task-navigation">
@@ -65,6 +60,30 @@
                         {% endfor %}
                     {% endif %}
                 </ul>
+            </div>
+        {% endif %}
+        {% if page.promo %}
+            <div 
+                class="promo-block">
+                <p>
+                    {{ page.promo }}
+                </p>
+                <p 
+                    class="button-bar">
+                    <a 
+                        href="#"
+                        target="_blank" 
+                        class="cta default pat-button">Ik doe mee</a>
+                </p>
+            </div>
+        {% endif %}
+        {% if item.push %}
+            <div 
+                class="top-task-push">
+                <article 
+                    class="pat-rich">
+                    {{ item.push | markdownify }}
+                </article>
             </div>
         {% endif %}
     </div>
