@@ -1,0 +1,100 @@
+<fieldset 
+    class="form-panel horizontal">
+    <label>
+        Name
+        <input 
+            value="{{ page.organisation }}" 
+            type="text" 
+            required 
+            class="pat-autofocus" 
+            name="name">
+    </label>
+    <label>
+        Type
+        <select
+            {% unless page.organisation_type == 'Beheerorganisatie' %}
+            disabled
+            {% endunless %}>
+            <option>Zorginstelling</option>
+            <option>Gegevensmakelaar</option>
+            <option>Beheerorganisatie</option>
+        </select>
+    </label>
+    <label>
+        Locatienaam
+        <input 
+            type="text">
+    </label>
+    <label>
+        Adres
+        <input 
+            type="text" 
+            name="">
+    </label>
+    <label>
+        Postcode
+        <input 
+            type="text" 
+            maxlength="7">
+    </label>
+    <label>
+        Plaats
+        <input 
+            type="text">
+    </label>
+    <label>
+        KvK
+        <input 
+            type="number" 
+            maxlength="8">
+    </label>
+    <label>
+        Vestigingsnummer
+        <input 
+            type="number" 
+            maxlength="12">
+    </label>
+    <label>
+        AGB-code
+        <input 
+            type="number" 
+            name="">
+    </label>
+    <label>
+        Contactpersoon
+        <select>
+            <option>
+                {{ site.data.prozin.ui.label_contact_person_not_selected[site.lang] }}
+            </option>
+            {% for item in site.data.personae %}
+                {% assign this_persona = item[1] %}
+                <option>
+                    {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
+        Administrator
+        <select>
+            <option>
+                {{ site.data.prozin.ui.label_administrator_not_selected[site.lang] }}
+            </option>
+            {% for item in site.data.personae %}
+                {% assign this_persona = item[1] %}
+                <option>
+                    {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+    <!-- <label>
+        Active users
+        <input 
+            class="pat-autosuggest users"
+            data-pat-autosuggest="words: {% for item in site.data.personae %}{% assign this_persona = item[1] %}{{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;{% if forloop.last %}{% else %},{% endif %}{% endfor %}; allow-new-words: false"
+            type="text" 
+            placeholder="Selecteer gebruikers" 
+            name="users">
+    </label> -->
+</fieldset>

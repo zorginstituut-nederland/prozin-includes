@@ -1,13 +1,21 @@
-<div id="browse-bar" class="col-count-5 {% if page.layout == 'prozin/homepage' %}state-expanded{% else %}state-collapsed{% endif %}">
+<div 
+	id="browse-bar" 
+	class="col-count-5 {% if page.layout == 'prozin/homepage' %}state-expanded{% else %}state-collapsed{% endif %}">
     <div class="container">
-        <form action="/min-stub-5#main" data-pat-inject="source: #global-nav::element; target: #global-nav::element && source: #main; target: #main; history: record;" class="pat-form pat-inject">
+        <form 
+        	action="/min-stub-5#main" 
+        	data-pat-inject="source: #global-nav::element; target: #global-nav::element && source: #main; target: #main; history: record;" 
+        	class="pat-form pat-inject">
         	<div class="data-browser row">
-        		<h2 class="assistive">
+        		<h2 
+        			class="assistive">
         			Tabel vinden
         		</h2>
         		{% for column in site.data.browse-lane %}
 	        		{% if column.type == 'radio' %}
-			        	<div class="browser-column category pat-checklist free-form radio pat-bar-toggles multi-line pat-switch" data-pat-switch="#browse-bar state-collapsed state-expanded">
+			        	<div 
+			        		class="browser-column category pat-checklist free-form radio pat-bar-toggles multi-line pat-switch" 
+			        		data-pat-switch="#browse-bar state-collapsed state-expanded">
 			        		<h3 class="legend">
 			        			{{ column.title }}
 			        		</h3>
@@ -23,31 +31,36 @@
 							{% endfor %}
 			        	</div>
 			        {% elsif column.type == 'auto-suggest' %}    	
-			        	<div class="browser-column type {% if column.depends %}pat-depends{% endif %}"
-			        		 {% if column.depends %}data-pat-depends="condition: {{ column.depends }}"{% endif %}>
+			        	<div 
+			        		class="browser-column type {% if column.depends %}pat-depends{% endif %}"
+			        		{% if column.depends %}data-pat-depends="condition: {{ column.depends }}"{% endif %}>
 			        		<h3 class="legend">
 			        			{{ column.title }}
 			        		</h3>
 			        		<label>
-			        			<select class="pat-autosuggest bar-style" 
-			        					data-pat-autosuggest="minimum-input-length: 0" 
-			        					{% if column.name %}
-			        						name="{{ column.name }}"
-			        					{% else %}
-			        						name="{{ column.title | slugify }}"
-			        					{% endif %}
-			        					>
+			        			<select 
+			        				class="pat-autosuggest bar-style" 
+			        				data-pat-autosuggest="minimum-input-length: 0" 
+		        					{% if column.name %}
+		        						name="{{ column.name }}"
+		        					{% else %}
+		        						name="{{ column.title | slugify }}"
+		        					{% endif %}
+		        					>
 			        				{% for item in column.items %}
 			        					{% if item.type == 'group' %}
-			        						<optgroup label="{{ item.label }}">
+			        						<optgroup 
+			        							label="{{ item.label }}">
 			        							{% for option in item.items %}
-			        								<option value="{{ option.label | slugify }}">
+			        								<option 
+			        									value="{{ option.label | slugify }}">
 			        									{{ option.label }}
 			        								</option>
 			        							{% endfor %}
 			        						</optgroup>
 			        					{% else %}
-			        						<option value="{{ item.label | slugify }}">
+			        						<option 
+			        							value="{{ item.label | slugify }}">
 			        							{{ item.label }}
 			        						</option>
 			        					{% endif %}
@@ -58,10 +71,16 @@
 	        		{% endif %}
         		{% endfor %}
         	</div>
-        	<div class="button-bar">
-        		<button type="submit" class="pat-button float-after pat-switch" data-pat-switch="#browse-bar state-* state-collapsed">Toon overzicht</button>
+        	<div 
+        		class="button-bar">
+        		<button 
+        			type="submit" 
+        			class="default pat-button float-after pat-switch" 
+        			data-pat-switch="#browse-bar state-* state-collapsed">Toon overzicht</button>
         	</div>
         </form>
-        <button class="pat-toggle collapse-expand-toggle" data-pat-toggle="selector: #browse-bar; value: state-expanded state-collapsed">Collapse/expand panel</button>
+        <button 
+        	class="pat-toggle collapse-expand-toggle" 
+        	data-pat-toggle="selector: #browse-bar; value: state-expanded state-collapsed">Collapse/expand panel</button>
     </div>
 </div>

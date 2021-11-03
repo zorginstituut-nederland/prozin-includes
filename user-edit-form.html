@@ -1,0 +1,40 @@
+<fieldset 
+    class="form-panel horizontal">
+    <label>
+        Voornaam
+        <input 
+            required 
+            class="pat-autofocus" 
+            type="text" 
+            name="first_name">
+    </label>
+    <label>
+        Achternaam
+        <input 
+            required 
+            type="text" 
+            name="family_name">
+    </label>
+    <label>
+        E-mail
+        <input 
+            required 
+            type="email" 
+            name="email">
+    </label>
+    {% if include.role == 'Owner' %}
+        <label>
+            Organisatie
+            <select>
+                <option>
+                    Geen organisatie geselecteerd
+                </option>
+                {% for item in site.data.organisations %}
+                    <option>
+                        {{ item.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+    {% endif %}
+</fieldset>

@@ -1,7 +1,13 @@
 {% if page.downloads %}
     <div class="page-module type-downloads">
         {% if include.title %}
-            <h2 class="page-module-title">
+            <h2 
+                class="page-module-title">
+                {{ include.title }}
+            </h2>
+        {% elsif include.assistive-title %}
+            <h2 
+                class="page-module-title assistive">
                 {{ include.title }}
             </h2>
         {% endif %}
