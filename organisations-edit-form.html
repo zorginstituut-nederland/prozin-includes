@@ -12,12 +12,17 @@
     <label>
         Type
         <select
+            name="organisation_type"
             {% unless page.organisation_type == 'Beheerorganisatie' %}
             disabled
             {% endunless %}>
-            <option>Zorginstelling</option>
-            <option>Gegevensmakelaar</option>
             <option>Beheerorganisatie</option>
+            <option>Fabrikant</option>
+            <option>Portfoliohouder</option>
+            <option>Gegevensmakelaar</option>
+            <option>Werkgroep</option>
+            <option
+                value="zorginstelling">Zorginstelling</option>
         </select>
     </label>
     <label>
@@ -48,13 +53,17 @@
             type="number" 
             maxlength="8">
     </label>
-    <label>
+    <label
+        class="pat-depends"
+        data-pat-depends="organisation_type=zorginstelling">
         Vestigingsnummer
         <input 
             type="number" 
             maxlength="12">
     </label>
-    <label>
+    <label
+        class="pat-depends"
+        data-pat-depends="organisation_type=zorginstelling">
         AGB-code
         <input 
             type="number" 
