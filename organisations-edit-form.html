@@ -19,7 +19,8 @@
             <option>Beheerorganisatie</option>
             <option
                 value="consulent">Consulent voor een fabrikant</option>
-            <option>Fabrikant</option>
+            <option
+                value="fabrikant">Fabrikant</option>
             <option>Gegevensmakelaar</option>
             <option>Werkgroep</option>
             <option
@@ -55,6 +56,21 @@
         <input 
             type="number" 
             maxlength="8">
+    </label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
+        Consulent
+        <select>
+            <option>
+                Geen consulent geselecteerd
+            </option>
+            {% for item in site.data.organisations %}
+                {% if item.type == 'Consulent' %}
+                    <option>{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
     </label>
     {% if page.organisation_type == 'Beheerorganisatie' %}
         <label
