@@ -17,15 +17,18 @@
             disabled
             {% endunless %}>
             <option>Beheerorganisatie</option>
+            <option
+                value="consulent">Consulent voor een fabrikant</option>
             <option>Fabrikant</option>
-            <option>Portfoliohouder</option>
             <option>Gegevensmakelaar</option>
             <option>Werkgroep</option>
             <option
                 value="zorginstelling">Zorginstelling</option>
         </select>
     </label>
-    <label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
         Locatienaam
         <input 
             type="text">
@@ -52,6 +55,21 @@
         <input 
             type="number" 
             maxlength="8">
+    </label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=consulent; transition: slide">
+        Consulent voor fabrikant
+        <select>
+            <option>
+                Geen fabrikant geselecteerd
+            </option>
+            {% for item in site.data.organisations %}
+                {% if item.type == 'Fabrikant' %}
+                    <option>{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
     </label>
     <label
         class="pat-depends"
