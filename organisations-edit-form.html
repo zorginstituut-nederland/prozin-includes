@@ -18,7 +18,7 @@
             {% endunless %}>
             <option>Beheerorganisatie</option>
             <option
-                value="consulent">Consulent voor een fabrikant</option>
+                value="consulent">Consulent</option>
             <option
                 value="fabrikant">Fabrikant</option>
             <option>Gegevensmakelaar</option>
@@ -27,6 +27,38 @@
                 value="zorginstelling">Zorginstelling</option>
         </select>
     </label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
+        Default consulent
+        <select>
+            <option>
+                Geen default consulent geselecteerd
+            </option>
+            {% for item in site.data.organisations %}
+                {% if item.type == 'Consulent' %}
+                    <option>{{ item.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </label>
+    {% if page.organisation_type == 'Beheerorganisatie' %}
+        <label
+            class="pat-depends"
+            data-pat-depends="condition: organisation_type=consulent; transition: slide">
+            Voor fabrikant
+            <select>
+                <option>
+                    Geen fabrikant geselecteerd
+                </option>
+                {% for item in site.data.organisations %}
+                    {% if item.type == 'Fabrikant' %}
+                        <option>{{ item.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </label>
+    {% endif %}
     <label
         class="pat-depends"
         data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
@@ -57,38 +89,6 @@
             type="number" 
             maxlength="8">
     </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
-        Default consulent
-        <select>
-            <option>
-                Geen default consulent geselecteerd
-            </option>
-            {% for item in site.data.organisations %}
-                {% if item.type == 'Consulent' %}
-                    <option>{{ item.name }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-    </label>
-    {% if page.organisation_type == 'Beheerorganisatie' %}
-        <label
-            class="pat-depends"
-            data-pat-depends="condition: organisation_type=consulent; transition: slide">
-            Consulent voor fabrikant
-            <select>
-                <option>
-                    Geen fabrikant geselecteerd
-                </option>
-                {% for item in site.data.organisations %}
-                    {% if item.type == 'Fabrikant' %}
-                        <option>{{ item.name }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </label>
-    {% endif %}
     <label
         class="pat-depends"
         data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
