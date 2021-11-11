@@ -1,13 +1,15 @@
 <fieldset 
     class="form-panel horizontal">
+    {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
         Name
-        <input 
-            value="{{ page.organisation }}" 
+        <input
+            class="pat-autosuggest" 
             type="text" 
-            required 
-            class="pat-autofocus" 
-            name="name">
+            required
+            name=""
+            placeholder="Enter or select an organisation name"
+            data-pat-autosuggest="allow-new-words: true; max-selection-size: 1; ajax-search-index: text; words: {% for item in organisations %}{{ item.name }}{% unless forloop.last %},{% endunless %}{% endfor %};"/>
     </label>
     <label>
         Type
