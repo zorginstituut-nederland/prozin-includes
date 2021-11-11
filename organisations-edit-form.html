@@ -3,13 +3,21 @@
     {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
         Name
-        <input
-            class="pat-autosuggest" 
-            type="text" 
-            required
-            name=""
-            placeholder="Enter or select an organisation name"
-            data-pat-autosuggest="allow-new-words: true; max-selection-size: 1; ajax-search-index: text; words: {% for item in organisations %}{{ item.name }}{% unless forloop.last %},{% endunless %}{% endfor %};"/>
+        {% if page.organisation_type == 'Beheerorganisatie' %}
+            <input
+                class="pat-autosuggest" 
+                type="text" 
+                required
+                name=""
+                placeholder="Enter or select an organisation name"
+                data-pat-autosuggest="allow-new-words: true; max-selection-size: 1; ajax-search-index: text; words: {% for item in organisations %}{{ item.name }}{% unless forloop.last %},{% endunless %}{% endfor %};"/>
+        {% else %}
+            <input
+                type="text" 
+                required\
+                value="{{ page.organisation }}"
+                name="" />
+        {% endif %}
     </label>
     <label>
         Type
