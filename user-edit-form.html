@@ -22,6 +22,23 @@
             type="email" 
             name="email">
     </label>
+    <fieldset
+        class="pat-checklist radio">  
+        <legend>Rol</legend>
+        <label>
+            <input 
+                type="radio" 
+                checked 
+                name="role">
+            Beheerder
+        </label>
+        <label>
+            <input 
+                type="radio" 
+                name="role">
+            Lid
+        </label>
+    </fieldset>
     {% if include.role == 'Owner' %}
         <label>
             Organisatie
