@@ -1,9 +1,12 @@
+{% unless include.form == false %}
 <form 
-    action="/feedback/avatar-upload-cornelis.html#avatar-upload" 
+    action="/dialogues/personal/avatar-upload-cornelis.html#avatar-upload" 
     class="pat-autosubmit pat-inject">
+{% endunless %}
     <label 
         id="avatar-upload" 
-        class="image-uploader" 
+        class="image-uploader {% if include.form == false %}pat-autosubmit pat-subform pat-inject{% endif %}" 
+        {% if include.form == false %}data-pat-inject="source: #avatar-upload; target: #avatar-upload; url: /dialogues/personal/avatar-upload-cornelis.html#avatar-upload"{% endif %}
         title="Laad een foto van uzelf op">
       {% if include.editable == true %}
         <img 
@@ -19,7 +22,7 @@
             type="submit" 
             class="icon-trash image-upload-remove-button" 
             name="image-uploader-remove" 
-            formaction="/feedback/avatar-upload.html#avatar-upload"
+            formaction="/dialogues/personal/avatar-upload.html#avatar-upload"
             title="Verwijder deze afbeelding">{{ site.data.prozin.ui.label_remove[site.lang] }}</button>  
       {% else %}
         <img 
@@ -27,4 +30,6 @@
             class="user-image">
       {% endif %}
     </label>
+{% unless include.form == false %}
 </form>
+{% endunless %}
