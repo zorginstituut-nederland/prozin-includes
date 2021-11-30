@@ -1,5 +1,6 @@
 <fieldset 
-    class="form-panel horizontal">
+    class="form-panel horizontal pat-inject pat-subform pat-autosubmit"
+    data-pat-inject="">
     {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
         Name
@@ -19,6 +20,10 @@
                 name="" />
         {% endif %}
     </label>
+</fieldset>
+<fieldset 
+    id="org-info" 
+    class="form-panel horizontal">
     <label>
         Type
         <select
@@ -26,6 +31,7 @@
             {% unless page.organisation_type == 'Beheerorganisatie' %}
             disabled
             {% endunless %}>
+            <option>Niet gedefinieerd</option>
             <option>Beheerorganisatie</option>
             <option
                 value="consulent">Consulent</option>
@@ -121,6 +127,9 @@
             type="number" 
             name="">
     </label>
+</fieldset>
+<fieldset 
+    class="form-panel horizontal">
     <label>
         Contactpersoon
         <select>
@@ -137,17 +146,13 @@
     </label>
     <label>
         Administrator
-        <select>
-            <option>
-                {{ site.data.prozin.ui.label_administrator_not_selected[site.lang] }}
-            </option>
-            {% for item in site.data.personae %}
-                {% assign this_persona = item[1] %}
-                <option>
-                    {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
-                </option>
-            {% endfor %}
-        </select>
+        <input 
+            class="pat-autosuggest users"
+            data-pat-autosuggest="words: {% for item in site.data.personae %}{% assign this_persona = item[1] %}{{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;{% if forloop.last %}{% else %},{% endif %}{% endfor %}; allow-new-words: false"
+            type="text" 
+            placeholder="Selecteer gebruikers" 
+            name="users">
+    </label>
     </label>
     <!-- <label>
         Active users
