@@ -44,6 +44,10 @@
                     <a href="/beheer" 
                        class="pat-inject" 
                        data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                {% elsif page.parent == 'Manage' or layout.parent == 'Manage' %}
+                    <a href="/manage" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
                 {% elsif page.title == 'Beheer' %}
                     <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
                 {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
@@ -109,10 +113,7 @@
                   data-pat-inject="history: record">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
             {% if page.layout == 'medicine' or page.layout == 'medicine-compare-versions' %}
-                {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}
-                    <a href="/beheer" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record">Beheer</a>
+                {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}  
                     <a href="/concepten" 
                        class="pat-inject" 
                        data-pat-inject="history: record">Concepten</a>
