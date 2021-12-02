@@ -67,7 +67,7 @@
                 class="promo-block">
                 <p>
                     {% include prozin/params.html %}
-                    {{ site.data.ui.message_promo[site.lang] | replace: param_0,'&lt;Productnaam&gt;' }}
+                    {{ site.data[site.ui_data_path]ui.message_promo[site.lang] | replace: param_0,'&lt;Productnaam&gt;' }}
                 </p>
                 <p 
                     class="button-bar">
