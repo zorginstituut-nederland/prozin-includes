@@ -1,8 +1,13 @@
-<section 
-    class="swim-lane {% if item.push %}has-top-task-push{% endif %} {% if page.promo %}has-promo{% endif %}" 
-    id="home-hero">
-    <div 
-        class="container">
+<section class="swim-lane {% if item.push %}has-top-task-push{% endif %}" 
+         id="home-hero">
+    <div class="container">
+        {% if item.push %}
+            <div class="top-task-push">
+                <article class="pat-rich">
+                    {{ item.push | markdownify }}
+                </article>
+            </div>
+        {% endif %}
         {% if page.toptask or page.popular or page.top_task %}
             <div 
                 class="top-task-navigation">
@@ -22,19 +27,32 @@
                     {% assign count = 1 %}
                     {% if item.callout == "top-tasks" %}
                         <li>
-                            <a href="#" title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
+                            <a 
+                                href="#" 
+                                title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
                         </li>
                         <li>
-                            <a href="#" title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
+                            <a 
+                                href="#" 
+                                title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
                         </li>
                         <!-- <li>
                             <a href="#" title="Gedeelde voorbeelden van goede zorg dragen bij aan kwaliteitsverbetering.">Zoek een <i>good Practice</i></a>
                         </li> -->
                         <li>
-                            <a href="#" title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
+                            <a 
+                                href="#" 
+                                title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
                         </li>
                         <li>
-                            <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
+                            <a 
+                                href="#" 
+                                title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
+                        </li>
+                        <li>
+                            <a 
+                                href="#" 
+                                title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Nog een item met een redelijk lange titel die zeker twee regels in beslag neemt</a>
                         </li>
                     {% elsif item.callout == "recent" or item.callout == "popular" %}
                         {% for item in site.posts limit:3 %}
@@ -60,31 +78,6 @@
                         {% endfor %}
                     {% endif %}
                 </ul>
-            </div>
-        {% endif %}
-        {% if page.promo %}
-            <div 
-                class="promo-block">
-                <p>
-                    {% include prozin/params.html %}
-                    {{ site.data[site.ui_data_path]ui.message_promo[site.lang] | replace: param_0,'&lt;Productnaam&gt;' }}
-                </p>
-                <p 
-                    class="button-bar">
-                    <a 
-                        href="#"
-                        target="_blank" 
-                        class="cta default pat-button">{% include patterns/i18n id="label_i_participate" %}</a>
-                </p>
-            </div>
-        {% endif %}
-        {% if item.push %}
-            <div 
-                class="top-task-push">
-                <article 
-                    class="pat-rich">
-                    {{ item.push | markdownify }}
-                </article>
             </div>
         {% endif %}
     </div>
