@@ -1,25 +1,37 @@
-<section class="swim-lane" id="swim-lane-editorial">
-    <div class="container">
-        <h2 class="assistive">
+<section 
+    class="swim-lane" 
+    id="swim-lane-editorial">
+    <div 
+        class="container">
+        <h2 
+            class="assistive">
             {{ site.data.prozin.ui.label_topics[site.lang] }}
         </h2>
-        <ul class="editorial-list col-4 pat-equaliser">  
+        <ul 
+            class="editorial-list col-4 pat-equaliser">  
             {% for item in site.editorial %}
                 {% unless item.parent %}
-                    <li >
-                        <a href="{{ item.url }}" class="pat-inject" data-pat-inject="history: record">
-                            <h3 class="item-title">
-                                {{ item.title }}
-                            </h3>
-                            <p>
-                                {% if item.summary %}
-                                    {{ item.summary | truncate: 100 }}
-                                {% else %}
-                                    Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
-                                {% endif %}
-                            </p>
-                        </a>
-                    </li>
+                    {% assign item_path = item.url | split: "/" | reverse %}
+                    {% if item_path[1] == 'editorial' or item_path[2] == 'editorial' %}
+                        <li >
+                            <a 
+                                href="{{ item.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record">
+                                <h3 
+                                    class="item-title">
+                                    {{ item.title }}
+                                </h3>
+                                <p>
+                                    {% if item.summary %}
+                                        {{ item.summary | truncate: 100 }}
+                                    {% else %}
+                                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
+                                    {% endif %}
+                                </p>
+                            </a>
+                        </li>
+                    {% endif %}
                 {% endunless %}
             {% endfor %}
         </ul>

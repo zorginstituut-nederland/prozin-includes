@@ -4,7 +4,8 @@
     role="menubar">
     <div class="container">
         {% if page.layout == 'homepage' %}
-            <h1 class="assistive">
+            <h1 
+                class="assistive">
                 {{ site.data.ui.label_site_description[site.lang] }}
             </h1>
         {% endif %}
@@ -61,24 +62,45 @@
                 {% endif %}
             {% else %}
                 {% if page.collection %}
-                  {% unless page.scope %}
-                    {% if page.collection == 'prozin/editorial' %}
-                    {% elsif page.layout == 'prozin/landing-topics' %}
-                      <a>{{ page.collection | capitalize }}</a>
-                    {% elsif page.collection == 'drafts' %}
-                    {% elsif page.collection == '' %}
-                      <a 
-                        href="/{{ page.collection }}/" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record"></a>
-                    }
+                    {% if page.path contains 'editorial' %}
+                        {% assign page_path = page.url | split: "/" %}
+                        {% for item in page_path %}
+                            {% unless item == 'editorial' or item == 'index' or item == page.title  %}
+                            {% assign loopindex = forloop.index | modulo: 2 %}
+                                    {% if forloop.index0 == 2 %}     
+                                        <a
+                                            class="pat-inject"
+                                            data-pat-inject="history: record"
+                                            href="../">{{ item }}</a>
+                                    {% elsif forloop.index0 == 3 %}   
+                                        <a
+                                            class="pat-inject"
+                                            data-pat-inject="history: record"
+                                            href="../../">{{ item }}</a>
+                                    {% endif %}
+
+                            {% endunless %}
+                        {% endfor %}
                     {% else %}
-                      <a 
-                        href="/{{ page.collection }}/" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                        {% unless page.scope %}
+                            {% if page.collection == 'prozin/editorial' %}
+                            {% elsif page.layout == 'prozin/landing-topics' %}
+                              <a>{{ page.collection | capitalize }}</a>
+                            {% elsif page.collection == 'drafts' %}
+                            {% elsif page.collection == '' %}
+                              <a 
+                                href="/{{ page.collection }}/" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record"></a>
+                            }
+                            {% else %}
+                              <a 
+                                href="/{{ page.collection }}/" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                            {% endif %}
+                        {% endunless %}
                     {% endif %}
-                  {% endunless %}
                 {% endif %}
             {% endif %}
 
