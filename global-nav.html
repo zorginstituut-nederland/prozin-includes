@@ -63,22 +63,20 @@
             {% else %}
                 {% if page.collection %}
                     {% if page.path contains 'editorial' %}
-                        {% assign page_path = page.url | split: "/" %}
+                        {% assign page_path = page.url | replace: '%20', ' ' | split: '/' %}
                         {% for item in page_path %}
                             {% unless item == 'editorial' or item == 'index' or item == page.title  %}
-                            {% assign loopindex = forloop.index | modulo: 2 %}
-                                    {% if forloop.index0 == 2 %}     
-                                        <a
-                                            class="pat-inject"
-                                            data-pat-inject="history: record"
-                                            href="../">{{ item }}</a>
-                                    {% elsif forloop.index0 == 3 %}   
-                                        <a
-                                            class="pat-inject"
-                                            data-pat-inject="history: record"
-                                            href="../../">{{ item }}</a>
-                                    {% endif %}
-
+                                {% if forloop.index0 == 2 %}     
+                                    <a
+                                        class="pat-inject"
+                                        data-pat-inject="history: record"
+                                        href="../">{{ item | replace: '%20', ' ' }}</a>
+                                {% elsif forloop.index0 == 3 %}   
+                                    <a
+                                        class="pat-inject"
+                                        data-pat-inject="history: record"
+                                        href="./">{{ item | replace: '%20', ' ' }}</a>
+                                {% endif %}
                             {% endunless %}
                         {% endfor %}
                     {% else %}
