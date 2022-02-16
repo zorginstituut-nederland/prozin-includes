@@ -95,7 +95,7 @@
                               <a 
                                 href="/{{ page.collection }}/" 
                                 class="pat-inject" 
-                                data-pat-inject="history: record">{{ page.collection | capitalize }}</a>
+                                data-pat-inject="history: record">{{ page.collection | capitalize | replace: '-', ' ' }}</a>
                             {% endif %}
                         {% endunless %}
                     {% endif %}
