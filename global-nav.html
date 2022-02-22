@@ -36,7 +36,12 @@
                 <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
             {% endif %}
 
-            {% if page.parent %}
+            {% if layout.parent %}
+                <a 
+                    href="/{{ layout.parent | slugify }}"
+                    class="pat-inject" 
+                    data-pat-inject="history: record">{{ layout.parent }}</a>
+            {% elsif page.parent %}
                 {% if page.parent == 'Help' %}
                     <a href="/help" 
                        class="pat-inject" 
