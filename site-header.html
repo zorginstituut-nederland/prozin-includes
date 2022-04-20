@@ -27,20 +27,14 @@
                   href="/login" 
                   id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
           {% elsif page.url == '/login' %}
-<!--               <a href="{{ dashboard_url }}"
-                 class="icon-dashboard pat-inject"
-                 data-pat-inject="history: record">Dashboard</a>
- -->              <a 
+             <a 
                       href="/login" 
                       id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
-<!--               <a href="{{ dashboard_url }}"
-                 class="icon-dashboard pat-inject"
-                 data-pat-inject="history: record">Dashboard</a>
- -->          {% else %}
+          {% else %}
               <a 
                   href="{{ dashboard_url }}"
                   class="icon-dashboard pat-inject"
-                  data-pat-inject="history: record">Dashboard</a>
+                  data-pat-inject="history: record">{% include /patterns/i18n id="label_management" %}</a>
               <a  
                   href="#login-menu" 
                   data-pat-tooltip="position-list: tr; source: ajax" 
