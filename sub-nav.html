@@ -1,6 +1,12 @@
 {% if page.sub_nav %}
     <div 
         id="sub-nav">
+        {% if page.hero %}
+            <figure 
+                id="hero">
+                <img src="{{ page.hero }}" alt="" />
+            </figure>
+        {% endif %}
         <div 
             class="container">
             <ul 
