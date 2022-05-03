@@ -86,22 +86,24 @@
                         {% endfor %}
                     {% else %}
                         {% unless page.scope %}
-                            {% if page.collection == 'prozin/editorial' %}
-                            {% elsif page.layout == 'prozin/landing-topics' %}
-                              <a>{{ page.collection | capitalize }}</a>
-                            {% elsif page.collection == 'drafts' %}
-                            {% elsif page.collection == '' %}
-                              <a 
-                                href="/{{ page.collection }}/" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record"></a>
-                            }
-                            {% else %}
-                              <a 
-                                href="/{{ page.collection }}/" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record">{{ page.collection | capitalize | replace: '-', ' ' }}</a>
-                            {% endif %}
+                            {% unless layout.collection_in_breadcrumbs == false %}
+                                {% if page.collection == 'prozin/editorial' %}
+                                {% elsif page.layout == 'prozin/landing-topics' %}
+                                  <a>{{ page.collection | capitalize }}</a>
+                                {% elsif page.collection == 'drafts' %}
+                                {% elsif page.collection == '' %}
+                                  <a 
+                                    href="/{{ page.collection }}/" 
+                                    class="pat-inject" 
+                                    data-pat-inject="history: record"></a>
+                                }
+                                {% else %}
+                                  <a 
+                                    href="/{{ page.collection }}/" 
+                                    class="pat-inject" 
+                                    data-pat-inject="history: record">{{ page.collection | capitalize | replace: '-', ' ' }}</a>
+                                {% endif %}
+                            {% endunless %}
                         {% endunless %}
                     {% endif %}
                 {% endif %}
