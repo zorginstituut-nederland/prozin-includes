@@ -1,12 +1,16 @@
 {% if page.sub_nav %}
-    <div id="sub-nav">
-        <div class="container">
-            <ul class="link-list">
+    <div 
+        id="sub-nav">
+        <div 
+            class="container">
+            <ul 
+                class="link-list">
                 {% for item in page.sub_nav %}
                     <li>
-                        <a title="{{ item.description }}" 
-                           class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record" 
-                           href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                        <a 
+                            title="{{ item.description }}" 
+                            class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record" 
+                            href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
                     </li>
                 {% endfor %}
             </ul>
