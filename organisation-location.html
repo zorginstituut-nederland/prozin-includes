@@ -1,0 +1,45 @@
+<fieldset 
+    class="form-callout horizontal">
+    <legend 
+        class="title">Location #{1}</legend>
+    <p 
+        class="functions">
+        <a 
+            class="icon-trash icon remove-clone" 
+            title="Verwijder deze vestiging.">Verwijderen</a>
+    </p>
+    <label>
+        Locatienaam
+        <input 
+            class="pat-autofocus" 
+            value="{{ item.name }}"
+            type="text">
+    </label>
+    <label>
+        Adres
+        <input 
+            type="text" 
+            name="location-address">
+    </label>
+    <label>
+        Postcode
+        <input 
+            type="text" 
+            name="location-postal-code"
+            maxlength="7">
+    </label>
+    <label>
+        Plaats
+        <input 
+            name="location-place"
+            type="text">
+    </label>
+    <label>
+        Vestigingsnummer
+        <input 
+            name="location-number" 
+            value="{{ item.number }}"
+            type="number" 
+            maxlength="12">
+    </label>
+</fieldset>

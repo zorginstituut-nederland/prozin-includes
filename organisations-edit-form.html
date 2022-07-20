@@ -1,5 +1,5 @@
 <fieldset 
-    class="form-panel horizontal pat-inject pat-subform pat-autosubmit"
+    class="horizontal pat-inject pat-subform pat-autosubmit"
     data-pat-inject="">
     {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
@@ -20,10 +20,6 @@
                 name="" />
         {% endif %}
     </label>
-</fieldset>
-<fieldset 
-    id="org-info" 
-    class="form-panel horizontal">
     <label>
         Type
         <select
@@ -42,51 +38,6 @@
             <option
                 value="zorginstelling">Zorginstelling</option>
         </select>
-    </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
-        Default consulent
-        <select>
-            <option>
-                Geen default consulent geselecteerd
-            </option>
-            <option>
-                Zelfde als fabrikant
-            </option>                
-            <optgroup
-                label="Consulenten"> 
-                {% for item in site.data.organisations %}
-                    {% if item.type == 'Consulent' %}
-                        <option>{{ item.name }}</option>
-                    {% endif %}
-                {% endfor %}
-            </optgroup>
-        </select>
-    </label>
-    {% if page.organisation_type == 'Beheerorganisatie' %}
-        <!-- <label
-            class="pat-depends"
-            data-pat-depends="condition: organisation_type=consulent; transition: slide">
-            Voor fabrikant
-            <select>
-                <option>
-                    Geen fabrikant geselecteerd
-                </option> 
-                {% for item in site.data.organisations %}
-                    {% if item.type == 'Fabrikant' %}
-                        <option>{{ item.name }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </label> -->
-    {% endif %}
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        Locatienaam
-        <input 
-            type="text">
     </label>
     <label>
         Adres
@@ -114,22 +65,76 @@
     <label
         class="pat-depends"
         data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        Vestigingsnummer
-        <input 
-            type="number" 
-            maxlength="12">
-    </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
         AGB-code
         <input 
+            value="{{ item.abg }}"
             type="number" 
             name="">
     </label>
+    {% if page.organisation_type == 'Beheerorganisatie' %}
+        <!-- <label
+            class="pat-depends"
+            data-pat-depends="condition: organisation_type=consulent; transition: slide">
+            Voor fabrikant
+            <select>
+                <option>
+                    Geen fabrikant geselecteerd
+                </option> 
+                {% for item in site.data.organisations %}
+                    {% if item.type == 'Fabrikant' %}
+                        <option>{{ item.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </label> -->
+    {% endif %}
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
+        Default consulent
+        <select>
+            <option>
+                Geen default consulent geselecteerd
+            </option>
+            <option>
+                Zelfde als fabrikant
+            </option>                
+            <optgroup
+                label="Consulenten"> 
+                {% for item in site.data.organisations %}
+                    {% if item.type == 'Consulent' %}
+                        <option>{{ item.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </optgroup>
+        </select>
+    </label>
 </fieldset>
 <fieldset 
-    class="form-panel horizontal">
+    id="locations" 
+    class="">
+    <div 
+        class="locations pat-clone horizontal"
+        data-pat-clone="template: #location-template; trigger-element: #clone-location; remove-confirmation: Weet u zeker dat u deze vestiging wilt verwijderen?">
+        {% for item in page.locations %}
+            {% include prozin/organisation-location.html %}
+        {% endfor %}  
+    </div>
+    <template 
+        id="location-template">
+        {% include prozin/organisation-location.html %}
+    </template>
+    <div
+        class="button-bar group cloning">
+        <button
+            class="add-clone pat-button icon-plus-circle"
+            id="clone-location"
+            title="Voeg een vestiging toe"
+            type="button">Vestiging</button>
+    </div>
+</fieldset>
+<fieldset 
+    class="horizontal">
     <label>
         Contactpersoon
         <select>
