@@ -11,6 +11,7 @@
     <label>
         Locatienaam
         <input 
+            name="location_name_#{1}"
             class="pat-autofocus" 
             value="{{ item.name }}"
             type="text">
@@ -19,13 +20,13 @@
         Adres
         <input 
             type="text" 
-            name="location-address">
+            name="location-address_#{1}">
     </label>
     <label>
         Postcode
         <input 
             type="text" 
-            name="location-postal-code"
+            name="location-postal-code_#{1}"
             maxlength="7">
     </label>
     <label>
@@ -37,7 +38,7 @@
     <label>
         Vestigingsnummer
         <input 
-            name="location-number" 
+            name="location-number_#{1}" 
             value="{{ item.number }}"
             type="number" 
             maxlength="12">
