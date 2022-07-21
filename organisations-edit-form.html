@@ -1,5 +1,5 @@
 <fieldset 
-    class="horizontal pat-inject pat-subform pat-autosubmit"
+    class="horizontal pat-inject pat-subform"
     data-pat-inject="">
     {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
@@ -39,23 +39,58 @@
                 value="zorginstelling">Zorginstelling</option>
         </select>
     </label>
-    <label>
-        Adres
-        <input 
-            type="text" 
-            name="">
-    </label>
-    <label>
-        Postcode
-        <input 
-            type="text" 
-            maxlength="7">
-    </label>
-    <label>
-        Plaats
-        <input 
-            type="text">
-    </label>
+    <div 
+        class="group">
+        <legend>Address</legend>
+        <div 
+            class="field-cluster layout-address-line-nl"> 
+            <label
+                class="street">
+                Straatnaam
+                <input 
+                    type="text" 
+                    name="street"
+                    placeholder="Straatnaam">
+            </label>
+            <label
+                class="house-number">
+                Huisnummer
+                <input 
+                    placeholder="Nummer" 
+                    type="number" 
+                    name="house-number">
+            </label>
+            <label
+                class="house-number-suffix">
+                Toevoeging
+                <input 
+                    placeholder="Toev." 
+                    type="text" 
+                    name="suffix">
+            </label>
+        </div>
+    </div>
+    <div 
+        class="group">
+        <div 
+            class="field-cluster layout-postal-code-place-line-nl"> 
+            <label>
+                Postcode
+                <input 
+                    class="postal-code" 
+                    type="text" 
+                    maxlength="7"
+                    placeholder="Postcode">
+            </label>
+            <label>
+                Plaats
+                <input 
+                    class="place" 
+                    type="text"
+                    placeholder="Plaats">
+            </label>
+        </div>
+    </div>
     <label>
         KvK
         <input 
