@@ -1,0 +1,9 @@
+<label>
+    {% include patterns/i18n id="label_administrator" %}   
+    <input 
+        class="pat-autosuggest users"
+        data-pat-autosuggest="words: {% for item in site.data.personae %}{% assign this_persona = item[1] %}{{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;{% if forloop.last %}{% else %},{% endif %}{% endfor %}; allow-new-words: false"
+        type="text" 
+        placeholder="Selecteer gebruikers" 
+        name="users">
+</label>
