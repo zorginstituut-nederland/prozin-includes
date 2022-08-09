@@ -1,0 +1,84 @@
+<fieldset 
+    class="form-callout horizontal">
+    <legend 
+        class="title">Location #{1}</legend>
+    <input 
+        type="hidden" 
+        name="index_#{1}">
+    <p 
+        class="functions">
+        <a 
+            class="icon-trash icon remove-clone" 
+            title="Verwijder deze vestiging.">Verwijderen</a>
+    </p>
+    <label>
+        Locatienaam
+        <input 
+            name="location_name_#{1}"
+            class="pat-autofocus" 
+            value="{{ item.name }}"
+            type="text">
+    </label>
+    <div 
+        class="group">
+        <legend>Address</legend>
+        <div 
+            class="field-cluster layout-address-line-nl"> 
+            <label
+                class="street">
+                Straatnaam
+                <input 
+                    type="text" 
+                    name="location_street_#{1}"
+                    placeholder="Straatnaam">
+            </label>
+            <label
+                class="house-number">
+                Huisnummer
+                <input 
+                    placeholder="Nummer" 
+                    type="location_number_#{1}" 
+                    name="house-number">
+            </label>
+            <label
+                class="house-number-suffix">
+                Toevoeging
+                <input 
+                    placeholder="Toev." 
+                    type="text" 
+                    name="location_suffix_#{1}">
+            </label>
+        </div>
+    </div>
+    <div 
+        class="group">
+        <div 
+            class="field-cluster layout-postal-code-place-line-nl"> 
+            <label>
+                Postcode
+                <input 
+                    class="postal-code" 
+                    type="text" 
+                    name="location_postal_code_#{1}"
+                    maxlength="7"
+                    placeholder="Postcode">
+            </label>
+            <label>
+                Plaats
+                <input 
+                    class="place" 
+                    type="text"
+                    name="location_place_#{1}" 
+                    placeholder="Plaats">
+            </label>
+        </div>
+    </div>
+    <label>
+        Vestigingsnummer
+        <input 
+            name="location-number_#{1}" 
+            value="{{ item.number }}"
+            type="number" 
+            maxlength="12">
+    </label>
+</fieldset>

@@ -1,0 +1,32 @@
+<section 
+    class="swim-lane" 
+    id="swim-lane-site-navigation-illustrated">
+    <div 
+        class="container">
+        <h2 
+            class="assistive">
+            {{ site.data.ui.title_main_menu[site.lang] }}
+        </h2>
+        <ul 
+            class="nav-tiles-illustrated count-{{ page.nav.size }}">
+            {% for item in page.nav %}
+                <li 
+                    class="item">
+                    <a 
+                        href="{{ item.url }}" 
+                        data-pat-inject="history: record" 
+                        class="pat-inject follow icon-{{ item.icon }}">
+                        <h3 
+                            class="item-title">
+                            {{ site.data.ui[item.name][site.lang] }}
+                        </h3>
+                        <p 
+                            class="byline">
+                            {{ site.data.ui[item.description][site.lang] }}
+                        </p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

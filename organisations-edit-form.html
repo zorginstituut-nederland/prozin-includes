@@ -1,5 +1,5 @@
 <fieldset 
-    class="form-panel horizontal pat-inject pat-subform pat-autosubmit"
+    class="horizontal pat-inject pat-subform"
     data-pat-inject="">
     {% assign organisations = site.data.organisations | sort: 'name' %}
     <label>
@@ -20,10 +20,6 @@
                 name="" />
         {% endif %}
     </label>
-</fieldset>
-<fieldset 
-    id="org-info" 
-    class="form-panel horizontal">
     <label>
         Type
         <select
@@ -43,6 +39,90 @@
                 value="zorginstelling">Zorginstelling</option>
         </select>
     </label>
+    <div 
+        class="group">
+        <legend>Address</legend>
+        <div 
+            class="field-cluster layout-address-line-nl"> 
+            <label
+                class="street">
+                Straatnaam
+                <input 
+                    type="text" 
+                    name="street"
+                    placeholder="Straatnaam">
+            </label>
+            <label
+                class="house-number">
+                Huisnummer
+                <input 
+                    placeholder="Nummer" 
+                    type="number" 
+                    name="house-number">
+            </label>
+            <label
+                class="house-number-suffix">
+                Toevoeging
+                <input 
+                    placeholder="Toev." 
+                    type="text" 
+                    name="suffix">
+            </label>
+        </div>
+    </div>
+    <div 
+        class="group">
+        <div 
+            class="field-cluster layout-postal-code-place-line-nl"> 
+            <label>
+                Postcode
+                <input 
+                    class="postal-code" 
+                    type="text" 
+                    maxlength="7"
+                    placeholder="Postcode">
+            </label>
+            <label>
+                Plaats
+                <input 
+                    class="place" 
+                    type="text"
+                    placeholder="Plaats">
+            </label>
+        </div>
+    </div>
+    <label>
+        KvK
+        <input 
+            type="number" 
+            maxlength="8">
+    </label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
+        AGB-code
+        <input 
+            value="{{ item.abg }}"
+            type="number" 
+            name="">
+    </label>
+    {% if page.organisation_type == 'Beheerorganisatie' %}
+        <!-- <label
+            class="pat-depends"
+            data-pat-depends="condition: organisation_type=consulent; transition: slide">
+            Voor fabrikant
+            <select>
+                <option>
+                    Geen fabrikant geselecteerd
+                </option> 
+                {% for item in site.data.organisations %}
+                    {% if item.type == 'Fabrikant' %}
+                        <option>{{ item.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </label> -->
+    {% endif %}
     <label
         class="pat-depends"
         data-pat-depends="condition: organisation_type=fabrikant; transition: slide">
@@ -64,72 +144,32 @@
             </optgroup>
         </select>
     </label>
-    {% if page.organisation_type == 'Beheerorganisatie' %}
-        <!-- <label
-            class="pat-depends"
-            data-pat-depends="condition: organisation_type=consulent; transition: slide">
-            Voor fabrikant
-            <select>
-                <option>
-                    Geen fabrikant geselecteerd
-                </option> 
-                {% for item in site.data.organisations %}
-                    {% if item.type == 'Fabrikant' %}
-                        <option>{{ item.name }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </label> -->
-    {% endif %}
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        Locatienaam
-        <input 
-            type="text">
-    </label>
-    <label>
-        Adres
-        <input 
-            type="text" 
-            name="">
-    </label>
-    <label>
-        Postcode
-        <input 
-            type="text" 
-            maxlength="7">
-    </label>
-    <label>
-        Plaats
-        <input 
-            type="text">
-    </label>
-    <label>
-        KvK
-        <input 
-            type="number" 
-            maxlength="8">
-    </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        Vestigingsnummer
-        <input 
-            type="number" 
-            maxlength="12">
-    </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        AGB-code
-        <input 
-            type="number" 
-            name="">
-    </label>
 </fieldset>
 <fieldset 
-    class="form-panel horizontal">
+    id="locations" 
+    class="">
+    <div 
+        class="locations pat-clone horizontal"
+        data-pat-clone="template: #location-template; trigger-element: #clone-location; remove-confirmation: Weet u zeker dat u deze vestiging wilt verwijderen?">
+        {% for item in page.locations %}
+            {% include prozin/organisation-location.html %}
+        {% endfor %}  
+    </div>
+    <template 
+        id="location-template">
+        {% include prozin/organisation-location.html %}
+    </template>
+    <div
+        class="button-bar group cloning">
+        <button
+            class="add-clone pat-button icon-plus-circle"
+            id="clone-location"
+            title="Voeg een vestiging toe"
+            type="button">Vestiging</button>
+    </div>
+</fieldset>
+<fieldset 
+    class="horizontal">
     <label>
         Contactpersoon
         <select>

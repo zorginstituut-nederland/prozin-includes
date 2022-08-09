@@ -31,3 +31,13 @@
 <meta 
 	name="theme-color" 
 	content="#777c00">
+{% if page.image %}
+	<meta 
+		content="{{ page.image }}" 
+		property="og:image">
+{% endif %}
+{% if page.avatar %}
+	<meta 
+		content="{{ page.avatar }}" 
+		property="og:image">
+{% endif %}
