@@ -28,15 +28,10 @@
             disabled
             {% endunless %}>
             <option>Niet gedefinieerd</option>
-            <option>Beheerorganisatie</option>
-            <option
-                value="consulent">Consulent</option>
-            <option
-                value="fabrikant">Fabrikant</option>
-            <option>Gegevensmakelaar</option>
-            <option>Werkgroep</option>
-            <option
-                value="zorginstelling">Zorginstelling</option>
+            {% for item in site.data.organisation-types %}
+                <option
+                    value="{{ item.name | slugify }}">{{ item.name }}</option>
+            {% endfor %}
         </select>
     </label>
     <div 
@@ -91,7 +86,9 @@
             </label>
         </div>
     </div>
-    <label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=zorginstelling or organisation_type=gegevens-makelaar or organisation_type=fabrikant or organisation_type=zbo or organisation_type=zorgverzekeraar; transition: slide">
         KvK
         <input 
             type="number" 
