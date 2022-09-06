@@ -1,0 +1,14 @@
+<label>
+    {% include patterns/i18n id="label_administrators" %}   
+    <input 
+        class="pat-autosuggest users"
+        data-pat-autosuggest='
+            allow-new-words: false; 
+            ajax-search-index: text; ajax-url: /feedback/users.json; 
+            prefill-json:  {"astrid-arend": "Astrid Arend", "louise-labouchère": "Louise Labouchère", "riwka-rubinstein": "Riwka Rubinstein"}; 
+            selection-classes: {"Riwka Rubinstein": ["disabled"]}'
+        type="text" 
+        placeholder="Selecteer gebruikers" 
+        name="administrators" />
+</label>
+
