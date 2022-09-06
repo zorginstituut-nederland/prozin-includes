@@ -28,15 +28,30 @@
             disabled
             {% endunless %}>
             <option>Niet gedefinieerd</option>
-            <option>Beheerorganisatie</option>
             <option
+                {% unless site.organisation-types contains 'Beheerorganisatie' %}disabled{% endunless %}>Beheerorganisatie</option>
+            <option
+                {% unless site.organisation-types contains 'Consulent' %}disabled{% endunless %}
                 value="consulent">Consulent</option>
             <option
+                {% unless site.organisation-types contains 'Fabrikant' %}disabled{% endunless %}
                 value="fabrikant">Fabrikant</option>
-            <option>Gegevensmakelaar</option>
-            <option>Werkgroep</option>
             <option
+                {% unless site.organisation-types contains 'Gegevensmakelaar' %}disabled{% endunless %}>Gegevensmakelaar</option>
+            <option
+                {% unless site.organisation-types contains 'Ministerie' %}disabled{% endunless %}
+                value="zorginstelling">Ministerie</option>
+            <option
+                {% unless site.organisation-types contains 'Consulent' %}disabled{% endunless %}>Werkgroep</option>
+            <option
+                {% unless site.organisation-types contains 'ZBO' %}disabled{% endunless %}
+                value="zorginstelling">ZBO</option>
+            <option
+                {% unless site.organisation-types contains 'Zorginstelling' %}disabled{% endunless %}
                 value="zorginstelling">Zorginstelling</option>
+            <option
+                {% unless site.organisation-types contains 'Zorgverzekeraar' %}disabled{% endunless %}
+                value="zorginstelling">Zorgverzekeraar</option>
         </select>
     </label>
     <div 
