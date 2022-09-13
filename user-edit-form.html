@@ -1,27 +1,94 @@
-<fieldset 
-    class="form-panel horizontal">
-    <label>
+<fieldset
+    data-pat-inject="
+        source: #user-edit-first-name;
+        target: #user-edit-first-name;
+          &&
+        source: #user-edit-last-name;
+        target: #user-edit-last-name;
+          &&
+        source: #user-edit-organisation;
+        target: #user-edit-organisation;"
+    class="pat-subform pat-inject form-panel horizontal">
+    {% if include.role == 'Owner' %}
+        <label
+            class="pat-autosubmit"> 
+            E-mail
+            <input 
+                class="pat-autosuggest"
+                required
+                autofocus 
+                name="email"
+                type="text"
+                data-pat-autosuggest='
+                    allow-new-words: true; 
+                    maximum-selection-size: 1; 
+                    ajax-search-index: text; 
+                    ajax-url: /feedback/users.json;'/>
+            <button
+                hidden
+                formaction="/dialogues/users/edit-user-found"
+                type="submit">Verstuur</button>
+        </label>
+    {% endif %}
+    <label
+        id="user-edit-first-name">
         Voornaam
         <input 
+            {% if include.existing %}
+                disabled
+                value="Daniël E. Cornelis"
+            {% endif %}
             required 
-            class="pat-autofocus" 
+            {% if include.role == 'Owner' %}class="pat-autofocus"{% endif %}
             type="text" 
             name="first_name">
     </label>
-    <label>
+    <label
+        id="user-edit-last-name">
         Achternaam
         <input 
+            {% if include.existing %}
+                disabled
+                value="Kolbach"
+            {% endif %}
             required 
             type="text" 
             name="family_name">
     </label>
-    <label>
-        E-mail
-        <input 
-            required 
-            type="email" 
-            name="email">
-    </label>
+    {% unless include.role == 'Owner' %}
+        <label>
+            E-mail
+            <input 
+                required 
+                type="email" 
+                name="email">
+        </label>
+    {% endunless %}
+    {% if include.role == 'Owner' %}
+        <label
+            id="user-edit-organisation">
+            Organisatie
+            <select
+                {% if include.existing %}
+                    disabled
+                {% endif %}>
+                <option>
+                    Geen organisatie geselecteerd
+                </option>
+                {% if include.existing %}
+                    <option
+                        selected>
+                        Cornae
+                    </option>
+                {% endif %}>
+                {% for item in site.data.organisations %}
+                    <option>
+                        {{ item.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+    {% endif %}
     <fieldset
         class="pat-checklist radio">  
         <legend>Rol</legend>
@@ -39,19 +106,4 @@
             Lid
         </label>
     </fieldset>
-    {% if include.role == 'Owner' %}
-        <label>
-            Organisatie
-            <select>
-                <option>
-                    Geen organisatie geselecteerd
-                </option>
-                {% for item in site.data.organisations %}
-                    <option>
-                        {{ item.name }}
-                    </option>
-                {% endfor %}
-            </select>
-        </label>
-    {% endif %}
 </fieldset>
