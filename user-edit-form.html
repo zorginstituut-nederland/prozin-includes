@@ -65,28 +65,16 @@
         </label>
     {% endunless %}
     {% if include.role == 'Owner' %}
-        <label
-            id="user-edit-organisation">
-            Organisatie
-            <select
-                {% if include.existing %}
-                    disabled
-                {% endif %}>
-                <option>
-                    Geen organisatie geselecteerd
-                </option>
-                {% if include.existing %}
-                    <option
-                        selected>
-                        Cornae
-                    </option>
-                {% endif %}>
-                {% for item in site.data.organisations %}
-                    <option>
-                        {{ item.name }}
-                    </option>
-                {% endfor %}
-            </select>
+        <label>
+            {% include patterns/i18n id="label_organisation" %}   
+            <input 
+                class="pat-autosuggest organisations"
+                data-pat-autosuggest='
+                    allow-new-words: true; 
+                    ajax-search-index: text; 
+                    ajax-url: /dialogues/organisations/organisations.json;'
+                type="text" 
+                name="administrators" />
         </label>
     {% endif %}
     <fieldset
