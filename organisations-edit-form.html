@@ -169,13 +169,15 @@
         class="locations pat-clone horizontal"
         data-pat-clone="template: #location-template; trigger-element: #clone-location; remove-confirmation: Weet u zeker dat u deze vestiging wilt verwijderen?">
         {% for item in page.locations %}
-            {% include prozin/organisation-location.html %}
+            {% include prozin/organisation-location.html
+                counter="1" %}
         {% endfor %}  
+        <template 
+            id="location-template">
+            {% include prozin/organisation-location.html
+                counter="#{1}" %}
+        </template>
     </div>
-    <template 
-        id="location-template">
-        {% include prozin/organisation-location.html %}
-    </template>
     <div
         class="button-bar group cloning">
         <button

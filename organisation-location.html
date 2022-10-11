@@ -1,7 +1,7 @@
 <fieldset 
-    class="form-callout horizontal">
+    class="clone form-callout horizontal">
     <legend 
-        class="title">Location #{1}</legend>
+        class="title">Location {{ include.counter }}</legend>
     <input 
         type="hidden" 
         name="index_#{1}">
@@ -14,7 +14,7 @@
     <label>
         Locatienaam
         <input 
-            name="location_name_#{1}"
+            name="location_name_{{ include.counter }}"
             class="pat-autofocus" 
             value="{{ item.name }}"
             type="text">
@@ -28,16 +28,18 @@
                 class="street">
                 Straatnaam
                 <input 
+                    value="{{ item.street }}"
                     type="text" 
-                    name="location_street_#{1}"
+                    name="location_street_{{ include.counter }}"
                     placeholder="Straatnaam">
             </label>
             <label
                 class="house-number">
                 Huisnummer
                 <input 
+                    value="{{ item.house_number }}"
                     placeholder="Nummer" 
-                    type="location_number_#{1}" 
+                    type="location_number_{{ include.counter }}" 
                     name="house-number">
             </label>
             <label
@@ -46,7 +48,7 @@
                 <input 
                     placeholder="Toev." 
                     type="text" 
-                    name="location_suffix_#{1}">
+                    name="location_suffix_{{ include.counter }}">
             </label>
         </div>
     </div>
@@ -58,17 +60,19 @@
                 Postcode
                 <input 
                     class="postal-code" 
+                    value="{{ item.postal_code }}"
                     type="text" 
-                    name="location_postal_code_#{1}"
+                    name="location_postal_code_{{ include.counter }}"
                     maxlength="7"
                     placeholder="Postcode">
             </label>
             <label>
                 Plaats
                 <input 
+                    value="{{ item.place }}"
                     class="place" 
                     type="text"
-                    name="location_place_#{1}" 
+                    name="location_place_{{ include.counter }}" 
                     placeholder="Plaats">
             </label>
         </div>
@@ -76,7 +80,7 @@
     <label>
         Vestigingsnummer
         <input 
-            name="location-number_#{1}" 
+            name="location-number_{{ include.counter }}" 
             value="{{ item.number }}"
             type="number" 
             maxlength="12">
