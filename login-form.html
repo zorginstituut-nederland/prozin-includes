@@ -1,30 +1,41 @@
-<form action="/" class="pat-form">
+<form 
+	action="/dialogues/login/2fa" 
+	class="pat-form pat-inject">
 	{% if include.error %}
-		<div class="pat-message error">
+		<div 
+			class="pat-message error">
 			<p>
 				{{ site.data.prozin.ui[include.error][site.lang] }}
 			</p>
 		</div>
 	{% endif %}
-	<p class="meta req">
+	<p 
+		class="meta req">
 		<strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.lang] }}
 	</p>
-	<fieldset class="form-panel">
-		<fieldset class="horizontal">
+	<fieldset 
+		class="form-panel">
+		<fieldset 
+			class="horizontal">
 			<label>
-				{{ site.data.prozin.ui.label_name[site.lang] }} <input class="pat-autofocus" 
-				  											           type="text" 
-				  											           name="name" />
+				{{ site.data.prozin.ui.label_name[site.lang] }} 
+				<input 
+					class="pat-autofocus" 
+				  	type="text" 
+				  	name="name" />
 			</label>
 			<label>
-				{{ site.data.prozin.ui.label_password[site.lang] }} <input 
-				  											           type="password" 
-				  											           name="password" />
+				{{ site.data.prozin.ui.label_password[site.lang] }} 
+				<input 
+				  	type="password" 
+				  	name="password" />
 			</label>
 		</fieldset>
-		<fieldset class="button-bar">
-			<button class="default pat-button" 
-					type="submit">{{ site.data.prozin.ui.label_log_in[site.lang] }}</button>
+		<fieldset 
+			class="button-bar">
+			<button 
+				class="default pat-button" 
+				type="submit">{{ site.data.prozin.ui.label_log_in[site.lang] }}</button>
 		</fieldset>
 	</fieldset>
 </form>
