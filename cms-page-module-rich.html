@@ -1,0 +1,22 @@
+<div
+    class="page-module type-body-text-segment pat-collapsible {{ include.state }}">
+    <div
+        class="page-module-title buttoned">
+        <h2
+            class="title-segment">
+            {{ include.title }}
+        </h2>
+    </div>
+    <article
+        class="body-text pat-rich">
+        {% capture this_content %}{{ page.content | markdownify }}{% endcapture %}
+        {% include
+            patterns/rich-editor.html
+            placeholder="Your content goes here…"
+            autofocus=false
+            toolbar="editor-toolbar"
+            image-panel="#pat-modal.image-picker"
+            link-panel="#pat-modal.panel-hyperlink"
+            content=this_content %}
+    </article>
+</div>
