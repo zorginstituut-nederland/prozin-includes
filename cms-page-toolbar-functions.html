@@ -1,0 +1,31 @@
+{% unless page.state == 'new' or page.url contains 'copy' %}
+    <a 
+        data-pat-depends="condition: version=version" 
+        href="/drafts/medicine-example-edit" 
+        class="pat-button icon-update pat-depends edit" 
+        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_revision[site.lang] }}</a>
+{% endunless %}
+
+{% unless page.url contains 'copy' %}
+    <a 
+        data-pat-depends="condition: version=draft"  
+        {% if site.data.personae[site.persona].role == 'Administrator' %}href="/feedback/publish-confirm.html#document-content"{% endif %}
+        class="pat-button pat-depends edit {% if site.data.personae[site.persona].role == 'administrator' %}pat-modal{% endif %} icon-8000-binnenlandse-zaken-en-koninkrijksrelaties" 
+        title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
+{% endunless %}
+
+{% if page.locked %}
+    <a 
+        data-pat-depends="condition: version=draft" 
+        data-pat-tooltip="class: rich info; source: ajax; position-list: tm;" 
+        href="/drafts/medicine-example-edit-locked#document-alert-bar" 
+        class="pat-button pat-depends pat-tooltip locked edit icon-pencil" 
+        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
+{% else %}
+    <a 
+        {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft"{% endunless %} 
+        {% if site.data.personae[site.persona].role == 'Administrator' %}href="/drafts/medicine-example-edit"{% endif %} 
+        class="icon {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
+        data-pat-inject="source: body; target: body"
+        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
+{% endif %}
