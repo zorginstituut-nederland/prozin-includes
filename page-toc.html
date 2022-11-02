@@ -4,8 +4,6 @@
         {% for section in page.sections %}   
             <li>
                 <a 
-                	class="pat-scroll" 
-                	data-pat-scroll="selector: section-#{{ section.name | slugify }}" 
                 	href="#section-{{ section.name | slugify }}">{{ section.name }}</a>
             </li>
         {% endfor %}
