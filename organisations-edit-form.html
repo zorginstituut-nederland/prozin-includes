@@ -31,6 +31,12 @@
             <option
                 {% unless site.organisation_types contains 'Beheerorganisatie' %}disabled{% endunless %}>Beheerorganisatie</option>
             <option
+                {% unless site.organisation_types contains 'Beroepsorganisatie' %}disabled{% endunless %}
+                value="beo">Beroepsorganisatie</option>
+            <option
+                {% unless site.organisation_types contains 'Branche-organisatie' %}disabled{% endunless %}
+                value="bro">Branche-organisatie</option>
+            <option
                 {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}
                 value="consulent">Consulent</option>
             <option
@@ -43,6 +49,9 @@
                 value="zorginstelling">Ministerie</option>
             <option
                 {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}>Werkgroep</option>
+            <option
+                {% unless site.organisation_types contains 'Patiëntenorganisatie' %}disabled{% endunless %}
+                value="po">Patiëntenorganisatie</option>
             <option
                 {% unless site.organisation_types contains 'ZBO' %}disabled{% endunless %}
                 value="zorginstelling">ZBO</option>
@@ -122,6 +131,12 @@
             value="{{ item.abg }}"
             type="number" 
             name="">
+    </label>
+    <label>
+        Website
+        <input 
+            class="website" 
+            type="url">
     </label>
     {% if page.organisation_type == 'Beheerorganisatie' %}
         <!-- <label
