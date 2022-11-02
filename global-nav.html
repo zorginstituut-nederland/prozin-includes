@@ -170,16 +170,25 @@
         {% if site.search_type == 'sheet' %}
           {% include global-search-fk.html %}
         {% else %}
-          <form accept-charset="UTF-8" action="/zoekresultaten" id="quick-search-form" method="get" name="quick-search-form" class="pat-form pat-inject" data-pat-inject="history: record; scroll: #main">
-              <label for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
-              <input name="zoekterm" 
-                     id="global-search-lemma" 
-                     title="{{ site.search_box_placeholder[site.lang] }}" 
-                     placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
-                     type="text" 
-                     value="" />
-              <button type="submit">{{ site.data.ui.label_global_nav_search[site.lang] }}</button>
-          </form>
+            <form 
+                accept-charset="UTF-8" 
+                action="/zoekresultaten" id="quick-search-form" 
+                method="get" 
+                name="quick-search-form" 
+                class="pat-form pat-inject" 
+                data-pat-inject="history: record; scroll: #main">
+                    <label 
+                        for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
+                    <input 
+                        name="zoekterm" 
+                        id="global-search-lemma" 
+                        title="{{ site.search_box_placeholder[site.lang] }}" 
+                        placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
+                        type="text" 
+                        value="" />
+                    <button 
+                        type="submit">{{ site.data.ui.label_global_nav_search[site.lang] }}</button>
+              </form>
         {% endif %}
     </div>
 </div>
