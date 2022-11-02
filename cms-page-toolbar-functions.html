@@ -1,12 +1,10 @@
-{% unless page.state == 'new' or page.url contains 'copy' %}
+{% if page.state == 'published' %}
     <a 
-        data-pat-depends="condition: version=version" 
+        data-pat-depends="condition: version=latest" 
         href="/dialogues/cms/edit" 
-        class="pat-button icon-update pat-depends edit" 
+        class="pat-button pat-inject icon-update pat-depends edit" 
         title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_revision[site.lang] }}</a>
-{% endunless %}
-
-{% unless page.url contains 'copy' %}
+{% else %}
     <a 
         data-pat-depends="condition: version=draft"  
         {% if site.data.personae[site.persona].role == 'Administrator' %}
@@ -14,7 +12,7 @@
         {% endif %}
         class="pat-button pat-depends edit {% if site.data.personae[site.persona].role == 'administrator' %}pat-modal{% endif %} icon-8000-binnenlandse-zaken-en-koninkrijksrelaties" 
         title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
-{% endunless %}
+{% endif %}
 
 {% if page.locked %}
     <a 
