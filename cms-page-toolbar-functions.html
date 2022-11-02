@@ -3,14 +3,15 @@
         data-pat-depends="condition: version=latest" 
         href="/dialogues/cms/edit" 
         class="pat-button pat-inject icon-update pat-depends edit" 
-        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_revision[site.lang] }}</a>
+        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.lang] }}</a>
 {% else %}
     <a 
         data-pat-depends="condition: version=draft"  
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="/dialogues/cms/publish-confirm.html#document-content"
         {% endif %}
-        class="pat-button pat-depends edit {% if site.data.personae[site.persona].role == 'administrator' %}pat-modal{% endif %} icon-8000-binnenlandse-zaken-en-koninkrijksrelaties" 
+        class="pat-button pat-depends edit pat-modal icon-8000-binnenlandse-zaken-en-koninkrijksrelaties" 
+        data-pat-modal="class: small panel"
         title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
 {% endif %}
 
