@@ -1,0 +1,87 @@
+<div 
+    class="pat-toolbar pat-bumper"
+    id="cms-page-toolbar-edit">
+
+    <div 
+        id="cms-toolbar-edit-functions-area"
+        class="toolbar-functions-area">
+        <div
+            class="toolbar-section editor"
+            id="cms-page-toolbar-editor"> 
+            {% include patterns/rich-editor-toolbar.html
+                allow=include.allow
+                id="editor-toolbar" %}
+        </div>
+        <div 
+            class="toolbar-section quick-functions"
+            id="cms-toolbar-edit-quick-functions">
+
+            <a 
+                class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                href="#id-{{ item.title | slugify }}" 
+                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+            <div
+                hidden
+                id="id-{{ item.title | slugify }}">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            href="{{ page.url }}-history#document-content" 
+                            class="icon-history pat-modal close-panel" 
+                            data-pat-modal="class: small panel">{{ site.data.prozin.ui.label_history[site.lang] }}</a>
+                    </li>
+                    <li>
+                        <a 
+                            href="/feedback/delete-content-object#document-content" 
+                            data-pat-modal="class: small panel"
+                            class="icon-trash pat-modal close-panel">{% include patterns/i18n id="patterns.label_delete_imp" %}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <a  
+                href="" 
+                class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+
+            <div 
+                class="pat-collapsible context-menu save-button closed align-right" 
+                data-pat-collapsible="close-trigger: #save-document,.close-menu-trigger" 
+                id="filters-menu">
+                <a 
+                    href="#save-message" 
+                    data-pat-forward="selector: #save-message" 
+                    class="save label menu-trigger pat-forward pat-button default">{{ site.data.prozin.ui.label_save[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
+                <p 
+                    class="close-menu close-menu-trigger">Sluit</p>
+                <fieldset 
+                    class="vertical">
+                    <label>
+                        <textarea 
+                            id="save-message" 
+                            rows="4" 
+                            class="pat-autofocus" 
+                            placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.lang] }}"></textarea>
+                    </label>
+                </fieldset>
+                <p 
+                    class="buttons">
+                    <button 
+                        class="pat-button default" 
+                        type="submit" 
+                        name="save_button"
+                        value="save_all"
+                        formaction="{{ page.url }}"
+                        id="save-document">{{ site.data.prozin.ui.label_save[site.lang] }}</button>
+                    <button 
+                        class="pat-button" 
+                        type="submit" 
+                        name="save_button"
+                        value="save_all"
+                        formaction="{{ page.save_and_quit }}">{{ site.data.prozin.ui.label_save_and_close[site.lang] }}</button>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
