@@ -1,0 +1,41 @@
+<div
+    class="cms-page-module type-body-text-segment pat-collapsible {{ include.state }}">
+    <div
+        class="page-module-title buttoned">
+        <h2
+            class="title-segment">
+            {% include patterns/i18n id="label_see_also" %}
+        </h2>
+    </div>
+    <fieldset 
+        class="vertical">
+        <label>
+            Interne links
+            <input 
+            class="pat-autosuggest"
+            required
+            value="/nieuws/the-anchorman" 
+            name="internal-links"
+            type="text"
+            data-pat-autosuggest='
+                ajax-search-index: text; 
+                ajax-url: /feedback/internal-links.json;'/>
+        </label>   
+        <fieldset
+            class="group">
+            <legend>External links</legend>
+            <input 
+                placeholder="Title" 
+                type="text" 
+                name="title">
+            <input 
+                placeholder="URL" 
+                type="url" 
+                name="">
+            <textarea
+                placeholder="Description"></textarea>
+            <button 
+                class="pat-button">Add link</button>
+        </fieldset>    
+    </fieldset>
+</div>
