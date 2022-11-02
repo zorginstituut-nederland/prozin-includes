@@ -14,7 +14,7 @@
             <ul class="link-list">
                 {% for item in item.items %}
                     <li>
-                        <a href="{{ item.url }}" class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" {% unless item.type == 'link-external' %}data-pat-inject="history: record"{% endunless %} {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
+                        <a href="{{ item.url }}" class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" {% unless item.type == 'link-external' %}data-pat-inject="history: record; scroll: #main"{% endunless %} {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
                     </li>  
                 {% endfor %}
             </ul>
@@ -26,7 +26,7 @@
             <ul class="link-list">
                 {% for tag in page.tags %}
                     <li>
-                        <a href="/tags/{{ tag | slugify }}" class="type-tag pat-inject" data-pat-inject="history: record">{{ tag }}</a>
+                        <a href="/tags/{{ tag | slugify }}" class="type-tag pat-inject" data-pat-inject="history: record; scroll: #main">{{ tag }}</a>
                     </li>  
                 {% endfor %}
             </ul>

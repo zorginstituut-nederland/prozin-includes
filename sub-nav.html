@@ -16,7 +16,7 @@
                         <li>
                             <a 
                                 title="{{ item.description }}" 
-                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record" 
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
                                 href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
                         </li>
                     {% endfor %}

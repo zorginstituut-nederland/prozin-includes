@@ -28,7 +28,7 @@
 			{% for group in page.medicine_groups %}
 				<span 
 					class="byline-item medicine-groups pat-inject"
-					data-pat-inject="history: record">
+					data-pat-inject="history: record; scroll: #main">
 		            <a 
 		            	href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %},{% endif %}
 	            </span>

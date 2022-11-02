@@ -9,7 +9,10 @@
             </h2>
             <ul class="links">
                 <li>
-                    <a href="/contact">Contact</a>
+                    <a 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main"
+                        href="/contact">Contact</a>
                 </li>
                 {% capture this_scope %}{{ page.service }}{% endcapture %}
                 {% for item in site[this_scope] %}
@@ -17,7 +20,7 @@
                         <li>
                             <a href="{{ item.url }}"
                                class="pat-inject"
-                               data-pat-inject="history: record">{{ item.title }}</a>
+                               data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -25,7 +28,7 @@
                     <li>
                         <a href="{{ item.url }}"
                            class="pat-inject"
-                           data-pat-inject="history: record">{{ item.title }}</a>
+                           data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>
                     </li>
                 {% endfor %}
                 {% for item in site.help %}
@@ -33,14 +36,14 @@
                         <li>
                             <a href="{{ item.url }}"
                                class="pat-inject"
-                               data-pat-inject="history: record">{{ item.title }}</a>
+                               data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
                 <li>
                     <a href="/demo"
                        class="pat-inject"
-                       data-pat-inject="history: record">Demo</a>
+                       data-pat-inject="history: record; scroll: #main">Demo</a>
                 </li>
             </ul>
         </div>
