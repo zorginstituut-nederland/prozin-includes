@@ -70,10 +70,13 @@
                      data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_change_password[site.lang] }}</a>
       		</li>
       		<li>
-      			<form action="/login">
-      				<button type="submit" 
-                         class="icon-exit pat-inject" 
-                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_log_out[site.lang] }}</button>
+      			<form 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; scroll: #main"
+                    action="/login">
+      				<button 
+                        type="submit" 
+                        class="icon-exit" >{{ site.data.prozin.ui.label_log_out[site.lang] }}</button>
       			</form>
       		</li>
       	</ul>
