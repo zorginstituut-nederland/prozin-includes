@@ -1,0 +1,40 @@
+<div 
+    class="swim-lane" 
+    id="swim-lane-secondary-tasks">
+    <div 
+        class="container">
+        <h2
+            class="lane-title">
+            {{ site.data.prozin.ui[item.title][site.lang] }}
+        </h2>
+        <ul 
+            class="
+                task-list 
+                {% if item.tasks.size == 2 %}
+                    col-2
+                {% endif %}
+                ">  
+            {% for task in item.tasks %}
+                <li>
+                    <a 
+                        href="{{ item.url }}" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">
+                        <h3 
+                            class="item-title">
+                            {{ task.title }}
+                        </h3>
+                        <p
+                            class="byline">
+                            {% if task.summary %}
+                                {{ task.summary | truncate: 100 }}
+                            {% else %}
+                                Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
+                            {% endif %}
+                        </p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
