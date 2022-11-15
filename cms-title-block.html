@@ -12,4 +12,17 @@
             class="doc-title pat-content-mirror"
             data-pat-content-mirror="target: #document-title">{% if page.title %}{{ page.title }}{% endif %}</textarea>
     </hgroup>
+    <div
+        class="introduction"
+        id="page-intro">
+        <p
+            id="document-summary">{% if page.summary %}{{ page.summary }}{% else %}&nbsp;{% endif %}</p>
+        <textarea
+            required
+            type="text"
+            value="{{ page.summary }}"
+            placeholder="Introductietekst"
+            class="doc-summary pat-content-mirror"
+            data-pat-content-mirror="target: #document-summary">{% if page.summary %}{{ page.summary }}{% endif %}</textarea>
+    </div>
 </fieldset>
