@@ -40,10 +40,19 @@
             {% endif %}
 
             {% if layout.parent %}
-                <a 
-                    href="/{{ layout.parent | slugify }}"
-                    class="pat-inject" 
-                    data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
+                {% if page.parent == 'Beeldbank' or layout.parent == 'Beeldbank' %}
+                    <a href="/beheer" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                    <a href="/dialogues/image-bank/" 
+                       class="pat-inject" 
+                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_image_bank[site.lang] }}</a>
+                {% else %}
+                    <a 
+                        href="/{{ layout.parent | slugify }}"
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
+                {% endif %}
             {% elsif page.parent %}
                 {% if page.parent == 'Help' %}
                     <a href="/help" 
