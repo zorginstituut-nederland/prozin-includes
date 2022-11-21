@@ -1,0 +1,15 @@
+<div 
+    class="page-module type-video">
+    {% if include.title %}
+        <h2 
+            class="page-module-title">
+            {{ include.title }}
+        </h2>
+    {% endif %}
+    <figure>    
+        <img 
+            src="{{ include.image }}"
+            alt="{{ include.alt }}" />
+        <figcaption>{{ include.caption }}</figcaption>
+    </figure>
+</div>
