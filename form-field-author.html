@@ -1,0 +1,18 @@
+<label>
+    {% include patterns/i18n id="label_author" %}
+    <input 
+        class="pat-autosuggest"
+        required
+        value="Riwka Rubinstein" 
+        name="email"
+        type="text"
+        data-pat-autosuggest='
+            allow-new-words: true; 
+            maximum-selection-size: 1; 
+            ajax-search-index: text; 
+            ajax-url: /feedback/users.json;'/>
+    <!-- <button
+        hidden
+        formaction="/dialogues/users/edit-user-found"
+        type="submit">Verstuur</button> -->
+</label>

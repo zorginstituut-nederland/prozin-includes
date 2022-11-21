@@ -1,17 +1,6 @@
 <fieldset 
     class="pat-rich">
-    <hgroup
-        id="title-block">
-        <h1
-            id="document-title">{% if page.title %}{{ page.title }}{% else %}&nbsp;{% endif %}</h1>
-        <textarea
-            required
-            type="text"
-            value="{{ page.title }}"
-            placeholder="Titel"
-            class="doc-title pat-content-mirror"
-            data-pat-content-mirror="target: #document-title">{% if page.title %}{{ page.title }}{% endif %}</textarea>
-    </hgroup>
+    {% include prozin/cms-title-block-title.html %}
     <div
         class="introduction"
         id="page-intro">

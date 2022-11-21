@@ -1,0 +1,12 @@
+<hgroup
+    id="title-block">
+    <h1
+        id="document-title">{% if page.title %}{{ page.title }}{% else %}&nbsp;{% endif %}</h1>
+    <textarea
+        required
+        type="text"
+        value="{{ page.title }}"
+        placeholder="Titel"
+        class="doc-title pat-content-mirror"
+        data-pat-content-mirror="target: #document-title">{% if page.title %}{{ page.title }}{% endif %}</textarea>
+</hgroup>
