@@ -3,7 +3,7 @@
     <input 
         class="pat-autosuggest"
         required
-        value="Wettelijk verplicht, Begroot" 
+        value="{{ include.tags | default: 'Wettelijk verplicht, Begroot' }}" 
         name="email"
         type="text"
         data-pat-autosuggest='
