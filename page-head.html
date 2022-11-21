@@ -20,10 +20,10 @@
 				{% elsif page.type == 'mi' %}
 					<span 
 						class="byline-item">Meetinstrument</span>
-				{% elsif page.layout == 'image' %}
+				{% elsif page.layout == 'prozin/image' %}
 					<span 
 						class="byline-item">Afbeelding</span>
-				{% elsif page.layout == 'news-item' %}
+				{% elsif page.layout == 'prozin/news-item' %}
 					<span 
 						class="byline-item">Nieuwsbericht</span>
 				{% endif %}			
@@ -46,7 +46,11 @@
 				{% endif %}
 			{% endif %}
 			{% if include.byline contains 'pub-date' %}
-				<span class="byline-item"><time datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time></span>
+				<span 
+					class="byline-item">
+					<time 
+						datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" | default: '21 februari 2023' }}</time>
+				</span>
 			{% endif %}
 			{% if include.byline contains 'author' %}
 				{% if page.author %}
