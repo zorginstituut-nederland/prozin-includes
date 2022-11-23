@@ -40,9 +40,15 @@
                 </ul>
             </div>
 
-            <a  
-                href="" 
-                class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+            {% if page.url contains '-edit' %}
+                <a  
+                        href="{{ page.url | remove: '-edit' }}" 
+                        class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+            {% else %}
+                <a  
+                    href="{{ include.cancel }}" 
+                    class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+            {% endif %}
 
             <div 
                 class="pat-collapsible context-menu save-button closed align-right" 

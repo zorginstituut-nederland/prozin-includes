@@ -1,7 +1,7 @@
 {% if page.state == 'published' %}
     <a 
         data-pat-depends="condition: version=latest" 
-        href="/dialogues/cms/edit" 
+        href="{{ page.url }}-edit" 
         class="pat-button pat-inject icon-update pat-depends edit" 
         title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.lang] }}</a>
 {% else %}
@@ -26,7 +26,7 @@
     <a 
         {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft"{% endunless %} 
         {% if site.data.personae[site.persona].role == 'Administrator' %}
-            href="/dialogues/cms/edit"
+            href="{{ page.url }}-edit"
         {% endif %} 
         class="pat-button default icon-pencil {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
         data-pat-inject="source: body; target: body"
