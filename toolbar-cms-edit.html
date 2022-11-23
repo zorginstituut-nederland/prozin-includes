@@ -78,16 +78,20 @@
                         name="save_button"
                         value="save_all"
                         formaction="{{ page.url }}"
-                        id="save-document">{{ site.data.prozin.ui.label_save[site.lang] }}</button>
+                        id="save-document">{{ site.data.prozin.ui.label_save_imp[site.lang] }}</button>
                     <button 
                         class="pat-button" 
                         type="submit" 
                         name="save_button"
                         value="save_all"
-                        formaction="{{ page.save_and_quit }}">{{ site.data.prozin.ui.label_save_and_close[site.lang] }}</button>
+                        {% if page.url contains '-edit' %}
+                            formaction="{{ page.url | remove: '-edit' }}"
+                        {% else %}
+                            formaction="{{ include.cancel }}"
+                        {% endif %}>{{ site.data.prozin.ui.label_save_and_close[site.lang] }}</button>
                 </p>
             </div>
-
+            
         </div>
     </div>
 </div>

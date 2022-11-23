@@ -39,7 +39,7 @@
                 class="menu">
                 <li>
                     <a 
-                        href="#" 
+                        href="{{ item.url }}-edit" 
                         class="icon-edit pat-inject close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
                 </li>
                 {% if item.state == 'archived' %}
