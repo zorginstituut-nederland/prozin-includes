@@ -6,37 +6,37 @@
         required
         rows="4">{{ page.alt_text }}</textarea>
 </label>
-<fieldset 
-    class="group pat-checklist radio">
-    <legend>Auteursrecht</legend>
-    <label>
-        Publiek domein
-        <input 
-            type="radio" 
-            checked
-            name="copyright"
+<label>
+    Beeldtype
+    <select>
+        <option>Fotografie</option>
+        <option>Grafiek</option>
+    </select>
+</label>
+<label>
+    Auteursrecht
+    <select
+        name="copyright">
+        <option
             value="pd">
-    </label>
-    <label>
-        Creative commons
-        <input 
-            type="radio" 
-            name="copyright"
+            Publiek domein
+        </option>
+        <option
             value="cc">
-    </label>
-    <label>
-        Copyright
-        <input 
-            type="radio" 
-            name="copyright"
+            Creative commons
+        </option>
+        <option
             value="copyright">
-    </label>
-</fieldset>
+            Copyright
+        </option>        
+    </select>
+</label>
 <label
     class="pat-depends"
-    data-pat-depends="condition: copyright=cc or copyright=copyright">
+    data-pat-depends="condition: copyright=cc or copyright=copyright; transition: slide">
     Auteur
     <input 
+        class="pat-autofocus" 
         type="text" 
         name="copyright" />
 </label>
