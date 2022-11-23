@@ -1,0 +1,27 @@
+<div 
+    class="portlet span-{{ portlet.span }}" 
+    id="{{ portlet.id }}">
+    <div 
+        class="content">
+        <article 
+            class="portlet-intro">
+            <header 
+                class="portlet-title-group">
+                <h2 
+                    class="portlet-title">
+                    <a 
+                        href="/dialogues/cms/editorial"
+                        class="pat-inject"
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_drafts_editorial[site.lang] }}
+                    </a>
+                </h2>
+            </header>
+        </article>
+        <div 
+            class="portlet-body">      
+            {% include prozin/drafts-list.html 
+                cols="3"
+                collection="editorial" %}
+        </div>
+    </div>
+</div> 

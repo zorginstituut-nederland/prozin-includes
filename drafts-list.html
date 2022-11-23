@@ -1,0 +1,23 @@
+{% assign these_drafts = site[include.collection] | where: 'state','draft' | sort: 'title' %}
+
+{% if these_drafts.size >= 1 %}
+    <ul 
+        class="link-list expanded col-{{ include.cols }}">
+        {% for item in these_drafts %}
+            <li 
+                class="state-draft">
+                <a 
+                    href="{{ item.url }}" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; scroll: #main">
+                    {{ item.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p 
+        class="pat-message info">
+        Alles is gepubliceerd.    
+    </p>
+{% endif %}
