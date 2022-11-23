@@ -1,7 +1,9 @@
 {% if page.links or page.tags.size >= 1 %}
-    <div class="page-module type-links">
+    <div 
+        class="page-module type-links">
         {% if include.title %}
-            <h2 class="page-module-title">
+            <h2 
+                class="page-module-title">
                 {{ include.title }}
             </h2>
         {% endif %}
@@ -11,10 +13,15 @@
                     {{ item.group }}
                 </h3>
             {% endif %}
-            <ul class="link-list">
+            <ul 
+                class="link-list">
                 {% for item in item.items %}
                     <li>
-                        <a href="{{ item.url }}" class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" {% unless item.type == 'link-external' %}data-pat-inject="history: record; scroll: #main"{% endunless %} {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
+                        <a 
+                            href="{{ item.url }}" 
+                            class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" 
+                            {% unless item.type == 'link-external' %}data-pat-inject="history: record; scroll: #main"{% endunless %} 
+                            {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
                     </li>  
                 {% endfor %}
             </ul>
@@ -23,10 +30,14 @@
             <h3>
                 Tags
             </h3>
-            <ul class="link-list">
+            <ul 
+                class="link-list">
                 {% for tag in page.tags %}
                     <li>
-                        <a href="/tags/{{ tag | slugify }}" class="type-tag pat-inject" data-pat-inject="history: record; scroll: #main">{{ tag }}</a>
+                        <a 
+                            href="/tags/{{ tag | slugify }}" 
+                            class="type-tag pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ tag }}</a>
                     </li>  
                 {% endfor %}
             </ul>
