@@ -1,23 +1,19 @@
-<tr>
-    <td> 
-        {% if item.state == 'archived' %}
-            <a 
-                href="{{ item.url }}" 
-                class="pat-inject" 
-                data-pat-inject="history: record; scroll: #main" 
-                title="{{ item.summary }}"><del>{{ item.title }}</del></a>
-        {% else %}
-            <a 
-                href="{{ item.url }}" 
-                class="pat-inject" 
-                data-pat-inject="history: record; scroll: #main" 
-                title="{{ item.summary }}">{{ item.title }}</a>
-        {% endif %} 
-    </td> 
-    <td>
+<tr
+    class="state-{{ item.state }}">
+    <th
+        class="item-name"> 
+        <a 
+            href="{{ item.url }}" 
+            class="pat-inject" 
+            data-pat-inject="history: record; scroll: #main" 
+            title="{{ item.summary }}">{{ item.title }}</a>
+    </th> 
+    <td
+        class="item-author">
         {{ item.date | date: "%e %B, %Y %H:%M" }}, door <a href="#" class="pat-inject">{{ item.author | default: 'Riwka Rubinstein'}}</a>
     </td>
-    <td>
+    <td
+        class="item-state">
         {% if item.state == 'archived' %}
             Gearchiveerd
         {% elsif item.state == 'draft' %}
