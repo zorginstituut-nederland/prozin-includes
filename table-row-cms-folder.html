@@ -1,5 +1,7 @@
 <tr
-    class="state-{{ item.state }}">
+    class="
+        {% if item.state %}state-{{ item.state }}{% endif %} 
+        content-type-{{ item.layout | slugify }}">
     <th
         class="item-name"> 
         <a 
