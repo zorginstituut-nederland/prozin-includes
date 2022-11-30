@@ -1,0 +1,29 @@
+<div
+    class="pat-toolbar"
+    id="hyperlink-panel-toolbar">
+    <div
+        class="toolbar-navigation-area">
+        <div
+            class="toolbar-section navigation">
+            <nav
+                class="pat-tabs pat-button-cluster pat-navigation">
+                <a
+                    href="/dialogues/cms/link-edit-internal"
+                    data-pat-inject="
+                        source: #link-panel-url-field; 
+                        target: #link-panel-url-field"
+                    class="pat-inject {% if page.url contains 'internal' %}current{% endif %}">
+                    Internal link 
+                </a>
+                <a
+                    href="/dialogues/cms/link-edit-external"
+                    data-pat-inject="
+                        source: #link-panel-url-field; 
+                        target: #link-panel-url-field"
+                    class="pat-inject {% if page.url contains 'external' %}current{% endif %}">
+                    External link 
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>

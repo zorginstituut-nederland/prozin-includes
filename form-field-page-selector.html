@@ -1,0 +1,14 @@
+<label
+    id="{{ include.id }}"> 
+    {% include patterns/i18n id="label_page" %}
+    <input
+        class="pat-autosuggest pat-autofocus" 
+        type="url" 
+        name="tiptap-href"
+        placeholder="Zoek en selecteer een pagina op deze site"
+        data-pat-autosuggest="
+            allow-new-words: false; 
+            maximum-selection-size: 1; 
+            ajax-search-index: text; 
+            ajax-url: /dialogues/cms/internal-links.json;" />
+</label>
