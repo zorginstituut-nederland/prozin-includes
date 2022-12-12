@@ -1,4 +1,6 @@
 <div
+    id="{{ page.url | slugify }}-downloads"
+    data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
     class="cms-page-module type-body-downloads pat-collapsible {{ include.state }}">
     <div
         class="page-module-title buttoned">
@@ -7,5 +9,46 @@
             {{ include.title | default: "Bijlagen" }}
         </h2>
     </div>
-    
+    <ol 
+        class="pat-sortable sortable-list">
+        {% for item in page.downloads %}
+            {% for download in item.files %}
+                <li 
+                    class="sortable-item file-download" >
+                    <h3 
+                        class="title">
+                        {{ download.title }}
+                    </h3>
+                    <p 
+                        class="meta">
+                        {% if download.type == 'pdf' %}
+                            <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.lang] }}</span>
+                        {% elsif download.type == 'zip' %}
+                            <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.lang] }}</span>
+                        {% elsif download.type == 'archive' %}
+                            <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.lang] }}</span>
+                        {% elsif download.type == 'word' %}
+                            <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.lang] }}</span>
+                        {% elsif download.type == 'excel' %}
+                            <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.lang] }}</span>
+                        {% endif %}
+                        {% if download.page_count %}
+                            <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.lang] }}</span>
+                        {% endif %}
+                        <span 
+                            class="meta-item">{{ download.size }}</span>
+                    </p>
+                    <p 
+                        class="meta">
+                        <span 
+                            class="meta-item">{{ download.kind }}</span>
+                        {% if download.date %}
+                            <span 
+                                class="meta-item">{{ download.date }}</span>
+                        {% endif %}
+                    </p>
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ol>
 </div>

@@ -21,7 +21,7 @@
             {% for download in item.files %}
                 <a 
                     class="file-download" 
-                    {% if download.url %}href="{{ download.url }}"{% endif %}>
+                    {% if download.url %}href="{{ download.url }}"{% else %}href="#"{% endif %}>
                     <h4 
                         class="title">
                         {{ download.title }}
