@@ -1,5 +1,6 @@
 {% if page.downloads %}
-    <div class="page-module type-downloads">
+    <div 
+        class="page-module type-downloads">
         {% if include.title %}
             <h2 
                 class="page-module-title">
@@ -18,11 +19,15 @@
                 </h3>
             {% endif %}
             {% for download in item.files %}
-                <a class="file-download icon-file-{{ download.type }}" {% if download.url %}href="{{ download.url }}"{% endif %}>
-                    <h4 class="title">
+                <a 
+                    class="file-download" 
+                    {% if download.url %}href="{{ download.url }}"{% endif %}>
+                    <h4 
+                        class="title">
                         {{ download.title }}
                     </h4>
-                    <p class="meta">
+                    <p 
+                        class="meta">
                         {% if download.type == 'pdf' %}
                             <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.lang] }}</span>
                         {% elsif download.type == 'zip' %}
@@ -37,12 +42,16 @@
                         {% if download.page_count %}
                             <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.lang] }}</span>
                         {% endif %}
-                        <span class="meta-item">{{ download.size }}</span>
+                        <span 
+                            class="meta-item">{{ download.size }}</span>
                     </p>
-                    <p class="meta">
-                        <span class="meta-item">{{ download.kind }}</span>
+                    <p 
+                        class="meta">
+                        <span 
+                            class="meta-item">{{ download.kind }}</span>
                         {% if download.date %}
-                            <span class="meta-item">{{ download.date }}</span>
+                            <span 
+                                class="meta-item">{{ download.date }}</span>
                         {% endif %}
                     </p>
                 </a>
