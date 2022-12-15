@@ -1,37 +1,12 @@
-{% if page.state == 'published' %}
-    <a 
-        data-pat-depends="condition: version=latest" 
-        href="{{ page.url }}-edit" 
-        class="pat-button pat-inject icon-update pat-depends edit" 
-        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.lang] }}</a>
-{% else %}
-    <a 
-        data-pat-depends="condition: version=draft"  
-        {% if site.data.personae[site.persona].role == 'Administrator' %}
-            href="/dialogues/cms/publish-confirm.html#document-content"
-        {% endif %}
-        class="pat-button pat-depends edit pat-modal" 
-        data-pat-modal="class: small panel"
-        title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
-{% endif %}
-
-{% if page.locked %}
-    <a 
-        data-pat-depends="condition: version=draft" 
-        data-pat-tooltip="class: rich info; source: ajax; position-list: tm;" 
-        href="/dialogues/cms/edit-locked#document-alert-bar" 
-        class="pat-button pat-depends pat-tooltip locked edit" 
-        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
-{% else %}
-    <a 
-        {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft"{% endunless %} 
-        {% if site.data.personae[site.persona].role == 'Administrator' %}
-            href="{{ page.url }}-edit"
-        {% endif %} 
-        class="pat-button default {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
-        data-pat-inject="source: body; target: body"
-        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
-{% endif %}
+<label 
+    class="pat-toolbar-search-field">
+    <input 
+        type="search" 
+        placeholder="Zoeken binnen pagina">
+    <button
+        class="assistive"
+        type="submit">Verstuur</button>
+</label>
 
 {% if page.state == 'draft' %}
     <a 
@@ -72,4 +47,63 @@
             </li>
         </ul>
     </div>
+{% endif %}
+
+<a 
+    class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+    href="#id-{{ item.title | slugify }}" 
+    data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+<div
+    hidden
+    id="id-{{ item.title | slugify }}">
+    <ul 
+        class="menu">
+        <li>
+            <a 
+                href="{{ page.url }}-history#document-content" 
+                class="icon-history pat-modal close-panel" 
+                data-pat-modal="class: small panel">{{ site.data.prozin.ui.label_history[site.lang] }}</a>
+        </li>
+        <li>
+            <a 
+                href="/feedback/delete-content-object#document-content" 
+                data-pat-modal="class: small panel"
+                class="icon-trash pat-modal close-panel">Verwijder</a>
+        </li>
+    </ul>
+</div>
+
+{% if page.state == 'published' %}
+    <a 
+        data-pat-depends="condition: version=latest" 
+        href="{{ page.url }}-edit" 
+        class="pat-button pat-inject icon-update pat-depends edit" 
+        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.lang] }}</a>
+{% else %}
+    <a 
+        data-pat-depends="condition: version=draft"  
+        {% if site.data.personae[site.persona].role == 'Administrator' %}
+            href="/dialogues/cms/publish-confirm.html#document-content"
+        {% endif %}
+        class="pat-button pat-depends edit pat-modal" 
+        data-pat-modal="class: small panel"
+        title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
+{% endif %}
+
+{% if page.locked %}
+    <a 
+        data-pat-depends="condition: version=draft" 
+        data-pat-tooltip="class: rich info; source: ajax; position-list: tm;" 
+        href="/dialogues/cms/edit-locked#document-alert-bar" 
+        class="pat-button pat-depends pat-tooltip locked edit" 
+        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
+{% else %}
+    <a 
+        {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft"{% endunless %} 
+        {% if site.data.personae[site.persona].role == 'Administrator' %}
+            href="{{ page.url }}-edit"
+        {% endif %} 
+        class="pat-button default {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
+        data-pat-inject="source: body; target: body"
+        title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% endif %}
