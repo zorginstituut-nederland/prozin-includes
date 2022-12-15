@@ -32,3 +32,42 @@
         data-pat-inject="source: body; target: body"
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% endif %}
+
+<a 
+    data-pat-tooltip="source: ajax; position-list: tr;" 
+    href="#language-menu" 
+    class="icon pat-tooltip icon-language-1" 
+    title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
+
+<div
+    id="language-menu"
+    hidden>
+    <ul
+        class="menu">
+        <li>
+            <a
+                href="/quality-registrations/standaarden/Anogenitale-lichen-sclerosus--Federatie#content"
+                class="icon-angle-right pat-inject close-panel"
+                data-pat-inject="history: record">Engels</a>
+            <a
+                class="icon-angle-right"><strong>Nederlands ({% include patterns/i18n id="label_current_one" %})</strong></a>
+            <a
+                href="/quality-registrations/standaarden/Anogenitale-lichen-sclerosus--Federatie#content"
+                class="icon-angle-right pat-inject close-panel"
+                data-pat-inject="history: record">Frans</a>
+        </li>
+    </ul>
+    <ul
+        class="menu">
+        <li>
+            <a
+                href="/dialogues/cms/panel-create-language#document-content"
+                data-pat-modal="class: small panel"
+                class="pat-modal close-panel icon-plus-squared-alt">{% include patterns/i18n id="label_add_language" %}</a>
+            <a
+                href="/dialogues/cms/panel-remove-language#document-content"
+                data-pat-modal="class: small panel"
+                class="pat-modal close-panel icon-minus-squared-alt">{% include patterns/i18n id="label_remove_this_language" %} ({% include patterns/i18n id="patterns.label_dutch" %})</a>
+        </li>
+    </ul>
+</div>
