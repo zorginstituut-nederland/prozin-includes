@@ -10,7 +10,7 @@
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="/dialogues/cms/publish-confirm.html#document-content"
         {% endif %}
-        class="pat-button pat-depends edit pat-modal icon-8000-binnenlandse-zaken-en-koninkrijksrelaties" 
+        class="pat-button pat-depends edit pat-modal" 
         data-pat-modal="class: small panel"
         title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.lang] }}</a>
 {% endif %}
@@ -37,7 +37,7 @@
     <a 
         data-pat-tooltip="source: ajax; position-list: tr;" 
         href="#language-menu" 
-        class="icon pat-tooltip icon-language-1" 
+        class="icon pat-tooltip language" 
         title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
 
     <div
