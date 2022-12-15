@@ -20,7 +20,7 @@
         data-pat-depends="condition: version=draft" 
         data-pat-tooltip="class: rich info; source: ajax; position-list: tm;" 
         href="/dialogues/cms/edit-locked#document-alert-bar" 
-        class="pat-button pat-depends pat-tooltip locked edit icon-pencil" 
+        class="pat-button pat-depends pat-tooltip locked edit" 
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% else %}
     <a 
@@ -28,7 +28,7 @@
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="{{ page.url }}-edit"
         {% endif %} 
-        class="pat-button default icon-pencil {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
+        class="pat-button default {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
         data-pat-inject="source: body; target: body"
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% endif %}
