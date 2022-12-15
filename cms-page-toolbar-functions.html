@@ -10,9 +10,10 @@
 
 {% if page.state == 'draft' %}
     <a 
+        data-pat-depends="condition: version=draft"
         data-pat-tooltip="source: ajax; position-list: tr;" 
         href="#language-menu" 
-        class="icon pat-tooltip language" 
+        class="pat-depends icon pat-tooltip language" 
         title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
 
     <div
