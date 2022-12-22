@@ -10,6 +10,7 @@
         </h2>
     </div>
     <ol 
+        id="downloads-{{ include.title | slugify }}"
         class="pat-sortable sortable-list">
         {% for item in page.downloads %}
             {% for download in item.files %}
