@@ -1,6 +1,6 @@
 <div
     data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
-    class="cms-page-module type-body-text-segment pat-collapsible {{ include.state }}">
+    class="cms-page-module type-see-also pat-collapsible {{ include.state }}">
     <div
         class="page-module-title buttoned">
         <h2
@@ -9,22 +9,46 @@
         </h2>
     </div>
     <fieldset 
-        class="vertical">
-        <label>
+        class="horizontal form-panel metadata">
+<!--         <label>
             Interne links
             <input 
             class="pat-autosuggest"
             required
-            value="/nieuws/the-anchorman" 
+            value="Nieuws > The anchor man" 
             name="internal-links"
             type="text"
             data-pat-autosuggest='
                 ajax-search-index: text; 
-                ajax-url: /feedback/internal-links.json;'/>
-        </label>   
+                ajax-url: /dialogues/cms/internal-links.json;'/>
+        </label>  -->  
+        <label>
+            {% include patterns/i18n id="label_general" %}   
+            <input 
+                class="pat-autosuggest"
+                required
+                name="mi"
+                type="text"
+                data-pat-autosuggest='
+                    allow-new-words: false;  
+                    ajax-search-index: text; 
+                    ajax-url: /dialogues/cms/general.json;' />
+        </label>
+        <label>
+            {% include patterns/i18n id="label_news_articles" %}   
+            <input 
+                class="pat-autosuggest"
+                required
+                name="mi"
+                type="text"
+                data-pat-autosuggest='
+                    allow-new-words: false;  
+                    ajax-search-index: text; 
+                    ajax-url: /dialogues/cms/news-items.json;' />
+        </label>
         <fieldset
             class="group">
-            <legend>External links</legend>
+            <legend>{% include patterns/i18n id="label_external_links" %}</legend>
             <!-- <div 
                 class="add-links pat-clone">
                 <fieldset
@@ -41,8 +65,14 @@
                         placeholder="Description"></textarea>
                 </fieldset>
             </div> -->
-            <button 
-                class="pat-button">Add link</button>
+            <div
+                id="external-links">
+                
+            </div>
+            <a 
+                href="/dialogues/cms/panel-external-link#document-content" 
+                data-pat-modal="class: medium panel"
+                class="default small pat-button pat-modal">{% include patterns/i18n id="label_add_imp" %}</a>
         </fieldset>    
     </fieldset>
 </div>
