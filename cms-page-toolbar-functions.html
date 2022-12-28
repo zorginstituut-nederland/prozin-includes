@@ -14,11 +14,15 @@
 
 {% unless site.user == 'anonymous' %}
     <a 
+        data-pat-tooltip="source: ajax; position-list: tr;" 
+        href="#language-menu" 
+        class="icon pat-tooltip language" 
+        title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
+
+<a 
         class="icon icon-ellipsis-hor pat-tooltip" 
         href="#id-{{ item.title | slugify }}" 
         data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-
-
     <div
         hidden
         id="id-{{ item.title | slugify }}">
@@ -75,12 +79,6 @@
             {% endif %}
         </ul>
     </div>
-
-    <a 
-        data-pat-tooltip="source: ajax; position-list: tr;" 
-        href="#language-menu" 
-        class="icon pat-tooltip language" 
-        title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
 
     <div
         id="language-menu"
