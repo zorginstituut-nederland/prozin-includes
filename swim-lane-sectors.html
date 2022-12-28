@@ -20,7 +20,7 @@
                             <img 
                                 src="/assets/style/sectors/{{ item.title | slugify }}.jpg">
                             <small 
-                                class="photo-tiles-copyright type-creative-commons">D.E.C.G.A. Kolbach</small>
+                                class="photo-tiles-copyright type-{{ item.copyright | slugify }}">{{ item.author }}</small>
                         </picture>
                         <figcaption>{{ item.title }}</figcaption>
                     </figure>
