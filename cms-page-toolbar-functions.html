@@ -1,3 +1,7 @@
+<a 
+    class="icon icon-bookmark-empty" 
+    href="#" >Bladwijzer</a>
+
 <label 
     class="pat-toolbar-search-field">
     <input 
@@ -7,6 +11,43 @@
         class="assistive"
         type="submit">Verstuur</button>
 </label>
+
+<a 
+    class="icon icon-ellipsis-hor pat-tooltip" 
+    href="#id-{{ item.title | slugify }}" 
+    data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+<div
+    hidden
+    id="id-{{ item.title | slugify }}">
+    <ul 
+        class="menu">
+        <li>
+            <form>
+                <fieldset
+                    class="pat-checklist">
+                    <label>
+                        Toon revisiemarkeringen
+                        <input 
+                            type="checkbox" 
+                            name="revision_markings">
+                    </label>   
+                </fieldset>
+            </form>
+        </li>
+        <li>
+            <a 
+                href="{{ page.url }}-history#document-content" 
+                class="icon-history pat-modal close-panel" 
+                data-pat-modal="class: small panel">{{ site.data.prozin.ui.label_history[site.lang] }}</a>
+        </li>
+        <li>
+            <a 
+                href="/feedback/delete-content-object#document-content" 
+                data-pat-modal="class: small panel"
+                class="icon-trash pat-modal close-panel">Verwijder</a>
+        </li>
+    </ul>
+</div>
 
 {% if page.state == 'draft' %}
     <a 
@@ -49,43 +90,6 @@
         </ul>
     </div>
 {% endif %}
-
-<a 
-    class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
-    href="#id-{{ item.title | slugify }}" 
-    data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-<div
-    hidden
-    id="id-{{ item.title | slugify }}">
-    <ul 
-        class="menu">
-        <li>
-            <form>
-                <fieldset
-                    class="pat-checklist">
-                    <label>
-                        Toon revisiemarkeringen
-                        <input 
-                            type="checkbox" 
-                            name="revision_markings">
-                    </label>   
-                </fieldset>
-            </form>
-        </li>
-        <li>
-            <a 
-                href="{{ page.url }}-history#document-content" 
-                class="icon-history pat-modal close-panel" 
-                data-pat-modal="class: small panel">{{ site.data.prozin.ui.label_history[site.lang] }}</a>
-        </li>
-        <li>
-            <a 
-                href="/feedback/delete-content-object#document-content" 
-                data-pat-modal="class: small panel"
-                class="icon-trash pat-modal close-panel">Verwijder</a>
-        </li>
-    </ul>
-</div>
 
 {% if page.state == 'published' %}
     <a 
