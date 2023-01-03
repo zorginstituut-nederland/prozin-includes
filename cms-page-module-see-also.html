@@ -47,7 +47,7 @@
                     ajax-url: /dialogues/cms/news-items.json;' />
         </label>
         <fieldset
-            class="group">
+            class="group grid-editor">
             <legend>{% include patterns/i18n id="label_external_links" %}</legend>
             <!-- <div 
                 class="add-links pat-clone">
@@ -69,11 +69,12 @@
                 id="external-links"
                 class="link-list">
                 {% for item in page.external_links %}
-                    <li>
+                    <li
+                        id="el-page-{{ item.title | slugify }}">
                         <a 
                             title="{{ item.description }}"
                             target="new"
-                            class="type-link-external" 
+                            class="follow type-link-external" 
                             href="{{ item.url }}">{{ item.title }}
                             <input 
                                 type="hidden" 
@@ -88,7 +89,19 @@
                                 value="{{ item.url }}"
                                 name="link-1-title">
                         </a>
-                    </li>
+                        <div 
+                            class="functions">
+                            <label
+                                data-pat-switch="
+                                    selector: #el-page-{{ item.title | slugify }}; 
+                                    add: deleted"
+                                class="button delete-button pat-switch">
+                                Delete
+                                <input 
+                                    type="checkbox" 
+                                    name="{{ download.title | slugify }}">
+                            </label>
+                        </div>
                 {% endfor %}
             </ul>
             <div 
