@@ -132,7 +132,7 @@
         title="Publiceer deze revisie">{% include patterns/i18n id="label_submit_for_review_imp" %}</a>
 {% else %}
     <a 
-        data-pat-depends="condition: version=draft"  
+        data-pat-depends="condition: version=draft or version=for-review"  
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="/dialogues/cms/publish-confirm.html#document-content"
         {% endif %}
@@ -143,14 +143,14 @@
 
 {% if page.locked %}
     <a 
-        data-pat-depends="condition: version=draft" 
+        data-pat-depends="condition: version=draft or version=for-review" 
         data-pat-tooltip="class: rich info; source: ajax; position-list: tm;" 
         href="/dialogues/cms/edit-locked#document-alert-bar" 
         class="pat-button pat-depends pat-tooltip locked edit" 
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% else %}
     <a 
-        {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft"{% endunless %} 
+        {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft or version=for-review"{% endunless %} 
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="{{ page.url }}-edit"
         {% endif %} 
