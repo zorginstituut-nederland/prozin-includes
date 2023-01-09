@@ -11,6 +11,13 @@
     </div>
     <fieldset 
         class="horizontal form-panel metadata">
+        <label>
+            {% include patterns/i18n id="label_header" %}
+            <input 
+                placeholder="{% include patterns/i18n id='label_header_above_block' %}" 
+                type="text" 
+                name="video_title">
+        </label>
         <fieldset
             id="video-upload" 
             class="group video-upload pat-subform pat-autosubmit pat-inject"
