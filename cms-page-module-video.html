@@ -6,7 +6,7 @@
         class="page-module-title">
         <h2
             class="title-segment">
-            Video
+            {% include patterns/i18n id="label_video" %}
         </h2>
     </div>
     <fieldset 
@@ -42,12 +42,11 @@
         </fieldset>     
         <fieldset
             class="group transcript">
-            <legend>Video transcript</legend>
+            <legend>{% include patterns/i18n id="label_transcript" %}</legend>
             {% capture this_placeholder %}{% include patterns/i18n id="message_write_pate_video_transcript" %}{% endcapture %}
             {% include patterns/form-field-rich-editor.html
                 placeholder=this_placeholder
                 id="editor-toolbar-video" %}
-
         </fieldset>   
     </fieldset>
 </div>

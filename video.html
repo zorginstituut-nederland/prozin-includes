@@ -19,7 +19,7 @@
                 </h4>
                 <p class="meta">
                     <span class="meta-item">Video</span>
-                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" }}</span>
+                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" | default: '21-10-2023' }}</span>
                     <span class="meta-item">mp4</span>
                 </p>
             </a>
@@ -30,7 +30,7 @@
                 </h4>
                 <p class="meta">
                     <span class="meta-item">Audio</span>
-                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" }}</span>
+                    <span class="meta-item">{{ page.date | date: "%d-%m-%Y" | default: '21-10-2023' }}</span>
                     <span class="meta-item">mp3</span>
                 </p>
             </a>
