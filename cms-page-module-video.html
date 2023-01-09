@@ -25,9 +25,7 @@
             <legend>{% include patterns/i18n id="label_video" %}</legend>
             {% if page.video %}
                 <video 
-                    preload="none" 
-                    controls="controls"
-                    poster="{{ page.poster }}">
+                    controls="controls">
                     <source 
                         src="{{ page.video }}"/>
                 </video>
