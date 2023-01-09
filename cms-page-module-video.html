@@ -1,0 +1,48 @@
+<div
+    data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
+    id="{{ include.title | slugify }}"
+    class="cms-page-module type-body-text-segment pat-collapsible {{ include.state }}">
+    <div
+        class="page-module-title">
+        <h2
+            class="title-segment">
+            Video
+        </h2>
+    </div>
+    <fieldset 
+        class="horizontal form-panel metadata">
+        <fieldset
+            id="video-upload" 
+            class="group video-upload pat-subform pat-autosubmit pat-inject"
+            data-pat-inject="url: /news/publicatie-edit; source: #video-upload; target: #video-upload">
+            <legend>{% include patterns/i18n id="label_video" %}</legend>
+            {% if page.video %}
+                <video 
+                    preload="none" 
+                    controls="controls"
+                    poster="{{ page.video_poster }}">
+                    <source 
+                        src="{{ page.video }}"/>
+                </video>
+                <a
+                    href="/dialogues/cms/edit-news-item#video-upload"
+                    data-pat-inject="url: /dialogues/cms/edit-news-item; source: #video-upload; target: #video-upload"
+                    class="small default pat-button pat-inject"
+                    type="button">{% include patterns/i18n id="label_remove_video_imp" %}</a>
+            {% else %}
+                <input 
+                    type="file" 
+                    name="video">
+            {% endif %}
+        </fieldset>     
+        <fieldset
+            class="group transcript">
+            <legend>Video transcript</legend>
+            {% capture this_placeholder %}{% include patterns/i18n id="message_write_pate_video_transcript" %}{% endcapture %}
+            {% include patterns/form-field-rich-editor.html
+                placeholder=this_placeholder
+                id="editor-toolbar-video" %}
+
+        </fieldset>   
+    </fieldset>
+</div>
