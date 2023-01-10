@@ -1,26 +1,73 @@
+{% assign item_nr = forloop.index %}
+
 <div
-    data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
+    data-pat-collapsible="trigger: #{{ include.title | slugify }}-title-segment; store: local; scroll-selector: self; scroll-offset: 120px"
     id="{{ include.title | slugify }}"
     class="cms-page-module type-body-text-segment pat-collapsible {{ include.state }}">
     <div
         class="page-module-title buttoned">
         <h2
+            id="{{ include.title | slugify }}-title-segment"
             class="title-segment">
             {{ include.title }}
         </h2>
+        <span 
+            class="buttons-segment">
+<!--             <button 
+                class="icon sortable-button-up" 
+                type="button" 
+                name="up_item_{{ item_nr }}" 
+                value="up">Up</button>
+            <button 
+                class="icon sortable-button-down" 
+                type="button" 
+                name="down_item_{{ item_nr }}" 
+                value="down">down</button> -->
+            <a 
+                class="icon icon-ellipsis-hor pat-tooltip" 
+                href="#id-{{ include.title | slugify }}" 
+                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+            <div
+                hidden
+                id="id-{{ include.title | slugify }}">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            href="/dialogues/cms/delete-content-object#document-content" 
+                            data-pat-modal="class: small panel"
+                            class="pat-modal close-panel">{% include patterns/i18n id="label_rename_imp" %}</a>
+                    </li>    
+                    <li>
+                        <a 
+                            href="/dialogues/cms/delete-content-object#document-content" 
+                            data-pat-modal="class: small panel"
+                            class="icon-trash pat-modal close-panel">{% include patterns/i18n id="patterns.label_delete_imp" %}</a>
+                    </li>    
+                </ul>
+            </div>
+        </span>
     </div>
-    <article
-        class="body-text pat-rich">
-        {% capture this_content %}{{ page.content | markdownify }}{% endcapture %}
-        {% include
-            patterns/rich-editor.html
-            placeholder="Your content goes here…"
-            autofocus=false
-            toolbar="editor-toolbar"
-            image-panel="#pat-modal.image-picker"
-            image-menu="/dialogues/cms/image-menu#document-content"
-            link-panel="#pat-modal.panel-hyperlink"
-            link-menu="/dialogues/cms/hyperlink-menu#document-content"
-            content=this_content %}
-    </article>
+    <div 
+        class="panel-content">
+        <article
+            class="body-text pat-rich">
+            {% if include.content %}
+                {% capture this_content %}{{ include.content | markdownify }}{% endcapture %}
+            {% else %}
+                {% capture this_content %}{{ page.content | markdownify }}{% endcapture %}
+            {% endif %}
+            
+            {% include
+                patterns/rich-editor.html
+                placeholder="Your content goes here…"
+                autofocus=false
+                toolbar="editor-toolbar"
+                image-panel="#pat-modal.image-picker"
+                image-menu="/dialogues/cms/image-menu#document-content"
+                link-panel="#pat-modal.panel-hyperlink"
+                link-menu="/dialogues/cms/hyperlink-menu#document-content"
+                content=this_content %}
+        </article>
+    </div>
 </div>
