@@ -44,7 +44,7 @@
                         <a 
                             href="/dialogues/cms/delete-section#document-content" 
                             data-pat-modal="class: small panel"
-                            class="pat-modal close-panel">{% include patterns/i18n id="label_rename_imp" %}</a>
+                            class="icon-pencil pat-modal close-panel">{% include patterns/i18n id="label_edit_header" %}</a>
                     </li>    
                     <li>
                         <a 
@@ -58,6 +58,22 @@
     </div>
     <div 
         class="panel-content">
+        {% comment %}
+            <fieldset 
+                class="horizontal form-panel metadata">
+                <fieldset
+                    class="pat-checklist">
+                    <legend>{% include patterns/i18n id="label_header" %}</legend>
+                    <label>
+                       {% include patterns/i18n id="label_show_header" %}
+                        <input 
+                            type="checkbox" 
+                            checked
+                            name="toc">
+                    </label>
+                </fieldset>
+            </fieldset>
+        {% endcomment %}
         <article
             class="body-text pat-rich">
             {% if include.content %}
