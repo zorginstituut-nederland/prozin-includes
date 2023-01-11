@@ -1,6 +1,6 @@
 <dfn 
-    class="help pat-collapsible closed">
-    <strong class="help-label">Uitleg</strong>
+    class="help-icon pat-tooltip"
+    data-pat-tooltip="class: info; trigger: click; source: content; position-list: lt">
     {% assign this_label = include.content %}
-    <em class="help-content">{% include patterns/i18n id=this_label %}</em>
+    {% include patterns/i18n id=this_label %}
 </dfn>
