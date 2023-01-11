@@ -49,7 +49,7 @@
                                 selector: .pat-collapsible; remove: closed; add: open
                                     &&
                                 selector: .title-segment; remove: collapsible-closed; add: collapsible-open
-                            ">Vouw alle secties open</button>
+                            ">{% include patterns/i18n id="label_expand_all_sections" %}</button>
                     </li>
                     <li>
                         <button
@@ -58,8 +58,20 @@
                                 selector: .pat-collapsible; remove: open; add: closed
                                     &&
                                 selector: .title-segment; remove: collapsible-open; add: collapsible-closed
-                            ">Vouw alle secties dicht</button>
+                            ">{% include patterns/i18n id="label_collapse_all_sections" %}</button>
                     </li>
+<!--                     <li>
+                        <button
+                            class="pat-forward"
+                            data-pat-forward="
+                                selector: .title-segment.collapsible-closed">Vouw alle secties open</button>
+                    </li>
+                    <li>
+                        <button
+                            class="pat-forward"
+                            data-pat-forward="
+                                selector: .title-segment.collapsible-open">Vouw alle secties dicht</button>
+                    </li> -->
                 </ul>
             </div>
 
