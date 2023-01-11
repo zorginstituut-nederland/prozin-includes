@@ -138,6 +138,24 @@
             class="website" 
             type="url">
     </label>
+    <fieldset
+        id="logo-upload" 
+        class="group image-upload">
+        <legend>{% include patterns/i18n id="label_logo" %}</legend>
+        {% if page.logo %}
+            <img
+                alt="Logo" 
+                src="{{ page.logo }}" />
+            <a
+                href="{{ page.url }}#logo-upload"
+                class="small default pat-button pat-inject"
+                type="button">{% include patterns/i18n id="label_remove_image_imp" %}</a>
+        {% else %}
+            <input 
+                type="file" 
+                name="logo">
+        {% endif %}
+    </fieldset>
     {% if page.organisation_type == 'Beheerorganisatie' %}
         <!-- <label
             class="pat-depends"
