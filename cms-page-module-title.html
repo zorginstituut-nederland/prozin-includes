@@ -1,12 +1,14 @@
-<label
-    id="section-destroyer-{{ include.title | slugify }}"
-    data-pat-inject="source: #section-destroyer-{{ include.title | slugify }}; target: #section-destroyer-{{ include.title | slugify }}"
-    class="section-destroyer pat-checklist pat-inject pat-autosubmit pat-subform">
-    Destroy this section after save.
-    <input 
-        type="checkbox"
-        name="destroy-{{ include.title | slugify }}">
-</label>
+{% unless include.fixed == true %}
+    <label
+        id="section-destroyer-{{ include.title | slugify }}"
+        data-pat-inject="source: #section-destroyer-{{ include.title | slugify }}; target: #section-destroyer-{{ include.title | slugify }}"
+        class="section-destroyer pat-checklist pat-inject pat-autosubmit pat-subform">
+        Destroy this section after save.
+        <input 
+            type="checkbox"
+            name="destroy-{{ include.title | slugify }}">
+    </label>
+{% endunless %}
 <div
     class="page-module-title buttoned">
     <h2
