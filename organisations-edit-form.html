@@ -155,6 +155,8 @@
                 type="file" 
                 name="logo">
         {% endif %}
+        {% include prozin/form-help.html
+            content="message_help_logo_upload" %}
     </fieldset>
     {% if page.organisation_type == 'Beheerorganisatie' %}
         <!-- <label
