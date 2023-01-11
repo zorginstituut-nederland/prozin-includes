@@ -4,8 +4,7 @@
     id="{{ page.url | slugify }}"
     data-pat-collapsible="trigger: #{{ include.title | slugify }}-title-segment; store: local; scroll-selector: self; scroll-offset: 120px"
     class="cms-page-module type-news-body-text pat-collapsible {{ include.state }}">
-    {% include prozin/cms-page-module-title.html
-        title="Broodtekst" %}
+    {% include prozin/cms-page-module-title.html %}
     <div 
         class="panel-content">
         <fieldset 
@@ -28,32 +27,6 @@
                         data-pat-modal="class: large panel" 
                         class="small default pat-button pat-modal">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
                 {% endif %}
-            </fieldset>
-            <label>
-                {% include patterns/i18n id="label_source" %}
-                <input 
-                    type="text" 
-                    name="">
-            </label>
-            <fieldset 
-                class="pat-checklist">
-                <legend>{% include patterns/i18n id="label_pinning" %}</legend>
-                <label>
-                    {% include patterns/i18n id="label_pin_on_top_of_overviews" %}
-                    <input 
-                        type="checkbox" 
-                        name="">
-                </label>
-            </fieldset>
-            <fieldset 
-                class="pat-checklist">
-                <legend>{% include patterns/i18n id="label_newsletter" %}</legend>
-                <label>
-                    {% include patterns/i18n id="label_include_in_periodical" %}
-                    <input 
-                        type="checkbox" 
-                        name="">
-                </label>
             </fieldset>
         </fieldset>
         <article
