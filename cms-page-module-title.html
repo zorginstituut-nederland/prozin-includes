@@ -1,0 +1,45 @@
+<label
+    id="section-destroyer-{{ include.title | slugify }}"
+    data-pat-inject="source: #section-destroyer-{{ include.title | slugify }}; target: #section-destroyer-{{ include.title | slugify }}"
+    class="section-destroyer pat-checklist pat-inject pat-autosubmit pat-subform">
+    Destroy this section after save.
+    <input 
+        type="checkbox"
+        name="destroy-{{ include.title | slugify }}">
+</label>
+<div
+    class="page-module-title buttoned">
+    <h2
+        id="{{ include.title | slugify }}-title-segment"
+        class="title-segment">
+        {{ include.title }}
+    </h2>
+    {% unless include.fixed == true %}
+        <span 
+            class="buttons-segment">
+            <a 
+                class="icon icon-ellipsis-hor pat-tooltip" 
+                href="#id-{{ include.title | slugify }}" 
+                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+            <div
+                hidden
+                id="id-{{ include.title | slugify }}">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            href="/dialogues/cms/delete-section#document-content" 
+                            data-pat-modal="class: small panel"
+                            class="icon-pencil pat-modal close-panel">{% include patterns/i18n id="label_edit_header" %}</a>
+                    </li>    
+                    <li>
+                        <a 
+                            href="#section-destroyer-{{ include.title | slugify }}" 
+                            data-pat-forward="selector: #section-destroyer-{{ include.title | slugify }}"
+                            class="icon-trash pat-forward close-panel">{% include patterns/i18n id="patterns.label_delete_imp" %}</a>
+                    </li>    
+                </ul>
+            </div>
+        </span>
+    {% endunless %}
+</div>
