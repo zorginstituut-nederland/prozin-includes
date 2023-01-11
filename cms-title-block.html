@@ -11,7 +11,7 @@
             type="text"
             maxlength="200"
             value="{{ page.summary }}"
-            placeholder="Introductietekst"
+            placeholder="{% include patterns/i18n id='label_introduction' %}"
             class="doc-summary pat-content-mirror"
             data-pat-content-mirror="target: #document-summary">{% if page.summary %}{{ page.summary }}{% endif %}</textarea>
     </div>
