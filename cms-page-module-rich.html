@@ -4,58 +4,7 @@
     data-pat-collapsible="trigger: #{{ include.title | slugify }}-title-segment; store: local; scroll-selector: self; scroll-offset: 120px"
     id="{{ include.title | slugify }}"
     class="cms-page-module type-body-text-segment pat-collapsible {{ include.state }}">
-    <label
-        id="section-destroyer-{{ include.title | slugify }}"
-        class="section-destroyer pat-checklist">
-        Destroy this section after save.
-        <input 
-            type="checkbox"
-            name="destroy-{{ include.title | slugify }}">
-    </label>
-    <div
-        class="page-module-title buttoned">
-        <h2
-            id="{{ include.title | slugify }}-title-segment"
-            class="title-segment">
-            {{ include.title }}
-        </h2>
-        <span 
-            class="buttons-segment">
-<!--             <button 
-                class="icon sortable-button-up" 
-                type="button" 
-                name="up_item_{{ item_nr }}" 
-                value="up">Up</button>
-            <button 
-                class="icon sortable-button-down" 
-                type="button" 
-                name="down_item_{{ item_nr }}" 
-                value="down">down</button> -->
-            <a 
-                class="icon icon-ellipsis-hor pat-tooltip" 
-                href="#id-{{ include.title | slugify }}" 
-                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-            <div
-                hidden
-                id="id-{{ include.title | slugify }}">
-                <ul 
-                    class="menu">
-                    <li>
-                        <a 
-                            href="/dialogues/cms/delete-section#document-content" 
-                            data-pat-modal="class: small panel"
-                            class="icon-pencil pat-modal close-panel">{% include patterns/i18n id="label_edit_header" %}</a>
-                    </li>    
-                    <li>
-                        <a 
-                            href="#section-destroyer-{{ include.title | slugify }}" 
-                            data-pat-forward="selector: #section-destroyer-{{ include.title | slugify }}"
-                            class="icon-trash pat-forward close-panel">{% include patterns/i18n id="patterns.label_delete_imp" %}</a>
-                    </li>    
-                </ul>
-            </div>
-        </span>
-    </div>
+    {% include prozin/cms-page-module-title.html %}
     <div 
         class="panel-content">
         {% comment %}
