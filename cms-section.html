@@ -1,17 +1,38 @@
+{% capture this_id %}{{ page.title | slugify }}-{{ include.title | slugify }}{% endcapture %}
+
+{% if include.type == 'see-also' %}
+    {% capture this_title %}{% include patterns/i18n id="label_see_also" %}{% endcapture %}
+{% else %}
+    {% assign this_title = include.title %}
+{% endif %}
+
+{% if 
+    include.fixed == true
+     or
+    include.type == 'see-also' %}
+    {% assign this_fixation = true %}
+{% else %}
+    {% assign this_fixation = false %}
+{% endif %}
+
 <div 
     data-pat-collapsible="
-        trigger: #{{ include.title | slugify }}-title-segment; 
+        trigger: #{{ this_id }}-title-segment; 
         store: local; 
         open-trigger: #button-open-all-sections; 
         close-trigger: #button-close-all-sections; 
         scroll-selector: self; scroll-offset: 120px"
-    id="{{ include.title | slugify }}"
+    id="{{ this_id }}"
     class="cms-page-module type-{{ include.type }} pat-collapsible {{ include.state }}">
-    {% include prozin/cms-page-module-title.html %}
+{% include prozin/cms-page-module-title.html
+        id=this_id
+        fixed=this_fixation
+        title=this_title %}
 
     {% assign this_type = include.type %}
     <div 
         class="panel-content">
-        {% include prozin/cms-section-{{this_type}}.html %}
+        {% include prozin/cms-section-{{ this_type }}.html
+            content=include.content %}
     </div>
 </div>

@@ -1,3 +1,5 @@
+{% assign this_title_id = include.id %}
+
 {% unless include.fixed == true %}
     <label
         id="section-destroyer-{{ include.title | slugify }}"
@@ -12,13 +14,9 @@
 <div
     class="page-module-title buttoned">
     <h2
-        id="{{ include.title | slugify }}-title-segment"
+        id="{{ this_title_id }}-title-segment"
         class="title-segment">
-        {% if include.type == 'see-also' %}
-            {% include patterns/i18n id="label_see_also" %}
-        {% else %}
-            {{ include.title }}
-        {% endif %}
+        {{ include.title }}
     </h2>
     {% unless 
         include.fixed == true
