@@ -42,7 +42,7 @@
                 class="icon icon-eye"
                 target="{% include patterns/i18n id='label_preview' %}" 
                 title="{% include patterns/i18n id='label_preview' %}"
-                href="{{ page.url | replace: '-edit', '-preview' }}">{% include patterns/i18n id='label_preview' %}</a>
+                href="{{ page.url | replace: '-edit', '-preview' }}#main">{% include patterns/i18n id='label_preview' %}</a>
             <a 
                 class="icon icon-cog pat-modal" 
                 href="{{ include.metadata | default: '/dialogues/cms/panel-metadata#document-content' }}" 
