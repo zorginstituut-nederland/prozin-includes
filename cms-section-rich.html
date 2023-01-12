@@ -1,4 +1,5 @@
 {% assign item_nr = forloop.index %}
+{% capture this_placeholder %}{% include patterns/i18n id="label_your_content_goes_here_ell" %}{% endcapture %}
 
 <article
     class="body-text pat-rich">
@@ -10,7 +11,7 @@
     
     {% include
         patterns/rich-editor.html
-        placeholder="Your content goes here…"
+        placeholder=this_placeholder
         autofocus=false
         toolbar="editor-toolbar"
         image-panel="#pat-modal.image-picker"
