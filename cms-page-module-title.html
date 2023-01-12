@@ -14,9 +14,16 @@
     <h2
         id="{{ include.title | slugify }}-title-segment"
         class="title-segment">
-        {{ include.title }}
+        {% if include.type == 'see-also' %}
+            {% include patterns/i18n id="label_see_also" %}
+        {% else %}
+            {{ include.title }}
+        {% endif %}
     </h2>
-    {% unless include.fixed == true %}
+    {% unless 
+        include.fixed == true
+            or
+        include.type == 'see-also' %}
         <span 
             class="buttons-segment">
             <a 

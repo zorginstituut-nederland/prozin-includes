@@ -1,0 +1,16 @@
+
+<fieldset 
+    class="horizontal form-panel">
+    <label>
+        {% include patterns/i18n id="label_registration_holder" %}
+        <input 
+            class="pat-autosuggest"
+            name="registration-holders"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: true; 
+                ajax-search-index: text; 
+                ajax-url: /feedback/involved-parties.json;'/>
+        <!-- Creates an organisation -->
+    </label>
+</fieldset>

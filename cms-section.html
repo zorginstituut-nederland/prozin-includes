@@ -1,0 +1,17 @@
+<div 
+    data-pat-collapsible="
+        trigger: #{{ include.title | slugify }}-title-segment; 
+        store: local; 
+        open-trigger: #button-open-all-sections; 
+        close-trigger: #button-close-all-sections; 
+        scroll-selector: self; scroll-offset: 120px"
+    id="{{ include.title | slugify }}"
+    class="cms-page-module type-{{ include.type }} pat-collapsible {{ include.state }}">
+    {% include prozin/cms-page-module-title.html %}
+
+    {% assign this_type = include.type %}
+    <div 
+        class="panel-content">
+        {% include prozin/cms-section-{{this_type}}.html %}
+    </div>
+</div>

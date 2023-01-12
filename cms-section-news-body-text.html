@@ -1,0 +1,44 @@
+
+<fieldset 
+    class="horizontal form-panel">
+    <fieldset
+        id="image-selection" 
+        class="group image-selection">
+        <legend>{% include patterns/i18n id="label_hero_image" %}</legend>
+        {% if page.image %}
+            <img
+                alt="" 
+                src="{{ page.image }}" />
+            <a
+                href="/dialogues/cms/edit-news-item#image-selection"
+                class="small default pat-button pat-inject"
+                type="button">{% include patterns/i18n id="label_remove_image_imp" %}</a>
+        {% else %}
+            <a 
+                href="/dialogues/image-bank/panel-select-image-image-bank#document-content"
+                data-pat-modal="class: large panel" 
+                class="small default pat-button pat-modal">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
+        {% endif %}
+        {% include prozin/form-help.html
+            content="message_help_hero_image" %}
+    </fieldset>
+</fieldset>
+<article
+    class="body-text pat-rich">
+    {% if include.content %}
+        {% capture this_content %}{{ include.content | markdownify }}{% endcapture %}
+    {% else %}
+        {% capture this_content %}{{ page.content | markdownify }}{% endcapture %}
+    {% endif %}
+    
+    {% include
+        patterns/rich-editor.html
+        placeholder="Your content goes here…"
+        autofocus=false
+        toolbar="editor-toolbar"
+        image-panel="#pat-modal.image-picker"
+        image-menu="/dialogues/cms/image-menu#document-content"
+        link-panel="#pat-modal.panel-hyperlink"
+        link-menu="/dialogues/cms/hyperlink-menu#document-content"
+        content=this_content %}
+</article>
