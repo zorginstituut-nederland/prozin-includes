@@ -32,10 +32,14 @@
         title=this_title %}
 
     {% assign this_type = include.type %}
+
     <div 
         class="panel-content">
         {% include prozin/cms-section-{{ this_type }}.html
             content=include.content
+            video=include.video
+            transcript=include.transcript
+            poster=include.poster
             caption=this_caption
             image=include.image %}
     </div>
