@@ -37,14 +37,16 @@
 		</div>
 		<div 
 			class="pat-collapsible free-form closed video-player-extra"
-			data-pat-collapsible="load-content: {{ include.transcript }}#transcript;">
+			data-pat-collapsible="load-content: {{ include.transcript_link }}#transcript;">
 			<strong 
 				class="video-player-extra-title">Uitgeschreven tekst</strong>
 			<article 
 				class="pat-rich">
 				<p 
 					class="transcript-link">
-					Lees het <a href="{{ include.transcript }}#transcript">transcript</a>.
+					Lees het
+					<a 
+						href="{{ include.transcript_link }}#transcript">transcript</a>.
 				</p>
 			</article>
 		</div>

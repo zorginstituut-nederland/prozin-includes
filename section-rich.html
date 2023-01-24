@@ -1,0 +1,10 @@
+<div 
+	class="pat-rich">
+	{% if include.introduction %}
+		<p 
+			class="section-introduction">
+			{{ site.data.prozin.ui[section.description][site.lang] }}
+		</p>
+	{% endif %}
+	{{ include.content | markdownify }}
+</div>

@@ -1,0 +1,21 @@
+<div 
+    class="pat-rich">
+    {% capture image_id %}{{ include.image | slugify }}{% endcapture %}
+    <figure
+        class="illustration-group pat-gallery"
+        id="{{ image_id }}">    
+        <a 
+            id="{{ image_id }}-enlarge"
+            href="{{ include.image }}">
+            <img 
+                src="{{ include.image }}"
+                alt="{{ include.alt }}" />
+        </a>
+        <figcaption>
+            <span 
+                class="icon-zoom-in pat-forward" 
+                data-pat-forward="selector: #{{ image_id }}-enlarge">Vergroot afbeelding</span>
+            {{ include.caption }}
+        </figcaption>
+    </figure>
+</div>

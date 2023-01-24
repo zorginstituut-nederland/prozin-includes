@@ -1,0 +1,26 @@
+{% capture this_id %}{{ page.title | slugify }}-{{ include.title | slugify }}{% endcapture %}
+
+{% if include.type == 'see-also' %}
+    {% capture this_title %}{% include patterns/i18n id="label_see_also" %}{% endcapture %}
+{% else %}
+    {% assign this_title = include.title %}
+{% endif %}
+
+<div 
+    id="{{ this_id }}"
+    class="page-module type-{{ include.type }}">
+    <h2
+        class="page-module-title">
+        {{ this_title }}
+    </h2>
+    {% assign section_type = include.type %}
+    {% include prozin/section-{{section_type}}.html
+        content=include.content
+        video=include.video
+        transcript=include.transcript
+        transcript_link=include.transcript_link
+        involved_parties=include.involved_parties
+        poster=include.poster
+        caption=include.caption
+        image=include.image %}
+</div>

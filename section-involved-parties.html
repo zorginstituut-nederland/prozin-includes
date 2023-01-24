@@ -1,0 +1,18 @@
+<ul
+    class="link-list">
+    {% if page.involved_parties %}
+        {% for item in page.involved_parties %}
+            <li>
+                <a 
+                    href="#">{{ item.name }}</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        {% for item in include.involved_parties %}
+            <li>
+                <a 
+                    href="">{{ item.name }}</a>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>
