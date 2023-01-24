@@ -1,10 +1,18 @@
 <figure 
 	class="video-player">
-	<video 
-	    controls="controls" 
-	    poster="{{ include.poster }}">
-	    <source src="{{ include.video }}"/>
-	</video>
+	{% if page.video %}
+		<video 
+		    controls="controls" 
+		    poster="{{ page.poster }}">
+		    <source src="{{ page.video }}"/>
+		</video>
+	{% else %}
+		<video 
+		    controls="controls" 
+		    poster="{{ include.poster }}">
+		    <source src="{{ include.video }}"/>
+		</video>
+	{% endif %}
 	<div 
 		class="video-player-extras">
 		<div 
