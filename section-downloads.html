@@ -1,62 +1,46 @@
-{% if page.downloads %}
-    <div 
-        class="page-module type-downloads">
-        {% if include.title %}
-            <h2 
-                class="page-module-title">
-                {{ include.title }}
-            </h2>
-        {% elsif include.assistive-title %}
-            <h2 
-                class="page-module-title assistive">
-                {{ include.title }}
-            </h2>
-        {% endif %}
-        {% for item in page.downloads %}
-            {% if item.group %}
-                <h3>
-                    {{ item.group }}
-                </h3>
-            {% endif %}
-            {% for download in item.files %}
-                <a 
-                    class="file-download" 
-                    {% if download.url %}href="{{ download.url }}"{% else %}href="#"{% endif %}>
-                    <h4 
-                        class="title">
-                        {{ download.title }}
-                    </h4>
-                    <p 
-                        class="meta">
-                        {% if download.type == 'pdf' %}
-                            <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.lang] }}</span>
-                        {% elsif download.type == 'zip' %}
-                            <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.lang] }}</span>
-                        {% elsif download.type == 'archive' %}
-                            <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.lang] }}</span>
-                        {% elsif download.type == 'word' %}
-                            <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.lang] }}</span>
-                        {% elsif download.type == 'excel' %}
-                            <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.lang] }}</span>
-                        {% endif %}
-                        {% if download.page_count %}
-                            <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.lang] }}</span>
-                        {% endif %}
-                        <span 
-                            class="meta-item">{{ download.size }}</span>
-                    </p>
-                    <p 
-                        class="meta">
-                        <span 
-                            class="meta-item">{{ download.kind }}</span>
-                        {% if download.date %}
-                            <span 
-                                class="meta-item">{{ download.date }}</span>
-                        {% endif %}
-                    </p>
-                </a>
-            {% endfor %}
-        {% endfor %}
-    </div>
-{% endif %}
+{% for item in page.downloads %}
+    {% if item.group %}
+        <h3>
+            {{ item.group }}
+        </h3>
+    {% endif %}
+    {% for download in item.files %}
+        <a 
+            class="file-download" 
+            {% if download.url %}href="{{ download.url }}"{% else %}href="#"{% endif %}>
+            <h4 
+                class="title">
+                {{ download.title }}
+            </h4>
+            <p 
+                class="meta">
+                {% if download.type == 'pdf' %}
+                    <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.lang] }}</span>
+                {% elsif download.type == 'zip' %}
+                    <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.lang] }}</span>
+                {% elsif download.type == 'archive' %}
+                    <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.lang] }}</span>
+                {% elsif download.type == 'word' %}
+                    <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.lang] }}</span>
+                {% elsif download.type == 'excel' %}
+                    <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.lang] }}</span>
+                {% endif %}
+                {% if download.page_count %}
+                    <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.lang] }}</span>
+                {% endif %}
+                <span 
+                    class="meta-item">{{ download.size }}</span>
+            </p>
+            <p 
+                class="meta">
+                <span 
+                    class="meta-item">{{ download.kind }}</span>
+                {% if download.date %}
+                    <span 
+                        class="meta-item">{{ download.date }}</span>
+                {% endif %}
+            </p>
+        </a>
+    {% endfor %}
+{% endfor %}
 
