@@ -85,4 +85,14 @@
             type="number" 
             maxlength="12">
     </label>
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: organisation_type=zorgaanbieder; transition: slide">
+        Vestigings-AGB-code
+        <input 
+            disabled 
+            value="{{ item.agb }}"
+            type="number" 
+            name="">
+    </label>
 </fieldset>

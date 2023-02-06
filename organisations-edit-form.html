@@ -16,7 +16,7 @@
             <input
                 type="text" 
                 required\
-                value="{{ page.organisation }}"
+                value="{{ page.name }}"
                 name="" />
         {% endif %}
     </label>
@@ -43,12 +43,15 @@
                 {% unless site.organisation_types contains 'Fabrikant' %}disabled{% endunless %}
                 value="fabrikant">Fabrikant</option>
             <option
-                {% unless site.organisation_types contains 'Gegevensmakelaar' %}disabled{% endunless %}>Gegevensmakelaar</option>
+                {% if page.organisation_type == 'Gegevensmakelaar' %}selected{% endif %}
+                {% unless site.organisation_types contains 'Zorginstelling' %}disabled{% endunless %}
+                value="gegevensmakelaar">Gegevensmakelaar</option>
             <option
                 {% unless site.organisation_types contains 'Ministerie' %}disabled{% endunless %}
-                value="zorginstelling">Ministerie</option>
+                value="ministerie">Ministerie</option>
             <option
-                {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}>Werkgroep</option>
+                {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}
+                value="werkgroep">Werkgroep</option>
             <option
                 {% unless site.organisation_types contains 'Patiëntenorganisatie' %}disabled{% endunless %}
                 value="po">Patiëntenorganisatie</option>
@@ -56,11 +59,12 @@
                 {% unless site.organisation_types contains 'ZBO' %}disabled{% endunless %}
                 value="zorginstelling">ZBO</option>
             <option
+                {% if page.organisation_type == 'Zorgaanbieder' %}selected{% endif %}
                 {% unless site.organisation_types contains 'Zorginstelling' %}disabled{% endunless %}
-                value="zorginstelling">{% include patterns/i18n id="label_healthcare_provider" %}</option>
+                value="zorgaanbieder">{% include patterns/i18n id="label_healthcare_provider" %}</option>
             <option
                 {% unless site.organisation_types contains 'Zorgverzekeraar' %}disabled{% endunless %}
-                value="zorginstelling">Zorgverzekeraar</option>
+                value="zorgverzekeraar">Zorgverzekeraar</option>
         </select>
     </label>
     <div 
@@ -117,21 +121,32 @@
     </div>
     <label
         class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling or organisation_type=gegevens-makelaar or organisation_type=fabrikant or organisation_type=zbo or organisation_type=zorgverzekeraar; transition: slide">
+        data-pat-depends="condition: organisation_type=zorgaanbieder or organisation_type=gegevens-makelaar or organisation_type=fabrikant or organisation_type=zbo or organisation_type=zorgverzekeraar; transition: slide">
         KvK
         <input 
             type="number" 
             maxlength="8">
     </label>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: organisation_type=zorginstelling; transition: slide">
-        AGB-code
-        <input 
-            value="{{ item.abg }}"
-            type="number" 
-            name="">
-    </label>
+    {% if page.agb %}
+        <fieldset
+            class="group pat-depends"
+            data-pat-depends="condition: organisation_type=zorgaanbieder; transition: slide">
+            <legend>AGB-code(s)</legend>
+            <div 
+                class="field-list">
+                {% for agb in page.agb %}
+                    <label>
+                        AGB
+                        <input 
+                            disabled 
+                            value="{{ agb.code }}"
+                            type="number" 
+                            name="">    
+                    </label>   
+                {% endfor %}
+            </div>
+        </fieldset>
+    {% endif %}
     <label>
         Website
         <input 
