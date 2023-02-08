@@ -10,28 +10,29 @@
         <ul 
             class="editorial-list col-4 pat-equaliser">  
             {% for item in site.editorial %}
-                {% unless item.parent %}
+                {% unless item.parent or item.state == 'draft' %}
                     {% assign item_path = item.url | split: "/" | reverse %}
-                    {% if item_path[1] == 'editorial' or item_path[2] == 'editorial' %}
-                        <li >
-                            <a 
-                                href="{{ item.url }}" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record; scroll: #main">
-                                <h3 
-                                    class="item-title">
-                                    {{ item.title }}
-                                </h3>
-                                <p>
-                                    {% if item.summary %}
-                                        {{ item.summary | truncate: 100 }}
-                                    {% else %}
-                                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
-                                    {% endif %}
-                                </p>
-                            </a>
-                        </li>
-                    {% endif %}
+                    {% if item_path[1] == 'editorial' or item_path[2] == 'editorial' %}                             
+                        {% if item.layout == 'prozin/general-article' %}
+                            <li>
+                                <a 
+                                    href="{{ item.url }}" 
+                                    class="pat-inject" 
+                                    data-pat-inject="history: record; scroll: #site-header">
+                                    <h3 class="item-title">
+                                        {{ item.title }}
+                                    </h3>
+                                    <p>
+                                        {% if item.summary %}
+                                            {{ item.summary | truncate: 100 }}
+                                        {% else %}
+                                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
+                                        {% endif %}
+                                    </p>
+                                </a>
+                            </li> 
+                        {% endif %}
+                    {% endif %}           
                 {% endunless %}
             {% endfor %}
         </ul>
