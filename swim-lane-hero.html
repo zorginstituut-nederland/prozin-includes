@@ -37,7 +37,7 @@
                             <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
                         </li>
                     {% elsif item.callout == "recent" or item.callout == "popular" %}
-                        {% for item in site.posts limit:3 %}
+                        {% for item in site.medicines limit:3 %}
                             <li >
                                 <a 
                                     class="{% if item.layout == 'medicine' %}medicine{% endif %}"
