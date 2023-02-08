@@ -1,6 +1,6 @@
 <div 
     class="portlet span-{{ portlet.span }}" 
-    id="{{ portlet.id }}">
+    id="{{ portlet.id | remove: 'prozin/' }}">
     <div 
         class="content">
         <article 
@@ -14,36 +14,54 @@
             </header>
         </article>
         <div 
-            class="portlet-body">      
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url="/quality-registrations"
-                label="label_quality_registrations"
-                collection="quality-registrations" %}
+            class="portlet-body"> 
+            {% if include.show contains 'quality-registrations' %}    
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/quality-registrations"
+                    label="label_quality_registrations"
+                    collection="quality-registrations" %}
+             {% endif %} 
+       
+            {% if include.show contains 'quality-standards' %}    
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/quality-standards"
+                    label="label_quality_standards"
+                    collection="quality-standards" %}
+             {% endif %} 
+            
+            {% if include.show contains 'measuring-instruments' %}  
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/measuring-instruments"
+                    label="label_measuring_instruments"
+                    collection="measuring-instruments" %}
+             {% endif %} 
+            
+            {% if include.show contains 'news' %}  
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/news"
+                    label="label_news"
+                    collection="news" %}
+             {% endif %} 
 
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url="/quality-standards"
-                label="label_quality_standards"
-                collection="quality-standards" %}
+            {% if include.show contains 'editorial' %}  
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/editorial"
+                    label="label_general"
+                    collection="editorial" %}
+             {% endif %} 
 
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url="/measuring-instruments"
-                label="label_measuring_instruments"
-                collection="measuring-instruments" %}
-
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url="/news"
-                label="label_news"
-                collection="news" %}
-
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url="/editorial"
-                label="label_general"
-                collection="editorial" %}
+            {% if include.show contains 'medicines' %}  
+                {% include prozin/bookmarked-list.html 
+                    cols="3"
+                    url="/medicines"
+                    label="label_medicines"
+                    collection="medicines" %}
+             {% endif %} 
         </div>
     </div>
 </div> 

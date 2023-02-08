@@ -1,6 +1,6 @@
-{% assign these_drafts = site[include.collection] | where: 'bookmarked','true' | sort: 'title' %}
+{% assign these_items = site[include.collection] | where: 'bookmarked','true' | sort: 'title' %}
 
-{% if these_drafts.size >= 1 %}
+{% if these_items.size >= 1 %}
     <h3 
         class="portlet-separation-title">
         {% if include.url %}
@@ -15,7 +15,7 @@
     </h3>
     <ul 
         class="link-list expanded col-{{ include.cols }}">
-        {% for item in these_drafts %}
+        {% for item in these_items %}
             <li 
                 class="item-{{ item.state }}">
                 <a 
