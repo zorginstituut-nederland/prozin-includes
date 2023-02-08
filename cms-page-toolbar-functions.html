@@ -69,7 +69,7 @@
                         class="icon-archive pat-inject close-panel">{% include patterns/i18n id="patterns.label_archive_imp" %}</a>
                 </li>
             {% endif %}
-            {% if page.state == 'draft' page.state == 'for review' %}
+            {% if page.state == 'draft' or page.state == 'for review' or page.state == 'new %}
                 <li>
                     <a 
                         href="/dialogues/cms/delete-draft#document-content" 
@@ -121,7 +121,7 @@
         href="{{ page.url }}-edit" 
         class="pat-button pat-inject icon-update pat-depends edit" 
         title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.lang] }}</a>
-{% elsif page.state == 'draft' %}
+{% elsif page.state == 'draft' or page.state == 'new' %}
     <a 
         data-pat-depends="condition: version=draft"  
         {% if site.data.personae[site.persona].role == 'Administrator' %}
