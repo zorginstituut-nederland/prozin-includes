@@ -7,7 +7,8 @@
             {% for item in page.nav %}
                 <li class="item">
                     <a href="{{ item.url }}" data-pat-inject="history: record; scroll: #main" class="pat-inject follow icon-{{ item.icon }}">
-                        <h3 class="item-title">
+                        <h3 
+                            class="item-title">
                             {% if item.name contains 'prozin.' %}
                                 {% capture this_id %}{{ item.name | remove: 'prozin.' }}{% endcapture %}
                                 {{ site.data.prozin.ui[this_id][site.lang] }}
@@ -15,12 +16,13 @@
                                 {{ site.data.ui[item.name][site.lang] }}
                             {% endif %}
                         </h3>
-                        <p class="byline">
+                        <p 
+                            class="byline">
                             {% if item.name contains 'prozin.' %}
                                 {% capture this_description %}{{ item.description | remove: 'prozin.' }}{% endcapture %}
                                 {{ site.data.ui[this_id][site.lang] }}
                             {% else %}
-                                {{ site.data.prozin.ui[item.description][site.lang] }}
+                                {{ site.data.ui[item.description][site.lang] }}
                             {% endif %}
                         </p>
                     </a>
