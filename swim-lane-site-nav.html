@@ -11,7 +11,7 @@
                             {% if item.name contains 'prozin.' %}
                                 {% capture this_id %}{{ item.name | remove: 'prozin.' }}{% endcapture %}
                                 {{ site.data.prozin.ui[this_id][site.lang] }}
-                            {% else %}False
+                            {% else %}
                                 {{ site.data.ui[item.name][site.lang] }}
                             {% endif %}
                         </h3>
