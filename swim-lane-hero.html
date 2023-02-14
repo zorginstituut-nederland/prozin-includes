@@ -22,19 +22,24 @@
                     {% assign count = 1 %}
                     {% if item.callout == "top-tasks" %}
                         <li>
-                            <a href="#" title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
+                            <a 
+                                href="#" 
+                                title="Kwaliteitsproducten in het Register zijn gezamenlijk door partijen ontwikkeld en voldoen aan het Toetsingskader.">Bekijk het register</a>
                         </li>
                         <li>
-                            <a href="#" title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
-                        </li>
-                        <!-- <li>
-                            <a href="#" title="Gedeelde voorbeelden van goede zorg dragen bij aan kwaliteitsverbetering.">Zoek een <i>good Practice</i></a>
-                        </li> -->
-                        <li>
-                            <a href="#" title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
+                            <a 
+                                href="#" 
+                                title="Overzicht van alle kwaliteitsproducten, al dan niet vermeld op de Meerjarenagenda, gesorteerd op zorgonderwerp.">Zien welke kwaliteitsproducten in ontwikkeling of gepubliceerd zijn</a>
                         </li>
                         <li>
-                            <a href="#" title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
+                            <a 
+                                href="#" 
+                                title="Hier vindt u alle kwaliteitsgegevens over geleverde zorg die door zorgaanbieders zijn gemeten en aangeleverd.">Data over kwaliteit van zorg zoeken</a>
+                        </li>
+                        <li>
+                            <a 
+                                href="#" 
+                                title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
                         </li>
                     {% elsif item.callout == "recent" or item.callout == "popular" %}
                         {% for item in site.medicines limit:3 %}
