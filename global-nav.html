@@ -2,7 +2,8 @@
     id="global-nav" 
     class="variation-{{ layout.page_type }} pat-sticky" 
     role="menubar">
-    <div class="container">
+    <div 
+        class="container">
         {% if page.layout == 'homepage' %}
             <h1 
                 class="assistive">
@@ -41,12 +42,14 @@
 
             {% if layout.parent %}
                 {% if page.parent == 'Beeldbank' or layout.parent == 'Beeldbank' %}
-                    <a href="/beheer" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
-                    <a href="/dialogues/image-bank/" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_image_bank[site.lang] }}</a>
+                    <a 
+                        href="/beheer" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                    <a 
+                        href="/dialogues/image-bank/" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_image_bank[site.lang] }}</a>
                 {% else %}
                     <a 
                         href="/{{ layout.parent | slugify }}"
@@ -55,27 +58,32 @@
                 {% endif %}
             {% elsif page.parent %}
                 {% if page.parent == 'Help' %}
-                    <a href="/help" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
+                    <a 
+                        href="/help" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
                 {% elsif page.parent == 'Beheer' or layout.parent == 'Beheer' %}
-                    <a href="/beheer" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                    <a 
+                        href="/beheer" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
                 {% elsif page.parent == 'Manage' or layout.parent == 'Manage' %}
-                    <a href="/manage" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                    <a 
+                        href="/manage" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
                 {% elsif page.title == 'Beheer' %}
                     <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
                 {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
-                    <a href="/fabrikanten" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+                    <a  
+                        href="/fabrikanten" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
                 {% else %}
-                     <a href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
+                     <a 
+                        href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
                 {% endif %}
             {% else %}
                 {% if page.collection %}
@@ -176,6 +184,29 @@
                 <a>{{ page.title }}</a>
             {% endif %}
         </nav>
+
+        <nav 
+            class="icons pat-navigation">
+            {% if site.user == 'anonymous' %}
+
+            {% elsif page.url == '/login' %}
+                <a 
+                    id="user-menu"
+                    class="icon"></a>
+            {% else %}
+                <a 
+                    href="/beheer/"
+                    class="icon pat-inject"
+                    data-pat-inject="history: record; scroll: #main"
+                    id="dashboard-trigger">{% include patterns/i18n id="label_management" %}</a>
+                <a  
+                    href="#login-menu" 
+                    data-pat-tooltip="position-list: tr; source: ajax" 
+                    class="icon pat-tooltip" 
+                    id="user-menu-trigger">{% include patterns/i18n id="label_logged_in_as" %} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
+            {% endif %}
+        </nav>
+
         {% if site.search_type == 'sheet' %}
           {% include global-search-fk.html %}
         {% else %}
