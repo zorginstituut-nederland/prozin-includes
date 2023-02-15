@@ -10,7 +10,7 @@
         {% if item.intro %}
             <p 
                 class="intro">
-                {{ item.intro }}
+                {{ site.data.ui.[item.intro][site.lang] }}
             </p>
         {% endif %}
         <ul 
