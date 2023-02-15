@@ -1,18 +1,20 @@
 <fieldset 
     class="pat-rich">
     {% include prozin/cms-title-block-title.html %}
-    <div
-        class="introduction"
-        id="page-intro">
-        <p
-            id="document-summary">{% if page.summary %}{{ page.summary }}{% else %}&nbsp;{% endif %}</p>
-        <textarea
-            required
-            type="text"
-            maxlength="200"
-            value="{{ page.summary }}"
-            placeholder="{% include patterns/i18n id='label_introduction' %}"
-            class="doc-summary pat-content-mirror"
-            data-pat-content-mirror="target: #document-summary">{% if page.summary %}{{ page.summary }}{% endif %}</textarea>
-    </div>
+    {% unless include.summary == false %}
+        <div
+            class="introduction"
+            id="page-intro">
+            <p
+                id="document-summary">{% if page.summary %}{{ page.summary }}{% else %}&nbsp;{% endif %}</p>
+            <textarea
+                required
+                type="text"
+                maxlength="200"
+                value="{{ page.summary }}"
+                placeholder="{% include patterns/i18n id='label_introduction' %}"
+                class="doc-summary pat-content-mirror"
+                data-pat-content-mirror="target: #document-summary">{% if page.summary %}{{ page.summary }}{% endif %}</textarea>
+        </div>
+    {% endunless %}
 </fieldset>
