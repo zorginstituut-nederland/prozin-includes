@@ -195,11 +195,13 @@
                     class="icon"></a>
             {% else %}
                 <a 
+                    title="{% include patterns/i18n id='label_dashboard' %}" 
                     href="/beheer/"
                     class="icon pat-inject"
                     data-pat-inject="history: record; scroll: #main"
                     id="dashboard-trigger">{% include patterns/i18n id="label_management" %}</a>
                 <a  
+                    title="{% include patterns/i18n id='label_personal_space' %}" 
                     href="#login-menu" 
                     data-pat-tooltip="position-list: tr; source: ajax" 
                     class="icon pat-tooltip" 
@@ -211,6 +213,7 @@
           {% include global-search-fk.html %}
         {% else %}
             <form 
+                title="{% include patterns/i18n id='label_search' %}" 
                 accept-charset="UTF-8" 
                 action="/zoekresultaten" id="quick-search-form" 
                 method="get" 
