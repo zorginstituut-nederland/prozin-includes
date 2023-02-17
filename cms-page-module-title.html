@@ -16,7 +16,12 @@
     <h2
         id="{{ this_title_id }}-title-segment"
         class="title-segment">
-        {{ include.title }}
+        {% assign this_label = include.title %}
+        {% if include.title contains 'label_' %}
+            {{ site.data.prozin.ui.[this_label][site.lang] }}
+        {% else %}
+            {{ include.title }}
+        {% endif %}
     </h2>
     {% if page.layout contains 'general-article' %}
         {% unless 

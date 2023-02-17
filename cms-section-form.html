@@ -1,0 +1,24 @@
+{% if include.source contains 'layout.' %}
+    {% capture src %}{{ include.source | remove: 'layout.' }}{% endcapture %}
+{% elsif include.source contains 'page.' %}
+    {% capture src %}{{ include.source | remove: 'page.' }}{% endcapture %}
+{% else %}
+    {% capture src %}{{ include.source }}{% endcapture %}
+{% endif %}
+
+<fieldset 
+    class="horizontal form-panel">
+    {% if include.source contains 'layout.' %}
+        {% for item in layout[src] %}
+            {% include patterns/form-component.html %}
+        {% endfor %}
+    {% elsif include.source contains 'page.' %}
+        {% for item in page[src] %}
+            {% include patterns/form-component.html %}
+        {% endfor %}
+    {% else %}
+        {% for item in site.data[src] %}
+            {% include patterns/form-component.html %}
+        {% endfor %}
+    {% endif %}
+</fieldset>

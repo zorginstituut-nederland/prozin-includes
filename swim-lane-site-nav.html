@@ -1,12 +1,27 @@
-<section class="swim-lane" id="site-navigation">
-    <div class="container">
-        <h2 class="assistive">
+<section 
+    class="swim-lane" 
+    id="site-navigation">
+    <div 
+        class="container">
+        <h2 
+            class="assistive">
             {{ site.data.prozin.ui.label_main_menu[site.lang] }}
         </h2>
-        <ul class="nav-tiles pat-equaliser count-{{ page.nav.size }}">
+        {% if item.intro %}
+            <p 
+                class="intro">
+                {{ site.data.ui.[item.intro][site.lang] }}
+            </p>
+        {% endif %}
+        <ul 
+            class="nav-tiles pat-equaliser count-{{ page.nav.size }}">
             {% for item in page.nav %}
-                <li class="item">
-                    <a href="{{ item.url }}" data-pat-inject="history: record; scroll: #main" class="pat-inject follow icon-{{ item.icon }}">
+                <li 
+                    class="item">
+                    <a 
+                        href="{{ item.url }}" 
+                        data-pat-inject="history: record; scroll: #main" 
+                        class="pat-inject follow icon-{{ item.icon }}">
                         <h3 
                             class="item-title">
                             {% if item.name contains 'prozin.' %}
@@ -16,15 +31,17 @@
                                 {{ site.data.ui[item.name][site.lang] }}
                             {% endif %}
                         </h3>
-                        <p 
-                            class="byline">
-                            {% if item.name contains 'prozin.' %}
-                                {% capture this_description %}{{ item.description | remove: 'prozin.' }}{% endcapture %}
-                                {{ site.data.ui[this_id][site.lang] }}
-                            {% else %}
-                                {{ site.data.ui[item.description][site.lang] }}
-                            {% endif %}
-                        </p>
+                        {% if item.description %}
+                            <p 
+                                class="byline">
+                                {% if item.name contains 'prozin.' %}
+                                    {% capture this_description %}{{ item.description | remove: 'prozin.' }}{% endcapture %}
+                                    {{ site.data.ui[this_id][site.lang] }}
+                                {% else %}
+                                    {{ site.data.ui[item.description][site.lang] }}
+                                {% endif %}
+                            </p>
+                        {% endif %}
                     </a>
                 </li>
             {% endfor %}
