@@ -1,25 +1,28 @@
 <fieldset 
     class="horizontal form-panel metadata">
     <fieldset
-        id="video-upload" 
-        class="group video-upload pat-subform pat-autosubmit pat-inject"
-        data-pat-inject="url: /news/publicatie-edit; source: #video-upload; target: #video-upload">
+        id="object-upload" 
+        class="group object-upload pat-subform pat-autosubmit pat-inject"
+        data-pat-inject="url: /editorial/begrippenlijst-edit; source: #object-upload; target: #object-upload">
         <legend>{% include patterns/i18n id="label_file" %}</legend>
-        {% if include.object %}
-            <div
-                class="pat-auto-scale passe-partout"
-                style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
-                <object 
-                    id="{{ include.source | slugify }}-object" 
-                    data="{{ include.source }}"
+        {% if include.source %}
+            <figure 
+                class="pat-screenshot allow-interaction">
+                <div
+                    class="pat-auto-scale passe-partout"
                     style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
-                </object>
-            </div>
+                    <object 
+                        id="{{ include.source | slugify }}-object" 
+                        data="{{ include.source }}"
+                        style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
+                    </object>
+                </div>
+            </figure>
             <a
-                href="/dialogues/cms/edit-news-item#video-upload"
-                data-pat-inject="url: /dialogues/cms/edit-news-item; source: #video-upload; target: #video-upload"
+                href="/editorial/begrippenlijst-edit#object-upload"
+                data-pat-inject="url: /dialogues/cms/edit-news-item; source: #object-upload; target: #object-upload"
                 class="small default pat-button pat-inject"
-                type="button">{% include patterns/i18n id="label_remove_video_imp" %}</a>
+                type="button">{% include patterns/i18n id="label_remove_presentation_imp" %}</a>
         {% else %}
             <input 
                 type="file" 
