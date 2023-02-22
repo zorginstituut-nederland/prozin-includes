@@ -4,7 +4,7 @@
         id="video-upload" 
         class="group video-upload pat-subform pat-autosubmit pat-inject"
         data-pat-inject="url: /news/publicatie-edit; source: #video-upload; target: #video-upload">
-        <legend>{% include patterns/i18n id="label_video" %}</legend>
+        <legend>{% include patterns/i18n id="label_file" %}</legend>
         {% if include.object %}
             <div
                 class="pat-auto-scale passe-partout"
@@ -25,14 +25,33 @@
                 type="file" 
                 name="object">
         {% endif %}
-    </fieldset>     
+        {% include patterns/form-help.html
+                content="message_help_presentation_upload" %}</dfn>
+    </fieldset>    
+    <label>
+        {% include patterns/i18n id="label_optimal_width_in_pixels" %}
+        <input 
+            required
+            value="1280"
+            type="number" 
+            name="">
+    </label>   
+    <label>
+        {% include patterns/i18n id="label_optimal_height_in_pixels" %}
+        <input 
+            required
+            value="720"
+            type="number" 
+            name="">
+    </label> 
     <fieldset
-        class="group transcript">
-        <legend>{% include patterns/i18n id="label_transcript" %}</legend>
-        {% capture this_placeholder %}{% include patterns/i18n id="message_write_pate_video_transcript" %}{% endcapture %}
-        {% include patterns/form-field-rich-editor.html
-            placeholder=this_placeholder
-            content=include.transcript
-            id="editor-toolbar-video" %}
-    </fieldset>   
+        class="pat-checklist">
+        <!-- <legend>{% include patterns/i18n id="patterns.label_behaviour" %}</legend> -->
+        <label>{% include patterns/i18n id="patterns.label_allow_interaction" %} <input type="checkbox" name="interaction"></label>
+    </fieldset>    
+    <label>
+        {% include patterns/i18n id="label_caption" %}
+        <textarea
+            rows="2"></textarea>
+    </label>  
 </fieldset>
