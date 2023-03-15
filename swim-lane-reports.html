@@ -1,0 +1,66 @@
+<section 
+    class="swim-lane" 
+    id="swim-lane-reports">
+    <div 
+        class="container">
+        <h2
+            class="lane-title">
+            {% include patterns/i18n id="label_selected_reports" %}
+        </h2>
+        {% if item.intro %}
+            <p 
+                class="intro">
+                {{ site.data.ui.[item.intro][site.lang] }}
+            </p>
+        {% endif %}
+
+<!--         <ul 
+            class="link-list col-4">
+            {% for report in item.reports %}
+                <li>
+                    <a 
+                        href="{{ report.url }}" 
+                        class="pat-inject" 
+                        title="{{ report.summary }}" 
+                        data-pat-inject="history: record; scroll: #main">
+                        {{ report.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+ -->
+        <ul 
+            class="task-list col-2 pat-equaliser">
+            {% for report in item.reports %}
+                <li>
+                    <a 
+                        href="{{ report.url }}" 
+                        data-pat-switch="#browse-bar state-* state-collapsed"
+                        class="pat-inject pat-switch" 
+                        title="{{ report.summary }}" 
+                        data-pat-inject="
+                            source: #browse-bar;
+                            target: #browse-bar;
+                              &&
+                            source: #global-nav::element; 
+                            target: #global-nav::element 
+                              && 
+                            source: #main; 
+                            target: #main; 
+                            
+                            history: record; 
+                            scroll: #main">
+                        <h3 
+                            class="item-title">
+                            {{ report.title }}
+                        </h3>
+                        <p 
+                            class="byline">
+                            {{ report.summary }}    
+                        </p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
