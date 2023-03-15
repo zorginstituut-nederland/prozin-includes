@@ -156,12 +156,6 @@
             {% if page.title == 'Over Horizonscan Geneesmiddelen' %}
                 <a>Over Horizonscan Geneesmiddelen</a>
             {% endif %}
-            {% if page.layout == 'medicine-listing' %}
-                <a 
-                  href="/geneesmiddelen" 
-                  class="pat-inject" 
-                  data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
-            {% endif %}
             {% if page.layout == 'medicine' or page.layout == 'medicine-compare-versions' %}
                 {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}  
                     <a href="/concepten" 
