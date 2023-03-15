@@ -97,5 +97,13 @@
 		<p>
 			{{ site.data.ui.message_gip_browse_lane_help[site.lang] }}
 		</p>
+
+		{% assign this_snippet= '{0}' %}									
+		{% capture full_snippet %}<a href="/link-to-faq" class="pat-inject" data-pat-inject="scroll: #main; history: record">{{ site.data.prozin.ui.label_faq[site.lang] }}</a>{% endcapture %}
+
+		<p>
+			{{ site.data.ui.message_more_info_in_faq[site.lang]
+	    	| replace: this_snippet, full_snippet }}
+		</p>
 	</article>
 </div>
