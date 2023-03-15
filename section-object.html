@@ -1,40 +1,31 @@
-<div 
-    class="page-module type-object">
-    {% if include.title %}
-        <h2 
-            class="page-module-title">
-            {{ include.title }}
-        </h2>
+<figure 
+    class="pat-screenshot  {% if include.interaction == 'allowed' %}allow-interaction{% endif %}">
+    {% if include.enlarge == 'modal' %}
+        <a
+            href="/feedback/presentatie#document-content" 
+            data-pat-modal="class: large object panel"
+            title="Bekijk de presentatie fullscreen"
+            class="pat-modal enlarge-button">Bekijk de presentatie fullscreen</a>
     {% endif %}
-    <figure 
-        class="pat-screenshot  {% if include.interaction == 'allowed' %}allow-interaction{% endif %}">
+    <div
+        class="pat-auto-scale passe-partout"
+        style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
+        <object 
+            id="{{ include.source | slugify }}-object" 
+            data="{{ include.source }}"
+            style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
+        </object>
+    </div>
+    <figcaption>
         {% if include.enlarge == 'modal' %}
             <a
                 href="/feedback/presentatie#document-content" 
                 data-pat-modal="class: large object panel"
-                title="Bekijk de presentatie fullscreen"
-                class="pat-modal enlarge-button">Bekijk de presentatie fullscreen</a>
+                class="pat-modal enlarge-link icon-right-dir">Bekijk de presentatie</a>
+        {% else %}
+            <a
+                data-pat-fullscreen="selector:#{{ include.source | slugify }}-object"
+                class="pat-fullscreen enlarge-link icon-resize-full">Bekijk de presentatie fullscreen</a>
         {% endif %}
-        <div
-            class="pat-auto-scale passe-partout"
-            style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
-            <object 
-                id="{{ include.source | slugify }}-object" 
-                data="{{ include.source }}"
-                style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
-            </object>
-        </div>
-        <figcaption>
-            {% if include.enlarge == 'modal' %}
-                <a
-                    href="/feedback/presentatie#document-content" 
-                    data-pat-modal="class: large object panel"
-                    class="pat-modal enlarge-link icon-right-dir">Bekijk de presentatie</a>
-            {% else %}
-                <a
-                    data-pat-fullscreen="selector:#{{ include.source | slugify }}-object"
-                    class="pat-fullscreen enlarge-link icon-resize-full">Bekijk de presentatie fullscreen</a>
-            {% endif %}
-        </figcaption>
-    </figure>
-</div>
+    </figcaption>
+</figure>
