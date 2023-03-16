@@ -1,0 +1,67 @@
+<div 
+    class="portlet span-{{ portlet.span }}" 
+    id="{{ portlet.id | remove: 'prozin/' }}">
+    <div 
+        class="content">
+        <article 
+            class="portlet-intro">
+            <header 
+                class="portlet-title-group">
+                <h2 
+                    class="portlet-title">
+                    {{ site.data.prozin.ui.label_drafts[site.lang] }}
+                </h2>
+            </header>
+        </article>
+        <div 
+            class="portlet-body"> 
+            {% if include.show contains 'quality-registrations' %}    
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/quality-registrations"
+                    label="label_quality_registrations"
+                    collection="quality-registrations" %}
+             {% endif %} 
+       
+            {% if include.show contains 'quality-standards' %}    
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/quality-standards"
+                    label="label_quality_standards"
+                    collection="quality-standards" %}
+             {% endif %} 
+            
+            {% if include.show contains 'measuring-instruments' %}  
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/measuring-instruments"
+                    label="label_measuring_instruments"
+                    collection="measuring-instruments" %}
+             {% endif %} 
+            
+            {% if include.show contains 'news' %}  
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/news"
+                    label="label_news"
+                    collection="news" %}
+             {% endif %} 
+
+            {% if include.show contains 'editorial' %}  
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/editorial"
+                    label="label_general"
+                    collection="editorial" %}
+             {% endif %} 
+
+            {% if include.show contains 'medicines' %}  
+                {% include prozin/drafts-list.html 
+                    cols="3"
+                    url="/medicines"
+                    label="label_medicines"
+                    collection="medicines" %}
+             {% endif %} 
+        </div>
+    </div>
+</div> 

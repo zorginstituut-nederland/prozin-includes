@@ -1,6 +1,18 @@
 {% assign these_drafts = site[include.collection] | where: 'state','draft' | sort: 'title' %}
 
 {% if these_drafts.size >= 1 %}
+    <h3 
+        class="portlet-separation-title">
+        {% if include.url %}
+        <a 
+            href="/beheer/{{ include.url }}"
+            class="pat-inject"
+            data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=include.label %}
+        </a>
+         {% else %}
+            {% include patterns/i18n id=include.label %}
+        {% endif %}
+    </h3>
     <ul 
         class="link-list expanded col-{{ include.cols }}">
         {% for item in these_drafts %}
