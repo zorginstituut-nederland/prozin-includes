@@ -1,6 +1,14 @@
 <fieldset 
     class="pat-rich">
-    {% include prozin/cms-title-block-title.html %}
+    {% if include.placeholder %}
+        {% assign this_placeholder = include.placeholder %}
+    {% else %}
+        {% assign this_placeholder = 'Titel' %}
+    {% endif %}
+
+    {% include prozin/cms-title-block-title.html
+        placeholder=this_placeholder %}
+        
     {% unless include.summary == false %}
         <div
             class="introduction"

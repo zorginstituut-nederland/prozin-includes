@@ -1,5 +1,8 @@
 <hgroup
     id="title-block">
+    {% if include.placeholder %}
+        {% assign this_placeholder = include.placeholder %}
+    {% endif %}
     <h1
         id="document-title">{% if page.title %}{{ page.title }}{% else %}&nbsp;{% endif %}</h1>
     <textarea
@@ -7,7 +10,7 @@
         type="text"
         maxlength="80"
         value="{{ page.title }}"
-        placeholder="Titel"
+        placeholder={{ this_placeholder }}
         class="doc-title pat-content-mirror pat-autofocus"
         data-pat-content-mirror="target: #document-title">{% if page.title %}{{ page.title }}{% endif %}</textarea>
 </hgroup>
