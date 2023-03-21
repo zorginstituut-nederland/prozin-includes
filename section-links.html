@@ -1,6 +1,43 @@
+{% if page.medicine_groups %}
+    <h3
+        class="page-module-group-title">
+        {% include patterns/i18n id="label_medicine_group" %}
+    </h3>
+    <ul 
+        class="link-list">
+        {% for item in page.medicine_groups %}
+            <li>
+                <a 
+                    href="{{ item.url }}" 
+                    class="type-medicine-group pat-inject" 
+                    data-pat-inject="history: record; scroll: #main"
+                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>{{ item.name }}</a>
+            </li>  
+        {% endfor %}
+    </ul>
+{% endif %}
+{% if page.indications %}
+    <h3
+        class="page-module-group-title">
+        {% include patterns/i18n id="label_indications" %}
+    </h3>
+    <ul 
+        class="link-list">
+        {% for item in page.indications %}
+            <li>
+                <a 
+                    href="{{ item.url }}" 
+                    class="type-medicine-group pat-inject" 
+                    data-pat-inject="history: record; scroll: #main"
+                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>{{ item.name }}</a>
+            </li>  
+        {% endfor %}
+    </ul>
+{% endif %}
 {% for item in page.links %}
     {% if item.group %}
-        <h3>
+        <h3
+            class="page-module-group-title">
             {{ item.group }}
         </h3>
     {% endif %}
@@ -18,7 +55,8 @@
     </ul>
 {% endfor %}
 {% if page.tags.size >= 1 %}
-    <h3>
+    <h3
+        class="page-module-group-title">
         Tags
     </h3>
     <ul 

@@ -9,7 +9,10 @@
 <div 
     id="{{ this_id }}"
     {% if include.collapsible %}
-        data-pat-collapsible="store: local"
+        data-pat-collapsible="
+            store: local; 
+            scroll-selector: self; 
+            scroll-offset: 120px"
     {% endif %}
     class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless closed{% endif %}">
     <h2
