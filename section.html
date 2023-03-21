@@ -8,7 +8,10 @@
 
 <div 
     id="{{ this_id }}"
-    class="page-module type-{{ include.type }}">
+    {% if include.collapsible %}
+        data-pat-collapsible="store: local"
+    {% endif %}
+    class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless closed{% endif %}">
     <h2
         class="page-module-title">
         {{ this_title }}

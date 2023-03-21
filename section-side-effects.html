@@ -1,0 +1,31 @@
+<div 
+    class="pat-rich">  
+    {% if page.side_effects_intro %}
+        {{ page.side_effects_intro | markdownify }}
+    {% endif %}
+    {% if page.side_effects %}
+        {% include side-effects.html %}
+    {% endif %}
+    {{ page.bijwerkingen }}
+</div>
+
+    <ul 
+        class="link-list">
+        <li>
+            <a 
+                href="https://www.lareb.nl/nl/databank/result?formGroup=&atc={{ page.atc }}&ref=fk" 
+                title="{{ site.data.ui.label_info_lareb_title[site.lang] }}" 
+                target="_blank" 
+                class="type-link-external">
+                {{ site.data.ui.label_info_lareb[site.lang] }}
+            </a>
+        </li>
+        <li>
+            <a 
+                href="https://meldformulier.lareb.nl/Forms/ReportForm" 
+                title="{{ site.data.ui.label_notification_form_lareb_title[site.lang] }}" target="_blank" 
+                class="type-link-external">
+                {{ site.data.ui.label_notification_form_lareb[site.lang] }}
+            </a>
+        </li>
+    </ul>

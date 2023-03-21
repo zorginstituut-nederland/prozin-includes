@@ -1,0 +1,16 @@
+<div 
+    class="pat-rich">
+    {{ page.zwangerschap }}
+</div>
+
+{% if page.ext_zwangerschap %}
+    <ul 
+        class="link-list">
+        <li>
+            <a class="type-link-external 
+               href="{{ page.ext_zwangerschap }}" 
+               target="_blank" 
+               title="">{{ site.data.ui.label_info_lareb_pregnancy[site.lang] }}</a>
+        </li>
+    </ul>
+{% endif %}

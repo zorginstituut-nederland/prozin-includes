@@ -1,0 +1,5 @@
+{% if page.dosering %}
+    {{ page.dosering | replace: '$plus_open', 'Klap alles open' | replace: '$plus_sluit', ' Klap alles dicht' | replace: '$compare-extensie', 'vergelijk' }}
+{% elsif page.dosage %}
+    {% include dosages.html %}
+{% endif %}

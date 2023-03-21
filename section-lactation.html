@@ -1,0 +1,12 @@
+{{ page.lactatie }}
+
+{% if page.ext_lactatie %}
+    <ul class="link-list">
+        <li>
+            <a class="type-link-external 
+               href="{{ page.ext_lactatie }}" 
+               target="_blank" 
+               title="">{{ site.data.ui.label_info_lareb_lactation[site.lang] }}</a>
+        </li>
+    </ul>
+{% endif %}

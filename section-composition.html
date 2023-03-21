@@ -1,0 +1,128 @@
+<div 
+    class="pat-message warning pat-collapsible borderless open"
+    data-pat-collapsible="trigger: #close-excipients-warning; store: local"
+    id="excipients-message">
+    <div 
+        class="panel-content">
+        <p>
+            {% if page.cbg_link %}
+                {{ site.data.prozin.ui.message_not_all_excipients_mentioned_refer_to_cbg[site.lang] }}
+            {% else %}
+                {{ site.data.prozin.ui.message_not_all_excipients_mentioned[site.lang] }}
+            {% endif %}
+        </p>
+        <p 
+            class="button-bar">
+            <button 
+                class="default pat-button small"
+                id="close-excipients-warning">{{ site.data.prozin.ui.label_understand_hide_message[site.lang] }}</button>
+        </p>
+    </div>
+</div>
+
+{% if page.composition %}                       
+    {% for item in page.composition  %}
+        <section class="recipe">
+            <h3 class="title"><span class="product"><span class="name">{{ item.name }}</span> 
+            {% if item.type %}<em class="product-type">({{ item.type }})</em>{% endif %}
+                <span class="xgvs" title="Dit geneesmiddel is niet opgenomen in het geneesmiddelenvergoedingssysteem (GVS)">
+                XGVS</span></span> <span class="manfact">{{ item.manufacturer }}</span>
+            </h3>
+            {% for dose in item.doses %}
+                <div class="doses {% if dose.note %}has-note{% endif %}">
+                    <dl class="details">
+                        <dt class="application" title="Toedieningsvorm">
+                            Toedieningsvorm
+                        </dt>
+                        <dd title="Toedieningsvorm">
+                            {{ dose.application }}
+                        </dd>
+                        {% if dose.concentration %}
+                            <dt class="concentration" title="Sterkte">
+                                Sterkte
+                            </dt>
+                            <dd title="Sterkte">
+                                {{ dose.concentration }}
+                            </dd>
+                        {% endif %}
+                        {% if dose.packaging %}
+                            <dt class="packaging" title="Verpakkingsvorm">
+                                Verpakkingsvorm
+                            </dt>
+                            <dd title="Verpakkingsvorm">
+                                {{ dose.packaging }}
+                            </dd>
+                        {% endif %}
+                    </dl>
+                    {% if dose.note %}
+                        <p class="note">
+                            {{ dose.note }}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </section>
+    {% endfor %}
+{% else %}
+    {{ page.samenstelling }}
+{% endif %}
+
+<div 
+    class="pat-collapsible borderless closed">
+    <h4>Uitleg symbolen</h4>
+    <table class="legend">
+        <tbody>
+            <tr>
+                <td class="symbols"><span class="icon xgvs">XGVS</span></td>
+                <td>Dit geneesmiddel is niet opgenomen in het
+                geneesmiddelenvergoedingssysteem (GVS).</td>
+            </tr>
+            <tr>
+                <td class="symbols"><span class="icon otc">OTC</span></td>
+                <td>
+                    Over the counter, dit geneesmiddel is een
+                    zelfzorgmiddel. Aan de vergoeding van bepaalde
+                    zelfzorgmedicatie zijn nadere voorwaarden
+                    verbonden. Deze zijn vermeld op <a href=
+                    "/bladeren-volgens-boek/inleidingen/inl-besluit-zorgverzekering-en-regeling-zorgverzekering#09002b678087b5c3">
+                    bijlage 2 van de Regeling zorgverzekering</a>.
+                </td>
+            </tr>
+            <tr>
+                <td class="symbols"><span class="icon b2">2</span></td>
+                <td>
+                    Aan de vergoeding van dit geneesmiddel zijn
+                    bepaalde voorwaarden verbonden, die zijn vermeld op
+                    <a href=
+                    "/bladeren-volgens-boek/inleidingen/inl-besluit-zorgverzekering-en-regeling-zorgverzekering#09002b678087b5c3">
+                    bijlage 2 van de Regeling zorgverzekering</a>. Deze
+                    voorwaarden kunnen betrekking hebben op de <a href=
+                    "#indicaties">indicaties</a>, de duur van de
+                    behandeling en het voorschrijven volgens een
+                    richtlijn/protocol.
+                </td>
+            </tr>
+            <tr>
+                <td class="symbols"><span class="icon mnt">MNT</span></td>
+                <td>
+                    Dit geneesmiddel is onderworpen aan <a href=
+                    "http://www.cbg-meb.nl/voor-mensen/voor-zorgverleners/inhoud/geneesmiddelen-onder-extra-toezicht-aanvullende-monitoring"
+                    target="_blank">aanvullende monitoring</a>. Extra
+                    aandacht wordt gevraagd voor onverwachte
+                    bijwerkingen. Meldt u dit via het <a href=
+                    "https://www.lareb.nl/Meld-bijwerking/Meldformulier.aspx"
+                    target="_blank">meldformulier van het Lareb</a>.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p 
+    class="compare-to-other">
+    <a 
+        href="/fludarabine-vergelijken" 
+        class="pat-inject" 
+        data-pat-inject="history: record"><strong>{{ page.title }}</strong> vergelijken met een ander geneesmiddel</a>.
+</p>
+

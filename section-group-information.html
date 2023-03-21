@@ -1,0 +1,50 @@
+<p>
+    {{page.title }} hoort bij de groep{% if page.medicine_groups.size > 1 %}en{% endif %} 
+    {% for group in page.medicine_groups %}
+        <a 
+            href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %}
+        en
+    {% endif %}{% endfor %}.
+</p>
+
+{% for group in page.medicine_groups %}
+    {% for this_group in site.medicine-groups %}
+        {% if this_group.title == group.name %}
+            {% if page.medicine_groups.size > 1 %}
+                <h4>
+                    <a 
+                        href="/{{ group.name }}">{{ this_group.title }}</a>
+                </h4>
+            {% endif %}
+            <ul 
+                class="link-list medicines">
+                {% for medicine in this_group.medicines %}
+                    <li>
+                        <a 
+                            class="icon-medicine pat-inject" 
+                            data-pat-inject="history: record" 
+                            href="{{ medicine.verwijzing }}">{{ medicine.name }} (J05AF06)</a>
+                         <a 
+                            href="/vergelijken?vergelijkTeksten=rifabutine,bedaquiline" 
+                            data-pat-inject="history: record" 
+                            class="button-compare pat-inject">Vergelijk</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+<ul 
+    class="link-list">
+    <li>
+        <a 
+            href="/fludarabine-vergelijken" 
+            class="icon-switch"><strong>{{ page.title }}</strong> vergelijken met een ander geneesmiddel.</a>
+    </li>
+    <li>
+        <a 
+            href="/vergelijken#content" 
+            class="icon-euro pat-modal">Vergelijk de kosten van bovenstaande middelen onderling.</a>
+    </li>
+</ul>
