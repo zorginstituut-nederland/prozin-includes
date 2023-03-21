@@ -9,7 +9,10 @@
                 class="portlet-title-group">
                 <h2 
                     class="portlet-title">
-                    {{ site.data.prozin.ui.label_bookmarked[site.lang] }}
+                    <a 
+                        class="pat-inject"
+                        data-pat-inject="scroll: #main; history: record" 
+                        href="/dialogues/personal/bookmarks">{{ site.data.prozin.ui.label_bookmarks[site.lang] }}</a>
                 </h2>
             </header>
         </article>
