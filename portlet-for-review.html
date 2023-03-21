@@ -9,7 +9,7 @@
                 class="portlet-title-group">
                 <h2 
                     class="portlet-title">
-                    {{ site.data.prozin.ui.label_bookmarked[site.lang] }}
+                    {{ site.data.prozin.ui.label_for_review[site.lang] }}
                 </h2>
             </header>
         </article>
@@ -20,15 +20,15 @@
                 {% for section in this_show %}
                     {% capture this_url %}/{{ section }}{% endcapture %}
                     {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
-                    {% include prozin/bookmarked-list.html 
-                        cols="3"
+                    {% include prozin/review-list.html 
+                        cols="1"
                         url=this_url
                         label=this_label
                         collection=section %}
                 {% endfor %}
             {% else %}
-                {% include patterns/i18n id="message_all_is_in_review_or_published" %}
-            {% endif %} 
+                {% include patterns/i18n id="message_nothing_for_review" %}
+            {% endif %}
         </div>
     </div>
 </div> 

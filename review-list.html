@@ -1,6 +1,6 @@
-{% assign these_drafts = site[include.collection] | where: 'state','Draft' | sort: 'title' %}
+{% assign these_items = site[include.collection] | where: 'state','For review' | sort: 'title' %}
 
-{% if these_drafts.size >= 1 %}
+{% if these_items.size >= 1 %}
     <h3 
         class="portlet-separation-title">
         {% if include.url %}
@@ -14,10 +14,10 @@
         {% endif %}
     </h3>
     <ul 
-        class="link-list col-{{ include.cols }}">
-        {% for item in these_drafts %}
+        class="link-list col-{{ include.cols | default: '1' }}">
+        {% for item in these_items %}
             <li 
-                class="state-draft">
+                class="item-{{ item.state }}">
                 <a 
                     href="{{ item.url }}" 
                     class="pat-inject" 
@@ -27,9 +27,4 @@
             </li>
         {% endfor %}
     </ul>
-{% else %}
-    <p 
-        class="message-no-content">
-        {% include patterns/i18n id="message_all_is_in_review_or_published" %}
-    </p>
 {% endif %}
