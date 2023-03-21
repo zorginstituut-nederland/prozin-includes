@@ -2,7 +2,7 @@
 
 {% if these_items.size >= 1 %}
     <h3 
-        class="portlet-separation-title">
+        class="{{ include.title_class | default: 'portlet-separation-title' }}">
         {% if include.url %}
         <a 
             href="/beheer/{{ include.url }}"
