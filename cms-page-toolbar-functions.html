@@ -83,7 +83,7 @@
                         class="icon-archive pat-inject close-panel">{% include patterns/i18n id="patterns.label_archive_imp" %}</a>
                 </li>
             {% endif %}
-            {% if page.state == 'draft' or page.state == 'for review' or page.state == 'new %}
+            {% if page.state == 'draft' or page.state == 'For review' or page.state == 'new %}
                 <li>
                     <a 
                         href="/dialogues/cms/delete-draft#document-content" 
@@ -168,7 +168,7 @@
         {% if site.data.personae[site.persona].role == 'Administrator' %}
             href="{{ page.url }}-edit"
         {% endif %} 
-        class="pat-button {% unless page.state == 'for review' %}default{% endunless %} {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
+        class="pat-button {% unless page.state == 'For review' %}default{% endunless %} {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
         data-pat-inject="source: body; target: body"
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
 {% endif %}
