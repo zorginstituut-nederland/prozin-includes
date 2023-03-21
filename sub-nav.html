@@ -12,7 +12,23 @@
                 class="container">
                 <ul 
                     class="link-list">
+                    {% for item in layout.sub_nav_prepend %}
+                        <li>
+                            <a 
+                                title="{{ item.description }}" 
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
+                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                        </li>
+                    {% endfor %}
                     {% for item in page.sub_nav %}
+                        <li>
+                            <a 
+                                title="{{ item.description }}" 
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
+                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for item in layout.sub_nav_append %}
                         <li>
                             <a 
                                 title="{{ item.description }}" 
