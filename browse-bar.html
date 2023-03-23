@@ -40,7 +40,7 @@
 			        		<label>
 			        			<select 
 			        				class="pat-autosuggest bar-style" 
-			        				data-pat-autosuggest="minimum-input-length: 0; placeholder: Zoek een tabel…" 
+			        				data-pat-autosuggest="minimum-input-length: 0" 
 		        					{% if column.name %}
 		        						name="{{ column.name }}"
 		        					{% else %}
@@ -85,7 +85,7 @@
         </form>
         <button 
         	class="pat-toggle collapse-expand-toggle" 
-        	data-pat-toggle="selector: #browse-bar; value: state-expanded state-collapsed">Collapse/expand panel</button>
+        	data-pat-toggle="selector: #browse-bar; vaa	lue: state-expanded state-collapsed">Collapse/expand panel</button>
     </div>
 </div>
 <div 
@@ -97,13 +97,15 @@
 		<p>
 			{{ site.data.ui.message_gip_browse_lane_help[site.lang] }}
 		</p>
-
-		{% assign this_snippet= '{0}' %}									
-		{% capture full_snippet %}<a href="/link-to-faq" class="pat-inject" data-pat-inject="scroll: #main; history: record">{{ site.data.prozin.ui.label_faq[site.lang] }}</a>{% endcapture %}
-
-		<p>
-			{{ site.data.ui.message_more_info_in_faq[site.lang]
-	    	| replace: this_snippet, full_snippet }}
-		</p>
+		<h2>
+			{% include patterns/i18n id="label_see_also" %}
+		</h2>
+		<ul
+			class="link-list">
+			<li>
+				<a 
+					href="/general/faq">FAQ</a>
+			</li>
+		</ul>
 	</article>
 </div>
