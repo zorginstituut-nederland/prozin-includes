@@ -3,7 +3,7 @@
     <fieldset
         id="object-upload" 
         class="group object-upload pat-subform pat-autosubmit pat-inject"
-        data-pat-inject="url: /editorial/begrippenlijst-edit; source: #object-upload; target: #object-upload">
+        data-pat-inject="url: /general/begrippenlijst-edit; source: #object-upload; target: #object-upload">
         <legend>{% include patterns/i18n id="label_file" %}</legend>
         {% if include.source %}
             <figure 
@@ -19,7 +19,7 @@
                 </div>
             </figure>
             <a
-                href="/editorial/begrippenlijst-edit#object-upload"
+                href="/general/begrippenlijst-edit#object-upload"
                 data-pat-inject="url: /dialogues/cms/edit-news-item; source: #object-upload; target: #object-upload"
                 class="small default pat-button pat-inject"
                 type="button">{% include patterns/i18n id="label_remove_presentation_imp" %}</a>
