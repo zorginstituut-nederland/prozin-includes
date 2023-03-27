@@ -10,15 +10,7 @@
         href="#" >Bladwijzer</a>
 {% endif %}
 
-<label 
-    class="pat-toolbar-search-field">
-    <input 
-        type="search" 
-        placeholder="Zoeken binnen pagina">
-    <button
-        class="assistive"
-        type="submit">Verstuur</button>
-</label>
+{% include prozin/toolbar-component-search.html %}
 
 {% unless site.user == 'anonymous' %}
     <a 

@@ -21,50 +21,19 @@
         {% endif %}
     </label>
     <label>
-        Type
+        {% include patterns/i18n id="label_type" %}
         <select
             name="organisation_type"
             {% unless page.organisation_type == 'Beheerorganisatie' %}
             disabled
             {% endunless %}>
-            <option>Niet gedefinieerd</option>
-            <option
-                {% unless site.organisation_types contains 'Beheerorganisatie' %}disabled{% endunless %}>Beheerorganisatie</option>
-            <option
-                {% unless site.organisation_types contains 'Beroepsorganisatie' %}disabled{% endunless %}
-                value="beo">Beroepsorganisatie</option>
-            <option
-                {% unless site.organisation_types contains 'Branche-organisatie' %}disabled{% endunless %}
-                value="bro">Branche-organisatie</option>
-            <option
-                {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}
-                value="consulent">Consulent</option>
-            <option
-                {% unless site.organisation_types contains 'Fabrikant' %}disabled{% endunless %}
-                value="fabrikant">Fabrikant</option>
-            <option
-                {% if page.organisation_type == 'Gegevensmakelaar' %}selected{% endif %}
-                {% unless site.organisation_types contains 'Zorginstelling' %}disabled{% endunless %}
-                value="gegevensmakelaar">Gegevensmakelaar</option>
-            <option
-                {% unless site.organisation_types contains 'Ministerie' %}disabled{% endunless %}
-                value="ministerie">Ministerie</option>
-            <option
-                {% unless site.organisation_types contains 'Consulent' %}disabled{% endunless %}
-                value="werkgroep">Werkgroep</option>
-            <option
-                {% unless site.organisation_types contains 'Patiëntenorganisatie' %}disabled{% endunless %}
-                value="po">Patiëntenorganisatie</option>
-            <option
-                {% unless site.organisation_types contains 'ZBO' %}disabled{% endunless %}
-                value="zorginstelling">ZBO</option>
-            <option
-                {% if page.organisation_type == 'Zorgaanbieder' %}selected{% endif %}
-                {% unless site.organisation_types contains 'Zorginstelling' %}disabled{% endunless %}
-                value="zorgaanbieder">{% include patterns/i18n id="label_healthcare_provider" %}</option>
-            <option
-                {% unless site.organisation_types contains 'Zorgverzekeraar' %}disabled{% endunless %}
-                value="zorgverzekeraar">Zorgverzekeraar</option>
+            <option>{% include patterns/i18n id="label_unknown" %}</option>
+            {% for item in site.data.prozin.organisation-types %}
+                <option
+                    {% unless site.organisation_types contains item.name %}disabled{% endunless %}>
+                    {% include patterns/i18n id=item.i18n-singular %}
+                </option>
+            {% endfor %}
         </select>
     </label>
     <div 
