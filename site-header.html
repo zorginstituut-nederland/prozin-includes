@@ -9,11 +9,11 @@
       </p>
     {% endif %}
 
-    {% if site.data.prozin.personae[site.persona]role == 'manufacturer' %}
+    {% if site.data.prozin.personae[site.persona]role == 'Manufacturer' %}
         {% assign dashboard_url = '/manage/' %}
-    {% elsif site.data.prozin.personae[site.persona]role == 'bystander' %}
+    {% elsif site.data.prozin.personae[site.persona]role == 'Bystander' %}
         {% assign dashboard_url = '/beheer-lezer' %}
-    {% elsif site.data.prozin.personae[site.persona]role == 'workgroup-member' %}
+    {% elsif site.data.prozin.personae[site.persona]role == 'Workgroup-member' %}
         {% assign dashboard_url = '/beheer-werkgroeplid' %}
     {% else %}
         {% assign dashboard_url = '/beheer' %}
