@@ -1,25 +1,28 @@
-{% if page.bookmarked %}
-    <a 
-        class="icon icon-bookmark active" 
-        title="Verwijder bladwijzer"
-        href="#" >Verwijder bladwijzer</a>
-{% else %}
-    <a 
-        class="icon icon-bookmark-empty" 
-        title="Voeg bladwijzer toe" 
-        href="#" >Bladwijzer</a>
-{% endif %}
+{% unless site.user == 'anonymous' or site.data.personae[site.persona].role == 'Visitor' %}
+
+    {% if page.bookmarked %}
+        <a 
+            class="icon icon-bookmark active" 
+            title="Verwijder bladwijzer"
+            href="#" >Verwijder bladwijzer</a>
+    {% else %}
+        <a 
+            class="icon icon-bookmark-empty" 
+            title="Voeg bladwijzer toe" 
+            href="#" >Bladwijzer</a>
+    {% endif %}
+
+{% endunless %}
 
 {% include prozin/toolbar-component-search.html %}
 
-{% unless site.user == 'anonymous' %}
+{% unless site.user == 'anonymous' or site.data.personae[site.persona].role == 'Visitor' %}
     <a 
         data-pat-tooltip="source: ajax; position-list: tr;" 
         href="#language-menu" 
         class="icon pat-tooltip language" 
         title="Vertaal dit document">{{ site.data.prozin.ui.label_translation[site.lang] }}</a>
-
-<a 
+    <a 
         class="icon icon-ellipsis-hor pat-tooltip" 
         href="#id-{{ item.title | slugify }}" 
         data-pat-tooltip="source: ajax; position-list: tr">More…</a>

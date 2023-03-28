@@ -1,0 +1,48 @@
+<label 
+    class="pat-select">
+    Versie
+    <select 
+        name="version">
+        {% if page.revisions %}
+            {% for revision in page.revisions %}
+                {% if revision.type == 'change-request' %}
+                    <option>
+                        {{ site.data.prozin.ui.label_change_request[site.lang] }} ({{ revision.date}})
+                    </option>
+                {% else %}
+                    <option 
+                        {% if forloop.last %}selected{% endif %}
+                        value="{% if forloop.last %}latest{% else %}versie-{% increment counter %}{% endif %}">
+                        {{ site.data.prozin.ui.label_version[site.lang] }} {{ counter }} ({{ revision.date}})
+                    </option>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% unless page.state == 'New' %}
+                <option 
+                    value="versie-0">
+                    {{ site.data.prozin.ui.label_version[site.lang] }} 1 (9 januari 2022)
+                </option>
+            {% endunless %}
+        {% endif %}
+        {% if 
+            page.state == 'Revision' 
+          or 
+            page.state == 'New' 
+          or 
+            page.state == 'Draft' %}
+            <option 
+                value="draft" 
+                selected >
+                {% include patterns/i18n id="label_draft" %}
+            </option>
+        {% elsif 
+            page.state == 'For review' %}
+            <option 
+                value="for-review" 
+                selected >
+                {% include patterns/i18n id="label_for_review" %}
+            </option>
+        {% endif %}
+    </select>   
+</label>
