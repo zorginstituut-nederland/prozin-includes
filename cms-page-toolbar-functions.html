@@ -154,9 +154,22 @@
     <a 
         data-pat-depends="condition: version=draft or version=for-review" 
         data-pat-tooltip="class: rich info; source: ajax; position-list: tr;" 
-        href="/dialogues/cms/edit-locked#document-alert-bar" 
+        href="#locking-menu" 
         class="pat-button pat-depends pat-tooltip locked edit" 
         title="Bewerk de conceptversie van dit document">{{ site.data.prozin.ui.label_edit[site.lang] }}</a>
+    <article 
+        id="locking-menu" 
+        class="assistive">
+        <p>
+            {% include patterns/i18n id="message_document_being_edited_by_other_user" %}
+        </p>
+        <p>
+            <a 
+                class="pat-button default small close-panel pat-modal"
+                data-pat-modal="class: medium panel" 
+                href="/dialogues/cms/lock-steal-confirm.html#document-content">{% include patterns/i18n id="label_steal_lock_imp" %}</a>
+        </p>
+    </article>
 {% else %}
     <a 
         {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft or version=for-review"{% endunless %} 
