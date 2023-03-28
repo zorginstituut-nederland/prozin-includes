@@ -98,13 +98,15 @@
             </div>
 
             {% if page.url contains '-edit' %}
-                <a  
-                        href="{{ page.url | remove: '-edit' }}" 
-                        class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+                <button  
+                    type="submit"
+                    formaction="{{ page.url | remove: '-edit' }}" 
+                    class="pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</button>
             {% else %}
-                <a  
-                    href="{{ include.cancel }}" 
-                    class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+                <button  
+                    type="submit"
+                    formaction="{{ include.cancel }}" 
+                    class="pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</button>
             {% endif %}
 
             <div 
