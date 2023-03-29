@@ -19,7 +19,7 @@
             class="link-list col-{{ include.cols }}">
             {% for item in these_items %}
                 <li 
-                    class="item-{{ item.state }}">
+                    class="item-{{ item.state | slugify }}">
                     <a 
                         href="{{ item.url }}" 
                         class="pat-inject" 

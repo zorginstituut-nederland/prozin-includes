@@ -1,6 +1,6 @@
 <tr
     class="
-        {% if item.state %}state-{{ item.state }}{% endif %} 
+        {% if item.state %}state-{{ item.state | slugify }}{% endif %} 
         content-type-{{ item.layout | slugify }}">
     <th
         class="item-name"> 
@@ -16,9 +16,9 @@
     </td>
     <td
         class="item-state">
-        {% if item.state == 'archived' %}
+        {% if item.state == 'Archived' %}
             Gearchiveerd
-        {% elsif item.state == 'draft' %}
+        {% elsif item.state == 'Draft' %}
             Concept
         {% else %}
             Gepubliceerd
@@ -40,7 +40,7 @@
                         href="{{ item.url }}-edit" 
                         class="icon-edit pat-inject close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
                 </li>
-                {% if item.state == 'archived' %}
+                {% if item.state == 'Archived' %}
                     <li>
                         <form
                             action="{{ page.url }}#listing"  

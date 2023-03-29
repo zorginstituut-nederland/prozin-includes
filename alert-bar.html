@@ -1,6 +1,6 @@
 <tr>
     <td> 
-        {% if item.state == 'archived' %}
+        {% if item.state == 'Archived' %}
             <a 
                 href="{{ item.url }}" 
                 class="pat-inject" 
@@ -18,7 +18,7 @@
         {{ item.date | date: "%e %B, %Y %H:%M" }}, door <a href="#" class="pat-inject">{{ item.author | default: 'Riwka Rubinstein'}}</a>
     </td>
     <td>
-        {% if item.state == 'archived' %}
+        {% if item.state == 'Archived' %}
             Gearchiveerd
         {% elsif item.state == 'draft' %}
             Concept
@@ -43,7 +43,7 @@
                         data-pat-modal="class: small panel"
                         class="icon-edit pat-modal close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
                 </li>
-                {% if item.state == 'archived' %}
+                {% if item.state == 'Archived' %}
                     <li>
                         <form
                             action="{{ page.url }}#listing"  
