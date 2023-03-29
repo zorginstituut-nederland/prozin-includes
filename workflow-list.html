@@ -1,0 +1,40 @@
+{% assign found_items = false %}
+
+{% for collection in site.collections %}
+
+    {% assign these_items = site[collection.label] | where: 'state',include.state | sort: 'title' %}
+
+    {% if these_items.size >= 1 %}
+        {% assign found_items = true %}
+        <h3 
+            class="{{ include.title_class | default: 'portlet-separation-title' }}">
+            {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
+            <a 
+                href="/{{ collection.label }}/"
+                class="pat-inject"
+                data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
+            </a>
+        </h3>
+        <ul 
+            class="link-list col-{{ include.cols }}">
+            {% for item in these_items %}
+                <li 
+                    class="item-{{ item.state | slugify }}">
+                    <a 
+                        href="{{ item.url }}" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">
+                        {{ item.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endfor %}
+
+{% if found_items == false %}
+    <p>
+        {% include patterns/i18n id="message_nothing_for_this_workflow_state" %}
+    </p>
+{% endif %}

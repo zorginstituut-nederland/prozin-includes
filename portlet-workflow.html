@@ -1,0 +1,34 @@
+<div 
+    class="portlet span-{{ portlet.span }}" 
+    id="{{ portlet.id | remove: 'prozin/' }}">
+    <div 
+        class="content">
+        <article 
+            class="portlet-intro">
+            <header 
+                class="portlet-title-group">
+                <h2 
+                    class="portlet-title">
+                    {{ site.data.prozin.ui[include.i18n][site.lang] }}
+                </h2>
+            </header>
+        </article>
+        <div 
+            class="portlet-body"> 
+            {% assign this_state = include.state %}
+            {% capture this_url %}/{{ section }}{% endcapture %}
+            {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
+            {% if include.span == 1 %}
+                {% assign cols = 1 %}
+            {% elsif include.span == 2 %}
+                {% assign cols = 3 %}
+            {% endif %}
+            {% include prozin/workflow-list.html 
+                cols=cols
+                url=this_url
+                state=this_state
+                label=this_label
+                collection=section %} 
+        </div>
+    </div>
+</div>
