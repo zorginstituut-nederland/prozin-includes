@@ -35,11 +35,13 @@
             id="id-{{ item.title | slugify }}">
             <ul 
                 class="menu">
-                <li>
-                    <a 
-                        href="{{ item.url }}-edit" 
-                        class="icon-edit pat-inject close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
-                </li>
+                {% if item.state == 'Draft' %}
+                    <li>
+                        <a 
+                            href="{{ item.url }}-edit" 
+                            class="icon-edit pat-inject close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
+                    </li>
+                {% endif %}
                 {% if item.state == 'Archived' %}
                     <li>
                         <form
