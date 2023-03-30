@@ -16,7 +16,7 @@
 
 {% include prozin/toolbar-component-search.html %}
 
-{% unless site.user == 'anonymous' or site.data.personae[site.persona].role == 'Visitor' %}
+{% if site.data.personae[site.persona].role == 'Editor' %}
     <a 
         data-pat-tooltip="source: ajax; position-list: tr;" 
         href="#language-menu" 
@@ -122,7 +122,7 @@
             </li>
         </ul>
     </div>
-{% endunless %}
+{% endif %}
 
 {% if page.state == 'published' %}
     <a 
