@@ -1,0 +1,29 @@
+{% if page.bookmarked %}
+    <button 
+    	type="submit"
+	    id="bookmark-button"
+	    value="remove-bookmark"
+	    title="Remove bookmark"
+	    {% if include.context == 'subform' %}
+			class="icon bookmark active icon-bookmark"
+		   	formaction="/dialogues/cms/bookmark-removed-subform"
+	    {% else %}
+		   	formaction="/dialogues/cms/bookmark-removed"
+	 	   	class="icon bookmark active icon-bookmark pat-inject"
+	    	data-pat-inject="source: #bookmark-button::element; target: self::element"
+	    {% endif %}>{% include patterns/i18n id="label_remove_bookmark" %}</button>
+{% else %}
+    <button 
+    	type="submit"
+	    id="bookmark-button"
+	    value="add-bookmark"
+	    title="Bookmark"
+	    {% if include.context == 'subform' %}
+			class="icon bookmark-empty icon-bookmark-empty"
+		   	formaction="/dialogues/cms/bookmarked-subform"
+	    {% else %}
+		   	formaction="/dialogues/cms/bookmarked"
+	 	   	class="icon bookmark-empty icon-bookmark-empty pat-inject"
+	    	data-pat-inject="source: #bookmark-button::element; target: self::element"
+	    {% endif %}>{% include patterns/i18n id="label_to_bookmark" %}</button>
+{% endif %}

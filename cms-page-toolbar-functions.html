@@ -1,17 +1,5 @@
 {% unless site.user == 'anonymous' or site.data.personae[site.persona].role == 'Visitor' %}
-
-    {% if page.bookmarked %}
-        <a 
-            class="icon icon-bookmark active" 
-            title="Verwijder bladwijzer"
-            href="#" >Verwijder bladwijzer</a>
-    {% else %}
-        <a 
-            class="icon icon-bookmark-empty" 
-            title="Voeg bladwijzer toe" 
-            href="#" >Bladwijzer</a>
-    {% endif %}
-
+    {% include prozin/bookmark-icon-subform.html %}
 {% endunless %}
 
 {% include prozin/toolbar-component-search.html %}
