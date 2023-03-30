@@ -1,35 +1,38 @@
 {% assign found_bookmarks = false %}
 
 {% for collection in site.collections %}
+    {% unless collection.label == 'posts' %}
 
-    {% assign these_items = site[collection.label] | where: 'bookmarked','true' | sort: 'title' %}
+        {% assign these_items = site[collection.label] | where: 'bookmarked','true' | sort: 'title' %}
 
-    {% if these_items.size >= 1 %}
-        {% assign found_bookmarks = true %}
-        <h3 
-            class="{{ include.title_class | default: 'portlet-separation-title' }}">
-            {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
-            <a 
-                href="/{{ collection.label }}/"
-                class="pat-inject"
-                data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
-            </a>
-        </h3>
-        <ul 
-            class="link-list col-{{ include.cols }}">
-            {% for item in these_items %}
-                <li 
-                    class="item-{{ item.state | slugify }}">
-                    <a 
-                        href="{{ item.url }}" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">
-                        {{ item.title }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if these_items.size >= 1 %}
+            {% assign found_bookmarks = true %}
+            <h3 
+                class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
+                {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
+                <a 
+                    {% include prozin/collection-hrefs %}
+                    class="pat-inject"
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
+                </a>
+            </h3>
+            <ul 
+                class="link-list col-{{ include.cols }}">
+                {% for item in these_items %}
+                    <li 
+                        class="item-{{ item.state | slugify }}">
+                        <a 
+                            href="{{ item.url }}" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    
+    {% endunless %}
 
 {% endfor %}
 

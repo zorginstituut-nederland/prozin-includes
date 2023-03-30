@@ -1,0 +1,13 @@
+{% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
+
+{% if page.page_type == 'bookmarks' %}
+    href="/{{ collection.label | replace: '-','_' }}"
+ {% else %}
+    {% if collection.label == 'news' %}
+        href="/dialogues/cms/news"
+    {% elsif collection.label == 'general' %}
+        href="/dialogues/cms/general"
+    {% else %}
+        href="/beheer/{{ collection.label }}"
+    {% endif %}
+ {% endif %}
