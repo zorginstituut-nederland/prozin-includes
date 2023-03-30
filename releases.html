@@ -1,0 +1,24 @@
+---
+layout: prozin/dashboard-management
+title: Beheer
+title_in_breadcrumbs: true
+sub_nav:
+  - name: label_releases
+    url: /beheer/releases
+dashboard_name: Default view
+dashboards:
+  - name: Default view
+    portlets:
+      - id: prozin/portlet-drafts
+        span: 2
+        height: full
+        show:
+          - news
+      - id: prozin/portlet-bookmarked
+        span: 2
+        height: auto
+        show: 
+          - news
+          - general
+---
+

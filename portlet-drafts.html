@@ -15,20 +15,13 @@
         </article>
         <div 
             class="portlet-body"> 
-            {% assign this_show = include.show %}
-            {% if include.show %}
-                {% for section in this_show %}
-                    {% capture this_url %}/{{ section }}{% endcapture %}
-                    {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
-                    {% include prozin/drafts-list.html 
-                        cols="3"
-                        url=this_url
-                        label=this_label
-                        collection=section %}
-                {% endfor %}
-            {% else %}
-                {% include patterns/i18n id="message_all_is_in_review_or_published" %}
-            {% endif %}
+            {% capture this_url %}/{{ section }}{% endcapture %}
+            {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
+            {% include prozin/drafts-list.html 
+                cols="3"
+                url=this_url
+                label=this_label
+                collection=section %}  
         </div>
     </div>
 </div> 
