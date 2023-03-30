@@ -1,35 +1,43 @@
-{% assign these_drafts = site[include.collection] | where: 'state','Draft' | sort: 'title' %}
+{% assign found_items = false %}
 
-{% if these_drafts.size >= 1 %}
-    <h3 
-        class="portlet-separation-title">
-        {% if include.url %}
-        <a 
-            {% include prozin/collection-hrefs %}
-            class="pat-inject"
-            data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=include.label %}
-        </a>
-         {% else %}
-            {% include patterns/i18n id=include.label %}
-        {% endif %}
-    </h3>
-    <ul 
-        class="link-list col-{{ include.cols }}">
-        {% for item in these_drafts %}
-            <li 
-                class="state-draft">
+{% for collection in site.collections %}
+    {% unless collection.label == 'posts' %}
+
+        {% assign these_items = site[collection.label] | where: 'state','Draft' | sort: 'title' %}
+
+        {% if these_items.size >= 1 %}
+            {% assign found_items = true %}
+            <h3 
+                class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
+                {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
                 <a 
-                    href="{{ item.url }}" 
-                    class="pat-inject" 
-                    data-pat-inject="history: record; scroll: #main">
-                    {{ item.title }}
+                    {% include prozin/collection-hrefs %}
+                    class="pat-inject"
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
                 </a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p 
-        class="message-no-content">
+            </h3>
+            <ul 
+                class="link-list col-{{ include.cols }}">
+                {% for item in these_items %}
+                    <li 
+                        class="state-draft item-{{ item.state | slugify }}">
+                        <a 
+                            href="{{ item.url }}" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    
+    {% endunless %}
+
+{% endfor %}
+
+{% if found_items == false %}
+    <p>
         {% include patterns/i18n id="message_all_is_in_review_or_published" %}
     </p>
 {% endif %}
