@@ -7,6 +7,8 @@
         href="/dialogues/cms/news"
     {% elsif collection.label == 'general' %}
         href="/dialogues/cms/general"
+    {% elsif collection.label == 'concepts' %}
+        href="/dialogues/cms/glossary"
     {% else %}
         href="/beheer/{{ collection.label }}"
     {% endif %}
