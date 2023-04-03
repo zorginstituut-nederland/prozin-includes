@@ -1,4 +1,4 @@
-<section 
+<div 
     class="pat-rich">
     <p>
         {{page.title }} hoort bij de groep{% if page.medicine_groups.size > 1 %}en{% endif %} 
@@ -8,7 +8,7 @@
             en
         {% endif %}{% endfor %}.
     </p>
-</section>
+</div>
 
 {% for group in page.medicine_groups %}
     {% for this_group in site.medicine-groups %}
