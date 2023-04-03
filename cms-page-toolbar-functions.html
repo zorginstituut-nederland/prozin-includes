@@ -116,13 +116,13 @@
     </div>
 {% endif %}
 
-{% if page.state == 'published' %}
+{% if page.state == 'Published' %}
     <a 
         data-pat-depends="condition: version=latest" 
         href="{{ page.url }}-edit" 
         class="pat-button pat-inject icon-update pat-depends edit" 
         title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.data.config.lang] }}</a>
-{% elsif page.state == 'draft' or page.state == 'new' %}
+{% elsif page.state == 'Draft' or page.state == 'New' %}
     <a 
         data-pat-depends="condition: version=draft"  
         {% if site.data.personae[site.data.config.persona].role == 'Administrator' %}
