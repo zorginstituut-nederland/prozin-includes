@@ -8,13 +8,13 @@
                 class="top-task-navigation">
                 <h2>
                     {% if item.callout == "top-tasks" %}
-                        {{ site.data.prozin.ui.label_directly_to[site.lang] }}
+                        {{ site.data.prozin.ui.label_directly_to[site.data.config.lang] }}
                     {% elsif item.callout == "recent" %}
-                        {{ site.data.prozin.ui.label_recent[site.lang] }}
+                        {{ site.data.prozin.ui.label_recent[site.data.config.lang] }}
                     {% elsif item.callout == "popular" %}
-                        {{ site.data.prozin.ui.label_viewed_often[site.lang] }}
+                        {{ site.data.prozin.ui.label_viewed_often[site.data.config.lang] }}
                     {% else %}
-                        {{ site.data.prozin.ui.label_warnings[site.lang] }}
+                        {{ site.data.prozin.ui.label_warnings[site.data.config.lang] }}
                     {% endif %} 
                 </h2>
                 <ul 
@@ -74,7 +74,7 @@
                 class="promo-block">
                 <p>
                     {% include prozin/params.html %}
-                    {{ site.data[site.ui_data_path]ui.message_promo[site.lang] | replace: param_0,'&lt;Productnaam&gt;' }}
+                    {{ site.data[site.ui_data_path]ui.message_promo[site.data.config.lang] | replace: param_0,'&lt;Productnaam&gt;' }}
                 </p>
                 <p 
                     class="button-bar">

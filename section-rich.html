@@ -3,7 +3,7 @@
 	{% if include.introduction %}
 		<p 
 			class="section-introduction">
-			{{ site.data.prozin.ui[section.description][site.lang] }}
+			{{ site.data.prozin.ui[section.description][site.data.config.lang] }}
 		</p>
 	{% endif %}
 	{{ include.content | markdownify }}

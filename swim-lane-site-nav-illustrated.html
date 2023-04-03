@@ -5,7 +5,7 @@
         class="container">
         <h2 
             class="assistive">
-            {{ site.data.ui.title_main_menu[site.lang] }}
+            {{ site.data.ui.title_main_menu[site.data.config.lang] }}
         </h2>
         <ul 
             class="nav-tiles-illustrated count-{{ page.nav.size }}">
@@ -18,11 +18,11 @@
                         class="pat-inject follow icon-{{ item.icon }}">
                         <h3 
                             class="item-title">
-                            {{ site.data.ui[item.name][site.lang] }}
+                            {{ site.data.ui[item.name][site.data.config.lang] }}
                         </h3>
                         <p 
                             class="byline">
-                            {{ site.data.ui[item.description][site.lang] }}
+                            {{ site.data.ui[item.description][site.data.config.lang] }}
                         </p>
                     </a>
                 </li>

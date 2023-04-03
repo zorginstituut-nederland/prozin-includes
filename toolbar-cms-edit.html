@@ -56,7 +56,7 @@
                         <a 
                             href="{{ page.url | replace: '-edit', '-history' }}#document-content" 
                             class="icon-history pat-modal close-panel" 
-                            data-pat-modal="class: medium panel">{{ site.data.prozin.ui.label_history[site.lang] }}</a>
+                            data-pat-modal="class: medium panel">{{ site.data.prozin.ui.label_history[site.data.config.lang] }}</a>
                     </li>
                     <li>
                         <a 
@@ -116,7 +116,7 @@
                 <a 
                     href="#save-message" 
                     data-pat-forward="selector: #save-message" 
-                    class="save label menu-trigger pat-forward pat-button default">{{ site.data.prozin.ui.label_save_imp[site.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
+                    class="save label menu-trigger pat-forward pat-button default">{{ site.data.prozin.ui.label_save_imp[site.data.config.lang] }}{% if page.layout == 'medicine-saved' %} <time class="last-saved">13:42</time>{% endif %}</a>
                 <p 
                     class="close-menu close-menu-trigger">Sluit</p>
                 <fieldset 
@@ -126,7 +126,7 @@
                             id="save-message" 
                             rows="4" 
                             class="pat-autofocus" 
-                            placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.lang] }}"></textarea>
+                            placeholder="{{ site.data.prozin.ui.message_log_motivation_for_save[site.data.config.lang] }}"></textarea>
                     </label>
                 </fieldset>
                 <p 
@@ -137,7 +137,7 @@
                         name="save_button"
                         value="save_all"
                         formaction="{{ page.url }}"
-                        id="save-document">{{ site.data.prozin.ui.label_save_imp[site.lang] }}</button>
+                        id="save-document">{{ site.data.prozin.ui.label_save_imp[site.data.config.lang] }}</button>
                     <button 
                         class="pat-button" 
                         type="submit" 
@@ -147,7 +147,7 @@
                             formaction="{{ page.url | remove: '-edit' }}"
                         {% else %}
                             formaction="{{ include.cancel }}"
-                        {% endif %}>{{ site.data.prozin.ui.label_save_and_close[site.lang] }}</button>
+                        {% endif %}>{{ site.data.prozin.ui.label_save_and_close[site.data.config.lang] }}</button>
                 </p>
             </div>
             

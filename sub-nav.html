@@ -17,7 +17,7 @@
                             <a 
                                 title="{{ item.description }}" 
                                 class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
-                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
                         </li>
                     {% endfor %}
                     {% for item in page.sub_nav %}
@@ -25,7 +25,7 @@
                             <a 
                                 title="{{ item.description }}" 
                                 class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
-                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
                         </li>
                     {% endfor %}
                     {% for item in layout.sub_nav_append %}
@@ -33,7 +33,7 @@
                             <a 
                                 title="{{ item.description }}" 
                                 class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
-                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.lang] }}</a>
+                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
                         </li>
                     {% endfor %}
                 </ul>

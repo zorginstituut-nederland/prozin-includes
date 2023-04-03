@@ -1,5 +1,5 @@
 <div id="site-header">
-    <a class="homepage" href="/" title="Terug naar homepage"><span class="ro-serif dept">{{ site.data.prozin.ui.label_organisation_name[site.lang] }}</span></a>
+    <a class="homepage" href="/" title="Terug naar homepage"><span class="ro-serif dept">{{ site.data.prozin.ui.label_organisation_name[site.data.config.lang] }}</span></a>
 
     {% if site.last_modified %}
       <!-- Date of latest publication -->
@@ -9,11 +9,11 @@
       </p>
     {% endif %}
 
-    {% if site.data.prozin.personae[site.persona]role == 'Manufacturer' %}
+    {% if site.data.prozin.personae[site.data.config.persona]role == 'Manufacturer' %}
         {% assign dashboard_url = '/manage/' %}
-    {% elsif site.data.prozin.personae[site.persona]role == 'Bystander' %}
+    {% elsif site.data.prozin.personae[site.data.config.persona]role == 'Bystander' %}
         {% assign dashboard_url = '/beheer-lezer' %}
-    {% elsif site.data.prozin.personae[site.persona]role == 'Workgroup-member' %}
+    {% elsif site.data.prozin.personae[site.data.config.persona]role == 'Workgroup-member' %}
         {% assign dashboard_url = '/beheer-werkgroeplid' %}
     {% else %}
         {% assign dashboard_url = '/beheer' %}
@@ -25,11 +25,11 @@
           {% if site.user == 'anonymous' %}
               <a 
                   href="/login" 
-                  id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
+                  id="login">{{ site.data.prozin.ui.label_login[site.data.config.lang] }}</a>
           {% elsif page.url == '/login' %}
              <a 
                       href="/login" 
-                      id="login">{{ site.data.prozin.ui.label_login[site.lang] }}</a>
+                      id="login">{{ site.data.prozin.ui.label_login[site.data.config.lang] }}</a>
           {% else %}
   <!--             
               <a 
@@ -38,7 +38,7 @@
                   data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a> 
   -->
               <a  
-                  id="login">{{ site.data.prozin.ui.label_logged_in_as[site.lang] }} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
+                  id="login">{{ site.data.prozin.ui.label_logged_in_as[site.data.config.lang] }} {{ site.data.prozin.personae[site.data.config.persona]first_name }} {{ site.data.prozin.personae[site.data.config.persona]last_name }}</a>
           {% endif %}
       </div>
       <div 
@@ -48,25 +48,25 @@
             class="menu">
               {% unless site.user == 'anonymous' %}
                   <li>
-                      <a href="/users/{{ site.data.prozin.personae[site.persona]first_name | slugify }}-{{ site.data.prozin.personae[site.persona]last_name | slugify }}" 
+                      <a href="/users/{{ site.data.prozin.personae[site.data.config.persona]first_name | slugify }}-{{ site.data.prozin.personae[site.data.config.persona]last_name | slugify }}" 
                          class="pat-inject icon-user" 
-                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_my_profile[site.lang] }}</a>
+                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_my_profile[site.data.config.lang] }}</a>
                   </li>
                   <li>
                     <a href="/dialogues/personal/bookmarks" 
                        class="icon-bookmark pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_bookmarks[site.lang] }}</a>
+                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_bookmarks[site.data.config.lang] }}</a>
                   </li>
                   <li>
                       <a href="/dialogues/personal/preferences" 
                          class="pat-inject icon-cog" 
-                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_preferences[site.lang] }}</a>
+                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_preferences[site.data.config.lang] }}</a>
                   </li>
               {% endunless %}
       		<li>
       			<a href="/dialogues/login/password-change" 
                      class="icon-key pat-inject" 
-                     data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_change_password[site.lang] }}</a>
+                     data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_change_password[site.data.config.lang] }}</a>
       		</li>
       		<li>
       			<form 
@@ -75,7 +75,7 @@
                     action="/login">
       				<button 
                         type="submit" 
-                        class="icon-exit" >{{ site.data.prozin.ui.label_log_out[site.lang] }}</button>
+                        class="icon-exit" >{{ site.data.prozin.ui.label_log_out[site.data.config.lang] }}</button>
       			</form>
       		</li>
       	</ul>

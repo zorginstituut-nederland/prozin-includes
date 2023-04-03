@@ -1,15 +1,15 @@
 {% if page.summary %}
 	{% assign this_description = page.summary %}
 {% elsif page.layout == 'prozin/homepage' %}
-	{% assign this_description = site.data.ui.label_site_description[site.lang] %}
+	{% assign this_description = site.data.ui.label_site_description[site.data.config.lang] %}
 {% endif %}
 
-<title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.lang] }}{% endif %}</title>
+<title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.data.config.lang] }}{% endif %}</title>
 <meta 
     content="{{ this_description }}" 
     name="description">
 <meta 
-    content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.lang] }}{% endif %}" 
+    content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.data.config.lang] }}{% endif %}" 
     property="og:title">
 {% if page.image %}
     <meta 

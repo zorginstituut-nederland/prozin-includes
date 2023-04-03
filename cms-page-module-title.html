@@ -18,7 +18,7 @@
         class="title-segment">
         {% assign this_label = include.title %}
         {% if include.title contains 'label_' %}
-            {{ site.data.prozin.ui.[this_label][site.lang] }}
+            {{ site.data.prozin.ui.[this_label][site.data.config.lang] }}
         {% else %}
             {{ include.title }}
         {% endif %}

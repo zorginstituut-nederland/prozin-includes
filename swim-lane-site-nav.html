@@ -5,12 +5,12 @@
         class="container">
         <h2 
             class="assistive">
-            {{ site.data.prozin.ui.label_main_menu[site.lang] }}
+            {{ site.data.prozin.ui.label_main_menu[site.data.config.lang] }}
         </h2>
         {% if item.intro %}
             <p 
                 class="intro">
-                {{ site.data.ui.[item.intro][site.lang] }}
+                {{ site.data.ui.[item.intro][site.data.config.lang] }}
             </p>
         {% endif %}
         <ul 
@@ -26,9 +26,9 @@
                             class="item-title">
                             {% if item.name contains 'prozin.' %}
                                 {% capture this_id %}{{ item.name | remove: 'prozin.' }}{% endcapture %}
-                                {{ site.data.prozin.ui[this_id][site.lang] }}
+                                {{ site.data.prozin.ui[this_id][site.data.config.lang] }}
                             {% else %}
-                                {{ site.data.ui[item.name][site.lang] }}
+                                {{ site.data.ui[item.name][site.data.config.lang] }}
                             {% endif %}
                         </h3>
                         {% if item.description %}
@@ -36,9 +36,9 @@
                                 class="byline">
                                 {% if item.name contains 'prozin.' %}
                                     {% capture this_description %}{{ item.description | remove: 'prozin.' }}{% endcapture %}
-                                    {{ site.data.ui[this_id][site.lang] }}
+                                    {{ site.data.ui[this_id][site.data.config.lang] }}
                                 {% else %}
-                                    {{ site.data.ui[item.description][site.lang] }}
+                                    {{ site.data.ui[item.description][site.data.config.lang] }}
                                 {% endif %}
                             </p>
                         {% endif %}

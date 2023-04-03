@@ -15,18 +15,18 @@
             <p 
                 class="meta">
                 {% if download.type == 'pdf' %}
-                    <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.lang] }}</span>
+                    <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.data.config.lang] }}</span>
                 {% elsif download.type == 'zip' %}
-                    <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.lang] }}</span>
+                    <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.data.config.lang] }}</span>
                 {% elsif download.type == 'archive' %}
-                    <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.lang] }}</span>
+                    <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.data.config.lang] }}</span>
                 {% elsif download.type == 'word' %}
-                    <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.lang] }}</span>
+                    <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.data.config.lang] }}</span>
                 {% elsif download.type == 'excel' %}
-                    <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.lang] }}</span>
+                    <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.data.config.lang] }}</span>
                 {% endif %}
                 {% if download.page_count %}
-                    <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.lang] }}</span>
+                    <span class="meta-item">{{ download.page_count }} {{ site.data.prozin.ui.fragment_pages[site.data.config.lang] }}</span>
                 {% endif %}
                 <span 
                     class="meta-item">{{ download.size }}</span>

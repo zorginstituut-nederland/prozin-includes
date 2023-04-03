@@ -7,17 +7,17 @@
         class="e-form-text">
         <h2 
             class="req">
-            {{ site.data.prozin.ui.label_your_response[site.lang] }}
+            {{ site.data.prozin.ui.label_your_response[site.data.config.lang] }}
         </h2>
         <p 
             class="meta req">
-            <strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.lang] }}
+            <strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.data.config.lang] }}
         </p>
     </div>
     <fieldset 
         class="horizontal form-panel section">
         <label>
-            {{ site.data.prozin.ui.label_name[site.lang] }}<sup class="required">*</sup>
+            {{ site.data.prozin.ui.label_name[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
                 required="required" 
                 autofocus 
@@ -32,21 +32,21 @@
                     required="required" 
                     type="radio" 
                     value="professional" 
-                    name="role" /> {{ site.data.prozin.ui.label_professional[site.lang] }}
+                    name="role" /> {{ site.data.prozin.ui.label_professional[site.data.config.lang] }}
             </label>
             <label>
                 <input 
                     required="required" 
                     type="radio" 
                     value="private" 
-                    name="role" /> {{ site.data.prozin.ui.label_private[site.lang] }}
+                    name="role" /> {{ site.data.prozin.ui.label_private[site.data.config.lang] }}
             </label>
         </fieldset>
 
         <label 
             class="pat-depends" 
             data-pat-depends="condition: role=professional">
-            {{ site.data.prozin.ui.label_employee_position[site.lang] }}
+            {{ site.data.prozin.ui.label_employee_position[site.data.config.lang] }}
             <input 
                 autofocus
                 type="text" 
@@ -54,7 +54,7 @@
         </label>
 
         <label>
-            {{ site.data.prozin.ui.label_email[site.lang] }}<sup class="required">*</sup>
+            {{ site.data.prozin.ui.label_email[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
                 required="required" 
                 type="email" 
@@ -62,14 +62,14 @@
         </label>
 
         <label>
-            {{ site.data.prozin.ui.label_telephone_number[site.lang] }}
+            {{ site.data.prozin.ui.label_telephone_number[site.data.config.lang] }}
             <input 
                 type="tel" 
                 name="phone" />
         </label>
 
         <label>
-            {{ site.data.prozin.ui.label_subject[site.lang] }}<sup class="required">*</sup>
+            {{ site.data.prozin.ui.label_subject[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
                 required="required" 
                 type="text" 
@@ -77,7 +77,7 @@
         </label>
 
         <label>
-            {{ site.data.prozin.ui.label_your_response[site.lang] }}<sup class="required">*</sup>
+            {{ site.data.prozin.ui.label_your_response[site.data.config.lang] }}<sup class="required">*</sup>
             <textarea 
                 required="required" 
                 type="text" 
@@ -87,7 +87,7 @@
         </label>
 
         <label>
-            {{ site.data.prozin.ui.label_attachment[site.lang] }}
+            {{ site.data.prozin.ui.label_attachment[site.data.config.lang] }}
             <input 
                 type="file" 
                 multiple
@@ -96,9 +96,9 @@
 
         <fieldset 
             class="group pat-checklist">
-            <legend>{{ site.data.prozin.ui.label_statement_of_approval[site.lang] }}</legend>
+            <legend>{{ site.data.prozin.ui.label_statement_of_approval[site.data.config.lang] }}</legend>
             <label>
-                 {{ site.data.prozin.ui.label_permission_user_survey[site.lang] }}   
+                 {{ site.data.prozin.ui.label_permission_user_survey[site.data.config.lang] }}   
                 
                 <input 
                     type="checkbox" 
@@ -106,7 +106,7 @@
             </label>
             <label>
                 {% include prozin/params.html %}
-                {{ site.data.prozin.ui.label_agree_with_privacy_statement[site.lang] 
+                {{ site.data.prozin.ui.label_agree_with_privacy_statement[site.data.config.lang] 
                     | replace: param_0,'https://www.zorginstituutnederland.nl/privacy'   
                 }}<sup class="required">*</sup>
                 <input 
@@ -122,7 +122,7 @@
             class="button-bar">
             <button 
                 type="submit" 
-                class="default pat-button">{{ site.data.prozin.ui.label_send[site.lang] }}</button>
+                class="default pat-button">{{ site.data.prozin.ui.label_send[site.data.config.lang] }}</button>
         </p>
     </fieldset>
 </form>

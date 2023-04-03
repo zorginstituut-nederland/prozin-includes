@@ -7,14 +7,14 @@
         {% if page.layout == 'homepage' %}
             <h1 
                 class="assistive">
-                {{ site.data.ui.label_site_description[site.lang] }}
+                {{ site.data.ui.label_site_description[site.data.config.lang] }}
             </h1>
         {% endif %}
         <nav 
             id="breadcrumbs">
             <p 
                 class="assistive">
-                {{ site.data.prozin.ui.message_you_are_here[site.lang] }}
+                {{ site.data.prozin.ui.message_you_are_here[site.data.config.lang] }}
             </p>
             {% if page.layout contains 'homepage' %}
                 <a 
@@ -24,7 +24,7 @@
                     class="homepage pat-inject" 
                     data-pat-inject="history: record; scroll: #site-header" href="/">
             {% endif %}
-                {{ site.data.ui.label_site_name[site.lang] }}</a>
+                {{ site.data.ui.label_site_name[site.data.config.lang] }}</a>
             
             {% if page.url contains 'zoekresultaten' %}
                 <a>Zoeken</a>
@@ -34,10 +34,10 @@
                 <a 
                     href="/geneesmiddelen" 
                     class="pat-inject" 
-                    data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+                    data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
             {% endif %}
             {% if page.url == '/geneesmiddelen-alt' %}
-                <a>{{ site.data.prozin.ui.label_medicines[site.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
             {% endif %}
 
             {% if layout.parent %}
@@ -45,11 +45,11 @@
                     <a 
                         href="/beheer" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
                     <a 
                         href="/dialogues/image-bank/" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_image_bank[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_image_bank[site.data.config.lang] }}</a>
                 {% else %}
                     <a 
                         href="/{{ layout.parent | slugify }}"
@@ -61,24 +61,24 @@
                     <a 
                         href="/help" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.data.config.lang] }}</a>
                 {% elsif page.parent == 'Beheer' or layout.parent == 'Beheer' %}
                     <a 
                         href="/beheer" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
                 {% elsif page.parent == 'Manage' or layout.parent == 'Manage' %}
                     <a 
                         href="/manage" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
                 {% elsif page.title == 'Beheer' %}
-                    <a>{{ site.data.prozin.ui.label_management[site.lang] }}</a>
+                    <a>{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
                 {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
                     <a  
                         href="/fabrikanten" 
                         class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
                 {% else %}
                      <a 
                         href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
@@ -133,21 +133,21 @@
             {% endif %}
 
             {% if page.title == 'Fabrikanten' %}
-                <a>{{ site.data.prozin.ui.label_manufacturers[site.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
             {% endif %}
 
             {% if page.title == 'Concepten' %}
                 <a href="/beheer" 
                    class="pat-inject" 
-                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
-                <a>{{ site.data.prozin.ui.label_drafts[site.lang] }}</a>
+                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_drafts[site.data.config.lang] }}</a>
             {% endif %}
 
             {% if page.title == 'Volgen' %}
                 <a href="/beheer" 
                    class="pat-inject" 
-                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.lang] }}</a>
-                <a>{{ site.data.prozin.ui.label_follow[site.lang] }}</a>
+                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                <a>{{ site.data.prozin.ui.label_follow[site.data.config.lang] }}</a>
             {% endif %}
 
             {% if page.parent == 'over' %}
@@ -162,14 +162,14 @@
                        class="pat-inject" 
                        data-pat-inject="history: record; scroll: #main">Concepten</a>
                 {% else %}
-                    {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.lang] | slugify }}{% endcapture %}
+                    {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.data.config.lang] | slugify }}{% endcapture %}
                     <!-- <a href="/geneesmiddelen" 
                        class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.lang] }}</a> -->
+                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a> -->
                     {% if page.domain %}
                       <a href="/{{ this_group }}" 
                          class="pat-inject" 
-                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui[page.domain][site.lang] }}</a>
+                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui[page.domain][site.data.config.lang] }}</a>
                     {% endif %}
                 {% endif %}
             {% endif %}
@@ -199,7 +199,7 @@
                     href="#login-menu" 
                     data-pat-tooltip="position-list: tr; source: ajax" 
                     class="icon pat-tooltip" 
-                    id="user-menu-trigger">{% include patterns/i18n id="label_logged_in_as" %} {{ site.data.prozin.personae[site.persona]first_name }} {{ site.data.prozin.personae[site.persona]last_name }}</a>
+                    id="user-menu-trigger">{% include patterns/i18n id="label_logged_in_as" %} {{ site.data.prozin.personae[site.data.config.persona]first_name }} {{ site.data.prozin.personae[site.data.config.persona]last_name }}</a>
             {% endif %}
         </nav>
 
@@ -215,16 +215,16 @@
                 class="pat-form pat-inject" 
                 data-pat-inject="history: record; scroll: #main">
                     <label 
-                        for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.lang] }}</label>
+                        for="global-search-lemma">{{ site.data.ui.label_search_box_placeholder[site.data.config.lang] }}</label>
                     <input 
                         name="zoekterm" 
                         id="global-search-lemma" 
-                        title="{{ site.search_box_placeholder[site.lang] }}" 
-                        placeholder="{{ site.data.ui.label_search_box_placeholder[site.lang] }}" 
+                        title="{{ site.search_box_placeholder[site.data.config.lang] }}" 
+                        placeholder="{{ site.data.ui.label_search_box_placeholder[site.data.config.lang] }}" 
                         type="text" 
                         value="" />
                     <button 
-                        type="submit">{{ site.data.ui.label_global_nav_search[site.lang] }}</button>
+                        type="submit">{{ site.data.ui.label_global_nav_search[site.data.config.lang] }}</button>
               </form>
         {% endif %}
     </div>

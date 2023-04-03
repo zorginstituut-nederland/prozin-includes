@@ -6,16 +6,16 @@
         class="panel-content">
         <p>
             {% if page.cbg_link %}
-                {{ site.data.prozin.ui.message_not_all_excipients_mentioned_refer_to_cbg[site.lang] }}
+                {{ site.data.prozin.ui.message_not_all_excipients_mentioned_refer_to_cbg[site.data.config.lang] }}
             {% else %}
-                {{ site.data.prozin.ui.message_not_all_excipients_mentioned[site.lang] }}
+                {{ site.data.prozin.ui.message_not_all_excipients_mentioned[site.data.config.lang] }}
             {% endif %}
         </p>
         <p 
             class="button-bar">
             <button 
                 class="default pat-button small"
-                id="close-excipients-warning">{{ site.data.prozin.ui.label_understand_hide_message[site.lang] }}</button>
+                id="close-excipients-warning">{{ site.data.prozin.ui.label_understand_hide_message[site.data.config.lang] }}</button>
         </p>
     </div>
 </div>

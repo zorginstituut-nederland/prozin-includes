@@ -5,7 +5,7 @@
         class="container">
         <h2 
             class="lane-title">
-            {{ site.data.prozin.ui.label_news[site.lang] }}
+            {{ site.data.prozin.ui.label_news[site.data.config.lang] }}
         </h2>
         <div 
             class="news-feed">
@@ -60,7 +60,7 @@
             <a 
                 class="more pat-inject" 
                 data-pat-inject="history: record; scroll: #main" 
-                href="/news/">{{ site.data.prozin.ui.label_more_news[site.lang] }}</a>
+                href="/news/">{{ site.data.prozin.ui.label_more_news[site.data.config.lang] }}</a>
         </p>
     </div>
 </section>
