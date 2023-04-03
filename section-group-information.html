@@ -1,11 +1,14 @@
-<p>
-    {{page.title }} hoort bij de groep{% if page.medicine_groups.size > 1 %}en{% endif %} 
-    {% for group in page.medicine_groups %}
-        <a 
-            href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %}
-        en
-    {% endif %}{% endfor %}.
-</p>
+<section 
+    class="pat-rich">
+    <p>
+        {{page.title }} hoort bij de groep{% if page.medicine_groups.size > 1 %}en{% endif %} 
+        {% for group in page.medicine_groups %}
+            <a 
+                href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %}
+            en
+        {% endif %}{% endfor %}.
+    </p>
+</section>
 
 {% for group in page.medicine_groups %}
     {% for this_group in site.medicine-groups %}
@@ -22,12 +25,15 @@
                     <li>
                         <a 
                             class="icon-medicine pat-inject" 
-                            data-pat-inject="history: record" 
+                            data-pat-inject="history: record; scroll: #main" 
                             href="{{ medicine.verwijzing }}">{{ medicine.name }} (J05AF06)</a>
-                         <a 
-                            href="/vergelijken?vergelijkTeksten=rifabutine,bedaquiline" 
-                            data-pat-inject="history: record" 
-                            class="button-compare pat-inject">Vergelijk</a>
+                            <div 
+                                class="functions">
+                                <a 
+                                    href="/vergelijken?vergelijkTeksten=rifabutine,bedaquiline" 
+                                    data-pat-inject="history: record; scroll: #main" 
+                                    class="button pat-inject">Vergelijk</a>
+                            </div>
                     </li>
                 {% endfor %}
             </ul>
