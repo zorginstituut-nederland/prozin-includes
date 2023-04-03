@@ -11,6 +11,7 @@
                     </option>
                 {% else %}
                     <option 
+                        {% if forloop.last %}value="latest"{% endif %}
                         {% if forloop.last %}selected{% endif %}
                         value="{% if forloop.last %}latest{% else %}versie-{% increment counter %}{% endif %}">
                         {{ site.data.prozin.ui.label_version[site.data.config.lang] }} {{ counter }} ({{ revision.date}})
@@ -20,7 +21,7 @@
         {% else %}
             {% unless page.state == 'New' %}
                 <option 
-                    value="versie-0">
+                    value="latest">
                     {{ site.data.prozin.ui.label_version[site.data.config.lang] }} 1 (9 januari 2022)
                 </option>
             {% endunless %}
