@@ -1,9 +1,16 @@
 <label 
-    class="pat-toolbar-search-field">
+    {% if include.mode == 'spotlight' %}
+        data-pat-switch="
+            selector: #content; 
+            add: spotlight-on; 
+            remove: spotlight-off"
+    {% endif %}
+    class="{% if include.mode == 'spotlight' %}pat-switch{% endif %} pat-toolbar-search-field">
     <input 
         type="search" 
         placeholder="{{ include.placeholder | default: 'Zoeken binnen pagina' }}">
     <button
+        formaction="{{ page.url }}-state-search"
         class="assistive"
         type="submit">{% include patterns/i18n id="label_send_imp" %}</button>
 </label>

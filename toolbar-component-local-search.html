@@ -1,0 +1,12 @@
+<fieldset
+    class="pat-toolbar-local-search-box pat-subform pat-autosubmit pat-inject"
+    data-pat-inject="
+        source: #main-content; 
+        target: #main-content;
+          && 
+        source: #spotlight-sentinel; 
+        target: #spotlight-sentinel;">
+    {% include prozin/toolbar-component-search.html
+        mode="spotlight" %}
+    {% include prozin/spotlight-sentinel.html %}
+</fieldset>
