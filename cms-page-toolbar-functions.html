@@ -119,7 +119,7 @@
 {% if page.state == 'Published' %}
     <a 
         data-pat-depends="condition: version=latest" 
-        href="{{ page.url }}-edit" 
+        href="{{ page.url }}-state-edit" 
         class="pat-button pat-inject icon-update pat-depends edit" 
         title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{{ site.data.prozin.ui.label_new_version[site.data.config.lang] }}</a>
 {% elsif page.state == 'Draft' or page.state == 'New' %}
@@ -166,7 +166,7 @@
     <a 
         {% unless page.url contains 'copy' %}data-pat-depends="condition: version=draft or version=for-review"{% endunless %} 
         {% if site.data.personae[site.data.config.persona].role == 'Administrator' %}
-            href="{{ page.url }}-edit"
+            href="{{ page.url }}-state-edit"
         {% endif %} 
         class="pat-button {% unless page.state == 'For review' %}default{% endunless %} {% unless page.url contains 'copy' %}pat-depends{% endunless %} edit pat-inject" 
         data-pat-inject="source: body; target: body"

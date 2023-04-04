@@ -19,15 +19,17 @@
             <ul 
                 class="link-list col-{{ include.cols }}">
                 {% for item in these_items %}
-                    <li 
-                        class="item-{{ item.state | slugify }}">
-                        <a 
-                            href="{{ item.url }}" 
-                            class="pat-inject" 
-                            data-pat-inject="history: record; scroll: #main">
-                            {{ item.title }}
-                        </a>
-                    </li>
+                    {% unless item.url contains '-state-' %}
+                        <li 
+                            class="item-{{ item.state | slugify }}">
+                            <a 
+                                href="{{ item.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record; scroll: #main">
+                                {{ item.title }}
+                            </a>
+                        </li>
+                    {% endunless %}
                 {% endfor %}
             </ul>
         {% endif %}
