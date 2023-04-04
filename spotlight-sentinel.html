@@ -5,7 +5,6 @@
             class="instance-counter">
             {% if page.spotlight %}
                 {% include patterns/i18n id="message_x_found_on_page" %}
-            {% endif %}
             <a 
                 class="pat-inject pat-switch"
                 data-pat-switch="
@@ -23,5 +22,21 @@
                     source: #search-results; 
                     target: #search-results" 
                 href="/zoekresultaten-syndro#global-search-lemma">{% include patterns/i18n id="label_search_globally" %}</a>.
+            {% else %}
+                <a 
+                    class="pat-inject pat-switch"
+                    data-pat-switch="
+                        selector: #content; 
+                        add: spotlight-off; 
+                        remove: spotlight-on
+                          &&
+                        selector: body;
+                        add: scroll-up;
+                        remove: scroll-down"
+                    data-pat-inject="
+                        source: #quick-search-form::element;
+                        target: #quick-search-form::element"
+                    href="/">{% include patterns/i18n id="label_search_globally" %}</a>.
+            {% endif %}
         </p>
 </div>
