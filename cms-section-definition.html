@@ -10,31 +10,37 @@
     <fieldset
         class="group">
         <legend>{% include patterns/i18n id="label_synonyms" %}</legend>
-        <ul 
-            id="synonyms"
-            class="input-list">
-            {% for synonym in page.synonyms %}
-                <li
-                    id="el-page-{{ synonym | slugify }}">
-                    <input 
-                        type="text" 
-                        value="{{ synonym }}"
-                        name="">
-                    <div 
-                        class="functions">
-                        <label
-                            data-pat-switch="
-                                selector: #el-page-{{ synonym | slugify }}; 
-                                add: deleted"
-                            class="button delete-button pat-switch">
-                            {% include patterns/i18n id="patterns.label_delete_imp" %}
-                            <input 
-                                type="checkbox" 
-                                name="{{ synonym | slugify }}">
-                        </label>
-                    </div>
-            {% endfor %}
-        </ul>
+        {% if page.synonyms %}
+            <ul 
+                id="synonyms"
+                class="input-list">
+                {% for synonym in page.synonyms %}
+                    <li
+                        id="el-page-{{ synonym | slugify }}">
+                        <input 
+                            type="text" 
+                            value="{{ synonym }}"
+                            name="">
+                        <div 
+                            class="functions">
+                            <label
+                                data-pat-switch="
+                                    selector: #el-page-{{ synonym | slugify }}; 
+                                    add: deleted"
+                                class="button delete-button pat-switch">
+                                {% include patterns/i18n id="patterns.label_delete_imp" %}
+                                <input 
+                                    type="checkbox" 
+                                    name="{{ synonym | slugify }}">
+                            </label>
+                        </div>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <ul 
+                id="synonyms"
+                class="input-list"></ul>
+        {% endif %}
         <div 
             class="button-bar">
             <a 
