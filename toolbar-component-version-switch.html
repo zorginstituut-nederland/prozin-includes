@@ -37,13 +37,14 @@
                 selected >
                 {% include patterns/i18n id="label_draft" %}
             </option>
-        {% elsif 
-            page.state == 'For review' %}
-            <option 
-                value="for-review" 
-                selected >
-                {% include patterns/i18n id="label_for_review" %}
-            </option>
+        {% else %}
+            {% unless page.state == 'Published' %}
+                <option 
+                    value="for-review" 
+                    selected >
+                    {{ page.state }}
+                </option>
+            {% endunless %}
         {% endif %}
     </select>   
 </label>
