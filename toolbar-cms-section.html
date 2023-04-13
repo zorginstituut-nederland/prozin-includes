@@ -10,6 +10,22 @@
             id="cms-section-toolbar-view-options">
             
         </div>
+        {% if page.tabs %} 
+            <div 
+                class="toolbar-section navigation"
+                id="cms-section-toolbar-navigation">
+                <nav 
+                    class="pat-tabs pat-button-cluster pat-navigation"
+                    id="homescreen-sections-public-data"administration->
+                    {% for item in page.tabs %}
+                        <a 
+                            href="{{ item.url }}"
+                            data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                            class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{{ item.title }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        {% endif %}
         <div 
             class="toolbar-section quick-functions"
             id="cms-section-toolbar-quick-functions">
