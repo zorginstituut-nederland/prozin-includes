@@ -14,28 +14,25 @@
 		<strong>*</strong>&nbsp;{{ site.data.prozin.ui.label_mandatory_fields[site.data.config.lang] }}
 	</p>
 	<fieldset 
-		class="form-panel">
-		<fieldset 
-			class="horizontal">
-			<label>
-				{{ site.data.prozin.ui.label_name[site.data.config.lang] }} 
-				<input 
-					class="pat-autofocus" 
-				  	type="text" 
-				  	name="name" />
-			</label>
-			<label>
-				{{ site.data.prozin.ui.label_password[site.data.config.lang] }} 
-				<input 
-				  	type="password" 
-				  	name="password" />
-			</label>
-		</fieldset>
-		<fieldset 
-			class="button-bar">
+		class="horizontal form-panel">
+		<label>
+			{{ site.data.prozin.ui.label_name[site.data.config.lang] }} 
+			<input 
+				class="pat-autofocus" 
+			  	type="text" 
+			  	name="name" />
+		</label>
+		<label>
+			{{ site.data.prozin.ui.label_password[site.data.config.lang] }} 
+			<input 
+			  	type="password" 
+			  	name="password" />
+		</label>
+		<div 
+			class="group button-bar">
 			<button 
 				class="default pat-button" 
 				type="submit">{{ site.data.prozin.ui.label_log_in[site.data.config.lang] }}</button>
-		</fieldset>
+		</div>
 	</fieldset>
 </form>
