@@ -1,0 +1,76 @@
+<fieldset 
+    class="horizontal form-panel">
+    <label>
+        Sector
+        <select
+            class="pat-autosuggest"
+            multiple>
+            {% for item in site.data.sectors %}
+                <option>{{ item.title }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <fieldset
+        class="group">
+        <legend>Labels</legend>   
+        <fieldset
+            class="pat-checklist checkbox">
+            <label>
+                Opgenomen in het register
+                <input 
+                    type="checkbox" 
+                    name="register">
+            </label>
+            <label>
+                Meerjarenagenda
+                <input 
+                    type="checkbox" 
+                    name="mja">
+            </label>
+            <label>
+                Geprioriteerd voor Wegiz
+                <input 
+                    type="checkbox" 
+                    name="wegiz-prio">
+            </label>
+            <label>
+                Aangwezen in AMvB onder Wegiz
+                <input 
+                    type="checkbox" 
+                    name="AMvB">
+            </label>
+        </fieldset>
+    </fieldset>
+    <label>
+        Herzieningsdatum
+        <input
+            class="pat-date-picker" 
+            data-pat-date-picker="output-format: D MMMM YYYY"
+            type="date" 
+            name="">
+    </label>
+    <label>
+        {% include patterns/i18n id="label_quality_registrations" %}
+        <input 
+            class="pat-autosuggest"
+            required
+            name="qs"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/kwaliteitsstandaarden.json;' />
+    </label>
+    <label>
+        Meetinstrumenten   
+        <input 
+            class="pat-autosuggest"
+            required
+            name="mi"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/meetinstrumenten.json;' />
+    </label>
+</fieldset>
