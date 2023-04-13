@@ -3,7 +3,7 @@
     <dl 
         class="pat-grid-list">
         {% if page.status %}
-            <dt>Status</dt>
+            <dt>{% include patterns/i18n id="label_status" %}</dt>
             <dd>
                 {% if page.status_register == true and page.status_mja == true %}
                     Opgenomen in het Register en geplaatst op de Meerjarenagenda
@@ -15,6 +15,28 @@
                     <strong 
                         class="warning">Niet in het Register</strong>
                 {% endif %}
+
+                <a 
+                    href="#info-status"
+                    class="pat-tooltip info-button iconified"
+                    data-pat-tooltip="trigger: click; position-list: tl; source: ajax; class: rich info">{% include patterns/i18n id="label_information" %}
+                </a>
+                <div 
+                    hidden
+                    id="info-status">
+                    <h3>
+                        Register
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit, enzovoort.
+                    </p>
+                    <h3>
+                        Wegiz
+                    </h3>
+                    <p>
+                        Het voorstel regelt dat zorgverleners kunnen worden verplicht om bepaalde gegevens (ten minste) elektronisch uit te wisselen, zolang daarvoor een grondslag bestaat (zoals toestemming van de patiënt). Ook kunnen eisen worden gesteld aan de taal die bij de gegevensuitwisseling wordt gebruikt, zodat zorgverleners elkaar meteen kunnen begrijpen. Ten slotte kunnen eisen worden gesteld aan de techniek waarmee gegevens worden uitgewisseld, zodat de gegevensuitwisseling niet wordt bemoeilijkt doordat zorgaanbieders verschillende informatiesystemen gebruiken.
+                    </p>
+                </div>
             </dd>
         {% endif %}
 
