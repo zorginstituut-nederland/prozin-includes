@@ -105,6 +105,14 @@
             </dd>
         {% endif %}
 
+        {% if page.website_quality_registration %}
+            <dt>Website kwaliteitsregistratie</dt>
+            <dd>
+                <a 
+                    href="{{ page.website_quality_registration }}">{{ page.website_quality_registration }}</a>
+            </dd>
+        {% endif %}
+
         {% if page.related %}
             <dt>Gerelateerd</dt>
             <dd>
@@ -114,18 +122,11 @@
                         <li>
                             <a 
                                 href="/{{ link.url }}" 
-                                class="pat-inject">{{ link.name }}</a>
+                                data-pat-inject="history: record; scroll: #main"
+                                class="pat-inject {{ link.class }}">{{ link.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
-            </dd>
-        {% endif %}
-
-        {% if page.website_quality_registration %}
-            <dt>Website kwaliteitsregistratie</dt>
-            <dd>
-                <a 
-                    href="{{ page.website_quality_registration }}">{{ page.website_quality_registration }}</a>
             </dd>
         {% endif %}
     </dl>
