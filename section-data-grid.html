@@ -42,7 +42,7 @@
                     id="info-status">
                     {% if page.status_register == true %}
                         <h3>
-                            {% include patterns/i18n id="label_included_in_register" %}
+                            {% include patterns/i18n id="label_register" %}
                         </h3>
                         <p>
                             Lorem ipsum dolor sit, enzovoort.
@@ -50,15 +50,19 @@
                     {% endif %}
                     {% if page.status_mja == true %}
                         <h3>
-                            {% include patterns/i18n id="label_on_long_term_agenda" %}
+                            {% include patterns/i18n id="label_long_term_agenda" %}
                         </h3>
                         <p>
-                            Lorem ipsum dolor sit, enzovoort.
+                            Prioriteitenlijst van te ontwikkelen kwaliteitsinstrumenten. Waar wordt een kwaliteitsinstrument voor ontwikkeld en wanneer moet het af zijn.
+                            <a 
+                                class="pat-inject"
+                                data-pat-inject="history: record; scroll: #main" 
+                                href="#">{% include patterns/i18n id="label_read_more" %}</a>
                         </p>
                     {% endif %}
                     {% if page.status_wegiz == true %}
                         <h3>
-                            {% include patterns/i18n id="label_prio_wegiz" %}
+                            {% include patterns/i18n id="label_wegiz" %}
                         </h3>
                         <p>
                             Het voorstel regelt dat zorgverleners kunnen worden verplicht om bepaalde gegevens (ten minste) elektronisch uit te wisselen, zolang daarvoor een grondslag bestaat (zoals toestemming van de patiënt). Ook kunnen eisen worden gesteld aan de taal die bij de gegevensuitwisseling wordt gebruikt, zodat zorgverleners elkaar meteen kunnen begrijpen. Ten slotte kunnen eisen worden gesteld aan de techniek waarmee gegevens worden uitgewisseld, zodat de gegevensuitwisseling niet wordt bemoeilijkt doordat zorgaanbieders verschillende informatiesystemen gebruiken.
@@ -66,7 +70,7 @@
                     {% endif %}
                     {% if page.status_amvb == true %}
                         <h3>
-                            {% include patterns/i18n id="label_amvb_wegiz" %}
+                            {% include patterns/i18n id="label_amvb" %}
                         </h3>
                         <p>
                             Lorem ipsum dolor sit.
