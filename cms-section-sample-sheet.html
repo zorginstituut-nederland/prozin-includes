@@ -4,19 +4,23 @@
         Sector
         <select
             class="pat-autosuggest"
+            name="sector"
             multiple>
             {% for item in site.data.sectors %}
-                <option>{{ item.title }}</option>
+                <option
+                    value="{{ item.title | slugify }}">{{ item.title }}</option>
             {% endfor %}
         </select>
     </label>
     <label>
-        Herzieningsdatum
+        {% include patterns/i18n id="label_revision_date" %}
         <input
             class="pat-date-picker" 
             data-pat-date-picker="output-format: D MMMM YYYY"
             type="date" 
             name="">
+        {% include patterns/form-help.html 
+            content="message_help_revision_date" %}
     </label>
     <label>
         Kwaliteitsstandaarden
