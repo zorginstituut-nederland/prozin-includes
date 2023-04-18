@@ -1,7 +1,7 @@
 <fieldset 
     class="horizontal form-panel">
     <label>
-        Sector
+        {% include patterns/i18n id="label_sector" %}
         <select
             class="pat-autosuggest"
             multiple>
@@ -9,6 +9,8 @@
                 <option>{{ item.title }}</option>
             {% endfor %}
         </select>
+        {% include patterns/form-help.html 
+            content="message_help_sector" %}
     </label>
     <fieldset
         class="group">
