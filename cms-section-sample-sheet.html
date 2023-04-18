@@ -11,6 +11,8 @@
                     value="{{ item.title | slugify }}">{{ item.title }}</option>
             {% endfor %}
         </select>
+        {% include patterns/form-help.html 
+            content="message_help_revision_date" %}
     </label>
     <label>
         {% include patterns/i18n id="label_revision_date" %}
