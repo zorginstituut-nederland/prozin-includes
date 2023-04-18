@@ -15,10 +15,12 @@
             scroll-offset: 120px"
     {% endif %}
     class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless closed{% endif %}">
-    <h2
-        class="page-module-title">
-        {{ this_title }}
-    </h2>
+    {% if include.title %}
+        <h2
+            class="page-module-title">
+            {{ this_title }}
+        </h2>
+    {% endif %}
     {% assign section_type = include.type %}
     {% include prozin/section-{{section_type}}.html
         content=include.content
