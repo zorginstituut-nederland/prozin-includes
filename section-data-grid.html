@@ -43,7 +43,7 @@
                         {% include patterns/i18n id="label_register" %}
                     </h4>
                     <p>
-                        Lorem ipsum dolor sit, enzovoort.
+                        Het Register is een digitaal overzicht van kwaliteitsstandaarden en meetinstrumenten dat voor iedereen toegankelijk en kosteloos te gebruiken is. Met het Register zorgt het Zorginstituut ervoor dat iedereen in Nederland kan zien wat wordt verstaan onder goede zorg en hoe je goede zorg meet. Zo helpen we mee om de zorg in Nederland steeds verder te verbeteren.
                     </p>
                 {% endif %}
                 {% if page.status_mja == true %}
@@ -79,6 +79,20 @@
     {% endif %}
 
     <dt>Opgenomen in het Register</dt>
+    <dd>
+        <time 
+            datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time>
+    </dd>
+
+    {% if page.revision_date %}
+        <dt>Herzieningsdatum</dt>
+        <dd>
+            <time 
+                datetime="{{ page.revision_date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.revision_date | date: "%-d %B %Y" }}</time>
+        </dd>
+    {% endif %}
+
+    <dt>Publicatiedatum</dt>
     <dd>
         <time 
             datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time>
