@@ -15,6 +15,16 @@
             content="message_help_sector" %}
     </label>
     <label>
+        {% include patterns/i18n id="label_registrered" %}
+        <input
+            class="pat-date-picker" 
+            data-pat-date-picker="output-format: D MMMM YYYY"
+            type="date" 
+            name="">
+        {% include patterns/form-help.html 
+            content="message_help_registered" %}
+    </label>
+    <label>
         {% include patterns/i18n id="label_revision_date" %}
         <input
             class="pat-date-picker" 

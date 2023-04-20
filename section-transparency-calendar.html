@@ -1,0 +1,94 @@
+
+    {% for set in site.calendar %}
+        {% if set.title == page.title and set.layout == 'indicator-set' %}
+            <section 
+                class="page-module type-transparantiekalender" id="section-indicator-set">
+                <h2 
+                    class="page-module-title">
+                    Indicatoren
+                </h2>
+                <div 
+                    class="pat-well tickets">
+                    <div 
+                        class="intro-bar">
+                        <div 
+                            class="pat-collapsible context-menu closed align-left" 
+                            data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu" id="filters-menu">
+                            <p 
+                                class="label menu-trigger context-menu-label">Verslagjaar 2018</p>
+                            <p 
+                                class="close-menu">Sluit</p>
+                            <ul 
+                                class="link-list">
+                                <li>
+                                    <a href="/Aneurysma-Aorta-Abdominalis#section-indicator-set" class="pat-inject" data-pat-inject="history: record; scroll: #main">Indicatorenset, verslagjaar 2019.</a>
+                                </li>
+                                <li>
+                                    <a href="/Aneurysma-Aorta-Abdominalis#section-indicator-set" class="pat-inject" data-pat-inject="history: record; scroll: #main">Indicatorenset, verslagjaar 2017.</a>
+                                </li>
+                            </ul>
+                        </div> 
+<!--                         <p class="intro-bar-text">
+                            Uiterste inleverdatum was 12 juli 2019.
+                        </p> -->
+                        <p 
+                            class="intro-bar-functions">
+                            <a 
+                                href="" 
+                                class="download-link icon-download" 
+                                title="Download deze set als een CSV-bestand">Download deze set</a>
+                        </p>
+                    </div>
+                    <ul 
+                        class="ticket-list">
+                        {% for indicator in set.indicators %}
+
+                            {% assign this_subs = false %}
+
+                            {% unless indicator.inid == nil %}
+                                {% for sub in set.indicators %}
+                                    {% if sub.parent_id == indicator.inid %}
+                                        {% assign this_subs = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endunless %}
+
+                            {% if indicator.parent_id == nil %}
+                                <li class="ticket-list-ticket">
+                                    <p class="ticket-list-ticket-title">
+                                        <span class="title-segment number">{{ indicator.nr }}</span>
+                                        <span class="title-segment name">{{ indicator.name }}</span>
+                                        {% if indicator.inid %}
+                                            <span class="title-segment inid">{{ indicator.inid }}</span>
+                                        {% endif %}
+                                    </p>
+
+                                    {% if this_subs == true %}
+                                        <div class="pat-collapsible detailed-info borderless closed">
+                                            <strong>Subindicatoren</strong>
+                                            <ul class="sub-ticket">
+                                                {% for sub in set.indicators %}
+                                                    {% if sub.parent_id == indicator.inid %}
+
+                                                        <li class="sub-ticket-title">
+                                                            <span class="title-segment number">{{ sub.nr }}</span>
+                                                            <span class="title-segment name">{{ sub.name }}</span>
+                                                            {% if sub.inid %}
+                                                                <span class="title-segment inid">{{ sub.inid }}</span>
+                                                            {% endif %}
+                                                        </li>
+
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>                              
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+
