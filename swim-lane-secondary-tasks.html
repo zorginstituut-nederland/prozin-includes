@@ -9,10 +9,7 @@
         </h2>
         <ul 
             class="
-                task-list 
-                {% if item.tasks.size == 2 %}
-                    col-2
-                {% endif %}
+                task-list col-{{ item.tasks.size}}
                 ">  
             {% for task in item.tasks %}
                 <li>
