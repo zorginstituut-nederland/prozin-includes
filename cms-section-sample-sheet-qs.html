@@ -1,0 +1,80 @@
+<fieldset 
+    class="horizontal form-panel">
+    <label>
+        {% include patterns/i18n id="label_sector" %}
+        <select
+            class="pat-autosuggest"
+            multiple>
+            {% for item in site.data.sectors %}
+                <option>{{ item.title }}</option>
+            {% endfor %}
+        </select>
+        {% include patterns/form-help.html 
+            content="message_help_sector" %}
+    </label>
+    <fieldset
+        class="group">
+        <legend>Status</legend>   
+        <fieldset
+            class="pat-checklist checkbox">
+            <label>
+                {% include patterns/i18n id="label_included_in_register" %}
+                <input 
+                    type="checkbox" 
+                    name="register">
+            </label>
+            <label>
+                {% include patterns/i18n id="label_on_long_term_agenda" %}
+                <input 
+                    type="checkbox" 
+                    name="mja">
+            </label>
+            <label>
+                {% include patterns/i18n id="label_prio_wegiz" %}
+                <input 
+                    type="checkbox" 
+                    name="wegiz-prio">
+            </label>
+            <label>
+                {% include patterns/i18n id="label_amvb_wegiz" %}
+                <input 
+                    type="checkbox" 
+                    name="AMvB">
+            </label>
+        </fieldset>
+    </fieldset>
+    <label>
+        {% include patterns/i18n id="label_revision_date" %}
+        <input
+            class="pat-date-picker" 
+            data-pat-date-picker="output-format: D MMMM YYYY"
+            type="date" 
+            name="">
+        {% include patterns/form-help.html 
+            content="message_help_revision_date" %}
+    </label>
+    <label>
+        {% include patterns/i18n id="label_quality_registrations" %}
+        <input 
+            class="pat-autosuggest"
+            required
+            name="qs"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/kwaliteitsstandaarden.json;' />
+    </label>
+    <label>
+        {% include patterns/i18n id="label_measuring_instruments" %}   
+        <input 
+            class="pat-autosuggest"
+            required
+            name="mi"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/meetinstrumenten.json;' />
+    </label>
+</fieldset>
