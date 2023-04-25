@@ -84,14 +84,6 @@
             datetime="{{ page.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.date | date: "%-d %B %Y" }}</time>
     </dd>
 
-    {% if page.revision_date %}
-        <dt>Herzieningsdatum</dt>
-        <dd>
-            <time 
-                datetime="{{ page.revision_date | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.revision_date | date: "%-d %B %Y" }}</time>
-        </dd>
-    {% endif %}
-
     <dt>Publicatiedatum</dt>
     <dd>
         <time 
