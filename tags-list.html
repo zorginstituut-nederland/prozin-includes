@@ -1,0 +1,45 @@
+{% assign found_items = false %}
+
+{% for collection in site.collections %}
+    {% unless collection.label == 'posts' %}
+
+        {% assign these_items = site[collection.label] | where_exp: "item", "item.tags contains page.title" | sort: "title" %}
+
+        {% if these_items.size >= 1 %}
+            {% assign found_items = true %}
+            <h3 
+                class="page-module-group-title type-{{ collection.label | replace: '-','_' }}">
+                {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
+                <a 
+                    {% include prozin/collection-hrefs %}
+                    class="pat-inject"
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
+                </a>
+            </h3>
+            <ul 
+                class="link-list col-{{ include.cols }}">
+                {% for item in these_items %}
+                    {% unless item.url contains '-state-' %}
+                        <li 
+                            class="item-{{ item.state | slugify }}">
+                            <a 
+                                href="{{ item.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record; scroll: #main">
+                                {{ item.title }}
+                            </a>
+                        </li>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    
+    {% endunless %}
+
+{% endfor %}
+
+{% if found_items == false %}
+    <p>
+        {% include patterns/i18n id="message_no_objects_for_tag" %}
+    </p>
+{% endif %}
