@@ -177,6 +177,10 @@
             {% if page.title_in_breadcrumbs == true or layout.title_in_breadcrumbs == true %}
                 <a>{{ page.title }}</a>
             {% endif %}
+
+            {% if page.sector %}
+                <a>{{ page.sector }}</a>
+            {% endif %}
         </nav>
 
         <nav 
