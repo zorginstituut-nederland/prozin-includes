@@ -14,17 +14,15 @@
                         {% if forloop.last %}value="latest"{% endif %}
                         {% if forloop.last %}selected{% endif %}
                         value="{% if forloop.last %}latest{% else %}versie-{% increment counter %}{% endif %}">
-                        {{ site.data.prozin.ui.label_version[site.data.config.lang] }} {{ counter }} ({{ revision.date}})
+                        {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
                     </option>
                 {% endif %}
             {% endfor %}
         {% else %}
-            {% unless page.state == 'New' %}
-                <option 
-                    value="latest">
-                    {{ site.data.prozin.ui.label_version[site.data.config.lang] }} 1 (9 januari 2022)
-                </option>
-            {% endunless %}
+            <option 
+                value="latest">
+                {% include patterns/i18n id="label_version" %} 1 (9 januari 2023)
+            </option>
         {% endif %}
         {% if 
             page.state == 'Revision' 
@@ -39,11 +37,13 @@
             </option>
         {% else %}
             {% unless page.state == 'Published' %}
-                <option 
-                    value="for-review" 
-                    selected >
-                    {{ page.state }}
-                </option>
+                {% if page.state %}
+                    <option 
+                        value="{{ page.state | slugify }}" 
+                        selected >
+                            {{ page.state }}
+                    </option>
+                {% endif %}
             {% endunless %}
         {% endif %}
     </select>   
