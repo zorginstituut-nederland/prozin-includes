@@ -11,7 +11,18 @@
                     href="{{ item.url }}" 
                     class="type-medicine-group pat-inject" 
                     data-pat-inject="history: record; scroll: #main"
-                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>{{ item.name }}</a>
+                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>
+                    <h4 
+                        class="link-title">
+                        {{ item.title }}
+                    </h4>
+                    {% if item.summary %}
+                        <p 
+                            class="link-byline">
+                            {{ item.summary }}
+                        </p>
+                    {% endif %}
+                </a>
             </li>  
         {% endfor %}
     </ul>
@@ -29,7 +40,18 @@
                     href="{{ item.url }}" 
                     class="type-medicine-group pat-inject" 
                     data-pat-inject="history: record; scroll: #main"
-                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>{{ item.name }}</a>
+                    {% if item.summary %}title="{{ item.summary }}"{% endif %}>
+                    <h4 
+                        class="link-title">
+                        {{ item.title }}
+                    </h4>
+                    {% if item.summary %}
+                        <p 
+                            class="link-byline">
+                            {{ item.summary }}
+                        </p>
+                    {% endif %}
+                </a>
             </li>  
         {% endfor %}
     </ul>
@@ -49,7 +71,18 @@
                     href="{{ item.url }}" 
                     class="type-{{ item.type }} {% unless item.type == 'link-external' %}pat-inject{% endunless %}" 
                     {% unless item.type == 'link-external' %}data-pat-inject="history: record; scroll: #main"{% endunless %} 
-                    {% if item.description %}title="{{ item.description }}"{% endif %}>{{ item.title }}</a>
+                    {% if item.description %}title="{{ item.description }}"{% endif %}>
+                    <h4 
+                        class="link-title">
+                        {{ item.title }}
+                    </h4>
+                    {% if item.summary %}
+                        <p 
+                            class="link-byline">
+                            {{ item.summary }}
+                        </p>
+                    {% endif %}
+                </a>
             </li>  
         {% endfor %}
     </ul>
@@ -66,7 +99,12 @@
                 <a 
                     href="/tags/{{ tag | slugify }}" 
                     class="type-tag pat-inject" 
-                    data-pat-inject="history: record; scroll: #main">{{ tag }}</a>
+                    data-pat-inject="history: record; scroll: #main">
+                    <h4 
+                        class="link-title">
+                        {{ tag }}
+                    </h4>
+                </a>
             </li>  
         {% endfor %}
     </ul>
