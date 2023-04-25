@@ -13,12 +13,10 @@
             content="message_help_sector" %}
     </label>
     <label>
-        Subklasse
-        <select>
-            <option>Algemene kwaliteitsstandaard</option>
-            <option>Zorgstandaard</option>
-            <option>Generieke module</option>
-        </select>
+        ISID
+        <input 
+            type="text" 
+            name="isid">
     </label>
     <fieldset
         class="group">
@@ -36,18 +34,6 @@
                 <input 
                     type="checkbox" 
                     name="mja">
-            </label>
-            <label>
-                {% include patterns/i18n id="label_prio_wegiz" %}
-                <input 
-                    type="checkbox" 
-                    name="wegiz-prio">
-            </label>
-            <label>
-                {% include patterns/i18n id="label_amvb_wegiz" %}
-                <input 
-                    type="checkbox" 
-                    name="AMvB">
             </label>
         </fieldset>
     </fieldset>

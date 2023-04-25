@@ -41,7 +41,7 @@
             name="website">
     </label>
     <label>
-        Kwaliteitsstandaarden
+        {% include patterns/i18n id="label_quality_registrations" %}
         <input 
             class="pat-autosuggest"
             required
@@ -53,7 +53,19 @@
                 ajax-url: /feedback/kwaliteitsstandaarden.json;' />
     </label>
     <label>
-        Meetinstrumenten   
+        {% include patterns/i18n id="label_quality_standards" %}
+        <input 
+            class="pat-autosuggest"
+            required
+            name="qs"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/kwaliteitsstandaarden.json;' />
+    </label>
+    <label>
+        {% include patterns/i18n id="label_measuring_instruments" %}   
         <input 
             class="pat-autosuggest"
             required
