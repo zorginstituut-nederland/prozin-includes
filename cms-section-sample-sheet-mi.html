@@ -37,8 +37,10 @@
             </label>
         </fieldset>
     </fieldset>
-    <label>
-        {% include patterns/i18n id="label_registrered" %}
+    <label
+        class="pat-depends"
+        data-pat-depends="condition: register; transition: slide">
+        {% include patterns/i18n id="label_registration_date" %}
         <input
             class="pat-date-picker" 
             data-pat-date-picker="output-format: D MMMM YYYY"
