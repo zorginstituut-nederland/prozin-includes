@@ -20,7 +20,7 @@
     </label>
     <fieldset
         class="group">
-        <legend>Status</legend>   
+        <legend>{% include patterns/i18n id="label_status" %}</legend>   
         <fieldset
             class="pat-checklist checkbox">
             <label>
@@ -35,20 +35,15 @@
                     type="checkbox" 
                     name="mja">
             </label>
+            <label>
+                {% include patterns/i18n id="label_in_development" %}
+                <input 
+                    type="checkbox" 
+                    name="kwaliteitsregistratie">
+            </label>
         </fieldset>
     </fieldset>
-    <label
-        class="pat-depends"
-        data-pat-depends="condition: register; transition: slide">
-        {% include patterns/i18n id="label_registration_date" %}
-        <input
-            class="pat-date-picker" 
-            data-pat-date-picker="output-format: D MMMM YYYY"
-            type="date" 
-            name="">
-        {% include patterns/form-help.html 
-            content="message_help_registered" %}
-    </label>
+    {% include standard-edit-form-registration-date.html %}
     <label
         data-pat-depends="condition: mja; transition: slide"
         class="pat-depends">
