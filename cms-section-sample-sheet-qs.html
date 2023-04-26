@@ -1,17 +1,7 @@
 <fieldset 
     class="horizontal form-panel">
-    <label>
-        {% include patterns/i18n id="label_sector" %}
-        <select
-            class="pat-autosuggest"
-            multiple>
-            {% for item in site.data.sectors %}
-                <option>{{ item.title }}</option>
-            {% endfor %}
-        </select>
-        {% include patterns/form-help.html 
-            content="message_help_sector" %}
-    </label>
+    {% include standard-edit-form-sectors.html %}
+    <!-- {% include standard-edit-form-healthcare-areas.html %} -->
     <label>
         {% include patterns/i18n id="label_subclass" %}
         <select>
