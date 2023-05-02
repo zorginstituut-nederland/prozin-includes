@@ -54,27 +54,38 @@
                             {% endunless %}
 
                             {% if indicator.parent_id == nil %}
-                                <li class="ticket-list-ticket">
-                                    <p class="ticket-list-ticket-title">
-                                        <span class="title-segment number">{{ indicator.nr }}</span>
-                                        <span class="title-segment name">{{ indicator.name }}</span>
+                                <li 
+                                    class="ticket-list-ticket">
+                                    <p 
+                                        class="ticket-list-ticket-title">
+                                        <span 
+                                            class="title-segment number">{{ indicator.nr }}</span>
+                                        <span 
+                                            class="title-segment name">{{ indicator.name }}</span>
                                         {% if indicator.inid %}
-                                            <span class="title-segment inid">{{ indicator.inid }}</span>
+                                            <span 
+                                                class="title-segment inid">{{ indicator.inid }}</span>
                                         {% endif %}
                                     </p>
 
                                     {% if this_subs == true %}
-                                        <div class="pat-collapsible detailed-info borderless closed">
+                                        <div 
+                                            class="pat-collapsible detailed-info borderless closed">
                                             <strong>Subindicatoren</strong>
-                                            <ul class="sub-ticket">
+                                            <ul 
+                                                class="sub-ticket">
                                                 {% for sub in set.indicators %}
                                                     {% if sub.parent_id == indicator.inid %}
 
-                                                        <li class="sub-ticket-title">
-                                                            <span class="title-segment number">{{ sub.nr }}</span>
-                                                            <span class="title-segment name">{{ sub.name }}</span>
+                                                        <li 
+                                                            class="sub-ticket-title">
+                                                            <span 
+                                                                class="title-segment number">{{ sub.nr }}</span>
+                                                            <span 
+                                                                class="title-segment name">{{ sub.name }}</span>
                                                             {% if sub.inid %}
-                                                                <span class="title-segment inid">{{ sub.inid }}</span>
+                                                                <span 
+                                                                    class="title-segment inid">{{ sub.inid }}</span>
                                                             {% endif %}
                                                         </li>
 
