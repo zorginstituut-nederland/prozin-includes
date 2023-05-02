@@ -1,6 +1,6 @@
 <fieldset 
     class="horizontal form-panel metadata">
-    {% if include.allow contains 'general' %}
+    {% unless include.internal-links == false %}
         <label>
             {% include patterns/i18n id="label_general" %}   
             <input 
@@ -13,8 +13,6 @@
                     ajax-search-index: text; 
                     ajax-url: /dialogues/cms/general.json;' />
         </label>
-    {% endif %}
-    {% if include.allow contains 'news' %}
         <label>
             {% include patterns/i18n id="label_news" %}   
             <input 
@@ -27,7 +25,7 @@
                     ajax-search-index: text; 
                     ajax-url: /dialogues/cms/news-items.json;' />
         </label>
-    {% endif %}
+    {% endunless %}
     <fieldset
         class="group grid-editor">
         <legend>{% include patterns/i18n id="label_external_links" %}</legend>
