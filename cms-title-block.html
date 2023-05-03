@@ -1,5 +1,6 @@
 <fieldset 
-    class="pat-rich pat-autosubmit">
+    data-pat-inject="source: #save-button; target: #save-button"
+    class="pat-inject pat-rich pat-subform pat-autosubmit">
     {% if include.placeholder %}
         {% assign this_placeholder = include.placeholder %}
     {% else %}
