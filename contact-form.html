@@ -28,18 +28,20 @@
         <fieldset
             class="group pat-checklist radio">
             <label>
+                {{ site.data.prozin.ui.label_professional[site.data.config.lang] }}
                 <input 
                     required="required" 
                     type="radio" 
                     value="professional" 
-                    name="role" /> {{ site.data.prozin.ui.label_professional[site.data.config.lang] }}
+                    name="role" /> 
             </label>
             <label>
+                {{ site.data.prozin.ui.label_private[site.data.config.lang] }}
                 <input 
                     required="required" 
                     type="radio" 
                     value="private" 
-                    name="role" /> {{ site.data.prozin.ui.label_private[site.data.config.lang] }}
+                    name="role" /> 
             </label>
         </fieldset>
 
