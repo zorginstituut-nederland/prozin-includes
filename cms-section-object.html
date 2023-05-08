@@ -29,7 +29,9 @@
             id="patterns.label_url" %}
         <input 
             type="url" 
-            value="{{ include.source }}"
+            {% if include.source and include.hosting == 'remote' %}
+                value="{{ include.source }}"
+            {% endif %}
             placeholder="https://…" 
             name="url">
     </label> 
@@ -38,18 +40,20 @@
         data-pat-depends="condition: hosting-{{ include.source | slugify }}=remote; transition: slide" 
         class="group object-upload pat-depends">
         <legend>{% include patterns/i18n id="label_presentation" %}</legend>
-        <figure 
-            class="pat-screenshot allow-interaction">
-            <div
-                class="pat-auto-scale passe-partout"
-                style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
-                <object 
-                    id="{{ include.source | slugify }}-object" 
-                    data="{{ include.source }}"
+        {% if include.source and include.hosting == 'remote' %}
+            <figure 
+                class="pat-screenshot allow-interaction">
+                <div
+                    class="pat-auto-scale passe-partout"
                     style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
-                </object>
-            </div>
-        </figure>
+                    <object 
+                        id="{{ include.source | slugify }}-object" 
+                        data="{{ include.source }}"
+                        style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
+                    </object>
+                </div>
+            </figure>
+        {% endif %}
     </fieldset>   
     <fieldset
         id="object-upload" 
@@ -57,7 +61,7 @@
         class="group object-upload pat-subform pat-autosubmit pat-inject pat-depends"
         data-pat-inject="url: /general/begrippenlijst-edit; source: #object-upload; target: #object-upload">
         <legend>{% include patterns/i18n id="label_presentation" %}</legend>
-        {% if include.source %}
+        {% if include.source and include.hosting == 'local' %}
             <figure 
                 class="pat-screenshot allow-interaction">
                 <div
