@@ -1,25 +1,77 @@
 <fieldset 
     class="horizontal form-panel metadata">
+    <fieldset 
+        class="group pat-checklist radio">
+        <legend>Hosting</legend>
+        <label>
+            {% include patterns/i18n id="label_local" %}  
+            <input           
+                {% if include.hosting == 'local' %}checked{% endif %}        
+                value="local"
+                type="radio" 
+                name="hosting-{{ include.source | slugify }}"
+                >
+        </label>
+        <label>
+            {% include patterns/i18n id="label_remote" %}
+            <input 
+                {% if include.hosting == 'remote' %}checked{% endif %} 
+                type="radio" 
+                value="remote"
+                name="hosting-{{ include.source | slugify }}">
+        </label>
+    </fieldset>
+    <label
+        data-pat-depends="condition: hosting-{{ include.source | slugify }}=remote; transition: slide" 
+        class="pat-subform pat-autosubmit pat-inject pat-depends"
+        data-pat-inject="url: /general/begrippenlijst-edit; source: #object-remote; target: #object-remote">
+        {% include patterns/i18n 
+            id="patterns.label_url" %}
+        <input 
+            type="url" 
+            value="{{ include.source }}"
+            placeholder="https://…" 
+            name="url">
+    </label> 
+    <fieldset
+        id="object-remote"
+        data-pat-depends="condition: hosting-{{ include.source | slugify }}=remote; transition: slide" 
+        class="group object-upload pat-depends">
+        <legend>{% include patterns/i18n id="label_presentation" %}</legend>
+        <figure 
+            class="pat-screenshot allow-interaction">
+            <div
+                class="pat-auto-scale passe-partout"
+                style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
+                <object 
+                    id="{{ include.source | slugify }}-object" 
+                    data="{{ include.source }}"
+                    style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
+                </object>
+            </div>
+        </figure>
+    </fieldset>   
     <fieldset
         id="object-upload" 
-        class="group object-upload pat-subform pat-autosubmit pat-inject"
+        data-pat-depends="condition: hosting-{{ include.source | slugify }}=local; transition: slide" 
+        class="group object-upload pat-subform pat-autosubmit pat-inject pat-depends"
         data-pat-inject="url: /general/begrippenlijst-edit; source: #object-upload; target: #object-upload">
-        <legend>{% include patterns/i18n id="label_file" %}</legend>
+        <legend>{% include patterns/i18n id="label_presentation" %}</legend>
         {% if include.source %}
             <figure 
                 class="pat-screenshot allow-interaction">
                 <div
                     class="pat-auto-scale passe-partout"
-                    style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
+                    style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
                     <object 
                         id="{{ include.source | slugify }}-object" 
                         data="{{ include.source }}"
-                        style="{% if include.height %}height: {{ include.height }};{% endif %}{% if include.width %}width: {{ include.width }};{% endif %}">
+                        style="{% if include.height %}height: {{ include.height }}px;{% endif %}{% if include.width %}width: {{ include.width }}px;{% endif %}">
                     </object>
                 </div>
             </figure>
             <a
-                href="/general/begrippenlijst-edit#object-upload"
+                href="/dialogues/cms/object-empty#object-upload"
                 data-pat-inject="url: /dialogues/cms/edit-news-item; source: #object-upload; target: #object-upload"
                 class="small default pat-button pat-inject"
                 type="button">{% include patterns/i18n id="label_remove_presentation_imp" %}</a>
@@ -29,13 +81,13 @@
                 name="object">
         {% endif %}
         {% include patterns/form-help.html
-                content="message_help_presentation_upload" %}</dfn>
+            content="message_help_presentation_upload" %}
     </fieldset>    
     <label>
         {% include patterns/i18n id="label_optimal_width_in_pixels" %}
         <input 
             required
-            value="1280"
+            value="{{ include.width | default: '1280' }}"
             type="number" 
             name="">
     </label>   
@@ -43,18 +95,23 @@
         {% include patterns/i18n id="label_optimal_height_in_pixels" %}
         <input 
             required
-            value="720"
+            value="{{ include.height | default: '720' }}"
             type="number" 
             name="">
     </label> 
     <fieldset
         class="pat-checklist">
         <!-- <legend>{% include patterns/i18n id="patterns.label_behaviour" %}</legend> -->
-        <label>{% include patterns/i18n id="patterns.label_allow_interaction" %} <input type="checkbox" name="interaction"></label>
+        <label>
+            {% include patterns/i18n id="patterns.label_allow_interaction" %} 
+            <input 
+                {% if include.interaction == 'allowed' %}checked{% endif %}
+                type="checkbox" 
+                name="interaction"></label>
     </fieldset>    
     <label>
         {% include patterns/i18n id="label_caption" %}
         <textarea
-            rows="2"></textarea>
+            rows="2">{{ include.caption }}</textarea>
     </label>  
 </fieldset>

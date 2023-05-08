@@ -16,6 +16,7 @@
 {% endif %}
 
 {% assign this_caption = include.caption %}
+{% assign this_hosting = include.hosting %}
 
 <div 
     data-pat-collapsible="
@@ -48,8 +49,10 @@
             poster=include.poster
             caption=this_caption
             source=include.source
+            hosting=this_hosting
             width=section.width
             height=section.height
+            interaction=section.interaction
             image=include.image %}
     </div>
 </div>
