@@ -13,4 +13,17 @@
                 ajax-url: /feedback/involved-parties.json;'/>
         <!-- Creates an organisation -->
     </label>
+    <label>
+        {% include patterns/i18n id="label_secretariat" %}
+        <input 
+            class="pat-autosuggest"
+            name="involved-parties"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: true; 
+                maximum-selection-size: 1; 
+                ajax-search-index: text; 
+                ajax-url: /feedback/involved-parties.json;'/>
+        <!-- Creates an organisation -->
+    </label>
 </fieldset>
