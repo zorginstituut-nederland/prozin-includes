@@ -1,30 +1,48 @@
 <fieldset 
     class="horizontal form-panel metadata">
     {% unless include.internal-links == false %}
-        <label>
-            {% include patterns/i18n id="label_general" %}   
-            <input 
-                class="pat-autosuggest"
-                required
-                name="mi"
-                type="text"
-                data-pat-autosuggest='
-                    allow-new-words: false;  
-                    ajax-search-index: text; 
-                    ajax-url: /dialogues/cms/general.json;' />
-        </label>
-        <label>
-            {% include patterns/i18n id="label_news" %}   
-            <input 
-                class="pat-autosuggest"
-                required
-                name="mi"
-                type="text"
-                data-pat-autosuggest='
-                    allow-new-words: false;  
-                    ajax-search-index: text; 
-                    ajax-url: /dialogues/cms/news-items.json;' />
-        </label>
+        {% if include.allow contains 'general' %}
+            <label>
+                {% include patterns/i18n id="label_general" %}   
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text; 
+                        ajax-url: /dialogues/cms/general.json;' />
+            </label>
+        {% endif %}
+        {% if include.allow contains 'news' %}
+            <label>
+                {% include patterns/i18n id="label_news" %}   
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text; 
+                        ajax-url: /dialogues/cms/news-items.json;' />
+            </label>
+        {% endif %}
+        {% if include.allow contains 'tool' %}
+            <label>
+                {% include patterns/i18n id="label_development_tools" %}   
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="dt"
+                    type="text"
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text; 
+                        ajax-url: /dialogues/cms/development-tools-items.json;' />
+            </label>
+        {% endif %}
     {% endunless %}
     <fieldset
         class="group grid-editor">
