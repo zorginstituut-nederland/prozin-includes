@@ -1,6 +1,6 @@
 {% assign found_items = false %}
 
-{% for collection in site.collections %}
+{% for collection in site.collections | sort: 'label' %}
     {% unless collection.label == 'posts' %}
 
         {% assign these_items = site[collection.label] | where: 'state','Draft' | sort: 'title' %}
