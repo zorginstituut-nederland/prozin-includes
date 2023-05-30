@@ -1,24 +1,24 @@
 {% assign found_items = false %}
 
-{% for collection in site.collections | sort: 'label' %}
-    {% unless collection.label == 'posts' %}
+{% for content-type in site.data.content-types %}
 
-        {% assign these_items = site[collection.label] | where: 'state','Draft' | sort: 'title' %}
+    {% for collection in content-type.collection %}
 
-        {% if these_items.size >= 1 %}
+        {% if collection.size >= 1 %}
             {% assign found_items = true %}
             <h3 
                 class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-                {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
+                {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
                 <a 
                     {% include prozin/collection-hrefs %}
                     class="pat-inject"
-                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
                 </a>
             </h3>
             <ul 
                 class="link-list col-{{ include.cols }}">
-                {% for item in these_items %}
+                {% for item in site[collection.name] %}
+                    {% if item.state == 'Draft' %}
                     {% unless item.url contains '-state-' %}
                         <li 
                             class="state-draft item-{{ item.state | slugify }}">
@@ -30,11 +30,53 @@
                             </a>
                         </li>
                     {% endunless %}
+                    
+                    {% endif %}
                 {% endfor %}
             </ul>
         {% endif %}
     
-    {% endunless %}
+    {% endfor %}
+
+{% endfor %}
+
+{% for content-type in site.data.prozin.content-types %}
+
+    {% for collection in content-type.collection %}
+
+        {% if collection.size >= 1 %}
+            {% assign found_items = true %}
+            <h3 
+                class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
+                {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
+                <a 
+                    {% include prozin/collection-hrefs %}
+                    class="pat-inject"
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
+                </a>
+            </h3>
+            <ul 
+                class="link-list col-{{ include.cols }}">
+                {% for item in site[collection.name] %}
+                    {% if item.state == 'Draft' %}
+                    {% unless item.url contains '-state-' %}
+                        <li 
+                            class="state-draft item-{{ item.state | slugify }}">
+                            <a 
+                                href="{{ item.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record; scroll: #main">
+                                {{ item.title }}
+                            </a>
+                        </li>
+                    {% endunless %}
+                    
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    
+    {% endfor %}
 
 {% endfor %}
 
