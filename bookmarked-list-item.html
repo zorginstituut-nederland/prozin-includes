@@ -1,0 +1,24 @@
+<h3 
+    class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
+    <a 
+        href="{{ collection.url }}" 
+        class="pat-inject"
+        data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
+    </a>
+</h3>
+<ul 
+    class="link-list col-{{ include.cols }}">
+    {% for item in these_items %}
+        {% unless item.url contains '-state-' %}
+            <li 
+                class="item-{{ item.state | slugify }}">
+                <a 
+                    href="{{ item.url }}" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; scroll: #main">
+                    {{ item.title }}
+                </a>
+            </li>
+        {% endunless %}
+    {% endfor %}
+</ul>

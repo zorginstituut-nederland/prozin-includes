@@ -9,30 +9,23 @@
 
         {% if these_items.size >= 1 %}
             {% assign found_bookmarks = true %}
-            <h3 
-                class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-                <a 
-                    {% include prozin/collection-hrefs %}
-                    class="pat-inject"
-                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
-                </a>
-            </h3>
-            <ul 
-                class="link-list col-{{ include.cols }}">
-                {% for item in these_items %}
-                    {% unless item.url contains '-state-' %}
-                        <li 
-                            class="item-{{ item.state | slugify }}">
-                            <a 
-                                href="{{ item.url }}" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record; scroll: #main">
-                                {{ item.title }}
-                            </a>
-                        </li>
-                    {% endunless %}
-                {% endfor %}
-            </ul>
+            {% include prozin/bookmarked-list-item.html %}
+        {% endif %}
+
+    {% endfor %}
+
+{% endfor %}
+
+{% for content-type in site.data.prozin.content-types %}
+  
+    {% for collection in content-type.collection %}
+
+        {% assign this_collection = collection.name %}
+        {% assign these_items = site[this_collection] | where: 'bookmarked','true'  %}
+
+        {% if these_items.size >= 1 %}
+            {% assign found_bookmarks = true %}
+            {% include prozin/bookmarked-list-item.html %}
         {% endif %}
 
     {% endfor %}
