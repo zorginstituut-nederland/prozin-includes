@@ -1,4 +1,4 @@
-{% if page.sub_nav %}
+{% if page.sub_nav or page.sub_nav_prepend or page.sub_nav_append %}
     {% unless page.layout == 'landing-toc' %}
         <div 
             id="sub-nav">
@@ -16,15 +16,29 @@
                         <li>
                             <a 
                                 title="{{ item.description }}" 
-                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
-                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" 
+                                data-pat-inject="history: record; scroll: #main" 
+                                href="{{ item.url }}">{% include patterns/i18n id=item.name %}</a>
                         </li>
                     {% endfor %}
+                    {% if page.layout contains 'dashboard' %}
+                        {% for item in site.data.content-types %}
+                            {% for collection in item.collection %}
+                                <li>
+                                    <a 
+                                        class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" 
+                                        data-pat-inject="history: record; scroll: #main" 
+                                        href="{{ collection.url }}">{% include patterns/i18n id=collection.i18n %}</a>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                     {% for item in page.sub_nav %}
                         <li>
                             <a 
                                 title="{{ item.description }}" 
-                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" 
+                                data-pat-inject="history: record; scroll: #main" 
                                 href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
                         </li>
                     {% endfor %}
@@ -32,8 +46,9 @@
                         <li>
                             <a 
                                 title="{{ item.description }}" 
-                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" data-pat-inject="history: record; scroll: #main" 
-                                href="{{ item.url }}">{{ site.data.prozin.ui[item.name][site.data.config.lang] }}</a>
+                                class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" 
+                                data-pat-inject="history: record; scroll: #main" 
+                                href="{{ item.url }}">{% include patterns/i18n id=item.name %}</a>
                         </li>
                     {% endfor %}
                 </ul>
