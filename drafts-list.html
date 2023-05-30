@@ -1,40 +1,16 @@
 {% assign found_items = false %}
 
 {% for content-type in site.data.content-types %}
-
+  
     {% for collection in content-type.collection %}
+
+        {% assign this_collection = collection.name %}
+        {% assign these_items = site[this_collection] | where: 'state','Draft'  %}
 
         {% if collection.size >= 1 %}
             {% unless collection.standalone == false %}
                 {% assign found_items = true %}
-                <h3 
-                    class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-                    {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
-                    <a 
-                        href="{{ collection.name }}"
-                        class="pat-inject"
-                        data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
-                    </a>
-                </h3>
-                <ul 
-                    class="link-list col-{{ include.cols }}">
-                    {% for item in site[collection.name] %}
-                        {% if item.state == 'Draft' %}
-                        {% unless item.url contains '-state-' %}
-                            <li 
-                                class="state-draft item-{{ item.state | slugify }}">
-                                <a 
-                                    href="{{ item.url }}" 
-                                    class="pat-inject" 
-                                    data-pat-inject="history: record; scroll: #main">
-                                    {{ item.title }}
-                                </a>
-                            </li>
-                        {% endunless %}
-                        
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                {% include prozin/drafts-list-item.html %}
             {% endunless %}
         {% endif %}
     
@@ -43,39 +19,17 @@
 {% endfor %}
 
 {% for content-type in site.data.prozin.content-types %}
-
+  
     {% for collection in content-type.collection %}
 
+        {% assign this_collection = collection.name %}
+        {% assign these_items = site[this_collection] | where: 'state','Draft'  %}
+
         {% if collection.size >= 1 %}
-            {% assign found_items = true %}
-            <h3 
-                class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-                {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
-                <a 
-                    href="{{ collection.name }}"
-                    class="pat-inject"
-                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
-                </a>
-            </h3>
-            <ul 
-                class="link-list col-{{ include.cols }}">
-                {% for item in site[collection.name] %}
-                    {% if item.state == 'Draft' %}
-                    {% unless item.url contains '-state-' %}
-                        <li 
-                            class="state-draft item-{{ item.state | slugify }}">
-                            <a 
-                                href="{{ item.url }}" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record; scroll: #main">
-                                {{ item.title }}
-                            </a>
-                        </li>
-                    {% endunless %}
-                    
-                    {% endif %}
-                {% endfor %}
-            </ul>
+            {% unless collection.standalone == false %}
+                {% assign found_items = true %}
+                {% include prozin/drafts-list-item.html %}
+            {% endunless %}
         {% endif %}
     
     {% endfor %}

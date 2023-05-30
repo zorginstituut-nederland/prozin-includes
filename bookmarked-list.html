@@ -1,19 +1,20 @@
 {% assign found_bookmarks = false %}
 
-{% for collection in site.collections %}
-    {% unless collection.label == 'posts' %}
+{% for content-type in site.data.content-types %}
+  
+    {% for collection in content-type.collection %}
 
-        {% assign these_items = site[collection.label] | where: 'bookmarked','true' | sort: 'title' %}
+        {% assign this_collection = collection.name %}
+        {% assign these_items = site[this_collection] | where: 'bookmarked','true'  %}
 
         {% if these_items.size >= 1 %}
             {% assign found_bookmarks = true %}
             <h3 
                 class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-                {% capture this_label %}label_{{ collection.label | replace: '-','_' }}{% endcapture %}
                 <a 
                     {% include prozin/collection-hrefs %}
                     class="pat-inject"
-                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=this_label %}
+                    data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
                 </a>
             </h3>
             <ul 
@@ -33,8 +34,8 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    
-    {% endunless %}
+
+    {% endfor %}
 
 {% endfor %}
 
