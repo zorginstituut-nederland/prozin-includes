@@ -3,7 +3,7 @@
     class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
     {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
     <a 
-        href="{{ collection.name }}"
+        href="{{ collection.url }}"
         class="pat-inject"
         data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
     </a>
