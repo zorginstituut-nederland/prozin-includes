@@ -1,7 +1,5 @@
-
 <h3 
     class="{{ include.title_class | default: 'portlet-separation-title' }} type-{{ collection.label | replace: '-','_' }}">
-    {% capture this_label %}label_{{ collection.name | replace: '-','_' }}{% endcapture %}
     <a 
         href="{{ collection.url }}"
         class="pat-inject"
@@ -10,8 +8,7 @@
 </h3>
 <ul 
     class="link-list col-{{ include.cols }}">
-    {% for item in site[collection.name] %}
-        {% if item.state == 'Draft' %}
+    {% for item in these_items %}
         {% unless item.url contains '-state-' %}
             <li 
                 class="state-draft item-{{ item.state | slugify }}">
@@ -24,6 +21,5 @@
             </li>
         {% endunless %}
         
-        {% endif %}
     {% endfor %}
 </ul>

@@ -5,15 +5,13 @@
     {% for collection in content-type.collection %}
 
         {% assign this_collection = collection.name %}
-        {% assign these_items = site[this_collection] | where: 'state','Draft'  %}
+        {% assign these_items = site[this_collection] | where: 'state', 'Draft'  %}
 
-        {% if collection.size >= 1 %}
-            {% unless collection.standalone == false %}
-                {% assign found_items = true %}
-                {% include prozin/drafts-list-item.html %}
-            {% endunless %}
+        {% if these_items.size >= 1 %}
+            {% assign found_bookmarks = true %}
+            {% include prozin/drafts-list-item.html %}
         {% endif %}
-    
+
     {% endfor %}
 
 {% endfor %}
@@ -23,7 +21,7 @@
     {% for collection in content-type.collection %}
 
         {% assign this_collection = collection.name %}
-        {% assign these_items = site[this_collection] | where: 'state','Draft'  %}
+        {% assign these_items = site[this_collection] | where: 'state', 'Draft'  %}
 
         {% if collection.size >= 1 %}
             {% unless collection.standalone == false %}
