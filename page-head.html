@@ -7,23 +7,24 @@
 	{% if include.byline %}
 		<p 
 			class="byline">
-			{% if include.byline contains 'document-type' %}
-				{% if page.layout == 'quality-standard' %}
-					<span 
-						class="byline-item">Kwaliteitsstandaard</span>
-				{% elsif page.layout == 'quality-registration' %}
-					<span 
-						class="byline-item">{% include patterns/i18n id="label_quality_registration" %}</span>
-				{% elsif page.layout == 'measuring-instrument' %}
-					<span 
-						class="byline-item">Meetinstrument</span>
-				{% elsif page.layout == 'prozin/image' %}
-					<span 
-						class="byline-item">Afbeelding</span>
-				{% elsif page.layout == 'prozin/news-item' %}
-					<span 
-						class="byline-item">Nieuwsbericht</span>
-				{% endif %}			
+			{% if page.layout == 'quality-standard' %}
+				<span 
+					class="byline-item">Kwaliteitsstandaard</span>
+			{% elsif page.layout == 'quality-registration' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_quality_registration" %}</span>
+			{% elsif page.layout == 'measuring-instrument' %}
+				<span 
+					class="byline-item">Meetinstrument</span>
+			{% elsif page.layout == 'tool' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_development_tool" %}</span>
+			{% elsif page.layout == 'prozin/image' %}
+				<span 
+					class="byline-item">Afbeelding</span>
+			{% elsif page.layout == 'prozin/news-item' %}
+				<span 
+					class="byline-item">Nieuwsbericht</span>		
 			{% endif %}
 			{% for group in page.medicine_groups %}
 				<span 
@@ -51,7 +52,8 @@
 			{% endif %}
 			{% if include.byline contains 'author' %}
 				{% if page.author %}
-					<span class="byline-item">{{ page.author }}</span>
+					<span 
+						class="byline-item">{{ page.author }}</span>
 				{% endif %}
 			{% endif %}
 			{% if include.byline contains 'tags' %}
