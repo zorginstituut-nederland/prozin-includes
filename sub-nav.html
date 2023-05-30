@@ -22,6 +22,16 @@
                         </li>
                     {% endfor %}
                     {% if page.layout contains 'dashboard' %}
+                        {% for item in site.data.prozin.content-types %}
+                            {% for collection in item.collection %}
+                                <li>
+                                    <a 
+                                        class="pat-inject {% if item.icon %}icon-{{ item.icon }}{% endif %}" 
+                                        data-pat-inject="history: record; scroll: #main" 
+                                        href="{{ collection.url }}">{% include patterns/i18n id=collection.i18n %}</a>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
                         {% for item in site.data.content-types %}
                             {% for collection in item.collection %}
                                 <li>
