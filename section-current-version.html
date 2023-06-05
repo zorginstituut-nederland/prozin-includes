@@ -24,14 +24,12 @@
                 href="{{ item.url }}">
                 <h2 
                     class="title">{{ item.title }}</h2>
-                <p 
-                    class="meta link">
-                    {% if item.url %}
-                        {{ item.url }}
-                    {% else %}
-                        http://www.some-external-source.com
-                    {% endif %}
-                </p>
+                {% if item.summary %}
+                    <p 
+                        class="meta link">
+                        {{ item.summary }}
+                    </p>
+                {% endif %}
             </a>
         {% endfor %}
     </div>
