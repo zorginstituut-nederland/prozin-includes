@@ -6,8 +6,7 @@
         {% if page.external_links %}
             <ul 
                 id="external-links"
-                class="link-list">
-                {% for item in page.external_links %}
+                class="link-list">{% for item in page.external_links %}
                     <li
                         id="el-page-{{ item.title | slugify }}">
                         <a 
@@ -41,8 +40,7 @@
                                     name="{{ download.title | slugify }}">
                             </label>
                         </div>
-                {% endfor %}
-            </ul>
+                {% endfor %}</ul>
         {% else %}
             <ul 
                 id="external-links"
