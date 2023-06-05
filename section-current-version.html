@@ -1,6 +1,8 @@
 {% if page.current_version %}
-    <div class="page-module type-current-version">
-        <h2 class="page-module-title">
+    <div 
+        class="page-module type-current-version">
+        <h2 
+            class="page-module-title">
             Actuele versie
         </h2>
 <!--                <ul class="link-list">
@@ -11,11 +13,14 @@
             {% endfor %}
         </ul> -->
         {% for item in page.current_version %}
-            <a class="link-tile" target="_blank" href="{{ item.url }}">
+            <a 
+                class="link-tile" 
+                href="{{ item.url }}">
                 <h2 class="title">
                     {{ item.title }}
                 </h2>
-                <p class="meta link">
+                <p 
+                    class="meta link">
                     {% if item.url %}
                         {{ item.url }}
                     {% else %}
