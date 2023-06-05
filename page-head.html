@@ -28,6 +28,7 @@
 			{% endif %}
 			{% for group in page.medicine_groups %}
 				<span 
+					title="{% include patterns/i18n id='label_publication_date' %}" 
 					class="byline-item medicine-groups pat-inject"
 					data-pat-inject="history: record; scroll: #main">
 		            <a 
