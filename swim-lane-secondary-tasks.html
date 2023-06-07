@@ -7,9 +7,20 @@
             class="lane-title">
             {{ site.data.prozin.ui[item.title][site.data.config.lang] }}
         </h2>
+        {% if item.tasks.size == 1 %}
+            {% assign cols = 1 %}
+        {% elsif item.tasks.size == 2 %}
+            {% assign cols = 2 %}
+        {% elsif item.tasks.size == 3 %}
+            {% assign cols = 4 %}
+        {% elsif item.tasks.size == 4 %}
+            {% assign cols = 2 %}
+        {% else %}
+            {% assign cols = 3 %}
+        {% endif %}
         <ul 
             class="
-                task-list col-{{ item.tasks.size}}
+                task-list col-{{ cols }}
                 ">  
             {% for task in item.tasks %}
                 <li>

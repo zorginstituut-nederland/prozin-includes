@@ -34,9 +34,9 @@
                         {% if item.description %}
                             <p 
                                 class="byline">
-                                {% if item.name contains 'prozin.' %}
+                                {% if item.description contains 'prozin.' %}
                                     {% capture this_description %}{{ item.description | remove: 'prozin.' }}{% endcapture %}
-                                    {{ site.data.ui[this_id][site.data.config.lang] }}
+                                    {{ site.data.prozin.ui[this_description][site.data.config.lang] }}
                                 {% else %}
                                     {{ site.data.ui[item.description][site.data.config.lang] }}
                                 {% endif %}
