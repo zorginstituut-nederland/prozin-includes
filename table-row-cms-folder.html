@@ -23,6 +23,10 @@
         {% else %}
             Gepubliceerd
         {% endif %} 
+        {% if item.canonical %}
+            <span 
+                class="canonical">({{ item.canonical }})</span>
+        {% endif %}
     </td>
     <td 
         class="functions">
