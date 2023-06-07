@@ -1,0 +1,19 @@
+<fieldset 
+    class="pat-checklist">
+    <legend>{% include patterns/i18n id="label_copublication" %}</legend>  
+    {% for item in site.data.prozin.products %}
+        <label
+            {% if item.name == site.name %}
+                class="disabled"
+            {% endif %}>
+            {{ item.name }}
+            <input 
+                type="checkbox" 
+                {% if item.name == site.name %}
+                    disabled
+                    checked
+                {% endif %}
+                name="product-{{ item.code }}">
+        </label>
+    {% endfor %}
+</fieldset>
