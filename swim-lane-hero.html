@@ -42,7 +42,12 @@
                                 title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
                         </li>
                     {% elsif item.callout == "recent" or item.callout == "popular" %}
-                        {% for item in site.medicines limit:3 %}
+                        {% if item.source %}
+                            {% assign this_source = item.source %}
+                        {% else %}
+                            {% assign this_source = medicines %}
+                        {% endif %}
+                        {% for item in site[this_source] limit:3 %}
                             <li >
                                 <a 
                                     class="{% if item.layout == 'medicine' %}medicine{% endif %}"
