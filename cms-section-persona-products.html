@@ -1,0 +1,13 @@
+<fieldset 
+    class="horizontal form-panel">
+    {% for item in site.data.prozin.products %}
+        <label>
+            {{ item.code }}
+            <select>
+                {% for item in site.data.prozin.permission-profiles %}
+                    <option>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    {% endfor %}
+</fieldset>
