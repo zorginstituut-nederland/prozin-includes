@@ -90,14 +90,24 @@
                 </p>
             </div>
         {% endif %}
-        {% if item.push %}
-            <div 
-                class="top-task-push">
-                <article 
-                    class="pat-rich">
-                    {{ item.push | markdownify }}
-                </article>
-            </div>
-        {% endif %}
+        {% for item in site.news %}
+            {% if item.push == true %}
+                <div 
+                    class="top-task-push">
+                    <article 
+                        class="pat-rich">
+                        <h2>{{ item.title }}</h2>
+                        <p>{{ item.summary }}</p>
+                    </article>
+                    <p 
+                        class="button-bar">
+                        <a 
+                            data-pat-inject="history: record"
+                            href="{{ item.url }}"
+                            class="pat-button pat-inject">{% include patterns/i18n id="label_read_more" %}</a>
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </section>
