@@ -3,7 +3,8 @@
     <label>
         {% include patterns/i18n id="label_first_name" %}
         <input 
-            type="text" 
+            type="text"
+            value="{{ page.first_name }}" 
             name="">
     </label>
     <label>
@@ -11,6 +12,7 @@
         {% include patterns/i18n id="label_last_name" %}
         <input 
             type="text" 
+            value="{{ page.last_name }}"
             name="">
     </label>
     <label>
@@ -18,18 +20,21 @@
         {% include patterns/i18n id="label_email" %}
         <input 
             type="email" 
+            value="{{ page.email }}"
             name="">
     </label>
     <label>
         {% include patterns/i18n id="label_organisation" %}
         <input 
             type="text" 
+            value="{{ page.organisation }}"
             name="">
     </label>
     <label> 
         {% include patterns/i18n id="label_role" %}
         <input 
             type="text" 
+            value="{{ page.role }}"
             name="">
     </label>
     <label>
