@@ -24,7 +24,19 @@
 					class="byline-item">Afbeelding</span>
 			{% elsif page.layout == 'prozin/news-item' %}
 				<span 
-					class="byline-item">Nieuwsbericht</span>		
+					class="byline-item">Nieuwsbericht</span>	
+			{% elsif page.layout == 'component' %}
+				<span 
+					class="byline-item">Component</span>	
+			{% elsif page.layout == 'page-type' %}
+				<span 
+					class="byline-item">Paginatype</span>		
+			{% elsif page.layout == 'dialogue' %}
+				<span 
+					class="byline-item">Dialoog</span>		
+			{% elsif page.layout == 'persona' %}
+				<span 
+					class="byline-item">Persona</span>
 			{% endif %}
 			{% for group in page.medicine_groups %}
 				<span 
