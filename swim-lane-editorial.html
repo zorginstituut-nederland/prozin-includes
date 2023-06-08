@@ -31,6 +31,24 @@
                                     </p>
                                 </a>
                             </li> 
+                        {% else %}
+                            <li>
+                                <a 
+                                    href="{{ item.url }}" 
+                                    class="pat-inject" 
+                                    data-pat-inject="history: record; scroll: #site-header">
+                                    <h3 class="item-title">
+                                        {{ item.title }}
+                                    </h3>
+                                    <p>
+                                        {% if item.summary %}
+                                            {{ item.summary | truncate: 100 }}
+                                        {% else %}
+                                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
+                                        {% endif %}
+                                    </p>
+                                </a>
+                            </li> 
                         {% endif %}
                     {% endif %}           
                 {% endunless %}
