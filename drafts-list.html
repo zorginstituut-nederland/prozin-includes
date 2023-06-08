@@ -6,7 +6,7 @@
             {% assign this_collection = collection.name %}
             {% assign these_items = site[this_collection] | where: 'state', 'Draft'  %}
             {% if these_items.size >= 1 %}
-                {% assign found_bookmarks = true %}
+                {% assign found_items = true %}
                 {% include prozin/drafts-list-item.html %}
             {% endif %}        
         {% endunless %}
