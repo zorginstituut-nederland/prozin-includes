@@ -99,6 +99,13 @@
                                     class="close-panel pat-inject" 
                                     href="/beheer/new-measuring-instrument">{% include patterns/i18n id="label_new_measuring_instrument" %}</a>
                             </li>
+                        {% else %}
+                            <li>
+                                {% capture this_label %}label_new_{{ item.name | replace: '-', '_' }}{% endcapture %}
+                                <a 
+                                    class="close-panel pat-inject" 
+                                    href="/beheer/new-{{ item.name }}">{% include patterns/i18n id=this_label %}</a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
