@@ -42,12 +42,22 @@
 
             {% if layout.parent %}
                 {% if page.url contains '/beheer' %}
-                    {% unless page.layout contains 'dashboard' %}
+                    {% if layout.url == '/beheer' %}
+                        <a>{% include patterns/i18n id="label_management" %}</a>
+                    {% else %}
                         <a 
                             href="/beheer" 
                             class="pat-inject" 
                             data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a>
-                    {% endunless %}
+                        {% unless 
+                            layout.parent == "Beheer" 
+                                or 
+                            page.title_in_breadcrumbs == false 
+                                or 
+                            layout.title_in_breadcrumbs == false %}
+                            <a>{{ layout.parent }}</a>
+                        {% endunless %}
+                    {% endif %}
                 {% else %}
                     <a 
                         href="/{{ layout.parent | slugify }}"
