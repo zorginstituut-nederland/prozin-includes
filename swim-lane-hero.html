@@ -42,7 +42,12 @@
                                 title="Hier vindt u alle indicatorgidsen, veelgestelde vragen en vergelijkingen per zorgsector.">Informatie per zorgsector zoeken</a>
                         </li>
                     {% elsif item.callout == "recent" or item.callout == "popular" %}
-                        {% for item in site.medicines limit:3 %}
+                        {% if item.source %}
+                            {% assign this_source = item.source %}
+                        {% else %}
+                            {% assign this_source = medicines %}
+                        {% endif %}
+                        {% for item in site[this_source] limit:3 %}
                             <li >
                                 <a 
                                     class="{% if item.layout == 'medicine' %}medicine{% endif %}"
@@ -85,14 +90,24 @@
                 </p>
             </div>
         {% endif %}
-        {% if item.push %}
-            <div 
-                class="top-task-push">
-                <article 
-                    class="pat-rich">
-                    {{ item.push | markdownify }}
-                </article>
-            </div>
-        {% endif %}
+        {% for item in site.news %}
+            {% if item.push == true %}
+                <div 
+                    class="top-task-push">
+                    <article 
+                        class="pat-rich">
+                        <h2>{{ item.title }}</h2>
+                        <p>{{ item.summary }}</p>
+                    </article>
+                    <p 
+                        class="button-bar">
+                        <a 
+                            data-pat-inject="history: record"
+                            href="{{ item.url }}"
+                            class="pat-button pat-inject">{% include patterns/i18n id="label_read_more" %}</a>
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </section>

@@ -1,0 +1,27 @@
+<fieldset 
+    class="horizontal form-panel">
+    <fieldset 
+        class="group pat-checklist">
+        <legend>{% include patterns/i18n id="label_account" %}</legend>
+        <label>
+            {% include patterns/i18n id="label_has_zin_account" %}
+            <input 
+                type="checkbox" 
+                name="zin_account" />
+        </label>
+    </fieldset>
+    {% for item in site.data.prozin.products %}
+        <label
+            data-pat-depends="
+                condition: zin_account; 
+                transition: slide"
+            class="pat-depends">
+            {{ item.code }}
+            <select>
+                {% for item in site.data.prozin.permission-profiles %}
+                    <option>{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    {% endfor %}
+</fieldset>
