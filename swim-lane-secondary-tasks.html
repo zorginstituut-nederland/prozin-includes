@@ -30,12 +30,20 @@
                         data-pat-inject="history: record; scroll: #main">
                         <h3 
                             class="item-title">
-                            {{ task.title }}
+                            {% if task.title contains 'label_' %}
+                                {% include patterns/i18n id=task.title %}
+                            {% else %}
+                                {{ task.title | truncate: 200 }}
+                            {% endif %}
                         </h3>
                         <p
                             class="byline">
                             {% if task.summary %}
-                                {{ task.summary | truncate: 200 }}
+                                {% if task.summary contains 'message_' %}
+                                    {% include patterns/i18n id=task.summary %}
+                                {% else %}
+                                    {{ task.summary | truncate: 200 }}
+                                {% endif %}
                             {% else %}
                                 Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero..
                             {% endif %}
