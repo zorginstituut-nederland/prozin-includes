@@ -1,3 +1,10 @@
+{% assign item_nr = forloop.index %}
+{% if include.placeholder %}
+    {% assign this_placeholder = include.placeholder %}
+{% else %}
+    {% capture this_placeholder %}{% include patterns/i18n id="label_your_content_goes_here_ell" %}{% endcapture %}
+{% endif %}
+
 <article
     class="body-text pat-rich">
     {% if include.content %}
