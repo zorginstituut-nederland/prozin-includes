@@ -113,9 +113,6 @@
                             {% endunless %}
                         {% endfor %}
                     {% else %}
-                        {% if page.layout contains 'personae' %}
-                            <a>{{ page.collection | capitalize }}</a>
-                        {% endif %}
                         {% unless page.scope %}
                             {% unless layout.collection_in_breadcrumbs == false %}
                                 {% if page.collection == 'prozin/editorial' %}
