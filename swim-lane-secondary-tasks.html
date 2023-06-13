@@ -7,6 +7,12 @@
             class="lane-title">
             {{ site.data.prozin.ui[item.title][site.data.config.lang] }}
         </h2>
+        {% if item.summary %}
+            <p
+                class="intro">
+                {{ item.summary }}
+            </p>
+        {% endif %}
         {% if item.tasks.size == 1 %}
             {% assign cols = 1 %}
         {% elsif item.tasks.size == 2 %}
