@@ -45,16 +45,18 @@
                         {% if item.source %}
                             {% assign this_source = item.source %}
                         {% else %}
-                            {% assign this_source = medicines %}
+                            {% assign this_source = 'news' %}
                         {% endif %}
-                        {% for item in site[this_source] limit:3 %}
-                            <li >
-                                <a 
-                                    class="{% if item.layout == 'medicine' %}medicine{% endif %}"
-                                    href="{{ item.url }}">
-                                    {{ item.title }}
-                                </a>
-                            </li>
+                        {% for item in site[this_source] limit:5 %}
+                            {% unless item.url contains '-state' %}
+                                <li >
+                                    <a 
+                                        class="{% if item.layout == 'medicine' %}medicine{% endif %}"
+                                        href="{{ item.url }}">
+                                        {{ item.title }}
+                                    </a>
+                                </li>
+                            {% endunless %}
                         {% endfor %}
                     {% else %}
                         {% for this_item in site.news %}
