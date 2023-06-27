@@ -1,14 +1,16 @@
+{%- capture portlet_id -%}{{ portlet.id | remove: 'prozin/' }}{%- endcapture -%}
 <div 
     class="portlet span-{{ portlet.span }}" 
-    id="{{ portlet.id | remove: 'prozin/' }}">
+    id="{{ portlet_id }}">
     <div 
         {% if portlet.span != 1 %}
             data-pat-collapsible="
-                trigger: #{{ portlet.id | remove: 'prozin/' }}-collapse-button; 
+                trigger: #{{ portlet_id }}-collapse-button; 
                 store: local; 
                 scroll-selector: self; 
                 scroll-offset: 120px"
         {% endif %}
+        id="{{ portlet_id }}-content"
         class="content {% if portlet.span != 1 %}pat-collapsible{% endif %}">
         <article 
             class="portlet-intro">
@@ -25,7 +27,7 @@
                     class="buttons">
                     <button
                         class="button collapse-button"
-                        id="{{ portlet.id | remove: 'prozin/' }}-collapse-button">Open/Close</button>
+                        id="{{ portlet_id }}-collapse-button">Open/Close</button>
                 </div>
             </header>
         </article>
