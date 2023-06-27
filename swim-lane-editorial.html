@@ -8,7 +8,7 @@
             {{ site.data.prozin.ui.label_topics[site.data.config.lang] }}
         </h2>
         <ul 
-            class="editorial-list col-4 pat-equaliser">  
+            class="editorial-list col-4">  
             {% for item in site.general %}
                 {% unless item.parent or item.state == 'Draft' %}
                     {% assign item_path = item.url | split: "/" | reverse %}
