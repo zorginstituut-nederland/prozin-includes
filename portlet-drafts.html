@@ -2,7 +2,14 @@
     class="portlet span-{{ portlet.span }}" 
     id="{{ portlet.id | remove: 'prozin/' }}">
     <div 
-        class="content">
+        {% if portlet.span != 1 %}
+            data-pat-collapsible="
+                trigger: #{{ portlet.id | remove: 'prozin/' }}-collapse-button; 
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px"
+        {% endif %}
+        class="content {% if portlet.span != 1 %}pat-collapsible{% endif %}">
         <article 
             class="portlet-intro">
             <header 
@@ -11,10 +18,16 @@
                     class="portlet-title">
                     {{ site.data.prozin.ui.label_drafts[site.data.config.lang] }}
                 </h2>
+                <div 
+                    class="buttons">
+                    <button
+                        class="button collapse-button"
+                        id="{{ portlet.id | remove: 'prozin/' }}-collapse-button">Open/Close</button>
+                </div>
             </header>
         </article>
         <div 
-            class="portlet-body"> 
+            class="portlet-body panel-content"> 
             {% capture this_url %}/{{ section }}{% endcapture %}
             {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
             {% include prozin/drafts-list.html 
