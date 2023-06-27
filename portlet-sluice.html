@@ -16,10 +16,7 @@
                 class="portlet-title-group">
                 <h2 
                     class="portlet-title">
-                    <a 
-                        class="pat-inject"
-                        data-pat-inject="scroll: #main; history: record" 
-                        href="/dialogues/personal/bookmarks">{{ site.data.prozin.ui.label_bookmarks[site.data.config.lang] }}</a>
+                    {%- include patterns/i18n id="label_sluice_medicines" -%}
                 </h2>
                 <div 
                     class="buttons">
@@ -31,13 +28,21 @@
         </article>
         <div 
             class="portlet-body panel-content"> 
-            {% capture this_url %}/{{ section }}{% endcapture %}
-            {% capture this_label %}label_{{ section | replace: '-','_' }}{% endcapture %}
-            {% include prozin/bookmarked-list.html 
-                cols="3"
-                url=this_url
-                label=this_label
-                collection=section %}        
+            <h3 
+                class="portlet-separation-title">{%- include patterns/i18n id="label_meets_sluice_criteria" -%}</h3>
+            {% include sluice-list.html
+                sluice="Meets criteria" %}  
+
+            <h3 
+                class="portlet-separation-title">{%- include patterns/i18n id="label_sluice_candidates" -%}</h3>
+            {% include sluice-list.html
+                sluice="Candidate" %}
+            
+            <h3 
+                class="portlet-separation-title">{%- include patterns/i18n id="label_included_in_sluice" -%}</h3>    
+            {% include sluice-list.html
+                sluice="Included" %}
+
         </div>
     </div>
-</div>
+</div> 
