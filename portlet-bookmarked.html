@@ -11,7 +11,7 @@
                 scroll-offset: 120px"
         {% endif %}
         id="{{ portlet_id }}-content"
-        class="content {% if portlet.span != 1 %}pat-collapsible{% endif %}">
+        class="content {% if portlet.span != 1 %}pat-collapsible {{ portlet.state }}{% endif %}">
         <article 
             class="portlet-intro">
             <header 
