@@ -10,7 +10,7 @@
         <ul 
             class="editorial-list col-4">  
             {% for item in site.general %}
-                {% unless item.parent or item.state == 'Draft' %}
+                {% unless item.parent or item.state == 'Draft' or item.url contains '-state-' %}
                     {% assign item_path = item.url | split: "/" | reverse %}
                     {% if item_path[1] == 'general' or item_path[2] == 'general' %}                             
                         {% if item.layout == 'prozin/general-article' %}

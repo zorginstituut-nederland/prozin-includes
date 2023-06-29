@@ -61,14 +61,16 @@
                     {% else %}
                         {% for this_item in site.news %}
                             {% if count <= 3 and this_item.type == 'warning' %}
-                                <li 
-                                    class="{{ this_item.type }}">
-                                    <a 
-                                        href="{{ this_item.url }}" 
-                                        class="pat-inject">
-                                        {{ this_item.title }}
-                                    </a>
-                                </li>    
+                                {%- unless this_item.url contains '-state-' -%}
+                                    <li 
+                                        class="{{ this_item.type }}">
+                                        <a 
+                                            href="{{ this_item.url }}" 
+                                            class="pat-inject">
+                                            {{ this_item.title }}
+                                        </a>
+                                    </li>    
+                            {%- endunless -%}
                                 {% assign count = count | plus: 1 %}
                             {% endif %}
                         {% endfor %}
