@@ -11,7 +11,7 @@
                 scroll-offset: 120px"
         {% endif %}
         id="{{ portlet_id }}-content"
-        class="content {% if portlet.span != 1 %}pat-collapsible {{ portlet.state }}{% endif %}">
+        class="content {% if portlet.span != 1 %}pat-collapsible{% endif %}">
         <article 
             class="portlet-intro">
             <header 
@@ -23,12 +23,14 @@
                         data-pat-inject="scroll: #main; history: record" 
                         href="/dialogues/personal/bookmarks">{{ site.data.prozin.ui.label_bookmarks[site.data.config.lang] }}</a>
                 </h2>
-                <div 
-                    class="buttons">
-                    <button
-                        class="button collapse-button"
-                        id="{{ portlet_id }}-collapse-button">Open/Close</button>
-                </div>
+                {% if portlet.span != 1 %}
+                    <div 
+                        class="buttons">
+                        <button
+                            class="button collapse-button"
+                            id="{{ portlet_id }}-collapse-button">Open/Close</button>
+                    </div>
+                {% endif %}
             </header>
         </article>
         <div 
