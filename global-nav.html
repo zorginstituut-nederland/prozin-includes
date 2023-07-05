@@ -64,7 +64,7 @@
                         class="pat-inject" 
                         data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
                 {% endif %}
-                {%- if page.parent -%}
+                {%- if page.parent and page.page_type == 'folder' -%}
                     <a 
                         href="/dialogues/cms/general" 
                         class="pat-inject"
