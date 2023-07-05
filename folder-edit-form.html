@@ -15,19 +15,35 @@
 <fieldset
     class="pat-checklist radio">
     <legend>{%- include patterns/i18n id="label_layout" -%}</legend>
-    <label>
-        {%- include patterns/i18n id="label_toc" -%}
-        <input 
-            checked
-            type="radio" 
-            name="layout">
-    </label>
-    <label>
-        {%- include patterns/i18n id="label_topic_lanes" -%}
-        <input 
-            type="radio" 
-            name="layout">
-    </label>
+    {%- if include.layouts contains 'toc' -%}
+        <label>
+            {%- include patterns/i18n 
+                id="label_toc" -%}
+            <input 
+                checked
+                type="radio" 
+                name="layout">
+        </label>
+    {%- endif -%}
+    {%- if include.layouts contains 'topics' -%}
+        <label>
+            {%- include patterns/i18n 
+                id="label_topic_lanes" -%}
+            <input 
+                type="radio" 
+                name="layout">
+        </label>
+    {%- endif -%}
+    {%- if include.layouts contains 'cards' -%}
+        <label>
+            {%- include patterns/i18n 
+                id="label_cards" -%}
+            <input 
+                checked
+                type="radio" 
+                name="layout">
+        </label>
+    {%- endif -%}
     {%- include patterns/form-help.html content="message_help_landing_layout" -%}
 </fieldset>
 <fieldset
