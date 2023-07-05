@@ -3,12 +3,13 @@
     <input 
         class="pat-autofocus"
         type="text"
+        value="{{ page.folder_title }}"
         maxlength="80" />
 </label>
 <label>
     {%- include patterns/i18n id="label_summary" -%}
     <textarea
-        maxlength="200"></textarea>
+        maxlength="200">{{ page.summary }}</textarea>
     {%- include patterns/form-help.html content="message_help_folder_summary" -%}
 </label>
 <fieldset
