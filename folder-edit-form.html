@@ -1,0 +1,43 @@
+<label>
+    {%- include patterns/i18n id="label_folder_name" -%}
+    <input 
+        class="pat-autofocus"
+        type="text"
+        maxlength="80" />
+</label>
+<label>
+    {%- include patterns/i18n id="label_summary" -%}
+    <textarea
+        maxlength="200"></textarea>
+    {%- include patterns/form-help.html content="message_help_folder_summary" -%}
+</label>
+<fieldset
+    class="pat-checklist radio">
+    <legend>{%- include patterns/i18n id="label_layout" -%}</legend>
+    <label>
+        {%- include patterns/i18n id="label_toc" -%}
+        <input 
+            checked
+            type="radio" 
+            name="layout">
+    </label>
+    <label>
+        {%- include patterns/i18n id="label_topic_lanes" -%}
+        <input 
+            type="radio" 
+            name="layout">
+    </label>
+    {%- include patterns/form-help.html content="message_help_landing_layout" -%}
+</fieldset>
+<fieldset
+    class="pat-checklist checkbox">
+    <legend>{%- include patterns/i18n id="label_visibility" -%}</legend>
+    <label>
+        {%- include patterns/i18n id="label_visible_from_outside" -%}
+        <input 
+            checked 
+            type="checkbox" 
+            name="visible">
+    </label>
+    {%- include patterns/form-help.html content="message_help_visibility" -%}
+</fieldset>

@@ -64,6 +64,12 @@
                         class="pat-inject" 
                         data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
                 {% endif %}
+                {%- if page.parent -%}
+                    <a 
+                        href="/dialogues/cms/general" 
+                        class="pat-inject"
+                        data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
+                {%- endif -%}
             {% elsif page.parent %}
                 {% if page.parent == 'Help' %}
                     <a 
