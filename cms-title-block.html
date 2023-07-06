@@ -19,7 +19,7 @@
             <textarea
                 required
                 type="text"
-                maxlength="200"
+                maxlength="{{ site.data.prozin.config.max_chars_summaries }}"
                 value="{{ page.summary }}"
                 placeholder="{% include patterns/i18n id='label_introduction' %}"
                 class="doc-summary pat-content-mirror"
