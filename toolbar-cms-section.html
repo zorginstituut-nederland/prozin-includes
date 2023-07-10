@@ -129,10 +129,10 @@
                             </li>
                         {% else %}
                             <li>
-                                {% capture this_label %}label_new_{{ item.name | replace: '-', '_' }}{% endcapture %}
+                                {% capture this_label %}label_new_{{ item.name | remove: 'prozin/' | replace: '-', '_' }}{% endcapture %}
                                 <a 
                                     class="close-panel pat-inject" 
-                                    href="/beheer/new-{{ item.name }}">{% include patterns/i18n id=this_label %}</a>
+                                    href="/beheer/new-{{ item.name | remove: 'prozin/' | slugify }}">{% include patterns/i18n id=this_label %}</a>
                             </li>
                         {% endif %}
                     {% endfor %}
