@@ -14,7 +14,7 @@
             scroll-selector: self; 
             scroll-offset: 120px"
     {% endif %}
-    class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless closed{% endif %}">
+    class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless {% if include.collapsible_state == 'open' %}closed{% else %}open{% endif %}{% endif %}">
     {% if include.title %}
         <h2
             class="page-module-title">
