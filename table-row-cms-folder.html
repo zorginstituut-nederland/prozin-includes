@@ -42,7 +42,7 @@
             id="id-{{ item.title | slugify }}">
             <ul 
                 class="menu">
-                {% if item.layout contains 'prozin-landing-toc' %}
+                {% if item.page_type == 'folder' %}
                     <li>
                         <a 
                             href="/dialogues/cms/panel-edit-folder#document-content"
@@ -52,28 +52,37 @@
                 {% else %}
                     {% if item.state == 'Draft' %}
                         <li>
-                            <a href="{{ item.url }}-state-edit"
+                            <a 
+                                href="{{ item.url }}-state-edit"
                                 class="icon-edit pat-inject close-panel">{% include patterns/i18n id="label_edit_imp" %}</a>
                         </li>
                     {% endif %}
                     {% if item.state == 'Archived' %}
                         <li>
-                            <form action="{{ page.url }}#listing" class="pat-inject">
-                                <button class="icon-archive close-panel"
+                            <form 
+                                action="{{ page.url }}#listing" 
+                                class="pat-inject">
+                                <button 
+                                    class="icon-archive close-panel"
                                     type="submit">{% include patterns/i18n id="label_unarchive_imp" %}</button>
                             </form>
                         </li>
                     {% else %}
                         <li>
-                            <form action="{{ page.url }}#listing" class="pat-inject">
-                                <button class="icon-archive close-panel"
+                            <form 
+                                action="{{ page.url }}#listing" 
+                                class="pat-inject">
+                                <button 
+                                    class="icon-archive close-panel"
                                     type="submit">{% include patterns/i18n id="label_archive_imp" %}</button>
                             </form>
                         </li>
                     {% endif %}
                 {% endif %}
                 <li>
-                    <a href="/feedback/delete-content-object#document-content" data-pat-modal="class: small panel"
+                    <a 
+                        href="/feedback/delete-content-object#document-content" 
+                        data-pat-modal="class: small panel"
                         class="icon-trash pat-modal close-panel">{% include patterns/i18n id="label_remove_imp" %}</a>
                 </li>
             </ul>
