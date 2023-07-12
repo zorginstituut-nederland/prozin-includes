@@ -56,6 +56,10 @@
         id="patterns.label_image" %}</legend>
     <input 
         type="file"
+        accept="
+            image/png, 
+            image/jpeg, 
+            image/svg+xml"
         {% if page.layout == 'prozin/modal' %}required{% endif %} 
         name="" />
     {% if page.layout == "prozin/image-edit" %}
