@@ -5,6 +5,8 @@
     <textarea
         required
         rows="4">{{ page.alt_text }}</textarea>
+    {%- include patterns/form-help.html 
+        content="message_help_alt_text" -%}
 </label>
 <label>
     Beeldtype
@@ -48,9 +50,10 @@
         type="text" 
         name="source" />
 </label>
-<label>
-    {% include patterns/i18n 
-        id="patterns.label_image" %}
+<fieldset
+    class="group">
+    <legend>{% include patterns/i18n 
+        id="patterns.label_image" %}</legend>
     <input 
         type="file"
         {% if page.layout == 'prozin/modal' %}required{% endif %} 
@@ -59,4 +62,5 @@
         <span 
             class="info message">U kunt dit beeld overschrijven door een nieuwe versie op te laden.</span>
     {% endif %}
-</label>
+    {%- include patterns/form-help.html content="message_help_image_upload" -%}
+</fieldset>
