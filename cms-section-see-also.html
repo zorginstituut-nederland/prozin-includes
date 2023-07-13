@@ -3,18 +3,20 @@
     {% for item in site.data.content-types %}
         {% for collection in item.collection %}
             {% unless collection.standalone == false %}
-                <label>
-                    {% include patterns/i18n id=collection.i18n %}   
-                    <input 
-                        class="pat-autosuggest"
-                        required
-                        name="{{ collection.name }}"
-                        type="text"
-                        data-pat-autosuggest='
-                            allow-new-words: false;  
-                            ajax-search-index: text; 
-                            ajax-url: /{{ collection.name }}/index.json;' />
-                </label>
+                {%- unless collection.referable == false -%}
+                    <label>
+                        {% include patterns/i18n id=collection.i18n %}   
+                        <input 
+                            class="pat-autosuggest"
+                            required
+                            name="{{ collection.name }}"
+                            type="text"
+                            data-pat-autosuggest='
+                                allow-new-words: false;  
+                                ajax-search-index: text; 
+                                ajax-url: /{{ collection.name }}/index.json;' />
+                    </label>
+                {%- endunless -%}
             {% endunless %}
         {% endfor %}
     {% endfor %}
