@@ -5,18 +5,20 @@
     class="pat-checklist free-form radio image-selector col-{{ include.columns | default: '4' }} cropping-{{ include.cropping | default: 'cover' }}">
     {% for item in site.pages %}
         {% if item.layout == 'prozin/image' %}
-            <label
-                class="item image"
-                title="{{ item.alt_text }}"
-                data-title="{{ item.title }}">
-                <input
-                    type="{{ include.type | default: 'radio' }}"
-                    value="{{ item.url }}.jpg"
-                    name="tiptap-src" />
-                <img
-                    src="{{ item.url }}.jpg"
-                    alt="{{ item.alt_text }}" />
-            </label>
+            {%- unless item.url contains 'missing' -%}
+                <label
+                    class="item image"
+                    title="{{ item.alt_text }}"
+                    data-title="{{ item.title }}">
+                    <input
+                        type="{{ include.type | default: 'radio' }}"
+                        value="{{ item.url }}.jpg"
+                        name="tiptap-src" />
+                    <img
+                        src="{{ item.url }}.jpg"
+                        alt="{{ item.alt_text }}" />
+                </label>
+            {%- endunless -%}
         {% endif %}
     {% endfor %}
 </fieldset>
