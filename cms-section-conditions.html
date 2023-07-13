@@ -20,7 +20,7 @@
         {% include patterns/i18n id="label_conditions" %}
         <textarea
             maxlength="500"
-            rows="6">{{ page.summary }}</textarea>
+            rows="6">{{ page.conditions_b1 }}</textarea>
         {%- include patterns/form-help.html
             content="message_help_conditions_for_medicine" -%}
     </label>
@@ -28,6 +28,7 @@
         GVS
         <input 
             placeholder="https://…"
+            value="{{ page.gvs }}"
             type="url" />
     </label>
 </fieldset>
