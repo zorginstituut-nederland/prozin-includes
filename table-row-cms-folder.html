@@ -80,12 +80,14 @@
                     {% if item.state == 'Draft' %}
                         {%- include prozin/more-menu-item-delete-draft.html -%}
                     {% else %}
-                        <li>
-                            <a 
-                                class="pat-inject icon-update" 
-                                data-pat-inject="scroll: #main"
-                                href="/dialogues/cms/new-general-article">{%- include patterns/i18n id="label_new_version" -%}</a>
-                        </li>
+                        {%- unless item.state == 'Archived' -%}
+                            <li>
+                                <a 
+                                    class="pat-inject icon-update" 
+                                    data-pat-inject="scroll: #main"
+                                    href="/dialogues/cms/new-general-article">{%- include patterns/i18n id="label_new_version" -%}</a>
+                            </li>
+                        {%- endunless -%}
                     {% endif %}
                 {% endif %}
             </ul>
