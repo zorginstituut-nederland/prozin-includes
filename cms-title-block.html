@@ -18,6 +18,7 @@
                 id="document-summary">{% if page.summary %}{{ page.summary }}{% else %}&nbsp;{% endif %}</p>
             <textarea
                 required
+                name="summary"
                 type="text"
                 maxlength="{{ site.data.prozin.config.max_chars_summaries }}"
                 value="{{ page.summary }}"
