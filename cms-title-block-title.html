@@ -7,6 +7,7 @@
         id="document-title">{% if page.title %}{{ page.title }}{% else %}&nbsp;{% endif %}</h1>
     <textarea
         required
+        name="title"
         type="text"
         maxlength="{{ site.data.prozin.config.max_chars_titles }}"
         value="{{ page.title }}"
