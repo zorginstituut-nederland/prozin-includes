@@ -37,7 +37,11 @@
             </option>
         {% else %}
             {% unless page.state == 'Published' %}
-                {% if page.state %}
+                {% if page.state == 'Archived' %}
+                    <option>
+                        {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
+                    </option>
+                {% elsif page.state %}
                     <option 
                         value="{{ page.state | slugify }}" 
                         selected >

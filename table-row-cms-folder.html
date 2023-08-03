@@ -70,22 +70,24 @@
                             {%- include prozin/more-menu-item-co-publication.html -%}
                         {% endif %}
                     {% endif %}
-                    {%- include prozin/more-menu-item-history.html -%}
-                    {%- include prozin/more-menu-item-compare-versions.html -%}
+                    {% include prozin/more-menu-item-history.html %}
+                    {% include prozin/more-menu-item-compare-versions.html %}
                     {% if item.state == 'Archived' %}
-                        {%- include prozin/more-menu-item-unarchive.html -%}
+                        {% include prozin/more-menu-item-unarchive.html %}
                     {% else %}
-                        {%- include prozin/more-menu-item-archive.html -%}
+                        {% include prozin/more-menu-item-archive.html %}
                     {% endif %}
                     {% if item.state == 'Draft' %}
                         {%- include prozin/more-menu-item-delete-draft.html -%}
                     {% else %}
-                    <li>
-                        <a 
-                            class="pat-inject icon-update" 
-                            data-pat-inject="scroll: #main"
-                            href="/dialogues/cms/new-general-article">{%- include patterns/i18n id="label_new_version" -%}</a>
-                    </li>
+                        {%- unless item.state == 'Archived' -%}
+                            <li>
+                                <a 
+                                    class="pat-inject icon-update" 
+                                    data-pat-inject="scroll: #main"
+                                    href="/dialogues/cms/new-general-article">{%- include patterns/i18n id="label_new_version" -%}</a>
+                            </li>
+                        {%- endunless -%}
                     {% endif %}
                 {% endif %}
             </ul>
