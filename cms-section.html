@@ -26,11 +26,18 @@
         close-trigger: #button-close-all-sections; 
         scroll-selector: self; scroll-offset: 120px"
     id="{{ this_id }}"
-    class="pat-subform pat-autosubmit pat-inject cms-page-module type-{{ include.type }} pat-collapsible {{ include.state }}"
+    class="
+        pat-subform 
+        pat-autosubmit 
+        pat-inject 
+        cms-page-module 
+        type-{{ include.type }} 
+        pat-collapsible 
+        {{ include.state }}"
     data-pat-inject="
         source: #{{ this_id }}-title-segment;
         target: #{{ this_id }}-title-segment;
-        url: {{ page.url }}">
+        url: /dialogues/cms/edit-news-item">
 {% include prozin/cms-page-module-title.html
         id=this_id
         fixed=this_fixation
