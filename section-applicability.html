@@ -21,6 +21,7 @@
         {{ group.content | markdownify }}
         {% unless group.explanation == nil %}
             <div 
+                data-pat-collapsible="scroll-selector: none;"
                 class="pat-collapsible borderless closed">
                 <h4>
                     {{ site.data.prozin.ui.label_explanation[site.data.config.lang] }}
