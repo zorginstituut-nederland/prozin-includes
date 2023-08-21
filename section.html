@@ -20,7 +20,11 @@
     {% if include.title %}
         <h2
             class="page-module-title">
-            {{ this_title }}
+            {%- if include.title contains 'label_' -%}
+                {% include patterns/i18n id=include.title %}
+            {%- else -%}
+                {{ this_title }}
+            {%- endif -%}
         </h2>
     {% endif %}
     {% assign section_type = include.type %}

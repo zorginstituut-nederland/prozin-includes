@@ -1,0 +1,26 @@
+{% assign this_number = 1 %}
+<ul
+    class="link-list">
+    {% for item in page.literature %}
+        <li 
+            id="end-note-{{ this_number }}"
+            class="type-reference">
+            <a
+                title="Ga naar de eerste referentie in de tekst." 
+                href="#reference-{{ this_number }}"
+                class="reference-badge pat-scroll">{{ this_number }}</a>
+            <a  
+                {% if item.url %}href="{{ item.url }}" 
+                {% endif %}>
+                <h4 
+                    class="link-title">{{ item.name }}
+                </h4> 
+                <!-- <p 
+                    class="link-byline">
+                    {% include patterns/i18n id="label_attribution" %}
+                </p> -->
+            </a>
+        </li>
+        {% assign this_number = this_number | plus:1 %}
+    {% endfor %}
+</ul>
