@@ -12,7 +12,9 @@
         data-pat-collapsible="
             store: local; 
             scroll-selector: self; 
-            scroll-offset: 120px"
+            scroll-offset: 120px;
+            open-trigger: #button-open-all-sections; 
+            close-trigger: #button-close-all-sections;"
     {% endif %}
     class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless {% if include.collapsible_state == 'open' %}closed{% else %}open{% endif %}{% endif %}">
     {% if include.title %}

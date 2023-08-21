@@ -11,14 +11,12 @@
                     {% if item.summary %}title="{{ item.summary }}"{% endif %}>
                     <h4 
                         class="link-title">
-                        {{ item.title }}
+                        {{ item.name }}
                     </h4>
-                    {% if item.summary %}
-                        <p 
-                            class="link-byline">
-                            Geneesmiddelgroep
-                        </p>
-                    {% endif %}
+                    <p 
+                        class="link-byline">
+                        Geneesmiddelgroep
+                    </p>
                 </a>
             </li>  
         {% endfor %}
