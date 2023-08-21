@@ -15,7 +15,7 @@
                     </h4>
                     <p 
                         class="link-byline">
-                        Geneesmiddelgroep
+                        {% include patterns/i18n id="label_medicine_group" %}
                     </p>
                 </a>
             </li>  
@@ -26,19 +26,17 @@
             <li>
                 <a 
                     href="{{ item.url }}" 
-                    class="type-medicine-group pat-inject" 
+                    class="type-indication pat-inject" 
                     data-pat-inject="history: record; scroll: #main"
                     {% if item.summary %}title="{{ item.summary }}"{% endif %}>
                     <h4 
                         class="link-title">
-                        {{ item.title }}
+                        {{ item.name }}
                     </h4>
-                    {% if item.summary %}
-                        <p 
-                            class="link-byline">
-                            Indicatie
-                        </p>
-                    {% endif %}
+                    <p 
+                        class="link-byline">
+                        {% include patterns/i18n id="label_indication" %}
+                    </p>
                 </a>
             </li>  
         {% endfor %}
