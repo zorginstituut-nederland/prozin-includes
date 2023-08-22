@@ -8,7 +8,10 @@
             <a
                 title="Ga naar de eerste referentie in de tekst." 
                 href="#reference-{{ this_number }}"
-                class="reference-badge expand-all-sections">{{ this_number }}</a>
+                data-pat-forward="
+                    selector: self;
+                    delay: 500ms"
+                class="reference-badge expand-all-sections pat-forward">{{ this_number }}</a>
             <a  
                 {% if item.url %}href="{{ item.url }}" 
                 {% endif %}>
