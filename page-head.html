@@ -37,13 +37,24 @@
 			{% elsif page.layout == 'persona' %}
 				<span 
 					class="byline-item">Persona</span>
+			{% elsif page.layout == 'medicine' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_medicine" %}</span>
+			{% elsif page.layout == 'medicine-group' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_medicine_group" %}</span>
+			{% elsif page.layout == 'indication' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_indication" %}</span>
 			{% endif %}
 			{% for group in page.medicine_groups %}
 				<span 
 					class="byline-item medicine-groups pat-inject"
 					data-pat-inject="history: record; scroll: #main">
 		            <a 
-		            	href="/{{ group.verwijzing }}">{{ group.name }}</a>{% if forloop.last == false %},{% endif %}
+						class="pat-inject"
+						data-pat-inject="history: record; scroll: #main"
+		            	href="/medicine-groups/{{ group.name | slugify }}">{{ group.name }}</a>{% if forloop.last == false %},{% endif %}
 	            </span>
 	        {% endfor %}
 	        {% if page.atc %}

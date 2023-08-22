@@ -18,20 +18,7 @@
             class="toolbar-section quick-functions"
             id="cms-toolbar-edit-quick-functions">
             {% if layout.collapsible_toggles == true %}
-                <span 
-                    class="button-cluster">
-                    <button 
-                        class="icon  icon-angle-double-down" 
-                        type="button"
-                        title="{% include patterns/i18n id='label_expand_all_sections' %}"
-                        id="button-open-all-sections">{% include patterns/i18n id="label_expand_all_sections" %}</button>
-                        
-                    <button 
-                        class="icon  icon-angle-double-up" 
-                        type="button"
-                        title="{% include patterns/i18n id='label_collapse_all_sections' %}"
-                        id="button-close-all-sections">{% include patterns/i18n id="label_collapse_all_sections" %}</button>
-                </span>
+                {% include prozin/buttons-collapse-expand-all.html %}
             {% endif %}
 
             <a 

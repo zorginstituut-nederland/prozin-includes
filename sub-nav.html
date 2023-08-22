@@ -22,7 +22,7 @@
                         </li>
                     {% endfor %}
                     {% if page.layout contains 'dashboard' %}
-                        {% for item in site.data.prozin.content-types %}
+                        {% for item in site.data.content-types %}
                             {% for collection in item.collection %}
                                 <li>
                                     <a 
@@ -32,7 +32,7 @@
                                 </li>
                             {% endfor %}
                         {% endfor %}
-                        {% for item in site.data.content-types %}
+                        {% for item in site.data.prozin.content-types %}
                             {% for collection in item.collection %}
                                 <li>
                                     <a 

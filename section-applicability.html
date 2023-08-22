@@ -1,0 +1,48 @@
+<div 
+    class="pat-rich">
+    {% for group in page.applicability %}
+        <h3>
+            {% if group.category == 'elders' %}
+                {{ site.data.prozin.ui.label_elders[site.data.config.lang] }}
+            {% elsif group.category == 'kidney' %} 
+                {{ site.data.prozin.ui.label_renal_impairment[site.data.config.lang] }}
+            {% elsif group.category == 'liver' %} 
+                {{ site.data.prozin.ui.label_liver_dysfunction[site.data.config.lang] }}
+            {% elsif group.category == 'pregnancy' %}
+                {{ site.data.prozin.ui.label_pregnancy[site.data.config.lang] }}
+            {% elsif group.category == 'lactation' %}
+                {{ site.data.prozin.ui.label_lactation[site.data.config.lang] }}
+            {% elsif group.category == 'children' %}
+                {{ site.data.prozin.ui.label_children[site.data.config.lang] }}
+            {% else %}
+                {{ group.category }}
+            {% endif %}
+        </h3>
+        {{ group.content | markdownify }}
+        {% unless group.explanation == nil %}
+            <div 
+                data-pat-collapsible="scroll-selector: none;"
+                class="pat-collapsible borderless closed">
+                <h4>
+                    {{ site.data.prozin.ui.label_explanation[site.data.config.lang] }}
+                </h4>
+                {{ group.explanation | markdownify }}
+            </div>
+        {% endunless %}
+        <!-- {% if group.source %}
+            <h4>
+                Literatuur
+            </h4>
+            <ul class="link-list">
+                {% for item in group.source %}
+                    <li>
+                        {% if item.url %}
+                            <a href="{{ item.url }}" class="icon-link">{{ item.name }}</a></li>
+                        {% else %}
+                            {{ item.name }}
+                        {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %} -->
+    {% endfor %}
+</div>
