@@ -16,7 +16,10 @@
             open-trigger: .expand-all-sections; 
             close-trigger: .collapse-all-sections;"
     {% endif %}
-    class="page-module type-{{ include.type }} {% if include.collapsible %}pat-collapsible borderless {% if include.collapsible_state == 'open' %}closed{% else %}open{% endif %}{% endif %}">
+    class="
+        page-module 
+        type-{{ include.type }} 
+        {% if include.collapsible %}pat-collapsible borderless {% if include.collapsible_state == 'open' %}open{% else %}closed{% endif %}{% endif %}">
     {% if include.title %}
         <h2
             class="page-module-title">
