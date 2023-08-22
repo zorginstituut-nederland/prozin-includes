@@ -1,3 +1,7 @@
+{% if layout.segmented == true %}
+    {% include prozin/buttons-collapse-expand-all.html %}
+{% endif %}
+
 {% unless site.user == 'anonymous' or site.data.personae[site.data.config.persona].role == 'Visitor' %}
     {% include prozin/bookmark-icon-subform.html %}
 {% endunless %}
