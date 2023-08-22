@@ -1,6 +1,9 @@
-{% if page.summary %}
-    <div 
-        class="pat-rich">
+<div 
+    {% if include.show == false %}
+        hidden
+    {% endif %}
+    id="medicine-listing">
+    {% if page.summary %}
         <p 
             class="summary">
             {{ page.summary }}
@@ -9,12 +12,11 @@
                 class="pat-inject" 
                 data-pat-inject="history: record; scroll: #main">Lees meer…</a>
         </p>
-    </div>
-{% endif %}
-<ul 
-    class="link-list col-3 expanded">
-    {% for item in page.medicines %}
-        {% unless item.url contains '-state-' %}
+    {% endif %}
+    <ul 
+        class="link-list col-3 expanded">
+        {% for item in page.medicines %}
+            {% unless item.url contains '-state-' %}
             <li>
                 <a 
                     href="/medicines/{{ item.verwijzing }}" 
@@ -22,6 +24,7 @@
                     title="{{ item.summary }}"
                     data-pat-inject="history: record; scroll: #main">{{ item.name }}</a>
             </li>
-        {% endunless %}
-    {% endfor %}
-</ul>
+            {% endunless %}
+        {% endfor %}
+    </ul>
+</div>
