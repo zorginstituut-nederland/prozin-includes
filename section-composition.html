@@ -68,17 +68,28 @@
 {% endif %}
 
 <div 
-    class="pat-collapsible borderless closed">
+    data-pat-collapsible="
+        store: none;
+        scroll-selector: none;
+        open-trigger: none;
+        close-trigger: none" 
+    class="
+        pat-collapsible 
+        borderless 
+        closed">
     <h4>Uitleg symbolen</h4>
-    <table class="legend">
+    <table 
+        class="legend">
         <tbody>
             <tr>
-                <td class="symbols"><span class="icon xgvs">XGVS</span></td>
+                <td 
+                    class="symbols"><span class="icon xgvs">XGVS</span></td>
                 <td>Dit geneesmiddel is niet opgenomen in het
                 geneesmiddelenvergoedingssysteem (GVS).</td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon otc">OTC</span></td>
+                <td 
+                    class="symbols"><span class="icon otc">OTC</span></td>
                 <td>
                     Over the counter, dit geneesmiddel is een
                     zelfzorgmiddel. Aan de vergoeding van bepaalde
@@ -89,7 +100,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon b2">2</span></td>
+                <td 
+                    class="symbols"><span class="icon b2">2</span></td>
                 <td>
                     Aan de vergoeding van dit geneesmiddel zijn
                     bepaalde voorwaarden verbonden, die zijn vermeld op
@@ -103,7 +115,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon mnt">MNT</span></td>
+                <td 
+                    class="symbols"><span class="icon mnt">MNT</span></td>
                 <td>
                     Dit geneesmiddel is onderworpen aan <a href=
                     "http://www.cbg-meb.nl/voor-mensen/voor-zorgverleners/inhoud/geneesmiddelen-onder-extra-toezicht-aanvullende-monitoring"
