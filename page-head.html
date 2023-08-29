@@ -37,6 +37,8 @@
 			{% elsif page.layout == 'persona' %}
 				<span 
 					class="byline-item">Persona</span>
+			{% elsif page.layout == 'prozin/glossary-term' %}
+				<span class="byline-item">{% include patterns/i18n id="label_concept" %}</span>
 			{% elsif page.layout == 'medicine' %}
 				<span 
 					class="byline-item">{% include patterns/i18n id="label_medicine" %}</span>
