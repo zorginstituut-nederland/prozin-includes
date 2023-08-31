@@ -1,24 +1,26 @@
-<div 
-    class="pat-message warning pat-collapsible borderless open"
-    data-pat-collapsible="trigger: #close-excipients-warning; store: local"
-    id="excipients-message">
+{% comment %}      
     <div 
-        class="panel-content">
-        <p>
-            {% if page.cbg_link %}
-                {{ site.data.prozin.ui.message_not_all_excipients_mentioned_refer_to_cbg[site.data.config.lang] }}
-            {% else %}
-                {{ site.data.prozin.ui.message_not_all_excipients_mentioned[site.data.config.lang] }}
-            {% endif %}
-        </p>
-        <p 
-            class="button-bar">
-            <button 
-                class="default pat-button small"
-                id="close-excipients-warning">{{ site.data.prozin.ui.label_understand_hide_message[site.data.config.lang] }}</button>
-        </p>
+        class="pat-message warning pat-collapsible borderless open"
+        data-pat-collapsible="trigger: #close-excipients-warning; store: local"
+        id="excipients-message">
+        <div 
+            class="panel-content">
+            <p>
+                {% if page.cbg_link %}
+                    {{ site.data.prozin.ui.message_not_all_excipients_mentioned_refer_to_cbg[site.data.config.lang] }}
+                {% else %}
+                    {{ site.data.prozin.ui.message_not_all_excipients_mentioned[site.data.config.lang] }}
+                {% endif %}
+            </p>
+            <p 
+                class="button-bar">
+                <button 
+                    class="default pat-button small"
+                    id="close-excipients-warning">{{ site.data.prozin.ui.label_understand_hide_message[site.data.config.lang] }}</button>
+            </p>
+        </div>
     </div>
-</div>
+{% endcomment %}
 
 {% if page.composition %}                       
     {% for item in page.composition  %}
@@ -68,17 +70,28 @@
 {% endif %}
 
 <div 
-    class="pat-collapsible borderless closed">
+    data-pat-collapsible="
+        store: none;
+        scroll-selector: none;
+        open-trigger: none;
+        close-trigger: none" 
+    class="
+        pat-collapsible 
+        borderless 
+        closed">
     <h4>Uitleg symbolen</h4>
-    <table class="legend">
+    <table 
+        class="legend">
         <tbody>
             <tr>
-                <td class="symbols"><span class="icon xgvs">XGVS</span></td>
+                <td 
+                    class="symbols"><span class="icon xgvs">XGVS</span></td>
                 <td>Dit geneesmiddel is niet opgenomen in het
                 geneesmiddelenvergoedingssysteem (GVS).</td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon otc">OTC</span></td>
+                <td 
+                    class="symbols"><span class="icon otc">OTC</span></td>
                 <td>
                     Over the counter, dit geneesmiddel is een
                     zelfzorgmiddel. Aan de vergoeding van bepaalde
@@ -89,7 +102,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon b2">2</span></td>
+                <td 
+                    class="symbols"><span class="icon b2">2</span></td>
                 <td>
                     Aan de vergoeding van dit geneesmiddel zijn
                     bepaalde voorwaarden verbonden, die zijn vermeld op
@@ -103,7 +117,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="symbols"><span class="icon mnt">MNT</span></td>
+                <td 
+                    class="symbols"><span class="icon mnt">MNT</span></td>
                 <td>
                     Dit geneesmiddel is onderworpen aan <a href=
                     "http://www.cbg-meb.nl/voor-mensen/voor-zorgverleners/inhoud/geneesmiddelen-onder-extra-toezicht-aanvullende-monitoring"
