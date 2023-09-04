@@ -1,0 +1,18 @@
+{% if item.reason == 'bio' 
+   or item.reason == 'ind' 
+   or item.reason == 'bio' 
+   or item.mutated == true
+   or item.status_wegiz == true
+   or item.schedule_status == 'Meerjarenagenda' 
+   or item.status_mja %}
+    <span 
+        class="classification-tags">
+        {% if item.mutated %}<sup class="classification-tag mutated" title="Laatst bewerkt op 23 mei 2023 09:17">{%- include patterns/i18n id="label_mutated" -%}</sup>{% endif %}
+        {% if item.reason == 'bio' %}<sup class="classification-tag biosimilar" title="Biosimilar">BS</sup>{% endif %}
+        {% if item.reason == 'gen' %}<sup class="classification-tag generic" title="Generiek geneesmiddel">G</sup>{% endif %}
+        {% if item.reason == 'ind' %}<sup class="classification-tag indication" title="Indicatie-uitbreiding">IND</sup>{% endif %}
+        {% if item.sluice == 'Included' %}<sup class="classification-tag sluice" title="Sluice medicine">SLU</sup>{% endif %}
+        {% if item.status_wegiz %}<sup class="classification-tag wegiz" title="{%- include patterns/i18n id="label_amvb_wegiz" -%}">WEG</sup>{% endif %}
+        {% if item.schedule_status == 'Meerjarenagenda' or item.status_mja %}<sup class="classification-tag meerjarenagenda" title="{%- include patterns/i18n id="message_on_mja" -%}">MJA</sup>{% endif %}
+    </span>
+    {% endif %}

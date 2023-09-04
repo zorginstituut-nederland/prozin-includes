@@ -3,7 +3,7 @@
     <a 
         href="{{ collection.url }}"
         class="pat-inject"
-        data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %}
+        data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id=collection.i18n %} 
     </a>
 </h3>
 <ul 
@@ -16,7 +16,8 @@
                     href="{{ item.url }}" 
                     class="pat-inject" 
                     data-pat-inject="history: record; scroll: #main">
-                    {{ item.title }}
+                    <strong 
+                        class="link-title">{{ item.title }}</strong>&nbsp;{% include prozin/classification-tags.html %}
                 </a>
             </li>
         {% endunless %}
