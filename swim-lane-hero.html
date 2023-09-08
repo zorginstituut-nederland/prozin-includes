@@ -47,7 +47,7 @@
                         {% else %}
                             {% assign this_source = 'news' %}
                         {% endif %}
-                        {% for item in site[this_source] limit:5 %}
+                        {% for item in site[this_source] limit:3 %}
                             {% unless item.url contains '-state' %}
                                 <li >
                                     <a 
