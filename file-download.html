@@ -1,0 +1,34 @@
+<a 
+    class="file-download" 
+    {% if download.url %}href="{{ download.url }}"{% else %}href="#"{% endif %}>
+    <h4 
+        class="title">
+        {{ download.title | default: 'Lorem ipsum dolor sit' }}
+    </h4>
+    <p 
+        class="meta">
+        {% if download.type == 'zip' %}
+            <span class="meta-item">{{ site.data.prozin.ui.label_zip_file[site.data.config.lang] }}</span>
+        {% elsif download.type == 'archive' %}
+            <span class="meta-item">{{ site.data.prozin.ui.label_compressed_file[site.data.config.lang] }}</span>
+        {% elsif download.type == 'word' %}
+            <span class="meta-item">{{ site.data.prozin.ui.label_word_file[site.data.config.lang] }}</span>
+        {% elsif download.type == 'excel' %}
+            <span class="meta-item">{{ site.data.prozin.ui.label_excel_file[site.data.config.lang] }}</span>
+        {% else %}
+            <span class="meta-item">{{ site.data.prozin.ui.label_pdf_file[site.data.config.lang] }}</span>
+        {% endif %}
+        {% unless download.type == 'archive' %}
+            <span class="meta-item">{{ download.page_count | default: '6' }} {{ site.data.prozin.ui.fragment_pages[site.data.config.lang] }}</span>
+        {% endunless %}
+        <span 
+            class="meta-item">{{ download.size | default: '1,2 mb' }}</span>
+    </p>
+    <p 
+        class="meta">
+        <span 
+            class="meta-item">{{ download.kind | default: 'Procesbeschrijving' }}</span>
+        <span 
+            class="meta-item">{{ download.date | default: '12-12-2023' }}</span>
+    </p>
+</a>
