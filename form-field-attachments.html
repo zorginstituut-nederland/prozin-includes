@@ -1,6 +1,8 @@
 <fieldset 
     class="group">
-    <legend>Bijlagen</legend>
+    {% if include.label %}
+        <legend>{{ include.label }}</legend>
+    {% endif %}
     <ol 
         id="downloads-{{ include.title | slugify }}" 
         class="pat-sortable sortable-blocks">
