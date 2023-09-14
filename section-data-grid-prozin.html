@@ -32,6 +32,11 @@
         <dd>{{ page.breadcrumbs_admin }}</dd>
     {% endif %}
 
+    {% if page.url_structure %}
+        <dt>Url</dt>
+        <dd>{{ page.url_structure }}</dd>
+    {% endif %}
+
     <dt>{% include patterns/i18n id="label_product" %}</dt>
     <dd>
         {% if page.product %}
