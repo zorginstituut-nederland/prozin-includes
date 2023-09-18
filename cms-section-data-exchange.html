@@ -1,74 +1,92 @@
+<article 
+    class="body-text pat-rich">
+    {% include
+        patterns/rich-editor.html
+        placeholder=this_placeholder
+        autofocus=false
+        toolbar="editor-toolbar"
+        image-panel="#pat-modal.image-picker"
+        image-menu="/dialogues/cms/image-menu#document-content"
+        link-panel="#pat-modal.panel-hyperlink"
+        link-menu="/dialogues/cms/hyperlink-menu#document-content"
+        content=this_content %}
+</article>
 <fieldset 
     class="horizontal form-panel metadata">
-    {% include patterns/form-field-rich.html
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            unordered list,
-            ordered list,
-            table"
-        label="label_basic_data_set_care_bgz" %}  
+    {% comment %}
+        {% include patterns/form-field-rich.html
+            allow="
+                header 3,
+                header 4,
+                paragraph,
+                strong,
+                emphasised,
+                deleted,
+                link,
+                unordered list,
+                ordered list,
+                table"
+            label="label_basic_data_set_care_bgz" %}  
+        {% include prozin/form-field-attachments.html
+            source=page.basic_data_set_care_bgz_attachments %}
+        {% include patterns/form-field-rich.html
+            allow="
+                header 3,
+                header 4,
+                paragraph,
+                strong,
+                emphasised,
+                deleted,
+                link,
+                unordered list,
+                ordered list,
+                table"
+            label="label_image_availability_msz_institutions" %}  
+        {% include prozin/form-field-attachments.html %}
+        {% include patterns/form-field-rich.html
+            allow="
+                header 3,
+                header 4,
+                paragraph,
+                strong,
+                emphasised,
+                deleted,
+                link,
+                unordered list,
+                ordered list,
+                table"
+            label="label_nursing_handover" %}  
+        {% include prozin/form-field-attachments.html %}
+        {% include patterns/form-field-rich.html
+            allow="
+                header 3,
+                header 4,
+                paragraph,
+                strong,
+                emphasised,
+                deleted,
+                link,
+                unordered list,
+                ordered list,
+                table"
+            label="label_medication_handover" %}  
+        {% include prozin/form-field-attachments.html %}
+        {% include patterns/form-field-rich.html
+            allow="
+                header 3,
+                header 4,
+                paragraph,
+                strong,
+                emphasised,
+                deleted,
+                link,
+                unordered list,
+                ordered list,
+                table"
+            label="label_acute_care" %}  
+        {% include prozin/form-field-attachments.html %}
+    {% endcomment %}
+
     {% include prozin/form-field-attachments.html
-        source=page.basic_data_set_care_bgz_attachments %}
-    {% include patterns/form-field-rich.html
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            unordered list,
-            ordered list,
-            table"
-        label="label_image_availability_msz_institutions" %}  
-    {% include prozin/form-field-attachments.html %}
-    {% include patterns/form-field-rich.html
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            unordered list,
-            ordered list,
-            table"
-        label="label_nursing_handover" %}  
-    {% include prozin/form-field-attachments.html %}
-    {% include patterns/form-field-rich.html
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            unordered list,
-            ordered list,
-            table"
-        label="label_medication_handover" %}  
-    {% include prozin/form-field-attachments.html %}
-    {% include patterns/form-field-rich.html
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            unordered list,
-            ordered list,
-            table"
-        label="label_acute_care" %}  
-    {% include prozin/form-field-attachments.html %}
+        label="Bijlagen" %}
 </fieldset>
