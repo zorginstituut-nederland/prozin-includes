@@ -1,0 +1,55 @@
+<h2 
+    class="page-module-title">
+    {%- include patterns/i18n id="label_prio_wegiz" -%}
+</h2>
+<p 
+    class="page-module-summary">
+    {%- include patterns/i18n id="message_prio_wegiz" -%}
+</p>
+<ul
+    class="link-list col-4">
+    {% for collection in site.collections %}
+        {% assign these_items = site[collection.label] | where: 'status_wegiz','prio' | sort: 'date' %}
+        {% for item in these_items %}
+            {% unless item.url contains '-state-' %}
+                <li>
+                    <a 
+                        class="pat-inject"
+                        data-pat-inject="history: record; scroll: #main" 
+                        href="{{ item.url }}">
+                        <strong 
+                            class="link-title">{{ item.title }}</strong>&nbsp;{%- include prozin/classification-tags.html -%}
+                        </strong>
+                    </a>
+            {% endunless %}
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+<h2 
+    class="page-module-title">
+    {%- include patterns/i18n id="label_amvb_wegiz" -%}
+</h2>
+<p 
+    class="page-module-summary">
+    {%- include patterns/i18n id="message_amvb_wegiz" -%}
+</p>
+<ul
+    class="link-list col-4">
+    {% for collection in site.collections %}
+        {% assign these_items = site[collection.label] | where: 'status_wegiz','amvb' | sort: 'date' %}
+        {% for item in these_items %}
+            {% unless item.url contains '-state-' %}
+                <li>
+                    <a 
+                        class="pat-inject"
+                        data-pat-inject="history: record; scroll: #main" 
+                        href="{{ item.url }}">
+                        <strong 
+                            class="link-title">{{ item.title }}</strong>&nbsp;{%- include prozin/classification-tags.html -%}
+                        </strong>
+                    </a>
+            {% endunless %}
+        {% endfor %}
+    {% endfor %}
+</ul>

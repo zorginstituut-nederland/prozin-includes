@@ -23,10 +23,25 @@
     {% if include.title %}
         <h2
             class="page-module-title">
-            {%- if include.title contains 'label_' -%}
-                {% include patterns/i18n id=include.title %}
+            {%- if include.link -%}
+                <a 
+                    class="pat-inject"
+                    data-pat-inject="
+                        history: record;
+                        scroll: #main"
+                    href="{{ include.link }}">
+                    {%- if include.title contains 'label_' -%}
+                        {% include patterns/i18n id=include.title %}
+                    {%- else -%}
+                        {{ this_title }}
+                    {%- endif -%}
+                </a>
             {%- else -%}
-                {{ this_title }}
+                {%- if include.title contains 'label_' -%}
+                    {% include patterns/i18n id=include.title %}
+                {%- else -%}
+                    {{ this_title }}
+                {%- endif -%}
             {%- endif -%}
         </h2>
     {% endif %}
