@@ -1,6 +1,9 @@
 <div 
     id="global-nav" 
-    class="variation-{{ layout.page_type }} pat-sticky {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}" 
+    class="
+        variation-{{ layout.page_type }} 
+        variation-{{ page.page_type }} 
+        pat-sticky {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}" 
     role="menubar">
     <div 
         class="container">
