@@ -9,7 +9,10 @@
             href="{{ item.url }}" 
             class="pat-inject" 
             data-pat-inject="history: record; scroll: #main" 
-            title="{{ item.summary }}">{{ item.title }}</a>
+            title="{{ item.summary }}">
+            <strong 
+                class="link-title">{{ item.title }}</strong>&nbsp;{% include prozin/classification-tags.html %}
+        </a>
     </th> 
     <td
         class="item-author">
