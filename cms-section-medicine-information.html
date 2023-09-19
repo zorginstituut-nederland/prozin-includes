@@ -13,22 +13,7 @@
                 ajax-search-index: text; 
                 max-selection-size: 1;
                 ajax-url: /beheer/medicines.json;' />
-        {%- include patterns/form-help.html
-            content="message_help_medicine_for_conditions" -%}
     </label>
-    {% include patterns/form-field-rich.html
-        label="label_conditions"
-        help="message_help_conditions_for_medicine"
-        allow="
-            header 3,
-            header 4,
-            paragraph,
-            blockquote,
-            strong,
-            emphasised
-            unordered list,
-            ordered list"
-            %}
     <label>
         GVS
         <input 
