@@ -13,12 +13,14 @@
                 ajax-search-index: text; 
                 max-selection-size: 1;
                 ajax-url: /beheer/medicines.json;' />
+        {% include patterns/form-help.html content="message_help_medicine_for_conditions" %}
     </label>
     <label>
-        GVS
+        {% include patterns/i18n id="label_gvs" %}
         <input 
             placeholder="https://…"
             value="{{ page.gvs }}"
             type="url" />
+        {% include patterns/form-help.html content="message_help_gvs" %}
     </label>
 </fieldset>
