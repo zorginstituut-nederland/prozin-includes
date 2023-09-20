@@ -311,9 +311,13 @@
                     data-pat-modal="class: medium panel"
                     class="pat-modal pat-button">{%- include patterns/i18n id="label_edit_imp" -%}</a>
             {%- endif -%}
-            <a 
-                class="icon select" 
-                href="{{ page.url }}-state-select">Selecteer</a>
+            <button 
+                type="button"
+                data-pat-toggle="
+                    selector: #content;
+                    value: mode-follow mode-select;
+                "
+                class="icon pat-toggle select">Selecteer</button>
             <a 
                 class="icon new pat-tooltip" 
                 data-pat-tooltip="position-list: tr; source: ajax" 
