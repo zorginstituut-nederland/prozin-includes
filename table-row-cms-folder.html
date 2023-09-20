@@ -3,6 +3,14 @@
         {% if item.state %}state-{{ item.state | slugify }}{% endif %} 
         {% if item.layout contains 'landing' or item.layout contains 'folder' %}folder{% endif %} 
         content-type-{{ item.layout | slugify }}">
+    <th 
+        class="select">
+        <label>
+            Select
+            <input 
+                type="checkbox">
+        </label>
+    </th>
     <th
         class="item-name"> 
         <a 
