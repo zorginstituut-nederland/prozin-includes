@@ -19,8 +19,226 @@
                     {{ page.title }}
                 </h2>
             {%- endif -%}
+            {% if page.filters %}
+                <div 
+                    class="pat-collapsible button context-menu align-left no-label icon-filter closed" data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu" id="filters-menu">
+                    <strong class="context-menu-label menu-trigger icon">Filters</strong>
+                    <div class="panel-content" style="display: none;"><p class="close-menu">Sluit</p><fieldset class="vertical has-value" data-value="">
+                        <fieldset class="pat-checklist unchecked"> 
+                        <p class="legend">Registratie</p>                        
+                            <label class="unchecked">Toon alleen ATMP's 
+                                <input type="checkbox" name="reason_new"></label>
+                            <label class="unchecked">Laat alleen weesgeneesmiddelen zien 
+                                <input type="checkbox" name="reason_new"></label>
+                        </fieldset>
+                            <label class="has-value" data-value="Willekeurig werkingsmechanisme">
+                            Werkingsmechanisme
+                            <select class="has-value" data-value="Willekeurig werkingsmechanisme">
+                                
+                                <option>Willekeurig werkingsmechanisme</option>
+                                
+                                
+                                <option>Onbekend</option>
+                                
+                                <option>Enzymvervangende therapie</option>
+                                
+                                <option>PD-1/PD-L1 remmer</option>
+                                
+                                <option>SGLT-remmer</option>
+                                
+                                <option>Tyrosine kinase remmer</option>
+                                
+                                <option>Alkylerend geneesmiddel</option>
+                                
+                                <option>Allergeen</option>
+                                
+                                <option>Allogene gemodificeerde celtherapie</option>
+                                
+                                <option>Aminozuur</option>
+                                
+                                <option>Anders, zie opmerkingenveld</option>
+                                
+                                <option>Angiogeneseremmer</option>
+                                
+                                <option>Anti-androgeen</option>
+                                
+                                <option>Antibioticum</option>
+                                
+                                <option>Antihistamine</option>
+                                
+                                <option>Antilichaam-geneesmiddel conjugaat</option>
+                                
+                                <option>Antimycoticum</option>
+                                
+                                <option>Antioxidant</option>
+                                
+                                <option>Antisense oligonucleotide</option>
+                                
+                                <option>Antistollingsfactor</option>
+                                
+                                <option>Autologe gemodificeerde celtherapie</option>
+                                
+                                <option>Bcl-2 remmer</option>
+                                
+                                <option>BET remmer</option>
+                                
+                                <option>Calcineurineremmer</option>
+                                
+                                <option>Cannabidoïde</option>
+                                
+                                <option>CAR-T therapie</option>
+                                
+                                <option>CDK4/6 tyrosine kinaseremmer</option>
+                                
+                                <option>CFS1R remmer</option>
+                                
+                                <option>CGRP-gericht antilichaam</option>
+                                
+                                <option>Cheleermiddel</option>
+                                
+                                <option>Combinatietherapie</option>
+                                
+                                <option>Complementsysteemremming</option>
+                                
+                                <option>Corticosteroïd</option>
+                                
+                                <option>CTLA-4 antilichaam</option>
+                                
+                                <option>Cytostaticum</option>
+                                
+                                <option>Desinfectant</option>
+                                
+                                <option>Eiwitchaperone</option>
+                                
+                                <option>Enzym</option>
+                                
+                                <option>Enzymremmer</option>
+                                
+                                <option>Gentherapie</option>
+                                
+                                <option>GLP-1 receptoragonist</option>
+                                
+                                <option>Glucagonanaloog</option>
+                                
+                                <option>Groeifactor</option>
+                                
+                                <option>HIV remmer</option>
+                                
+                                <option>Hormonale therapie</option>
+                                
+                                <option>Immunostimulatie</option>
+                                
+                                <option>Immunosuppressie</option>
+                                
+                                <option>Insulinepreparaat</option>
+                                
+                                <option>Interferonremmer</option>
+                                
+                                <option>Interleukineremmer</option>
+                                
+                                <option>JAK tyrosine kinaseremmer</option>
+                                
+                                <option>Kankervaccin</option>
+                                
+                                <option>LABA/ICS</option>
+                                
+                                <option>LABA/LAMA</option>
+                                
+                                <option>LABA/LAMA/ICS</option>
+                                
+                                <option>LAMA</option>
+                                
+                                <option>MEK kinaseremmer</option>
+                                
+                                <option>Natriumkanaalblokker</option>
+                                
+                                <option>Neurotoxine</option>
+                                
+                                <option>Neurotransmitter</option>
+                                
+                                <option>Oncolytisch adenovirus</option>
+                                
+                                <option>Overig</option>
+                                
+                                <option>PARP-remmer</option>
+                                
+                                <option>Proteasoomremmer</option>
+                                
+                                <option>Receptoragonist</option>
+                                
+                                <option>Receptorantagonist</option>
+                                
+                                <option>Serine/threonine kinaseremmer</option>
+                                
+                                <option>Stollingsfactor</option>
+                                
+                                <option>Trombineremmer</option>
+                                
+                                <option>Vasodilator</option>
+                                
+                                <option>Virusremmer</option>
+                                
+                            </select>
+                            </label>
+                            <label class="has-value" data-value="Willekeurig bekostigingskader">
+                            Bekostigingskader
+                            <select class="has-value" data-value="Willekeurig bekostigingskader">
+                                
+                                <option>Willekeurig bekostigingskader</option>
+                                
+                                
+                                <option>Onbekend</option>
+                                
+                                <option>Intramuraal (MSZ)</option>
+                                
+                                <option>Extramuraal (GVS)</option>
+                                
+                            </select>
+                            </label>
+                        <label class="has-value" data-value="Willekeurige bijzonderheid">
+                        Bijzonderheid
+                        <select class="has-value" data-value="Willekeurige bijzonderheid">
+                            
+                            <option>Willekeurige bijzonderheid</option>
+                            
+                            
+                            <option>Onbekend</option>
+                            
+                            <option>Indicatieuitbreiding</option>
+                            
+                            <option>Nieuwe toedieningsvorm</option>
+                            
+                            <option>Nieuw geneesmiddel</option>
+                            
+                            <option>Nieuw geneesmiddel met Priority Medicines (PRIME)</option>
+                            
+                        </select>
+                        </label>
+                        <label class="has-value" data-value="">Sluice medicines<select name="" class="has-value" data-value="">
+                            <option value="">Any sluice status</option>
+                            <option value="">Meets sluice criteria</option>
+                            <option value="">Sluice candidate</option>
+                            <option value="">Included in the sluice</option>
+                        </select>
+                        </label>
+                
+                        <fieldset class="group">
+                        <p class="legend">Workflow state</p>
+                        <fieldset class="pat-checklist radio has-value checked" data-value="all">
+                            <label class="has-value checked" data-value="all"><input type="radio" name="workflow" value="all" checked="" class="has-value" data-value="all"> Toon alle workflow states</label>
+                            <label class="unchecked"><input type="radio" name="workflow" value="concept"> Toon alleen nieuwe documenten</label>
+                            <label class="unchecked"><input type="radio" name="workflow" value="concept"> Toon alleen niet-goedgekeurde documenten</label>
+                            <label class="unchecked"><input type="radio" name="workflow" value="published"> Toon alleen gepubliceerde items</label>
+                        </fieldset>
+                        </fieldset>
+                
+                        
+                    </fieldset></div>
+                    
+                </div>
+            {% endif %}
         </div>
-        {% if page.tabs %} 
+        {% if page.tabs or layout.tabs %} 
             <div 
                 class="toolbar-section navigation"
                 id="cms-section-toolbar-navigation">
@@ -28,6 +246,12 @@
                     class="pat-tabs pat-button-cluster pat-navigation"
                     id="homescreen-sections-public-data"administration->
                     {% for item in page.tabs %}
+                        <a 
+                            href="{{ item.url }}"
+                            data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                            class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{{ item.title }}</a>
+                    {% endfor %}
+                    {% for item in layout.tabs %}
                         <a 
                             href="{{ item.url }}"
                             data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
@@ -51,6 +275,9 @@
                     data-pat-modal="class: medium panel"
                     class="pat-modal pat-button">{%- include patterns/i18n id="label_edit_imp" -%}</a>
             {%- endif -%}
+            <a 
+                class="icon select" 
+                href="{{ page.url }}-state-select">Selecteer</a>
             <a 
                 class="icon new pat-tooltip" 
                 data-pat-tooltip="position-list: tr; source: ajax" 
