@@ -61,6 +61,11 @@
                 {%- include patterns/i18n id="label_archive_imp" -%}
             </button>
             
+            <a 
+                class="pat-button pat-modal batch-operation" 
+                href="#">
+                {%- include patterns/i18n id="label_tag_imp" -%}</a>
+            
             {% if page.page_type == 'folder' or page.collection == 'general' %} 
                 <!-- <button 
                     class="pat-button batch-operation" 
@@ -82,11 +87,6 @@
                     {%- include patterns/i18n id="patterns.label_move_imp" -%}
                 </a>
 
-                <a 
-                    class="pat-button pat-modal batch-operation" 
-                    href="#">
-                    {%- include patterns/i18n id="label_tag_imp" -%}
-            </a>
             {% endif %}
 
         </div>
