@@ -61,17 +61,20 @@
                 {%- include patterns/i18n id="label_archive_imp" -%}
             </button>
             
-            <button 
-                class="pat-button batch-operation" 
-                type="submit">
-                {%- include patterns/i18n id="patterns.label_cut_imp" -%}
-            </button>
-                        
-            <button 
-                class="pat-button batch-operation" 
-                type="submit">
-                {%- include patterns/i18n id="patterns.label_paste_imp" -%}
-            </button>
+            {% if page.page_type == 'folder' or page.collection == 'general' %} 
+                <button 
+                    class="pat-button batch-operation" 
+                    type="submit">
+                    {%- include patterns/i18n id="patterns.label_cut_imp" -%}
+                </button>
+                            
+                <button 
+                    class="pat-button batch-operation" 
+                    type="submit">
+                    {%- include patterns/i18n id="patterns.label_paste_imp" -%}
+                </button> 
+            {% endif %}
+
         </div>
         <div 
             class="toolbar-section quick-functions"
