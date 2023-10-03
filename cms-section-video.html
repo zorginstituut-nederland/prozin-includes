@@ -15,6 +15,7 @@
         <legend>{% include patterns/i18n id="label_video" %}</legend>
         {% if include.video %}
             <video 
+                poster="{{ include.poster }}"
                 controls="controls">
                 <source 
                     src="{{ include.video }}"/>
