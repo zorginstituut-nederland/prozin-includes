@@ -1,5 +1,6 @@
-<div 
-    class="pat-toolbar pat-bumper pat-autosubmit"
+<form 
+    action="{{ page.url }}#listing" 
+    class="pat-toolbar pat-bumper pat-inject pat-autosubmit pat-form"
     id="{%- if page.page_type == 'folder' -%}folder-toolbar{%- else -%}cms-section-toolbar{%- endif -%}">
     <div 
         id="cms-section-toolbar-navigation-area"
@@ -10,17 +11,29 @@
                 id="cms-section-toolbar-navigation">
                 <nav 
                     class="pat-tabs pat-button-cluster pat-navigation"
-                    id="homescreen-sections-public-data"administration->
+                    id="homescreen-sections-public-data">
                     {% for item in page.tabs %}
                         <a 
                             href="{{ item.url }}"
-                            data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                            data-pat-inject="
+                                history: record; 
+                                source: #directory; 
+                                target: #directory 
+                                    && 
+                                source: #cms-section-toolbar-functions-area::element; 
+                                target: #cms-section-toolbar-functions-area::element"
                             class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{{ item.title }}</a>
                     {% endfor %}
                     {% for item in layout.tabs %}
                         <a 
                             href="{{ item.url }}"
-                            data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                            data-pat-inject="
+                                history: record; 
+                                source: #directory; 
+                                target: #directory 
+                                    && 
+                                source: #cms-section-toolbar-functions-area::element; 
+                                target: #cms-section-toolbar-functions-area::element"
                             class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{{ item.title }}</a>
                     {% endfor %}
                 </nav>
@@ -202,4 +215,4 @@
 
         </div>
     </div>
-</div>
+</form>
