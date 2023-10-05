@@ -29,6 +29,11 @@
             </strong>&nbsp;{% include prozin/classification-tags.html %}
         </a>
     </th> 
+    {%- for column in page.columns -%}
+        <td>
+            {{ item[column.field] }}test
+        </td>
+    {%- endfor -%}
     <td
         class="item-author">
         {{ item.date | date: "%e %B, %Y %H:%M" }}, door <a href="#" class="pat-inject">{{ item.author | default: 'Riwka Rubinstein'}}</a>
