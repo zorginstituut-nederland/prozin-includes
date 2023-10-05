@@ -19,7 +19,14 @@
             data-pat-inject="history: record; scroll: #main" 
             title="{{ item.summary }}">
             <strong 
-                class="link-title">{{ item.title }}</strong>&nbsp;{% include prozin/classification-tags.html %}
+                class="link-title">
+                {%- if item.extended_indication -%}
+                    <span class="title">{{ item.title }}</span>
+                    <span class="byline">{{ item.extended_indication }}</span>
+                {%- else -%}
+                    {{ item.title }}
+                {%- endif -%}
+            </strong>&nbsp;{% include prozin/classification-tags.html %}
         </a>
     </th> 
     <td
