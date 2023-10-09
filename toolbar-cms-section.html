@@ -77,11 +77,17 @@
                 type="submit">
                 {%- include patterns/i18n id="label_archive_imp" -%}
             </button>
-            
-            <a 
-                class="pat-button pat-modal batch-operation" 
-                href="#">
-                {%- include patterns/i18n id="label_tag_imp" -%}</a>
+
+            <button 
+                formaction="/dialogues/cms/tag-batch"
+                data-pat-inject="
+                    source: #document-content::element;
+                    target: body::after;
+                "
+                class="pat-button pat-inject batch-operation"
+                type="submit">
+                {%- include patterns/i18n id="label_tag_imp" -%}
+            </button>
             
             {% if page.page_type == 'folder' or page.collection == 'general' %} 
                 <!-- <button 
