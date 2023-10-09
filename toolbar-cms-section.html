@@ -62,7 +62,12 @@
             {%- endif -%}
             
             <button 
-                class="pat-button default batch-operation"
+                formaction="/dialogues/cms/publish-confirm-batch"
+                data-pat-inject="
+                    source: #document-content::element;
+                    target: body::after;
+                "
+                class="pat-button pat-inject default batch-operation"
                 type="submit">
                 {%- include patterns/i18n id="label_publish_imp" -%}
             </button>
