@@ -1,0 +1,23 @@
+<form 
+    action="{{ page.url }}#dashboard" 
+    class="pat-toolbar pat-bumper pat-inject pat-autosubmit pat-form"
+    id="dashboard-toolbar">
+    <div 
+        id="cms-section-toolbar-navigation-area"
+        class="toolbar-navigation-area">
+    </div>
+    <div 
+        id="cms-section-toolbar-functions-area"
+        class="toolbar-functions-area pat-inject pat-form pat-autosubmit">
+        <div
+            class="toolbar-section view-options"
+            id="cms-section-toolbar-view-options">
+            {%- include prozin/organisation-switch.html -%}
+        </div>
+        <div 
+            class="toolbar-section quick-functions"
+            id="cms-section-toolbar-quick-functions">
+
+        </div>
+    </div>
+</form>

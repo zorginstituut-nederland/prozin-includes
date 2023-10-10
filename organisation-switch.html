@@ -1,0 +1,28 @@
+<a 
+    href="#organisation-menu" 
+    data-pat-tooltip="source: ajax; position: tl"
+    class="pat-tooltip pat-select">Zorginstituut Nederland</a>
+<template 
+    id="organisation-menu">
+    <ul 
+        class="menu pat-navigation">
+        <li>
+            <a 
+                class="current pat-inject"
+                data-pat-inject="history: record"
+                href="{{ page.url }}">Zorginstituut Nederland</a>
+        </li>
+        <li>
+            <a 
+                class="pat-inject"
+                data-pat-inject="history: record"
+                href="{{ page.url }}">Oncologie</a>
+        </li>
+        <li>
+            <a 
+                class="pat-inject"
+                data-pat-inject="history: record"
+                href="{{ page.url }}">Hematologie</a>
+        </li>
+    </ul>
+</template>
