@@ -1,0 +1,17 @@
+
+<fieldset 
+    class="horizontal form-panel">
+    <label>
+        {% include patterns/i18n id="label_email_addressess" %}
+        <input 
+            class="pat-autosuggest"
+            name="user-groups"
+            type="text"
+            value="{%- for item in page.registrations -%}{{ item }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}"
+            data-pat-autosuggest='
+                allow-new-words: true;  
+                '/>
+        {% include patterns/form-help.html
+            content="message_help_mailing_list_registrations" %}
+    </label>
+</fieldset>

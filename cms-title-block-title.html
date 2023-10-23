@@ -11,7 +11,7 @@
         type="text"
         maxlength="{{ site.data.prozin.config.max_chars_titles }}"
         value="{{ page.title }}"
-        placeholder={{ this_placeholder }}
+        placeholder={{ this_placeholder | default: 'Titel' }}
         class="doc-title pat-content-mirror pat-autofocus"
         data-pat-content-mirror="target: #document-title">{% if page.title %}{{ page.title }}{% endif %}</textarea>
 </hgroup>
