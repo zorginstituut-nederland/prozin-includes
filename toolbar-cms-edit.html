@@ -25,11 +25,13 @@
                 class="icon icon-ellipsis-hor pat-tooltip" 
                 href="#id-{{ item.title | slugify }}" 
                 data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-            <a 
-                class="icon preview"
-                target="{% include patterns/i18n id='label_preview' %}" 
-                title="{% include patterns/i18n id='label_preview' %}"
-                href="{{ page.url | replace: '-state-edit', '-preview' }}#main">{% include patterns/i18n id='label_preview' %}</a>
+            {%- unless page.layout contains 'mailing-list' -%}
+                <a 
+                    class="icon preview"
+                    target="{% include patterns/i18n id='label_preview' %}" 
+                    title="{% include patterns/i18n id='label_preview' %}"
+                    href="{{ page.url | replace: '-state-edit', '-preview' }}#main">{% include patterns/i18n id='label_preview' %}</a>
+            {%- endunless -%}
             <a 
                 class="icon settings pat-modal" 
                 href="{{ include.metadata | default: '/dialogues/cms/panel-metadata#document-content' }}" 
