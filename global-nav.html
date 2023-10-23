@@ -44,7 +44,12 @@
             {% endif %}
 
             {% if layout.parent %}
-                {% if page.url contains '/beheer' %}
+                {% if 
+                    page.url contains '/beheer' 
+                        or 
+                    page.url contains '/dialogues/cms'
+                        or
+                    page.url contains 'mailing-lists' %}
                     {% if layout.url == '/beheer' %}
                         <a>{% include patterns/i18n id="label_management" %}</a>
                     {% else %}
