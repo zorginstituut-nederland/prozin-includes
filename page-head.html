@@ -48,6 +48,12 @@
 			{% elsif page.layout == 'prozin/mailing-list' %}
 				<span 
 					class="byline-item">{% include patterns/i18n id="label_mailing_list" %}</span>
+			{% elsif page.layout == 'prozin/news-flash' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_news_flash" %}</span>
+			{% elsif page.layout == 'prozin/periodical' %}
+				<span 
+					class="byline-item">{% include patterns/i18n id="label_periodical" %}</span>
 			{% endif %}
 			{% for group in page.medicine_groups %}
 				<span 
