@@ -44,8 +44,13 @@
         {% endif %}
     </th> 
     {%- for column in page.columns -%}
-        <td>
-            {{ item[column.field] }}
+        <td> 
+            {%- if column.type == 'date' -%}
+                <time 
+                    datetime="{{ item[column.field] | date: "%Y-%m-%dT%H:%M" }}Z">{{ item[column.field] | date: "%e %B, %Y %H:%M" }}</time> 
+            {%- else -%}
+                {{ item[column.field] }}
+            {%- endif -%}
         </td>
     {%- endfor -%}
     <td

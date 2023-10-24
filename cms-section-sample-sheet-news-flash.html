@@ -1,0 +1,28 @@
+<fieldset 
+    class="horizontal form-panel">
+    <label>
+        {% include patterns/i18n id="label_personas" %}
+        <select
+            class="pat-autosuggest"
+            placeholder="Selecteer één of meerdere personas"
+            multiple>
+            {% for item in site.personas %}
+                {% if item.layout == 'persona' %}
+                    <option>{{ item.title }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </label>
+    {% include product-selector.html %}
+    <label>
+        Kruimelpad publiek
+        <input type="text">
+    </label>
+    <label>
+        Kruimelpad beheer
+        <input type="text">
+    </label><label>
+        Url
+        <input type="url">
+    </label>
+</fieldset>
