@@ -1,0 +1,62 @@
+<fieldset 
+    class="horizontal form-panel">
+    <fieldset
+        {% include patterns/form-field-auto-save-attributes %}
+        id="image-selection-938664" 
+        class="group image-selection {% include patterns/form-field-auto-save-classes %}"
+        data-pat-inject="
+            url: /dialogues/cms/edit-news-item; 
+            source: #image-selection-938664; 
+            target: #image-selection-938664">
+        <legend>{% include patterns/i18n id="label_hero_image" %}</legend>
+        <figure>
+            {% if page.image %}                
+                <img
+                    alt="" 
+                    src="{{ page.image }}" />
+                <button
+                    type="submit"
+                    class="small default pat-button"
+                    name="any_name_for_delete_image"
+                    value="some_value_for_delete_image">
+                    {% include patterns/i18n id="label_remove_image_imp" %}
+                </button>
+            {% else %}
+                <a 
+                    href="/dialogues/image-bank/panel-select-image-image-bank#document-content"
+                    data-pat-modal="class: large panel" 
+                    class="small default pat-button pat-modal">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
+            {% endif %}
+        </figure>
+        {% include patterns/form-help.html
+            content="message_help_hero_image" %}
+    </fieldset>
+    <fieldset
+        {% include patterns/form-field-auto-save-attributes %}
+        class="group {% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_body_text" %}
+        {% include patterns/form-field-rich-editor.html
+            placeholder="Optional text that goes between the summary and the news articles."
+            allow="
+                strong,
+                emphasised,
+                link,"
+                    %}
+    </fieldset>
+    <label
+        {% include patterns/form-field-auto-save-attributes %}
+        class="{% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_news_items" %}
+        <input 
+            class="pat-autosuggest"
+            name="news-items"
+            type="text"
+            data-pat-autosuggest='
+                allow-new-words: false; 
+                ajax-search-index: text; 
+                ajax-url: /dialogues/cms/news-items.json;'/>
+        {% include patterns/form-help.html
+            content="message_help_news_flash_content" %}
+    </label>
+    </fieldset>
+</fieldset>
