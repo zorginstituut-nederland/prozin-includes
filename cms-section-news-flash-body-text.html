@@ -38,6 +38,9 @@
         {% include patterns/form-field-rich-editor.html
             placeholder="Optional text that goes between the summary and the news articles."
             allow="
+                paragraph,
+                header 2,
+                header 3,
                 strong,
                 emphasised,
                 link,"
@@ -58,5 +61,20 @@
         {% include patterns/form-help.html
             content="message_help_news_flash_content" %}
     </label>
+    
+    <fieldset
+        {% include patterns/form-field-auto-save-attributes %}
+        class="group {% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_footer" %}
+        {% include patterns/form-field-rich-editor.html
+            placeholder="Optional text that goes below the news items."
+            allow="
+                paragraph,
+                header 2,
+                header 3,
+                strong,
+                emphasised,
+                link,"
+                    %}
     </fieldset>
 </fieldset>
