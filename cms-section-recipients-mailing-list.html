@@ -1,0 +1,52 @@
+
+<fieldset 
+    class="horizontal form-panel">
+    <label
+        {% include patterns/form-field-auto-save-attributes %}
+        class="{% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_organisation_types" %}
+        <select
+            class="pat-autosuggest"
+            multiple 
+            name="" 
+            id="">
+            {% for item in site.data.prozin.organisation-types %}
+                <option 
+                    value="">{%- include patterns/i18n id=item.i18n-plural -%}</option>
+            {% endfor %}
+        </select>
+        {% include patterns/form-help.html
+            content="message_help_mailing_list_organisation_types" %}
+    </label>
+    <label
+        {% include patterns/form-field-auto-save-attributes %}
+        class="{% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_organisations" %}
+        <input 
+            class="pat-autosuggest"
+            name="user-groups"
+            type="text"
+            value="Roche"
+            data-pat-autosuggest='
+                allow-new-words: false; 
+                ajax-search-index: text; 
+                ajax-url: /feedback/organisations.json;'/>
+        {% include patterns/form-help.html
+            content="message_help_mailing_list_organisations" %}
+    </label>
+    <label
+        {% include patterns/form-field-auto-save-attributes %}
+        class="{% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_email_addressess" %}
+        <input 
+            class="pat-autosuggest"
+            name="user-groups"
+            type="text"
+            value="{%- for item in page.registrations -%}{{ item }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}"
+            data-pat-autosuggest='
+                allow-new-words: true;  
+                '/>
+        {% include patterns/form-help.html
+            content="message_help_mailing_list_registrations" %}
+    </label>
+</fieldset>
