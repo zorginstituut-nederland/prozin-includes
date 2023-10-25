@@ -1,5 +1,5 @@
 <div 
-    class="portlet span-{{ portlet.span }}" 
+    class="portlet span-{{ portlet.span }} state-{{ portlet.state | slugify }} type-{{ portlet.id | remove: 'prozin/portlet-' }}" 
     id="{{ portlet.id | remove: 'prozin/' }}">
     <div 
         class="content">

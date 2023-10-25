@@ -59,19 +59,32 @@
     </td>
     <td
         class="item-state">
-        {% if item.state == 'Archived' %}
-            {%- include patterns/i18n id="label_archived" -%}
-        {% elsif item.state == 'Draft' %}
-            {%- include patterns/i18n id="label_draft" -%}
-        {% elsif item.layout contains 'landing' %}
-            {%- include patterns/i18n id="label_visible" -%}
-        {% else %}
-            {%- include patterns/i18n id="label_published" -%}
-        {% endif %} 
-        {% if item.canonical %}
-            <em 
-                class="status-marker canonical">({{ item.canonical }})</em>
-        {% endif %}
+        <a 
+            href="/dialogues/cms/tooltip-workflow-state-{{ item.state | slugify }}" 
+            data-pat-tooltip="
+                source: ajax;
+                position-list: tr"
+            class="pat-tooltip state-{{ item.state | slugify }}">
+            {% if item.state == 'Archived' %}
+                {%- include patterns/i18n id="label_archived" -%}
+            {% elsif item.state == 'Draft' %}
+                {%- include patterns/i18n id="label_draft" -%}
+            {% elsif item.state == 'For review' %}
+                {%- include patterns/i18n id="label_for_review" -%}
+            {% elsif item.state == 'Approved' %}
+                {%- include patterns/i18n id="label_approved" -%}
+            {% elsif item.state == 'Sent' %}
+                {%- include patterns/i18n id="label_sent" -%}
+            {% elsif item.layout contains 'landing' %}
+                {%- include patterns/i18n id="label_visible" -%}
+            {% else %}
+                {%- include patterns/i18n id="label_published" -%}
+            {% endif %} 
+            {% if item.canonical %}
+                <em 
+                    class="status-marker canonical">({{ item.canonical }})</em>
+            {% endif %}
+        </a>
     </td>
     <td 
         class="functions">
