@@ -1,14 +1,10 @@
-{% capture this_version %}
-    {% if page.state %}
-        {%- if page.state == 'Published' -%}
-            {% include patterns/i18n id="label_version" %} 4 (2 november 2023)
-        {%- else -%}
-            {{ page.state }}
-        {%- endif -%}
-    {% else %}
-        {% include patterns/i18n id="label_version" %} 1 (9 januari 2023)
-    {% endif %}
-{% endcapture %}
+{%- capture this_version -%}
+    {%- if page.state == 'Published' -%}
+        {% include patterns/i18n id="label_version" %} 4 (2 november 2023)
+    {%- else -%}
+        {{ page.state }}
+    {%- endif -%}
+{%- endcapture -%}
 
 <a 
     href="#versioning-menu"
@@ -24,50 +20,51 @@
         class="pat-well">
         <h2 
             class="tooltip-separation-header">
-            {%- if page.state -%}
-                {{ page.state }}
+            {%- if page.state == 'Published' -%}
+                {% include patterns/i18n id="label_version" %} 4
             {%- else -%}
-                {% include patterns/i18n id="label_version" %} 1
+                {{ page.state }}
             {%- endif -%}
         </h2>
         <dl 
             class="pat-grid-list">
+
+            <dt>Created</dt>
+            <dd>{{ page.date | date: "%e %B %Y, %H:%M" }}, door <a href="#"
+                    class="pat-inject">{{ page.author | default: 'Diego di Pietro'}}</a></dd>
+
             <dt>{%- include patterns/i18n id="label_last_modified" -%}</dt>
-            <dd>{{ page.date | date: "%e %B, %Y %H:%M" }}, door <a href="#"
+            <dd>{{ page.date | date: "%e %B %Y, %H:%M" }}, door <a href="#"
                 class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a></dd>
-            <dt>Creator</dt>
-            <dd>
-                <a 
-                    data-pat-inject="history: record"
-                    href="#" 
-                    class="segment pat-inject">Diego di Pietro</a>
-                </span>
-            </dd>
+            
             {% if page.state == "Published" %}
-                <dt>Published by</dt>
+                <dt>Published</dt>
                 <dd>
+                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                    door 
                     <a 
-                        data-pat-inject="history: record"
-                        href="#" 
-                        class="segment pat-inject">Riwka Rubinstein</a>
+                        href="#"
+                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
                 </dd>
             {% elsif page.state == "Sent" %}
-                <dt>Sent by</dt>
+                <dt>Sent</dt>
                 <dd>
+                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                    door 
                     <a 
-                        data-pat-inject="history: record"
-                        href="#" 
-                        class="segment pat-inject">Riwka Rubinstein</a>
+                        href="#"
+                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
                 </dd>
             {% elsif page.state == "Approved" %}
                 <dt>
-                    Approved by
+                    Approved
                 </dt>
                 <dd>
+                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                    door 
                     <a 
-                        data-pat-inject="history: record"
-                        href="#" 
-                        class="segment pat-inject">Boris Bauknecht</a>
+                        href="#"
+                        class="pat-inject">{{ page.author | default: 'Boris Bauknecht'}}</a>
                 </dd>
                 <dt>{%- include patterns/i18n id="label_authorised_for_publication" -%}</dt>
                 <dd>
@@ -85,10 +82,14 @@
                 </dd>
             {% elsif page.state == "For review" %}
                 <dt>
-                    Submitted for rewiew by
+                    Submitted
                 </dt>
                 <dd>
-                    <a data-pat-inject="history: record" href="#" class="segment pat-inject">Diego di Pietro</a>
+                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                    door 
+                    <a 
+                        href="#"
+                        class="pat-inject">{{ page.author | default: 'Diego di Petro'}}</a>
                 </dd>
                 <dt>{%- include patterns/i18n id="label_authorised_for_approval" -%}</dt>
                 <dd>
