@@ -1,54 +1,86 @@
-<label 
-    class="pat-select">
-    Versie
-    <select 
-        name="version">
-        {% if page.revisions %}
-            {% for revision in page.revisions %}
-                {% if revision.type == 'change-request' %}
-                    <option>
-                        {{ site.data.prozin.ui.label_change_request[site.data.config.lang] }} ({{ revision.date}})
-                    </option>
-                {% else %}
-                    <option 
-                        {% if forloop.last %}value="latest"{% endif %}
-                        {% if forloop.last %}selected{% endif %}
-                        value="{% if forloop.last %}latest{% else %}versie-{% increment counter %}{% endif %}">
-                        {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
-                    </option>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <option 
-                value="latest">
-                {% include patterns/i18n id="label_version" %} 1 (9 januari 2023)
-            </option>
-        {% endif %}
-        {% if 
-            page.state == 'Revision' 
-          or 
-            page.state == 'New' 
-          or 
-            page.state == 'Draft' %}
-            <option 
-                value="draft" 
-                selected >
-                {% include patterns/i18n id="label_draft" %}
-            </option>
-        {% else %}
-            {% unless page.state == 'Published' %}
-                {% if page.state == 'Archived' %}
-                    <option>
-                        {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
-                    </option>
-                {% elsif page.state %}
-                    <option 
-                        value="{{ page.state | slugify }}" 
-                        selected >
-                            {{ page.state }}
-                    </option>
-                {% endif %}
-            {% endunless %}
-        {% endif %}
-    </select>   
-</label>
+{% capture this_version %}
+    {% if page.revisions %}
+        {% for revision in page.revisions %}
+            {% if revision.type == 'change-request' %}
+                {{ site.data.prozin.ui.label_change_request[site.data.config.lang] }} ({{ revision.date}})
+            {% else %}
+                {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% include patterns/i18n id="label_version" %} 1 (9 januari 2023)
+    {% endif %}
+{% endcapture %}
+
+<a 
+    href="#versioning-menu"
+    class="pat-select">{{ this_version }}</a>
+<template 
+    hidden>
+    <form 
+        action="">
+        <dl 
+            class="pat-grid-list">
+            <dt>{%- include patterns/i18n id="label_last_modified" -%}</dt>
+            <dd>{{ page.date | date: "%e %B, %Y %H:%M" }}, door <a href="#"
+                class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a></dd>
+        </dl>
+        <p 
+            class="button-bar">
+            <button
+                type="submit">
+                {%- include patterns/i18n id="label_publish" -%}
+            </button>
+            <button
+                type="submit">
+                {%- include patterns/i18n id="label_back_to_var" -%}
+            </button>
+        </p>
+        <h2>
+            {%- include patterns/i18n id="label_other_versions" -%}
+        </h2>
+        <ul 
+            class="pat-navigation">
+            <li>
+                <a  
+                    data-pat-inject="history: record"
+                    href="{{ page.url }}" 
+                    class="current pat-inject">{{ this_version }}</a>
+            </li>
+            {% if 
+                page.state == 'Revision' 
+            or 
+                page.state == 'New' 
+            or 
+                page.state == 'Draft' %}
+                <li>
+                    <a  
+                        data-pat-inject="history: record"
+                        href="{{ page.url }}" 
+                        class="current pat-inject">{% include patterns/i18n id="label_draft" %}</a>
+                </li>
+            {% else %}
+                {% unless page.state == 'Published' %}
+                    {% if page.state == 'Archived' %}
+                        <li>
+                            <a  
+                                data-pat-inject="history: record"
+                                href="{{ page.url }}" 
+                                class="current pat-inject">
+                                {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})</a>
+                        </li>
+                    {% elsif page.state %}
+                        <li>
+                            <a  
+                                data-pat-inject="history: record"
+                                href="{{ page.url }}" 
+                                class="current pat-inject">
+                                {{ page.state }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endunless %}
+            {% endif %}
+        </ul>   
+    </form>
+</template>
