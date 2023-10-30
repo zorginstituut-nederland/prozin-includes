@@ -1,12 +1,10 @@
 {% capture this_version %}
-    {% if page.revisions %}
-        {% for revision in page.revisions %}
-            {% if revision.type == 'change-request' %}
-                {{ site.data.prozin.ui.label_change_request[site.data.config.lang] }} ({{ revision.date}})
-            {% else %}
-                {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})
-            {% endif %}
-        {% endfor %}
+    {% if page.state %}
+        {%- if page.state == 'Published' -%}
+            {% include patterns/i18n id="label_version" %} 4 (2 november 2023)
+        {%- else -%}
+            {{ page.state }}
+        {%- endif -%}
     {% else %}
         {% include patterns/i18n id="label_version" %} 1 (9 januari 2023)
     {% endif %}
@@ -16,74 +14,73 @@
     href="#versioning-menu"
     data-pat-tooltip="
         source: ajax; 
+        class: versioning-menu;
         position-list: tl"
-    class="pat-tooltip pat-select">{{ this_version }}</a>
+    class="pat-tooltip pat-select state-{{ page.state | slugify }}">{{ this_version }}</a>
 <template 
+    id="versioning-menu"
     hidden>
-    <form 
-        action="">
+    <div 
+        class="pat-well">
+        <h2 
+            class="tooltip-separation-header">
+            {%- if page.state -%}
+                {{ page.state }}
+            {%- else -%}
+                {% include patterns/i18n id="label_version" %} 1
+            {%- endif -%}
+        </h2>
         <dl 
             class="pat-grid-list">
             <dt>{%- include patterns/i18n id="label_last_modified" -%}</dt>
             <dd>{{ page.date | date: "%e %B, %Y %H:%M" }}, door <a href="#"
                 class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a></dd>
+            <dt>{%- include patterns/i18n id="label_authorised_for_publication" -%}</dt>
+            <dd>
+                <span 
+                    class="pat-comma-separated">
+                    <a 
+                        href="#" 
+                        class="segment pat-inject">Riwka Rubinstein</a>
+                    <a 
+                        href="#" 
+                        class="segment pat-inject">Boris Bauknecht</a>
+                </span>
+            </dd>
         </dl>
-        <p 
-            class="button-bar">
-            <button
-                type="submit">
-                {%- include patterns/i18n id="label_publish" -%}
-            </button>
-            <button
+        <p
+            class="pat-button-bar">
+            {% include prozin/workflow-state-button.html
+                class="small close-panel default" %}
+            <a
+                href="/dialogues/cms/back-to-workflow-state-confirm.html#document-content"
+                class="pat-button small pat-modal close-panel"
                 type="submit">
                 {%- include patterns/i18n id="label_back_to_var" -%}
-            </button>
+            </a>
         </p>
-        <h2>
+    </div>
+    {%- if page.revisions -%}
+        <h2
+            class="tooltip-separation-header">
             {%- include patterns/i18n id="label_other_versions" -%}
         </h2>
         <ul 
-            class="pat-navigation">
-            <li>
-                <a  
-                    data-pat-inject="history: record"
-                    href="{{ page.url }}" 
-                    class="current pat-inject">{{ this_version }}</a>
-            </li>
-            {% if 
-                page.state == 'Revision' 
-            or 
-                page.state == 'New' 
-            or 
-                page.state == 'Draft' %}
-                <li>
+            class="pat-navigation link-list">
+            {% for item in page.revisions %}
+                <li
+                    class="state-{{ item.state | slugify }}">
                     <a  
                         data-pat-inject="history: record"
-                        href="{{ page.url }}" 
-                        class="current pat-inject">{% include patterns/i18n id="label_draft" %}</a>
+                        href="#" 
+                        class="pat-inject">
+                        <strong 
+                            class="link-title">{{ item.name }}</strong> 
+                        <p 
+                            class="link-byline">{{ item.date }}</p>
+                    </a>
                 </li>
-            {% else %}
-                {% unless page.state == 'Published' %}
-                    {% if page.state == 'Archived' %}
-                        <li>
-                            <a  
-                                data-pat-inject="history: record"
-                                href="{{ page.url }}" 
-                                class="current pat-inject">
-                                {% include patterns/i18n id="label_version" %} {{ counter }} ({{ revision.date}})</a>
-                        </li>
-                    {% elsif page.state %}
-                        <li>
-                            <a  
-                                data-pat-inject="history: record"
-                                href="{{ page.url }}" 
-                                class="current pat-inject">
-                                {{ page.state }}
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endunless %}
-            {% endif %}
+            {% endfor %}
         </ul>   
-    </form>
+    {%- endif -%}
 </template>

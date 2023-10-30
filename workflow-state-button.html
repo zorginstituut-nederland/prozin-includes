@@ -1,0 +1,68 @@
+{% if page.state == 'Published' %}
+    <a 
+        href="{{ page.url }}-state-edit" 
+        class="{{ include.class }} pat-button pat-inject icon-update edit" 
+        title="Maak een nieuwe revisie van de laatst gepubliceerde versie van dit document">{%- include patterns/i18n id="label_new_version" -%}</a>
+{% elsif page.state == 'Draft' or page.state == 'New' %}
+    <a  
+        {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+            href="/dialogues/cms/publish-confirm.html#document-content"
+        {% endif %}
+        class="{{ include.class }} pat-button edit pat-modal {% if site.data.prozin.personae[site.data.config.persona].role != 'Administrator' %}disabled{% endif %}" 
+        data-pat-modal="class: small panel"
+        title="Publiceer deze revisie">{% include patterns/i18n id="label_submit_for_review_imp" %}</a>
+{% elsif page.state == 'Approved' %}
+    {% if page.layout == 'prozin/news-flash' %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/publish-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} default pat-button edit pat-modal {% if site.data.prozin.personae[site.data.config.persona].role != 'Administrator' %}disabled{% endif %}" 
+            data-pat-modal="class: medium panel"
+            title="Verzend deze nieuwsflits">{% include patterns/i18n id="label_send_imp" %}</a> 
+    {% else %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/publish-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} default pat-button edit pat-modal {% if site.data.prozin.personae[site.data.config.persona].role != 'Administrator' %}disabled{% endif %}" 
+            data-pat-modal="class: medium panel"
+            title="Publiceer deze revisie">{% include patterns/i18n id="label_publish_imp" %}</a> 
+    {% endif %}
+{% elsif page.state == 'For review' %}
+    {% if page.layout == 'prozin/news-flash' %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/approve-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} pat-button aprove pat-modal default" 
+            data-pat-modal="class: medium panel"
+            title="Keur deze revisie goed">{{ site.data.prozin.ui.label_approve_imp[site.data.config.lang] }}</a>
+    {% else %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/approve-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} pat-button aprove pat-modal default" 
+            data-pat-modal="class: medium panel"
+            title="Keur deze revisie goed">{{ site.data.prozin.ui.label_approve_imp[site.data.config.lang] }}</a>
+    {% endif %}
+{% else %}
+    {% if page.layout == 'prozin/news-flash' %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/send-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} pat-button edit pat-modal default" 
+            data-pat-modal="class: medium panel"
+            title="Publiceer deze revisie">{{ site.data.prozin.ui.label_send_imp[site.data.config.lang] }}</a>
+    {% else %}
+        <a 
+            {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
+                href="/dialogues/cms/publish-confirm.html#document-content"
+            {% endif %}
+            class="{{ include.class }} pat-button edit pat-modal default" 
+            data-pat-modal="class: medium panel"
+            title="Publiceer deze revisie">{{ site.data.prozin.ui.label_publish_imp[site.data.config.lang] }}</a>
+    {% endif %}
+{% endif %}
