@@ -1,6 +1,6 @@
 {%- capture this_version -%}
     {%- if page.state == 'Published' -%}
-        {% include patterns/i18n id="label_version" %} 4 (2 november 2023)
+        {% include patterns/i18n id="label_version" %} {% if page.revisions %}{{ page.revisions.size | plus: 1 }}{%- else -%}1{% endif %} (2 november 2023)
     {%- else -%}
         {{ page.state }}
     {%- endif -%}
