@@ -60,11 +60,19 @@
     <td
         class="item-state">
         <a 
-            href="/dialogues/cms/tooltip-workflow-state-{{ item.state | slugify }}" 
+            href="{{ item.url }}#versioning-menu"
             data-pat-tooltip="
-                source: ajax;
+                source: ajax; 
+                class: versioning-menu;
                 position-list: tr"
-            class="pat-tooltip state-{{ item.state | slugify }}">
+            class="
+                pat-tooltip 
+                pat-select 
+                {% if item.state %}
+                    state-{{ item.state | slugify }}
+                {% else %}
+                    state-published
+                {% endif %}">
             {% if item.state == 'Archived' %}
                 {%- include patterns/i18n id="label_archived" -%}
             {% elsif item.state == 'Draft' %}
