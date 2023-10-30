@@ -28,7 +28,6 @@
         </h2>
         <dl 
             class="pat-grid-list">
-
             <dt>Created</dt>
             <dd>{{ page.date | date: "%e %B %Y, %H:%M" }}, door <a href="#"
                     class="pat-inject">{{ page.author | default: 'Diego di Pietro'}}</a></dd>
@@ -37,25 +36,36 @@
             <dd>{{ page.date | date: "%e %B %Y, %H:%M" }}, door <a href="#"
                 class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a></dd>
             
-            {% if page.state == "Published" %}
-                <dt>Published</dt>
+            {% if page.state == "For review" or page.state == 'Published', or page.state == 'Sent', or page.state == 'Approved' %}
+                <dt>
+                    Submitted
+                </dt>
                 <dd>
                     {{ page.date | date: "%e %B %Y, %H:%M" }}, 
                     door 
                     <a 
                         href="#"
-                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
+                        class="pat-inject">{{ page.author | default: 'Diego di Petro'}}</a>
                 </dd>
-            {% elsif page.state == "Sent" %}
-                <dt>Sent</dt>
+            {% endif %}
+            {% if page.state == 'For review' %}
+                <dt>{%- include patterns/i18n id="label_authorised_for_approval" -%}</dt>
                 <dd>
-                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
-                    door 
-                    <a 
-                        href="#"
-                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
+                    <span 
+                        class="pat-comma-separated">
+                        <a 
+                            data-pat-inject="history: record"
+                            href="#" 
+                            class="segment pat-inject">Riwka Rubinstein</a>
+                        <a 
+                            data-pat-inject="history: record"
+                            href="#" 
+                            class="segment pat-inject">Boris Bauknecht</a>
+                    </span>
                 </dd>
-            {% elsif page.state == "Approved" %}
+            {% endif %}
+            
+            {% if page.state == "Approved" of page.state == 'Published' or page.state == 'Sent' %}
                 <dt>
                     Approved
                 </dt>
@@ -66,6 +76,10 @@
                         href="#"
                         class="pat-inject">{{ page.author | default: 'Boris Bauknecht'}}</a>
                 </dd>
+            {% endif %}
+            
+
+            {% if page.state == "Approved" %}
                 <dt>{%- include patterns/i18n id="label_authorised_for_publication" -%}</dt>
                 <dd>
                     <span 
@@ -80,30 +94,27 @@
                             class="segment pat-inject">Boris Bauknecht</a>
                     </span>
                 </dd>
-            {% elsif page.state == "For review" %}
-                <dt>
-                    Submitted
-                </dt>
+            {% endif %}
+
+            {% if page.state == "Published" %}
+                <dt>Published</dt>
                 <dd>
                     {{ page.date | date: "%e %B %Y, %H:%M" }}, 
                     door 
                     <a 
                         href="#"
-                        class="pat-inject">{{ page.author | default: 'Diego di Petro'}}</a>
+                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
                 </dd>
-                <dt>{%- include patterns/i18n id="label_authorised_for_approval" -%}</dt>
+            {% endif %}
+
+            {% if page.state == "Sent" %}
+                <dt>Sent</dt>
                 <dd>
-                    <span 
-                        class="pat-comma-separated">
-                        <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Riwka Rubinstein</a>
-                        <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Boris Bauknecht</a>
-                    </span>
+                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                    door 
+                    <a 
+                        href="#"
+                        class="pat-inject">{{ page.author | default: 'Riwka Rubinstein'}}</a>
                 </dd>
             {% endif %}
         </dl>
