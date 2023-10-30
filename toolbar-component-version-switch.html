@@ -51,6 +51,14 @@
                         href="#" 
                         class="segment pat-inject">Riwka Rubinstein</a>
                 </dd>
+            {% elsif page.state == "Sent" %}
+                <dt>Sent by</dt>
+                <dd>
+                    <a 
+                        data-pat-inject="history: record"
+                        href="#" 
+                        class="segment pat-inject">Riwka Rubinstein</a>
+                </dd>
             {% elsif page.state == "Approved" %}
                 <dt>
                     Approved by
@@ -77,7 +85,7 @@
                 </dd>
             {% elsif page.state == "For review" %}
                 <dt>
-                    Submitted for rewiew
+                    Submitted for rewiew by
                 </dt>
                 <dd>
                     <a data-pat-inject="history: record" href="#" class="segment pat-inject">Diego di Pietro</a>
