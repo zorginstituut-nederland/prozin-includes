@@ -79,7 +79,13 @@
             {% endif %}
 
             {% if page.state == "Approved" %}
-                <dt>{%- include patterns/i18n id="label_authorised_for_publication" -%}</dt>
+                <dt>
+                    {%- if page.layout contains 'news-flash' -%}
+                        {%- include patterns/i18n id="label_authorised_for_sending" -%}
+                    {%- else -%}
+                        {%- include patterns/i18n id="label_authorised_for_publication" -%}
+                    {%- endif -%}
+                </dt>
                 <dd>
                     <span 
                         class="pat-comma-separated">
