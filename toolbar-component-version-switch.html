@@ -41,63 +41,65 @@
                     Submitted
                 </dt>
                 <dd>
-                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
-                    door 
-                    <a 
-                        href="#"
-                        class="pat-inject">{{ page.author | default: 'Diego di Petro'}}</a>
+                    <p>
+                        {{ page.date | date: "%e %B %Y, %H:%M" }}, 
+                        door 
+                        <a 
+                            href="#"
+                            class="pat-inject">{{ page.author | default: 'Diego di Petro'}}</a>
+                    </p>
+                    {% if page.state == 'For review' %}
+                        <p
+                            class="pat-message info">
+                            {%- include patterns/i18n id="label_authorised_for_approval" -%}:
+                            <span 
+                                class="pat-comma-separated">
+                                <a 
+                                    data-pat-inject="history: record"
+                                    href="#" 
+                                    class="segment pat-inject">Riwka Rubinstein</a>
+                                <a 
+                                    data-pat-inject="history: record"
+                                    href="#" 
+                                    class="segment pat-inject">Boris Bauknecht</a>
+                            </span>
+                        </p>
+                    {% endif %}
                 </dd>
             {% endif %}
-            {% if page.state == 'For review' %}
-                <dt>{%- include patterns/i18n id="label_authorised_for_approval" -%}</dt>
-                <dd>
-                    <span 
-                        class="pat-comma-separated">
-                        <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Riwka Rubinstein</a>
-                        <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Boris Bauknecht</a>
-                    </span>
-                </dd>
-            {% endif %}
+
             
             {% if page.state == "Approved" of page.state == 'Published' or page.state == 'Sent' %}
                 <dt>
                     Approved
                 </dt>
                 <dd>
-                    {{ page.date | date: "%e %B %Y, %H:%M" }}, 
-                    door 
-                    <a 
-                        href="#"
-                        class="pat-inject">{{ page.author | default: 'Boris Bauknecht'}}</a>
-                </dd>
-            {% endif %}
-
-            {% if page.state == "Approved" %}
-                <dt>
-                    {%- if page.layout contains 'news-flash' -%}
-                        {%- include patterns/i18n id="label_authorised_for_sending" -%}
-                    {%- else -%}
-                        {%- include patterns/i18n id="label_authorised_for_publication" -%}
-                    {%- endif -%}
-                </dt>
-                <dd>
-                    <span 
-                        class="pat-comma-separated">
+                    <p>
+                        {{ page.date | date: "%e %B %Y, %H:%M" }},
+                        door
                         <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Riwka Rubinstein</a>
-                        <a 
-                            data-pat-inject="history: record"
-                            href="#" 
-                            class="segment pat-inject">Boris Bauknecht</a>
-                    </span>
+                            href="#"
+                            class="pat-inject">{{ page.author | default: 'Boris Bauknecht'}}</a>
+                    </p>
+                    <p
+                        class="pat-message info">
+                        {%- if page.layout contains 'news-flash' -%}
+                            {%- include patterns/i18n id="label_authorised_for_sending" -%}:
+                        {%- else -%}
+                            {%- include patterns/i18n id="label_authorised_for_publication" -%}:
+                        {%- endif -%}
+                        <span 
+                            class="pat-comma-separated">
+                            <a 
+                                data-pat-inject="history: record"
+                                href="#" 
+                                class="segment pat-inject">Riwka Rubinstein</a>
+                            <a 
+                                data-pat-inject="history: record"
+                                href="#" 
+                                class="segment pat-inject">Boris Bauknecht</a>
+                        </span>
+                    </p>
                 </dd>
             {% endif %}
 
