@@ -1,5 +1,9 @@
 <section 
-    class="swim-lane {% if item.push %}has-top-task-push{% endif %} {% if page.promo %}has-promo{% endif %}" 
+    class="
+        swim-lane 
+        {% if page.top_task %}has-top-tasks{% endif %} 
+        {% if page.push %}has-top-task-push{% endif %} 
+        {% if page.promo %}has-promo{% endif %}" 
     id="home-hero">
     <div 
         class="container">
@@ -94,24 +98,26 @@
                 </p>
             </div>
         {% endif %}
-        {% for item in site.news %}
-            {% if item.push == true %}
-                <div 
-                    class="top-task-push">
-                    <article 
-                        class="pat-rich">
-                        <h2>{{ item.title }}</h2>
-                        <p>{{ item.summary }}</p>
-                    </article>
-                    <p 
-                        class="button-bar">
-                        <a 
-                            data-pat-inject="history: record; scroll: #main"
-                            href="{{ item.url }}"
-                            class="pat-button pat-inject">{% include patterns/i18n id="label_read_more" %}</a>
-                    </p>
-                </div>
-            {% endif %}
-        {% endfor %}
+        {% unless page.push == false %}
+            {% for item in site.news %}
+                {% if item.push == true %}
+                    <div 
+                        class="top-task-push">
+                        <article 
+                            class="pat-rich">
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.summary }}</p>
+                        </article>
+                        <p 
+                            class="button-bar">
+                            <a 
+                                data-pat-inject="history: record; scroll: #main"
+                                href="{{ item.url }}"
+                                class="pat-button pat-inject">{% include patterns/i18n id="label_read_more" %}</a>
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endunless %}
     </div>
 </section>
