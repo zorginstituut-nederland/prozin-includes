@@ -1,0 +1,19 @@
+<figure>	
+	<a 
+		href="{{ item.src }}" 
+		class="pat-gallery">
+		<picture
+			class="picture">
+			<img 
+				src="{{ item.src }}"
+				alt="{{ item.alt }}" />
+			{% if item.copyright == 'Copyright' %}
+				<small 
+					class="copyright-mention type-{{ item.copyright | slugify }}">{{ item.author }}</small>
+			{% elsif item.copyright == 'Creative Commons' %}
+				<small 
+					class="copyright-mention type-{{ item.copyright | slugify }}">{{ item.author }}</small>
+			{% endif %}
+		</picture>
+	</a>
+</figure>

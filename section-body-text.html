@@ -1,12 +1,10 @@
 <div 
 	class="page-module type-body-text pat-rich">	
 	{% if page.image %}
-		<figure 
-			class="main-illustration">
-			<a 
-				href="{{ page.image }}" 
-				class="pat-gallery"><img src="{{ page.image }}"></a>
-		</figure>
+		{% include prozin/image.html
+			src=page.image
+			alt="Alt text of the image goes here"
+			copyright="Creative Commons" %}
 	{% endif %}
     {{ content | markdownify }}
 </div>
