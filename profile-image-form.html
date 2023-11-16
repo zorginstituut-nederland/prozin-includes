@@ -10,7 +10,7 @@
         title="Laad een foto van uzelf op">
       {% if include.editable == true %}
         <img 
-            src="/media/users/{{ site.data.prozin.personae[site.data.config.persona].first_name | slugify }}-{{ site.data.prozin.personae[site.data.config.persona].last_name | slugify }}.jpg"
+            src="/dialogues/users/avatars/{{ site.data.prozin.personae[site.data.config.persona].first_name | slugify }}-{{ site.data.prozin.personae[site.data.config.persona].last_name | slugify }}.jpg"
             class="user-image">
         <span 
             class="pat-button upload-button">{{ site.data.prozin.ui.label_replace_photo[site.data.config.lang] }}</span>
@@ -26,7 +26,7 @@
             title="Verwijder deze afbeelding">{{ site.data.prozin.ui.label_remove[site.data.config.lang] }}</button>  
       {% else %}
         <img 
-            src="/media/users/{{ site.data.prozin.personae[page.persona].first_name | slugify }}-{{ site.data.prozin.personae[page.persona].last_name | slugify }}.jpg"
+            src="/dialogues/users/avatars/{{ site.data.prozin.personae[page.persona].first_name | slugify }}-{{ site.data.prozin.personae[page.persona].last_name | slugify }}.jpg"
             class="user-image">
       {% endif %}
     </label>
