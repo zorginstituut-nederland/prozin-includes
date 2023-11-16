@@ -1,18 +1,19 @@
-<figure>	
+<figure
+	class="{{ include.class }}">	
 	<a 
-		href="{{ item.src }}" 
+		href="{{ include.src }}" 
 		class="pat-gallery">
 		<picture
 			class="picture">
 			<img 
-				src="{{ item.src }}"
-				alt="{{ item.alt }}" />
-			{% if item.copyright == 'Copyright' %}
+				src="{{ include.src }}"
+				alt="{{ include.alt }}" />
+			{% if include.copyright == 'Copyright' %}
 				<small 
-					class="copyright-mention type-{{ item.copyright | slugify }}">{{ item.author }}</small>
-			{% elsif item.copyright == 'Creative Commons' %}
+					class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+			{% elsif include.copyright == 'Creative Commons' %}
 				<small 
-					class="copyright-mention type-{{ item.copyright | slugify }}">{{ item.author }}</small>
+					class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
 			{% endif %}
 		</picture>
 	</a>

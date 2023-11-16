@@ -2,9 +2,11 @@
 	class="page-module type-body-text pat-rich">	
 	{% if page.image %}
 		{% include prozin/image.html
+			class="main-illustration"
 			src=page.image
 			alt="Alt text of the image goes here"
-			copyright="Creative Commons" %}
+			copyright="Creative Commons"
+			author="Daniël E. Kolbach" %}
 	{% endif %}
     {{ content | markdownify }}
 </div>
