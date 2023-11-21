@@ -9,6 +9,7 @@
                 scroll-selector: self; 
                 scroll-offset: 120px"
         {% endif %}
+        id="{{ portlet.id | remove: 'prozin/' }}-content"
         class="content {% if portlet.span != 1 %}pat-collapsible{% endif %}">
         <article 
             class="portlet-intro">
