@@ -88,11 +88,13 @@
 
             {% if page.url contains '-state-edit' %}
                 <button  
+                    formnovalidate
                     type="submit"
                     formaction="{{ page.url | remove: '-state-edit' }}" 
                     class="pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</button>
             {% else %}
                 <button  
+                    formnovalidate
                     type="submit"
                     formaction="{{ include.cancel }}" 
                     class="pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</button>
