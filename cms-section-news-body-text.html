@@ -51,3 +51,10 @@
         link-menu="/dialogues/cms/hyperlink-menu#document-content"
         content=this_content %}
 </article>
+<fieldset 
+    class="horizontal form-panel">
+    {% include patterns/form-field-discussion.html
+        action="/feedback/comment-well-said"
+        id="comments-main"
+        label="label_comments" %}
+</fieldset>
