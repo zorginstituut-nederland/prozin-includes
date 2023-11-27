@@ -18,8 +18,8 @@
         <label>
             {{ site.data.prozin.ui.label_name[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
-                required="required" 
-                autofocus 
+                class="pat-autofocus"
+                required="required"  
                 autocomplete="name"
                 type="text" 
                 name="name" />
@@ -30,7 +30,7 @@
             <label>
                 {{ site.data.prozin.ui.label_professional[site.data.config.lang] }}
                 <input 
-                    required="required" 
+                    required
                     type="radio" 
                     value="professional" 
                     name="role" /> 
@@ -38,7 +38,7 @@
             <label>
                 {{ site.data.prozin.ui.label_private[site.data.config.lang] }}
                 <input 
-                    required="required" 
+                    required
                     type="radio" 
                     value="private" 
                     name="role" /> 
@@ -50,7 +50,7 @@
             data-pat-depends="condition: role=professional">
             {{ site.data.prozin.ui.label_employee_position[site.data.config.lang] }}
             <input 
-                autofocus
+                class="pat-autofocus"
                 type="text" 
                 name="functie" />
         </label>
@@ -58,7 +58,7 @@
         <label>
             {{ site.data.prozin.ui.label_email[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
-                required="required" 
+                required
                 type="email" 
                 name="email" />
         </label>
@@ -73,7 +73,7 @@
         <label>
             {{ site.data.prozin.ui.label_subject[site.data.config.lang] }}<sup class="required">*</sup>
             <input 
-                required="required" 
+                required
                 type="text" 
                 name="onderwerp" />
         </label>
@@ -81,7 +81,7 @@
         <label>
             {{ site.data.prozin.ui.label_your_response[site.data.config.lang] }}<sup class="required">*</sup>
             <textarea 
-                required="required" 
+                required
                 type="text" 
                 rows="7" 
                 cols="37" 
