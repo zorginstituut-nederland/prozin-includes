@@ -1,0 +1,16 @@
+<label>
+    {% include patterns/i18n id="label_mailing_lists" %}
+    <select
+        class="pat-autosuggest"
+        multiple 
+        required
+        name="" 
+        id="">
+        {% for item in site.mailing-lists %}
+            {%- unless item.url contains '-state-' -%}
+                <option 
+                    value="">{{ item.title }}</option>
+            {%- endunless -%}
+        {% endfor %}
+    </select>
+</label>
