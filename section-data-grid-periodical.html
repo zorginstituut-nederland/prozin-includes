@@ -1,0 +1,18 @@
+<dl 
+    class="pat-grid-list">
+    <dt>{%- include patterns/i18n id="label_last_sent" -%}</dt>
+    <dd>
+        {%- if page.sent -%}
+        <time 
+            datetime="{{ page.sent | date: "%Y-%m-%dT%H:%M" }}Z">{{ page.sent | date: "%e %B, %Y %H:%M" }}</time>
+        {%- else -%}
+            {%- include patterns/i18n id="label_not_sent_yet" -%}
+        {%- endif -%}
+    </dd>
+    <dt>
+        Next issue
+    </dt>
+    <dd>
+        20 april 2024
+    </dd>
+</dl>

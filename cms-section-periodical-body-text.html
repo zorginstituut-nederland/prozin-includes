@@ -1,0 +1,49 @@
+<fieldset 
+    class="horizontal form-panel">
+
+    <fieldset
+        {% include patterns/form-field-auto-save-attributes %}
+        class="group {% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_body_text" %}
+        {% include patterns/form-field-rich-editor.html
+            placeholder="Optional text that goes between the summary and the news items."
+            allow="
+                paragraph,
+                header 2,
+                header 3,
+                strong,
+                emphasised,
+                link,"
+                    %}
+    </fieldset>
+
+    <label>
+        Tags
+        <input 
+            class="pat-autosuggest" 
+            value="{{ include.tags }}" 
+            name="tags" 
+            type="text" 
+            data-pat-autosuggest='
+                allow-new-words: true;  
+                ajax-search-index: text; 
+                ajax-url: /feedback/tags.json;' />
+        
+    </label>
+    
+    <fieldset
+        {% include patterns/form-field-auto-save-attributes %}
+        class="group {% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_footer" %}
+        {% include patterns/form-field-rich-editor.html
+            placeholder="Optional text that goes below the news items."
+            allow="
+                paragraph,
+                header 2,
+                header 3,
+                strong,
+                emphasised,
+                link,"
+                    %}
+    </fieldset>
+</fieldset>
