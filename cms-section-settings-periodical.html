@@ -10,7 +10,6 @@
             <option value="">Samenvattingen van nieuwsberichten met links</option>
         </select>
     </label>
-    {%- include prozin/form-field-mailing-lists.html -%}
     <fieldset 
         {% include patterns/form-field-auto-save-attributes %}
         class="
@@ -25,6 +24,7 @@
                 type="checkbox">
         </label>
     </fieldset>
+    {% include prozin/form-field-mailing-lists.html %}
     <label
         {% include patterns/form-field-auto-save-attributes %}
         class="{% include patterns/form-field-auto-save-classes %}">
