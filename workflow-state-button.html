@@ -15,7 +15,7 @@
     {% if page.layout == 'prozin/news-flash' %}
         <a 
             {% if site.data.prozin.personae[site.data.config.persona].role == 'Administrator' %}
-                href="/dialogues/cms/publish-confirm.html#document-content"
+                href="/dialogues/cms/send-confirm.html#document-content"
             {% endif %}
             class="icon-paper-plane {{ include.class }} default pat-button edit pat-modal {% if site.data.prozin.personae[site.data.config.persona].role != 'Administrator' %}disabled{% endif %}" 
             data-pat-modal="class: medium panel"
