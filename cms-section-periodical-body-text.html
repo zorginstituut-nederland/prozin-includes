@@ -1,7 +1,7 @@
 <fieldset 
     class="horizontal form-panel">
 
-    <fieldset
+    <!-- <fieldset
         {% include patterns/form-field-auto-save-attributes %}
         class="group {% include patterns/form-field-auto-save-classes %}">
         {% include patterns/i18n id="label_body_text" %}
@@ -15,10 +15,10 @@
                 emphasised,
                 link,"
                     %}
-    </fieldset>
+    </fieldset> -->
 
     <label>
-        Tags
+        {% include patterns/i18n id="label_tags" %}
         <input 
             class="pat-autosuggest" 
             value="{{ include.tags }}" 
@@ -28,10 +28,11 @@
                 allow-new-words: true;  
                 ajax-search-index: text; 
                 ajax-url: /feedback/tags.json;' />
-        
+        {% include patterns/form-help.html
+            content="message_help_periodical_tags" %}
     </label>
     
-    <fieldset
+    <!-- <fieldset
         {% include patterns/form-field-auto-save-attributes %}
         class="group {% include patterns/form-field-auto-save-classes %}">
         {% include patterns/i18n id="label_footer" %}
@@ -45,5 +46,5 @@
                 emphasised,
                 link,"
                     %}
-    </fieldset>
+    </fieldset> -->
 </fieldset>

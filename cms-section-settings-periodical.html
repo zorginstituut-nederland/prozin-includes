@@ -16,7 +16,7 @@
             group
             {% include patterns/form-field-auto-save-classes %}
             pat-checklist 
-            checkbox"">
+            checkbox">
         <label>
             {% include patterns/i18n id="label_show_images" %}
             <input
@@ -24,4 +24,20 @@
                 type="checkbox">
         </label>
     </fieldset>
+    <label
+        {% include patterns/form-field-auto-save-attributes %}
+        class="{% include patterns/form-field-auto-save-classes %}">
+        {% include patterns/i18n id="label_frequency" %}
+        <select>
+            <option>{%- include patterns/i18n id="patterns.label_daily" -%}</option>
+            <option>{%- include patterns/i18n id="patterns.label_weekly" -%}</option>
+            <option>{%- include patterns/i18n id="patterns.label_monthly" -%}</option>
+            <option>{%- include patterns/i18n id="patterns.label_quarterly" -%}</option>
+            <option>{%- include patterns/i18n id="patterns.label_never" -%}</option>
+        </select>
+    </label>
+    {% include patterns/form-field-date.html
+        label="label_starting_date"
+        value="2024-01-28"
+        action=page.url %}
 </fieldset>
