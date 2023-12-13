@@ -42,8 +42,8 @@
             class="pat-autosuggest"
             name="user-groups"
             type="text"
-            value="{%- for item in page.registrations -%}{{ item }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}"
             data-pat-autosuggest='
+                prefill: {%- for item in page.registrations -%}{{ item }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%};
                 allow-new-words: true;  
                 '/>
         {% include patterns/form-help.html
