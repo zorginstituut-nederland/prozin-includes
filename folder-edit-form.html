@@ -19,8 +19,8 @@
     <legend>{%- include patterns/i18n id="label_layout" -%}</legend>
     {%- if include.layouts contains 'toc' -%}
         <label>
-            {%- include patterns/i18n 
-                id="label_list" -%}
+            {% include patterns/i18n 
+                id="label_list" %}
             <input 
                 checked
                 type="radio" 
@@ -29,8 +29,8 @@
     {%- endif -%}
     {%- if include.layouts contains 'topics' -%}
         <label>
-            {%- include patterns/i18n 
-                id="label_topic_lanes" -%}
+            {% include patterns/i18n 
+                id="label_topic_lanes" %}
             <input 
                 type="radio" 
                 name="layout">
@@ -38,8 +38,18 @@
     {%- endif -%}
     {%- if include.layouts contains 'cards' -%}
         <label>
-            {%- include patterns/i18n 
-                id="label_cards" -%}
+            {% include patterns/i18n 
+                id="label_cards" %}
+            <input 
+                checked
+                type="radio" 
+                name="layout">
+        </label>
+    {%- endif -%}
+    {%- if include.layouts contains 'tiles' -%}
+        <label>
+            {% include patterns/i18n 
+                id="label_tiles" %}
             <input 
                 checked
                 type="radio" 
