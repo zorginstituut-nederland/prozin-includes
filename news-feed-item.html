@@ -10,9 +10,21 @@
         {% unless include.mode == 'plain' %}
             <figure 
                 class="illustration">
-                <img 
-                    alt="" src="/assets/style/placeholder-16x9.png" 
-                    style="background-image: url({{ item.image }})">
+                <picture
+					class="picture">
+                    <img 
+                        alt="{{ page.alt_text }}" 
+                        src="/assets/style/placeholder-16x9.png" 
+                        style="background-image: url({{ item.image }})">
+                    {% if page.copyright == 'Copyright' %}
+                        <small 
+                            class="copyright-mention type-{{ page.copyright | slugify }}">Daniël E. Kolbach</small>
+                    {% else %}
+                        <small 
+                            class="copyright-mention type-{{ page.copyright | slugify }}">Daniël E. Kolbach</small>
+                    {% endif %}
+                </picture>
+                
             </figure>
         {% endunless %}
         <h3 
