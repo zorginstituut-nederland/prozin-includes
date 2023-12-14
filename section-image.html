@@ -7,9 +7,19 @@
         <a 
             id="{{ image_id }}-enlarge"
             href="{{ include.image }}">
-            <img 
-                src="{{ include.image }}"
-                alt="{{ include.alt }}" />
+            <picture
+					class="picture">
+                <img 
+                    src="{{ include.image }}"
+                    alt="{{ include.alt }}" />
+                {% if page.copyright == 'Copyright' %}
+                    <small 
+                        class="copyright-mention type-{{ page.copyright | slugify }}">Daniël E. Kolbach</small>
+                {% else %}
+                    <small 
+                        class="copyright-mention type-{{ page.copyright | slugify }}">Daniël E. Kolbach</small>
+                {% endif %}
+            </picture>
         </a>
         <figcaption>
             <span 

@@ -14,8 +14,7 @@
 					class="picture">
                     <img 
                         alt="{{ page.alt_text }}" 
-                        src="/assets/style/placeholder-16x9.png" 
-                        style="background-image: url({{ item.image }})">
+                        src="{{ item.image }}" ">
                     {% if page.copyright == 'Copyright' %}
                         <small 
                             class="copyright-mention type-{{ page.copyright | slugify }}">Daniël E. Kolbach</small>
