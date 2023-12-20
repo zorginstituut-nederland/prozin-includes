@@ -16,9 +16,12 @@
     <label>
         Status
         <select>
-            <option>Draft</option>
             <option>In ontwikkeling</option>
             <option>Lopend</option>
+            <option>Archief</option>
         </select>
     </label>
+    {%- include patterns/form-field-date.html
+        value="2023-12-27"
+        label="label_release_date" -%}
 </fieldset>

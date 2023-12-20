@@ -122,36 +122,44 @@
         {% endif %}
         {% include patterns/form-help.html
             content="message_help_presentation_upload" %}
-    </fieldset>    
-    <label>
-        {% include patterns/i18n id="label_optimal_width_in_pixels" %}
-        <input 
-            required
-            value="{{ include.width | default: '1280' }}"
-            type="number" 
-            name="">
-    </label>   
-    <label>
-        {% include patterns/i18n id="label_optimal_height_in_pixels" %}
-        <input 
-            required
-            value="{{ include.height | default: '720' }}"
-            type="number" 
-            name="">
-    </label> 
-    <fieldset
-        class="pat-checklist">
-        <!-- <legend>{% include patterns/i18n id="patterns.label_behaviour" %}</legend> -->
+    </fieldset>  
+    {% unless include.width == false %}
         <label>
-            {% include patterns/i18n id="patterns.label_allow_interaction" %} 
+            {% include patterns/i18n id="label_optimal_width_in_pixels" %}
             <input 
-                {% if include.interaction == 'allowed' %}checked{% endif %}
-                type="checkbox" 
-                name="interaction"></label>
-    </fieldset>    
-    <label>
-        {% include patterns/i18n id="label_caption" %}
-        <textarea
-            rows="2">{{ include.caption }}</textarea>
-    </label>  
+                required
+                value="{{ include.width | default: '1280' }}"
+                type="number" 
+                name="">
+        </label>   
+    {% endunless %}
+    {% unless include.height == false %}
+        <label>
+            {% include patterns/i18n id="label_optimal_height_in_pixels" %}
+            <input 
+                required
+                value="{{ include.height | default: '720' }}"
+                type="number" 
+                name="">
+        </label>
+    {% endunless %}
+    {% unless include.interaction == false %}
+        <fieldset
+            class="pat-checklist">
+            <!-- <legend>{% include patterns/i18n id="patterns.label_behaviour" %}</legend> -->
+            <label>
+                {% include patterns/i18n id="patterns.label_allow_interaction" %} 
+                <input 
+                    {% if include.interaction == 'allowed' %}checked{% endif %}
+                    type="checkbox" 
+                    name="interaction"></label>
+        </fieldset> 
+    {% endunless %}
+    {% unless include.caption == false %}
+        <label>
+            {% include patterns/i18n id="label_caption" %}
+            <textarea
+                rows="2">{{ include.caption }}</textarea>
+        </label>  
+    {% endunless %}
 </fieldset>
