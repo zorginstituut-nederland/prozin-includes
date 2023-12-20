@@ -123,7 +123,7 @@
         {% include patterns/form-help.html
             content="message_help_presentation_upload" %}
     </fieldset>  
-    {% unless include.width == false %}
+    {% unless include.caption == false %}
         <label>
             {% include patterns/i18n id="label_optimal_width_in_pixels" %}
             <input 
@@ -132,8 +132,6 @@
                 type="number" 
                 name="">
         </label>   
-    {% endunless %}
-    {% unless include.height == false %}
         <label>
             {% include patterns/i18n id="label_optimal_height_in_pixels" %}
             <input 
@@ -143,7 +141,7 @@
                 name="">
         </label>
     {% endunless %}
-    {% unless include.interaction == false %}
+    {% unless include.caption == false %}
         <fieldset
             class="pat-checklist">
             <!-- <legend>{% include patterns/i18n id="patterns.label_behaviour" %}</legend> -->
