@@ -1,6 +1,7 @@
 <div 
     id="global-nav" 
     class="
+        {% if page.layout contains '/apps' %}app app-{{ layout.app_name | slugify }}{% endif %}
         variation-{{ layout.page_type }} 
         variation-{{ page.page_type }} 
         pat-sticky {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}" 
@@ -19,192 +20,199 @@
                 class="assistive">
                 {{ site.data.prozin.ui.message_you_are_here[site.data.config.lang] }}
             </p>
-            {% if page.layout contains 'homepage' %}
+            {% if page.layout contains '/apps' %}
                 <a 
-                    class="homepage">
+                    class="app-label">
+                    {{ page.title }}
+                </a>
             {% else %}
-                <a 
-                    class="homepage pat-inject" 
-                    data-pat-inject="history: record; scroll: #site-header" href="/">
-            {% endif %}
-                {{ site.data.ui.label_site_name[site.data.config.lang] }}</a>
-            
-            {% if page.url contains 'zoekresultaten' %}
-                <a>Zoeken</a>
-            {% endif %}
+                {% if page.layout contains 'homepage' %}
+                    <a 
+                        class="homepage">
+                {% else %}
+                    <a 
+                        class="homepage pat-inject" 
+                        data-pat-inject="history: record; scroll: #site-header" href="/">
+                {% endif %}
+                    {{ site.data.ui.label_site_name[site.data.config.lang] }}</a>
+                
+                {% if page.url contains 'zoekresultaten' %}
+                    <a>Zoeken</a>
+                {% endif %}
 
-            {% if page.url == '/geneesmiddelen-9-januari-2018' %}
-                <a 
-                    href="/geneesmiddelen" 
-                    class="pat-inject" 
-                    data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
-            {% endif %}
-            {% if page.url == '/geneesmiddelen-alt' %}
-                <a>{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
-            {% endif %}
+                {% if page.url == '/geneesmiddelen-9-januari-2018' %}
+                    <a 
+                        href="/geneesmiddelen" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
+                {% endif %}
+                {% if page.url == '/geneesmiddelen-alt' %}
+                    <a>{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a>
+                {% endif %}
 
-            {% if layout.parent %}
-                {% if 
-                    page.url contains '/beheer' 
-                        or 
-                    page.url contains '/dialogues/cms'
-                        or
-                    page.url contains 'mailing-lists' %}
-                    {% if layout.url == '/beheer' %}
-                        <a>{% include patterns/i18n id="label_management" %}</a>
+                {% if layout.parent %}
+                    {% if 
+                        page.url contains '/beheer' 
+                            or 
+                        page.url contains '/dialogues/cms'
+                            or
+                        page.url contains 'mailing-lists' %}
+                        {% if layout.url == '/beheer' %}
+                            <a>{% include patterns/i18n id="label_management" %}</a>
+                        {% else %}
+                            <a 
+                                href="/beheer" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a>
+                            {% unless 
+                                layout.parent == "Beheer" 
+                                    or 
+                                page.title_in_breadcrumbs == false 
+                                    or 
+                                layout.title_in_breadcrumbs == false %}
+                                <a>{{ layout.parent }}</a>
+                            {% endunless %}
+                        {% endif %}
                     {% else %}
+                        {% if page.url contains 'news-flashes' %}
+                            <a 
+                                href="/beheer" 
+                                class="pat-inject"
+                                data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a>
+                        {% endif %}
+                        <a 
+                            href="{{ layout.parent_url }}"
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
+                    {% endif %}
+                    {%- if page.parent and page.page_type == 'folder' -%}
+                        <a 
+                            href="/dialogues/cms/general" 
+                            class="pat-inject"
+                            data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
+                    {%- endif -%}
+                {% elsif page.parent %}
+                    {% if page.parent == 'Help' %}
+                        <a 
+                            href="/help" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.data.config.lang] }}</a>
+                    {% elsif page.parent == 'Beheer' or layout.parent == 'Beheer' %}
                         <a 
                             href="/beheer" 
                             class="pat-inject" 
-                            data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a>
-                        {% unless 
-                            layout.parent == "Beheer" 
-                                or 
-                            page.title_in_breadcrumbs == false 
-                                or 
-                            layout.title_in_breadcrumbs == false %}
-                            <a>{{ layout.parent }}</a>
-                        {% endunless %}
-                    {% endif %}
-                {% else %}
-                    {% if page.url contains 'news-flashes' %}
+                            data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                    {% elsif page.parent == 'Manage' or layout.parent == 'Manage' %}
                         <a 
-                            href="/beheer" 
-                            class="pat-inject"
-                            data-pat-inject="history: record; scroll: #main">{% include patterns/i18n id="label_management" %}</a>
-                    {% endif %}
-                    <a 
-                        href="{{ layout.parent_url }}"
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ layout.parent }}</a>
-                {% endif %}
-                {%- if page.parent and page.page_type == 'folder' -%}
-                    <a 
-                        href="/dialogues/cms/general" 
-                        class="pat-inject"
-                        data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
-                {%- endif -%}
-            {% elsif page.parent %}
-                {% if page.parent == 'Help' %}
-                    <a 
-                        href="/help" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_help[site.data.config.lang] }}</a>
-                {% elsif page.parent == 'Beheer' or layout.parent == 'Beheer' %}
-                    <a 
-                        href="/beheer" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
-                {% elsif page.parent == 'Manage' or layout.parent == 'Manage' %}
-                    <a 
-                        href="/manage" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
-                {% elsif page.title == 'Beheer' %}
-                    <a>{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
-                {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
-                    <a  
-                        href="/fabrikanten" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
-                {% else %}
-                     <a 
-                        href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
-                        class="pat-inject" 
-                        data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
-                {% endif %}
-            {% else %}
-                {% if page.collection %}
-                    {% if page.path contains 'editorial' %}
-                        {% assign page_path = page.url | replace: '%20', ' ' | split: '/' %}
-                        {% for item in page_path %}
-                            {% unless item == 'editorial' or item == 'index' or item == page.title  %}
-                                {% if forloop.index0 == 2 %}     
-                                    <a
-                                        class="pat-inject"
-                                        data-pat-inject="history: record; scroll: #main"
-                                        href="../">{{ item | replace: '%20', ' ' }}</a>
-                                {% elsif forloop.index0 == 3 %}   
-                                    <a
-                                        class="pat-inject"
-                                        data-pat-inject="history: record; scroll: #main"
-                                        href="./">{{ item | replace: '%20', ' ' }}</a>
-                                {% endif %}
-                            {% endunless %}
-                        {% endfor %}
+                            href="/manage" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                    {% elsif page.title == 'Beheer' %}
+                        <a>{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                    {% elsif page.parent == 'Fabrikanten' or layout.parent == 'Fabrikanten' %}
+                        <a  
+                            href="/fabrikanten" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
                     {% else %}
-                        {% unless page.scope %}
-                            {% unless layout.collection_in_breadcrumbs == false %}
-                                {% if page.collection == 'prozin/editorial' %}
-                                {% elsif page.layout == 'prozin/landing-topics' %}
-                                  <a>{{ page.collection | capitalize }}</a>
-                                {% elsif page.collection == 'drafts' %}
-                                {% elsif page.collection == '' %}
-                                  <a 
-                                    href="/{{ page.collection }}/" 
-                                    class="pat-inject" 
-                                    data-pat-inject="history: record; scroll: #main"></a>
-                                }
-                                {% else %}
-                                  <a 
-                                    href="/{{ page.collection }}/" 
-                                    class="pat-inject" 
-                                    data-pat-inject="history: record; scroll: #main">{{ page.collection | capitalize | replace: '-', ' ' }}</a>
-                                {% endif %}
-                            {% endunless %}
-                        {% endunless %}
+                        <a 
+                            href="{% if page.collection == 'editorial' %}/editorial/{% endif %}/{{ page.parent | slugify }}" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ page.parent }}</a>
                     {% endif %}
-                {% endif %}
-            {% endif %}
-
-            {% if page.title == 'Fabrikanten' %}
-                <a>{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
-            {% endif %}
-
-            {% if page.title == 'Concepten' %}
-                <a href="/beheer" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
-                <a>{{ site.data.prozin.ui.label_drafts[site.data.config.lang] }}</a>
-            {% endif %}
-
-            {% if page.title == 'Volgen' %}
-                <a href="/beheer" 
-                   class="pat-inject" 
-                   data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
-                <a>{{ site.data.prozin.ui.label_follow[site.data.config.lang] }}</a>
-            {% endif %}
-
-            {% if page.parent == 'over' %}
-                <a href="/over" class="pat-inject" data-pat-inject="history: record; scroll: #main">Over Horizonscan Geneesmiddelen</a>
-            {% endif %}
-            {% if page.title == 'Over Horizonscan Geneesmiddelen' %}
-                <a>Over Horizonscan Geneesmiddelen</a>
-            {% endif %}
-            {% if page.layout == 'medicine' or page.layout == 'medicine-compare-versions' %}
-                {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}  
-                    <a href="/concepten" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">Concepten</a>
                 {% else %}
-                    {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.data.config.lang] | slugify }}{% endcapture %}
-                    <!-- <a href="/geneesmiddelen" 
-                       class="pat-inject" 
-                       data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a> -->
-                    {% if page.domain %}
-                      <a href="/{{ this_group }}" 
-                         class="pat-inject" 
-                         data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui[page.domain][site.data.config.lang] }}</a>
+                    {% if page.collection %}
+                        {% if page.path contains 'editorial' %}
+                            {% assign page_path = page.url | replace: '%20', ' ' | split: '/' %}
+                            {% for item in page_path %}
+                                {% unless item == 'editorial' or item == 'index' or item == page.title  %}
+                                    {% if forloop.index0 == 2 %}     
+                                        <a
+                                            class="pat-inject"
+                                            data-pat-inject="history: record; scroll: #main"
+                                            href="../">{{ item | replace: '%20', ' ' }}</a>
+                                    {% elsif forloop.index0 == 3 %}   
+                                        <a
+                                            class="pat-inject"
+                                            data-pat-inject="history: record; scroll: #main"
+                                            href="./">{{ item | replace: '%20', ' ' }}</a>
+                                    {% endif %}
+                                {% endunless %}
+                            {% endfor %}
+                        {% else %}
+                            {% unless page.scope %}
+                                {% unless layout.collection_in_breadcrumbs == false %}
+                                    {% if page.collection == 'prozin/editorial' %}
+                                    {% elsif page.layout == 'prozin/landing-topics' %}
+                                    <a>{{ page.collection | capitalize }}</a>
+                                    {% elsif page.collection == 'drafts' %}
+                                    {% elsif page.collection == '' %}
+                                    <a 
+                                        href="/{{ page.collection }}/" 
+                                        class="pat-inject" 
+                                        data-pat-inject="history: record; scroll: #main"></a>
+                                    }
+                                    {% else %}
+                                    <a 
+                                        href="/{{ page.collection }}/" 
+                                        class="pat-inject" 
+                                        data-pat-inject="history: record; scroll: #main">{{ page.collection | capitalize | replace: '-', ' ' }}</a>
+                                    {% endif %}
+                                {% endunless %}
+                            {% endunless %}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
-            {% endif %}
 
-            {% if page.title_in_breadcrumbs == true or layout.title_in_breadcrumbs == true %}
-                <a>{{ page.title }}</a>
-            {% endif %}
+                {% if page.title == 'Fabrikanten' %}
+                    <a>{{ site.data.prozin.ui.label_manufacturers[site.data.config.lang] }}</a>
+                {% endif %}
 
-            {% if page.sector %}
-                <!-- <a>{{ page.sector }}</a> -->
+                {% if page.title == 'Concepten' %}
+                    <a href="/beheer" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                    <a>{{ site.data.prozin.ui.label_drafts[site.data.config.lang] }}</a>
+                {% endif %}
+
+                {% if page.title == 'Volgen' %}
+                    <a href="/beheer" 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_management[site.data.config.lang] }}</a>
+                    <a>{{ site.data.prozin.ui.label_follow[site.data.config.lang] }}</a>
+                {% endif %}
+
+                {% if page.parent == 'over' %}
+                    <a href="/over" class="pat-inject" data-pat-inject="history: record; scroll: #main">Over Horizonscan Geneesmiddelen</a>
+                {% endif %}
+                {% if page.title == 'Over Horizonscan Geneesmiddelen' %}
+                    <a>Over Horizonscan Geneesmiddelen</a>
+                {% endif %}
+                {% if page.layout == 'medicine' or page.layout == 'medicine-compare-versions' %}
+                    {% if page.state == 'draft' or page.state == 'new' or page.url contains 'incoming' %}  
+                        <a href="/concepten" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">Concepten</a>
+                    {% else %}
+                        {% capture this_group %}{{ site.data.prozin.ui[page.domain][site.data.config.lang] | slugify }}{% endcapture %}
+                        <!-- <a href="/geneesmiddelen" 
+                        class="pat-inject" 
+                        data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui.label_medicines[site.data.config.lang] }}</a> -->
+                        {% if page.domain %}
+                        <a href="/{{ this_group }}" 
+                            class="pat-inject" 
+                            data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.ui[page.domain][site.data.config.lang] }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+                {% if page.title_in_breadcrumbs == true or layout.title_in_breadcrumbs == true %}
+                    <a>{{ page.title }}</a>
+                {% endif %}
+
+                {% if page.sector %}
+                    <!-- <a>{{ page.sector }}</a> -->
+                {% endif %}
             {% endif %}
         </nav>
 
