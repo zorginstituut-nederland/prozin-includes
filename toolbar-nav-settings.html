@@ -12,6 +12,16 @@
             target: #cms-settings-toolbar-functions-area::element"
         class="pat-inject">{% include patterns/i18n id="label_general" %}</a>
     <a 
+        href="/dialogues/cms/settings-organisation"
+        data-pat-inject="
+            history: record; 
+            source: #listing; 
+            target: #listing 
+                && 
+            source: #cms-settings-toolbar-functions-area::element; 
+            target: #cms-settings-toolbar-functions-area::element"
+        class="pat-inject">{% include patterns/i18n id="label_organisation" %}</a>
+    <a 
         href="/dialogues/organisations/"
         data-pat-inject="
             history: record; 
