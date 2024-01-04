@@ -11,9 +11,17 @@
 <meta 
 	name="msapplication-TileColor" 
 	content="#777c00">
-<meta 
-	name="theme-color" 
-	content="#39870c">
+
+{% if layout.app_name == "Image bank" %}
+	<meta 
+		name="theme-color" 
+		content="#a90061" />
+{% else %}
+	<meta 
+		name="theme-color" 
+		content="#39870c">
+{% endif %}
+
 {% if page.image %}
 	<meta 
 		content="{{ page.image }}" 
