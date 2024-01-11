@@ -14,14 +14,14 @@
             </p>
         {% endif %}
         <ul 
-            class="nav-tiles pat-equaliser count-{{ page.nav.size }}">
+            class="nav-tiles count-{{ page.nav.size }}">
             {% for item in page.nav %}
                 <li 
                     class="item">
                     <a 
                         href="{{ item.url }}" 
                         data-pat-inject="history: record; scroll: #main" 
-                        class="pat-inject follow icon-{{ item.icon }}">
+                        class="pat-inject follow {% if item.icon %}icon-{{ item.icon }}{% endif %}">
                         <h3 
                             class="item-title">
                             {% if item.name contains 'prozin.' %}

@@ -1,9 +1,18 @@
-<section class="swim-lane" id="site-summary">
-    <div class="container">
-        <blockquote class="summary">
+<section 
+    class="swim-lane" 
+    id="site-summary">
+    <div 
+        class="container">
+        <blockquote 
+            class="summary">
             <p>
                 {{ site.data.ui.message_site_summary[site.data.config.lang] }}
             </p>
         </blockquote>
+        {% if item.video %}
+            {% include prozin/video.html
+                poster=item.poster
+                video=item.video %}
+        {% endif %}
     </div>
 </section>
