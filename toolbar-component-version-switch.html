@@ -12,7 +12,7 @@
         source: ajax; 
         class: versioning-menu;
         position-list: tl"
-    class="pat-tooltip pat-select versions state-{{ page.state | slugify }}">{{ this_version }}</a>
+    class="pat-tooltip pat-select versions state-{{ page.state | slugify | default: 'published' }}">{{ this_version | default: 'Published' }}</a>
 <template 
     id="versioning-menu"
     hidden>
@@ -23,7 +23,7 @@
             {%- if page.state == 'Published' -%}
                 {% include patterns/i18n id="label_version" %} {% if page.revisions %}{{ page.revisions.size | plus: 1 }}{%- else -%}1{% endif %}
             {%- else -%}
-                {{ page.state }}
+                {{ page.state | default: 'Published' }}
             {%- endif -%}
         </h2>
         <dl 
