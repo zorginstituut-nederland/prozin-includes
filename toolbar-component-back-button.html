@@ -1,6 +1,6 @@
 {% if layout.back_button %}
     <a 
-        data-pat-inject="history: record; scroll: #main"
+        data-pat-inject="history: record; scroll: {{ layout.back_button.scroll | default '#main' }}"
         class="pat-back-button pat-inject"
         href="{{ layout.back_button.url }}">{{ layout.back_button.label }}</a>
 {% endif %}
