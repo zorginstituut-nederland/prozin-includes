@@ -1,7 +1,7 @@
 <div 
     id="global-nav" 
     class="
-        {% if page.layout contains '/apps' %}app app-{{ layout.app_name | slugify }}{% endif %}
+        {% if page.layout contains '/apps' or layout.app_name %}app app-{{ layout.app_name | slugify }}{% endif %}
         variation-{{ layout.page_type }} 
         variation-{{ page.page_type }} 
         pat-sticky {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}" 
@@ -20,10 +20,10 @@
                 class="assistive">
                 {{ site.data.prozin.ui.message_you_are_here[site.data.config.lang] }}
             </p>
-            {% if page.layout contains '/apps' %}
+            {% if page.layout contains '/apps' or layout.app_name %}
                 <a 
                     class="app-label">
-                    {{ page.title }}
+                    {{ layout.app_name }}
                 </a>
             {% else %}
                 {% if page.layout contains 'homepage' %}
