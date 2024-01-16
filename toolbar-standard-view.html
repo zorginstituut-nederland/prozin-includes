@@ -9,12 +9,7 @@
         <div
             class="toolbar-section view-options"
             id="cms-page-toolbar-view-options">
-            {% if layout.back_button %}
-                <a 
-                    data-pat-inject="history: record; scroll: #main"
-                    class="pat-back-button pat-inject"
-                    href="{{ layout.back_button.url }}">{{ layout.back_button.label }}</a>
-            {% endif %}
+            {% include prozin/toolbar-component-back-button.html %}
             {% include prozin/toolbar-component-version-switch.html %}
         </div>
         <div 
