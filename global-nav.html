@@ -26,15 +26,17 @@
                     {{ layout.app_name }}
                 </a>
             {% else %}
-                {% if page.layout contains 'homepage' %}
-                    <a 
-                        class="homepage">
-                {% else %}
-                    <a 
-                        class="homepage pat-inject" 
-                        data-pat-inject="history: record; scroll: #site-header" href="/">
-                {% endif %}
-                    {{ site.data.ui.label_site_name[site.data.config.lang] }}</a>
+                {% unless page.layout == "prozin/landing-apps" %}
+                    {% if page.layout contains 'homepage' %}
+                        <a 
+                            class="homepage">
+                    {% else %}
+                        <a 
+                            class="homepage pat-inject" 
+                            data-pat-inject="history: record; scroll: #site-header" href="/">
+                    {% endif %}
+                        {{ site.data.ui.label_site_name[site.data.config.lang] }}</a>
+                {% endunless %}
                 
                 {% if page.url contains 'zoekresultaten' %}
                     <a>Zoeken</a>
