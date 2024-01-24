@@ -5,13 +5,19 @@
     <label>
         Name
         {% if page.organisation_type == 'Beheerorganisatie' %}
-            <input
+            <!-- <input
                 class="pat-autosuggest" 
                 type="text" 
                 required
                 name=""
                 placeholder="Enter or select an organisation name"
-                data-pat-autosuggest="allow-new-words: true; max-selection-size: 1; ajax-search-index: text; words: {% for item in organisations %}{{ item.name }}{% unless forloop.last %},{% endunless %}{% endfor %};"/>
+                data-pat-autosuggest="allow-new-words: true; max-selection-size: 1; ajax-search-index: text; words: {% for item in organisations %}{{ item.name }}{% unless forloop.last %},{% endunless %}{% endfor %};"/> -->
+            <input
+                type="text" 
+                class="pat-autofocus"
+                required\
+                value="{{ page.organisation_name }}"
+                name="" />
         {% else %}
             <input
                 type="text" 
