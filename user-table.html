@@ -46,46 +46,43 @@
                                                 title="Bewerk gebruikersgegevens">{%- include patterns/i18n id="label_edit" -%}</a>
                                         {% endif %}
                                     </li>
-                                    {% if include.mode == 'app' %}
-                                        {% if this_persona.last_name == 'Papadopoulus' %}
-                                            <!-- In case the user is deactivated, print the following markup: -->
-                                            <li>
-                                                <form
-                                                    class="pat-inject"
-                                                    action="/dialogues/users/#content">
-                                                    <button 
-                                                        title="Heractiveer gebruiker" 
-                                                        class="close-panel icon-ok-1">{%- include patterns/i18n id="label_reactivate_imp" -%}</button>
-                                                </form>
-                                            </li>
-                                        {% else %}  
-                                            <li>
-                                                <a 
-                                                    href="/dialogues/users/deactivate#document-content" 
-                                                    title="Deactiveer gebruiker" 
-                                                    data-pat-modal="class: small panel" 
-                                                    class="close-panel pat-modal icon-3909-kruis">{%- include patterns/i18n id="label_deactivate_imp" -%}</a>
-                                            </li>
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if include.mode == "product" %} 
-                                        {% if this_persona.accepted == false %}
-                                            <li>
-                                                <a 
-                                                    href="/dialogues/users/resend-invite#document-content" 
-                                                    title="Stuur opnieuw de uitnodiging om het gebruikersaccount te accepteren." 
-                                                    data-pat-modal="class: small panel" 
-                                                    class="close-panel pat-modal icon-mail">{% include patterns/i18n id="label_resend_invite" %}</a>
-                                            </li>
-                                        {% endif %}
+                    
+                                    {% if this_persona.last_name == 'Papadopoulus' %}
+                                        <!-- In case the user is deactivated, print the following markup: -->
+                                        <li>
+                                            <form
+                                                class="pat-inject"
+                                                action="/dialogues/users/#content">
+                                                <button 
+                                                    title="Heractiveer gebruiker" 
+                                                    class="close-panel icon-ok-1">{%- include patterns/i18n id="label_reactivate_imp" -%}</button>
+                                            </form>
+                                        </li>
+                                    {% else %}  
                                         <li>
                                             <a 
-                                                href="/dialogues/users/remove#document-content" 
-                                                title="Verwijder gebruiker" 
+                                                href="/dialogues/users/deactivate#document-content" 
+                                                title="Deactiveer gebruiker" 
                                                 data-pat-modal="class: small panel" 
-                                                class="close-panel pat-modal icon-3909-kruis">Verwijder {{ this_persona.first_name }} {{ this_persona.last_name }} uit {{ site.name[site.data.config.lang] }} </a>
+                                                class="close-panel pat-modal icon-3909-kruis">{%- include patterns/i18n id="label_deactivate_imp" -%}</a>
                                         </li>
                                     {% endif %}
+                                    {% if this_persona.accepted == false %}
+                                        <li>
+                                            <a 
+                                                href="/dialogues/users/resend-invite#document-content" 
+                                                title="Stuur opnieuw de uitnodiging om het gebruikersaccount te accepteren." 
+                                                data-pat-modal="class: small panel" 
+                                                class="close-panel pat-modal icon-mail">{% include patterns/i18n id="label_resend_invite" %}</a>
+                                        </li>
+                                    {% endif %}
+                                    <li>
+                                        <a 
+                                            href="/dialogues/users/remove#document-content" 
+                                            title="Verwijder gebruiker" 
+                                            data-pat-modal="class: small panel" 
+                                            class="close-panel pat-modal icon-3909-kruis">Verwijder {{ this_persona.first_name }} {{ this_persona.last_name }} uit {{ site.name[site.data.config.lang] }} </a>
+                                    </li>
                                 </ul>
                             </template>
                         </th>
