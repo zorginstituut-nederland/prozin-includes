@@ -36,8 +36,13 @@
             {% endunless %}>
             <option>{% include patterns/i18n id="label_unknown" %}</option>
             {% for item in site.data.prozin.organisation-types %}
-                <option
-                    {% unless site.organisation_types contains item.name %}disabled{% endunless %}>
+                {%- comment -%}
+                    <option
+                        {% unless site.organisation_types contains item.name %}disabled{% endunless %}>
+                        {% include patterns/i18n id=item.i18n-singular %}
+                    </option> 
+                {%- endcomment -%}
+                <option>
                     {% include patterns/i18n id=item.i18n-singular %}
                 </option>
             {% endfor %}
