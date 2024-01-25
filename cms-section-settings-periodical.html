@@ -34,8 +34,9 @@
             <option>{%- include patterns/i18n id="patterns.label_weekly" -%}</option>
             <option>{%- include patterns/i18n id="patterns.label_monthly" -%}</option>
             <option>{%- include patterns/i18n id="patterns.label_quarterly" -%}</option>
-            <option>{%- include patterns/i18n id="patterns.label_never" -%}</option>
+            {%- comment -%}<option>{%- include patterns/i18n id="patterns.label_never" -%}</option>{%- endcomment -%} 
         </select>
+        <!-- 'Never' can be achieved with archiving. -->
     </label>
     {% include patterns/form-field-date.html
         label="label_starting_date"
