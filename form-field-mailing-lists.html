@@ -1,5 +1,6 @@
-<label>
-    {% include patterns/i18n id="label_mailing_lists" %}
+<fieldset
+    class="group">
+    <legend>{% include patterns/i18n id="label_mailing_lists" %}</legend>
     <select
         class="pat-autosuggest"
         multiple 
@@ -13,4 +14,6 @@
             {%- endunless -%}
         {% endfor %}
     </select>
-</label>
+    {% include patterns/form-help.html
+            content="message_help_send_news_flash_confirm" %}
+</fieldset>
