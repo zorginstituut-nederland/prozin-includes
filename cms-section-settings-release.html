@@ -24,15 +24,19 @@
                 {% include patterns/i18n id="label_major" %}
                 <input 
                     type="number"
-                    value="{{ page.version_number_major }}"
-                    min="1"
+                    required
+                    value="{{ page.version_number_major | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_major' %}"
+                    min="0"
                     step="1">
             </label>
             <label>
                 {% include patterns/i18n id="label_minor" %}
                 <input 
                     type="number"
-                    value="{{ page.version_number_minor }}"
+                    required
+                    value="{{ page.version_number_minor | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_minor' %}"
                     min="0"
                     step="1">
             </label>
@@ -40,7 +44,9 @@
                 {% include patterns/i18n id="label_patch" %}
                 <input 
                     type="number"
-                    value="{{ page.version_number_patch }}"
+                    required
+                    value="{{ page.version_number_patch | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_patch' %}"
                     min="0"
                     step="1">
             </label>
