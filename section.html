@@ -1,4 +1,8 @@
-{% capture this_id %}{{ page.title | slugify }}-{{ include.title | slugify }}{% endcapture %}
+{% if include.section_id %}
+    {% capture this_id %}{{ include.section_id }}{% endcapture %}
+{% else %}
+    {% capture this_id %}{{ page.title | slugify }}-{{ include.title | slugify }}{% endcapture %}
+{% endif %}
 
 {% if include.type == 'see-also' %}
     {% capture this_title %}{% include patterns/i18n id="label_see_also" %}{% endcapture %}
