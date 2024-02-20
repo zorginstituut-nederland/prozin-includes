@@ -6,16 +6,51 @@
         class="{% include patterns/form-field-auto-save-classes %}">
         {% include patterns/i18n id="label_domain" %}
         <select>
-            <option>iWlz</option>
-            <option>iWmo</option>
-            <option>iKw</option>
-            <option>iPgb</option>
-            <option>iEb</option>
+            {% for item in site.data.domains %}
+                <option 
+                    value="domain-{{ item.name | slugify }}">{{ item.name }}</option>
+            {% endfor %}
         </select>
     </label>
-    {% include patterns/form-field-number.html
+    <!-- {% include patterns/form-field-number.html
         label="label_release_number"
-        step="any" %}
+        step="any" %} -->
+    <label>
+        {% include patterns/i18n id="label_release_number" %}
+        <span 
+            class="field-cluster">
+            <label>
+                {% include patterns/i18n id="label_major" %}
+                <input 
+                    type="number"
+                    required
+                    value="{{ page.version_number_major | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_major' %}"
+                    min="0"
+                    step="1">
+            </label>
+            <label>
+                {% include patterns/i18n id="label_minor" %}
+                <input 
+                    type="number"
+                    required
+                    value="{{ page.version_number_minor | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_minor' %}"
+                    min="0"
+                    step="1">
+            </label>
+            <label>
+                {% include patterns/i18n id="label_patch" %}
+                <input 
+                    type="number"
+                    required
+                    value="{{ page.version_number_patch | default: 0 }}"
+                    placeholder="{% include patterns/i18n id='label_patch' %}"
+                    min="0"
+                    step="1">
+            </label>
+        </span>
+    </label>
     <label>
         Status
         <select>
@@ -24,9 +59,9 @@
             <option>Archief</option>
         </select>
     </label>
-    {%- comment -%}
-    {%- include patterns/form-field-date.html
+
+    {% include patterns/form-field-date.html
         value="2023-12-27"
-        label="label_release_date" -%}
-    {%- endcomment -%}
+        label="label_release_date" %}
+
 </fieldset>
