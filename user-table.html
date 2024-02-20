@@ -5,8 +5,8 @@
         <thead>
             <tr>
                 <th>Naam</th>
-                {% if page.role == 'Owner' %}
-                    <!-- <th>Organisation</th> -->
+                {% if include.mode == "app" %}
+                    <th>Organisation</th>
                 {% endif %}
                 <th>Rol</th>
                 <th>&nbsp;</th>
@@ -51,13 +51,15 @@
                                             </form>
                                         </li>
                                     {% else %}  
-                                        <!-- <li>
-                                            <a 
-                                                href="/dialogues/users/deactivate#document-content" 
-                                                title="Deactiveer gebruiker" 
-                                                data-pat-modal="class: small panel" 
-                                                class="close-panel pat-modal icon-3909-kruis">{%- include patterns/i18n id="label_deactivate_imp" -%}</a>
-                                        </li> -->
+                                        {% if include.mode == "app" %}
+                                            <li>
+                                                <a 
+                                                    href="/dialogues/users/deactivate#document-content" 
+                                                    title="Deactiveer gebruiker" 
+                                                    data-pat-modal="class: small panel" 
+                                                    class="close-panel pat-modal icon-3909-kruis">{%- include patterns/i18n id="label_deactivate_imp" -%}</a>
+                                            </li>                                            
+                                        {% endif %} 
                                     {% endif %}
                                     {% if this_persona.accepted == false %}
                                         <li>
@@ -78,8 +80,8 @@
                                 </ul>
                             </template>
                         </th>
-                        {% if page.role == 'Owner' %}
-                            <!-- <td>{{ this_persona.organisation }}</td> -->
+                        {% if include.mode == "app" %}
+                            <td>{{ this_persona.organisation }}</td>
                         {% endif %}
                         <td
                             class="role">
