@@ -6,4 +6,8 @@
             <option>{{ item.name }}</option>
         {% endfor %}
     </select>
+    {% if include.help %}
+		{% include patterns/form-help.html
+			content=include.help more=include.help_more %}
+	{% endif %}
 </label>
