@@ -80,18 +80,18 @@
     <fieldset
         class="pat-checklist radio">  
         <legend>{% include patterns/i18n id="label_permisisons_within_this_application" %}</legend>
-        <label>
-            <input 
-                type="radio" 
-                checked 
-                name="role">
-            Beheerder
-        </label>
-        <label>
-            <input 
-                type="radio" 
-                name="role">
-            Lid
-        </label>
+        {%- for item in site.data.prozin.permission-profiles -%}
+            {%- if item.dashboard == true -%}
+                <label>
+                    <input 
+                        type="radio" 
+                        {% if item.name == 'Lid' %}
+                            checked
+                        {% endif %} 
+                        name="role">
+                    {% include patterns/i18n id=item.i18n %}
+                </label>
+            {%- endif -%}
+        {%- endfor -%}
     </fieldset>
 </fieldset>
