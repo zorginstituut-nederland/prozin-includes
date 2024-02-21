@@ -77,21 +77,23 @@
                 name="administrators" />
         </label>
     {% endif %}
-    <h3
-        class="form-section-header">{%- include patterns/i18n id="label_permission_levels" -%}</h3>
     {% if include.context == "app" %}
-        {% for product in site.data.prozin.products %}
-            <label>  
-                {{ product.name }}
-                <select>
-                    {% for item in site.data.prozin.permission-profiles %}
-                        <option>
-                            {% include patterns/i18n id=item.i18n %}
-                        </option>
-                    {% endfor %}
-                </select>
-            </label>
-        {% endfor %}
+        {%- comment -%}
+            <h3
+                class="form-section-header">{%- include patterns/i18n id="label_permission_levels_employee_zinl" -%}</h3>
+            {% for product in site.data.prozin.products %}
+                <label>  
+                    {{ product.name }}
+                    <select>
+                        {% for item in site.data.prozin.permission-profiles %}
+                            <option>
+                                {% include patterns/i18n id=item.i18n %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </label>
+            {% endfor %}
+        {%- endcomment -%}
     {% else %}
         <fieldset
             class="pat-checklist radio">  
