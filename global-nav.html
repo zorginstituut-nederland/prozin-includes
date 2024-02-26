@@ -2,8 +2,8 @@
     id="global-nav" 
     class="
         {% if page.layout contains '/apps' or layout.app_name %}app app-{{ layout.app_name | slugify }}{% endif %}
-        variation-{{ layout.page_type }} 
-        variation-{{ page.page_type }} 
+        {% if layout.page_type %}variation-{{ layout.page_type }}{% endif %}
+        {% if page.page_type %}variation-{{ page.page_type }}{% endif %}
         pat-sticky {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}" 
     role="menubar">
     <div 
