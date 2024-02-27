@@ -1,0 +1,23 @@
+<fieldset 
+	class="group">
+	<legend>{%- include patterns/i18n id="label_icon" -%}</legend>
+	<fieldset 
+		class="icon-selector pat-checklist free-form">
+		{% for icon in site.data.icons %}
+			<label
+				class="icon-{{ icon.css }}">
+				<input 
+					type="radio" 
+					name="icon" 
+					value="icon-name" 
+					{% if include.default == icon.css %}checked{% endif %} />
+				{{ icon.css }}
+			</label>
+		{% endfor %}
+	</fieldset>
+	{% if include.help %}
+        {% include patterns/form-help.html
+        	content=include.help more=include.help_more %}
+    {% endif %}
+
+</fieldset>

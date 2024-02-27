@@ -1,0 +1,47 @@
+<article 
+    class="process-diagram">
+    <h1 
+        class="process-diagram-title">
+        {{ site.data.prozin.ui[page.title][site.lang] }}
+    </h1>
+    <section 
+        class="process-diagram-graph">
+        <ul 
+            class="process-diagram-steps">
+            {% for item in page.steps %}
+                <li 
+                    class="step">
+                    <a 
+                        href="#{{ item.name | slugify }}"
+                        class="icon-{{ item.icon }} {% if item.current %}current{% endif %}">
+                        <span 
+                            class="step-title">{{ site.data.prozin.ui[item.name][site.lang] }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section 
+        class="process-diagram-explanations pat-stacks">
+        {% assign count = 0 %}
+        {% for item in page.steps %}
+            {% assign count = count | plus: 1 %}
+            <div 
+                class="explanation" 
+                id="{{ item.name | slugify }}">
+                <h2 
+                    class="step-title">
+                    {{ site.data.prozin.ui.label_step[site.lang] }} {{ count }}: {{ site.data.prozin.ui[item.name][site.lang] }}
+                </h2>
+                <p 
+                    class="step-description">
+                    {{ site.data.prozin.ui[item.description][site.lang] }}
+                    <a 
+                        href="/help/{{ site.data.prozin.ui[page.title][site.lang] | slugify }}" 
+                        class="pat-inject close-panel" 
+                        data-pat-inject="history: record">{{ site.data.prozin.ui.label_read_more[site.lang] }}</a>
+                </p> 
+            </div>
+        {% endfor %}
+    </section>
+</article>  
