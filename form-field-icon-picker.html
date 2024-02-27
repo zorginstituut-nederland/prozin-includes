@@ -3,15 +3,15 @@
 	<legend>{%- include patterns/i18n id="label_icon" -%}</legend>
 	<fieldset 
 		class="icon-selector pat-checklist free-form">
-		{% for icon in site.data.icons %}
+		{% for icon in site.data.prozin.icons %}
 			<label
+				title="{{ icon.title }}"
 				class="icon-{{ icon.css }}">
 				<input 
 					type="radio" 
 					name="icon" 
-					value="icon-name" 
-					{% if include.default == icon.css %}checked{% endif %} />
-				{{ icon.css }}
+					{% if forloop.first %}checked{% endif %} />
+				{{ icon.title }}
 			</label>
 		{% endfor %}
 	</fieldset>
