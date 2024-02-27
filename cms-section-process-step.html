@@ -5,6 +5,17 @@
     {% capture this_placeholder %}{% include patterns/i18n id="label_your_content_goes_here_ell" %}{% endcapture %}
 {% endif %}
 
+<fieldset 
+    class="horizontal form-panel">
+    {% include patterns/form-field-textarea.html
+        rows="4"
+        value=include.summary
+        label="label_summary" %}
+    {% include prozin/form-field-icon-picker.html
+        default="ok"
+        help="message_help_process_step_icon" %}
+</fieldset>
+
 <article
     class="body-text pat-rich">
     {% if include.content %}
@@ -23,10 +34,3 @@
         link-menu="/dialogues/cms/hyperlink-menu#document-content"
         content=this_content %}
 </article>
-
-<fieldset 
-    class="horizontal form-panel">
-    {%- include prozin/form-field-icon-picker.html
-        default="ok"
-        help="message_help_process_step_icon" -%}
-</fieldset>

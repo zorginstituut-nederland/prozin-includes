@@ -50,7 +50,7 @@
         </h2>
     {% endif %}
     {% assign section_type = include.type %}
-    {% include prozin/section-{{section_type}}.html
+    {% include prozin/section-{{section_type}}.html 
         content=include.content
         video=include.video
         transcript=include.transcript
@@ -64,5 +64,6 @@
         source=include.source
         interaction=include.interaction
         enlarge=include.enlarge
+        introduction=include.introduction
          %}
 </div>
