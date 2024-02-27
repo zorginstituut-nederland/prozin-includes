@@ -26,10 +26,10 @@
         {% if include.collapsible %}pat-collapsible borderless {% if include.collapsible_state == 'open' %}open{% else %}closed{% endif %}{% endif %}">
     {% if include.title %}
         <h2
-            class="page-module-title">
+            class="page-module-title {% unless include.link -%}{%- if include.icon -%}icon-{{ include.icon }}{%- endif -%}{%- endunless -%}">
             {%- if include.link -%}
                 <a 
-                    class="pat-inject"
+                    class="pat-inject {%- if include.icon -%}icon-{{ include.icon }}{%- endif -%}"
                     data-pat-inject="
                         history: record;
                         scroll: #main"
