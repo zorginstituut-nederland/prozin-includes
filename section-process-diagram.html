@@ -1,0 +1,20 @@
+<div 
+    class="process-diagram">
+    <div 
+        class="process-diagram-graph">
+        <ul 
+            class="process-diagram-steps">
+            {% for item in page.sections %}
+                {%- capture this_section_name -%}{%- include patterns/i18n id=item.name -%}{%- endcapture -%}
+                {%- capture this_section_id -%}section-{{ item.name | slugify }}{%- endcapture -%}
+                <li 
+                    class="step size-{{ item.size }}">
+                    <a 
+                        href="#{{ this_section_id }}"
+                        class="icon-{{ item.icon }}"
+                        title="{%- include patterns/i18n id=item.description -%}">{{ this_section_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>  
