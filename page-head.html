@@ -24,7 +24,10 @@
 					class="byline-item">Afbeelding</span>
 			{% elsif page.layout == 'prozin/news-item' %}
 				<span 
-					class="byline-item">Nieuwsbericht</span>	
+					class="byline-item">Nieuwsbericht</span>
+			{% elsif page.layout == 'prozin/process' %}
+				<span 
+					class="byline-item">{%- include patterns/i18n id="label_process" -%}</span>	
 			{% elsif page.layout == 'component' %}
 				<span 
 					class="byline-item">Component</span>	
