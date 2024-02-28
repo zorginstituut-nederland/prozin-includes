@@ -46,6 +46,15 @@
                             scroll: #main"
                         href="/newsletters/">{% include patterns/i18n id="label_newsletter_archive" %}</a>
                 </li>
+
+                <li>
+                    <a 
+                        class="pat-inject" 
+                        data-pat-inject="
+                            history: record; 
+                            scroll: #main" 
+                        href="/processes/">{% include patterns/i18n id="label_processes" %}</a>
+                </li>
                 {% capture this_scope %}{{ page.service }}{% endcapture %}
                 {% for item in site[this_scope] %}
                     {% if item.parent == 'service' or item.parent == 'Service' %}
