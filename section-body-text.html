@@ -1,12 +1,10 @@
 <div 
 	class="page-module type-body-text pat-rich">	
-	{% if page.image %}
-		{% include prozin/image.html
-			class="main-illustration"
-			src=page.image
-			alt="Alt text of the image goes here"
-			copyright="Creative Commons"
-			author="Daniël E. Kolbach" %}
-	{% endif %}
+	{% include prozin/image.html
+		class="main-illustration"
+		src=page.image
+		alt="Alt text of the image goes here"
+		copyright="Creative Commons"
+		author="Daniël E. Kolbach" %}
     {{ content | markdownify }}
 </div>

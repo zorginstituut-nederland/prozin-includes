@@ -1,19 +1,28 @@
 <figure
 	class="{{ include.class }}">	
 	<a 
-		href="{{ include.src }}" 
+		{%- if include.src -%}
+			href="{{ include.src }}" 
+		{%- endif -%}
 		class="pat-gallery">
 		<picture
 			class="picture">
-			<img 
-				src="{{ include.src }}"
-				alt="{{ include.alt }}" />
-			{% if include.copyright == 'Copyright' %}
-				<small 
-					class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
-			{% elsif include.copyright == 'Creative Commons' %}
-				<small 
-					class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+			{% if include.src %}
+				<img 
+					src="{{ include.src }}"
+					alt="{{ include.alt }}" />
+				{% if include.copyright == 'Copyright' %}
+					<small 
+						class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+				{% elsif include.copyright == 'Creative Commons' %}
+					<small 
+						class="copyright-mention type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+				{% endif %}
+			{% else %}
+				<p 	
+					class="pat-message warning">
+					{% include patterns/i18n id="message_select_image_before_publication" -%}
+				</p>
 			{% endif %}
 		</picture>
 	</a>
