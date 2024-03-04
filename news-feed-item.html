@@ -12,15 +12,17 @@
                 class="illustration">
                 <picture
 					class="picture">
-                    <img 
-                        alt="{{ page.alt_text }}" 
-                        src="{{ item.image }}" ">
-                    {% if page.copyright == 'Copyright' %}
-                        <small 
-                            class="copyright-mention type-creative-commons }}">Daniël Efraïm Kolbach</small>
-                    {% else %}
-                        <small 
-                            class="copyright-mention type-creative-commons }}">Daniël Efraïm Kolbach</small>
+                    {% if item.image %}
+                        <img 
+                            alt="{{ page.alt_text }}" 
+                            src="{{ item.image }}" ">
+                        {% if page.copyright == 'Copyright' %}
+                            <small 
+                                class="copyright-mention type-creative-commons }}">Daniël Efraïm Kolbach</small>
+                        {% else %}
+                            <small 
+                                class="copyright-mention type-creative-commons }}">Daniël Efraïm Kolbach</small>
+                        {% endif %}
                     {% endif %}
                 </picture>
                 
