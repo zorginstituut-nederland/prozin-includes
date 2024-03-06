@@ -18,8 +18,7 @@
         class="icon icon-ellipsis-hor pat-tooltip" 
         href="#id-{{ page.title | slugify }}" 
         data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-    <div
-        hidden
+    <template
         id="id-{{ page.title | slugify }}">
         <ul 
             class="menu">
@@ -32,6 +31,19 @@
                             <input 
                                 type="checkbox" 
                                 name="revision_markings">
+                        </label>   
+                    </fieldset>
+                </form>
+            </li>
+            <li>
+                <form>
+                    <fieldset
+                        class="pat-checklist">
+                        <label>
+                            {% include patterns/i18n id="label_pin_on_top_of_overviews" %}
+                            <input 
+                                type="checkbox" 
+                                name="pinning">
                         </label>   
                     </fieldset>
                 </form>
@@ -65,7 +77,7 @@
                 {%- include prozin/more-menu-item-delete-draft.html -%}
             {% endif %}
         </ul>
-    </div>
+    </template>
 {% endif %}
 
 {% include prozin/workflow-state-button.html %}
