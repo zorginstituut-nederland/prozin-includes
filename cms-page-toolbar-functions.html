@@ -35,19 +35,21 @@
                     </fieldset>
                 </form>
             </li>
-            <li>
-                <form>
-                    <fieldset
-                        class="pat-checklist">
-                        <label>
-                            {% include patterns/i18n id="label_pin_on_top_of_overviews" %}
-                            <input 
-                                type="checkbox" 
-                                name="pinning">
-                        </label>   
-                    </fieldset>
-                </form>
-            </li>
+            {% if page.layout == 'prozin/news-item' %}
+                <li>
+                    <form>
+                        <fieldset
+                            class="pat-checklist">
+                            <label>
+                                {% include patterns/i18n id="label_pin_on_top_of_overviews" %}
+                                <input 
+                                    type="checkbox" 
+                                    name="pinning">
+                            </label>   
+                        </fieldset>
+                    </form>
+                </li>
+            {% endif %}
             {% if 
                 page.state == "Published" %}
                 {% if 
