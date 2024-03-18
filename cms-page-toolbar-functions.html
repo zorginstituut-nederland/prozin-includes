@@ -9,13 +9,16 @@
 {% include prozin/toolbar-component-local-search.html %}
 
 {% if 
-    site.data.personae[site.data.config.persona].role == 'Editor'
+    site.data.prozin.personae[site.data.config.persona].role == 'Editor'
         or
-    site.data.personae[site.data.config.persona].role == 'Administrator'
+    site.data.prozin.personae[site.data.config.persona].role == 'Administrator'
  %}
     {% include  prozin/language-menu.html %}
     <a 
-        class="icon icon-ellipsis-hor pat-tooltip" 
+        class="
+            icon 
+            more
+            pat-tooltip" 
         href="#id-{{ page.title | slugify }}" 
         data-pat-tooltip="source: ajax; position-list: tr">More…</a>
     <template
