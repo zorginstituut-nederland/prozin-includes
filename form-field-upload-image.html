@@ -1,0 +1,40 @@
+{%- capture this_id -%}{{ include.label | slugify }}{%- endcapture -%}
+
+<fieldset
+    id="{{ this_id }}"
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        group 
+        {% if include.depends %}pat-depends{% endif %}"
+    {% if include.action %}
+        data-pat-inject="
+            url: {{ include.action }}; 
+            source: #{{this_id}};
+            target: #{{this_id}}"
+    {% endif %}>
+    <legend>
+        {%- include patterns/form-field-label-conditional.html -%}
+    </legend>
+    {% if page.image %}
+        <image
+            class="image"
+            src="{{ page.image }}" />
+        <button
+            class="small pat-button icon-cancel-circle"
+            type="submit"
+            formaction="/event-brainstorm-session-published.html">{%- include patterns/i18n id="label_remove_image" -%}</button>
+    {% else %}
+        <label
+            class="pat-button file-upload-button">
+            {% include patterns/i18n id="patterns.label_upload_imp" %}
+            <input
+                type="file"
+                accept="image/x-png,image/jpeg"
+                name="" />
+        </label>
+    {% endif %}
+    {% if include.help %}
+        {% include patterns/form-help.html
+            content=include.help more=include.help_more %}
+    {% endif %}
+</fieldset>

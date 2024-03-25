@@ -1,0 +1,42 @@
+{%- if include.label -%}
+    {%- assign this_label = include.label -%}
+{%- else -%}
+    {%- assign this_label = "label_image" -%}
+{%- endif -%}
+
+<fieldset
+    id="image-selection-938664" 
+    class="group image-selection pat-subform pat-autosubmit pat-inject"
+    data-pat-inject="
+        url: /dialogues/cms/edit-news-item; 
+        source: #image-selection-938664; 
+        target: #image-selection-938664">
+    <legend>{% include patterns/form-field-label-conditional.html %}</legend>
+    <figure>
+        {% if page.image %}                
+            <img
+                alt="" 
+                src="{{ page.image }}" />
+            <button
+                type="submit"
+                class="default pat-button"
+                name="any_name_for_delete_image"
+                value="some_value_for_delete_image">
+                {% include patterns/i18n id="label_remove_image_imp" %}
+            </button>
+        {% else %}
+            <a 
+                href="/feedback/panel-select-single-image-image-bank#document-content"
+                data-pat-modal="
+                    class: large image-picker panel" 
+                class=" 
+                    default 
+                    pat-button 
+                    pat-modal">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
+        {% endif %}
+    </figure>
+    {% if include.help %}
+        {% include patterns/form-help.html
+            content="message_help_hero_image" %}
+    {% endif %}
+</fieldset>
