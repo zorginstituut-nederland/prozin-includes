@@ -98,22 +98,27 @@
 
         <fieldset 
             class="group pat-checklist checkbox">
-            <legend>{{ site.data.prozin.ui.label_statement_of_approval[site.data.config.lang] }}</legend> 
+            <legend>
+                {%- include patterns/i18n id="label_statement_of_approval" -%}
+            </legend> 
             <label>
-                 {{ site.data.prozin.ui.label_permission_user_survey[site.data.config.lang] }}     
+                {% include patterns/i18n id="label_permission_user_survey" %}  
                 <input 
                     type="checkbox" 
                     name="survey" />
             </label>
             <label>
-                {% include prozin/params.html %}
-                {{ site.data.prozin.ui.label_agree_with_privacy_statement[site.data.config.lang] 
-                    | replace: param_0,'https://www.zorginstituutnederland.nl/privacy'   
-                }}<sup class="required">*</sup>
-                <input 
-                    type="checkbox" 
-                    required="required" 
-                    name="survey" />
+                <span 
+                    class="label-fragment-title">
+                    {% include prozin/params.html %}
+                    {{ site.data.prozin.ui.label_agree_with_privacy_statement[site.data.config.lang] 
+                        | replace: param_0,'https://www.zorginstituutnederland.nl/privacy'   
+                    }}*
+                    <input 
+                        type="checkbox" 
+                        required="required" 
+                        name="survey" />
+                </span>
             </label>
         </fieldset>
 
