@@ -1,24 +1,40 @@
-{% if include.source contains 'layout.' %}
-    {% capture src %}{{ include.source | remove: 'layout.' }}{% endcapture %}
-{% elsif include.source contains 'page.' %}
-    {% capture src %}{{ include.source | remove: 'page.' }}{% endcapture %}
+{% if include.components contains 'layout.' %}
+    {% capture these_components %}{{ include.components | remove: 'layout.' }}{% endcapture %}
+{% elsif include.components contains 'page.' %}
+    {% capture these_components %}{{ include.components | remove: 'page.' }}{% endcapture %}
 {% else %}
-    {% capture src %}{{ include.source }}{% endcapture %}
+    {% capture these_components %}{{ include.components }}{% endcapture %}
 {% endif %}
 
 <fieldset 
-    class="horizontal form-panel">
-    {% if include.source contains 'layout.' %}
-        {% for item in layout[src] %}
+    class="
+        horizontal 
+        form-panel">
+    {% if include.components contains 'layout.' %}
+        {% for item in layout[these_components] %}
             {% include patterns/form-component.html %}
         {% endfor %}
-    {% elsif include.source contains 'page.' %}
-        {% for item in page[src] %}
+    {% elsif include.components contains 'page.' %}
+        {% for item in page[these_components] %}
             {% include patterns/form-component.html %}
         {% endfor %}
     {% else %}
-        {% for item in site.data[src] %}
-            {% include patterns/form-component.html %}
+        {% for item in site.data[these_components] %}
+            {% include patterns/form-component.html
+                content=item.content
+                placeholder=item.placeholder
+                allow=item.allow
+                action=item.action
+                video=item.video
+                transcript=item.transcript
+                poster=item.poster
+                data=item.data
+                components=item.components
+                image=item.image
+                label=item.label
+                type=item.type
+                variation=item.variation
+                source=item.source %}
         {% endfor %}
     {% endif %}
 </fieldset>
